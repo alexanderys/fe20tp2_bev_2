@@ -2,16 +2,14 @@ import app from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/database';
 
-
 const config = {
-    apiKey: "AIzaSyDOpfC5F5fcsKuBc5q7uaCdwkHz5PTNGYU",
-    authDomain: "unscripted-53c76.firebaseapp.com",
-    projectId: "unscripted-53c76",
-    storageBucket: "unscripted-53c76.appspot.com",
-    messagingSenderId: "457079451421",
-    appId: "1:457079451421:web:c2fb83910c9ff7289e7bf4"
+    apiKey: ,
+    authDomain: ,
+    projectId: ,
+    storageBucket: ,
+    messagingSenderId: ,
+    appId: 
 };
-
 
 class Firebase {
     constructor() {

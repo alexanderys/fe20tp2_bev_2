@@ -3,6 +3,7 @@ import 'firebase/auth';
 import 'firebase/database';
 
 
+
 const config = {
     apiKey: "AIzaSyDOpfC5F5fcsKuBc5q7uaCdwkHz5PTNGYU",
     authDomain: "unscripted-53c76.firebaseapp.com",
