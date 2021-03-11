@@ -5,7 +5,7 @@ const INITIAL_STATE = {
     passwordOne: '',
     passwordTwo: '',
     error: null,
-    passwordConfirm: ''
+    // passwordConfirm: ''
 };
 
 
@@ -19,8 +19,8 @@ class PasswordChangeForm extends Component {
         const { passwordOne } = this.state;
         this.props.firebase.doPasswordUpdate(passwordOne)
             .then(() => {
-                this.setState({ ...INITIAL_STATE });
-                this.setState({passwordConfirm: 'you have changed your password' } )
+                this.setState('you have changed your password' );
+                
             })
 
             .catch(error => {

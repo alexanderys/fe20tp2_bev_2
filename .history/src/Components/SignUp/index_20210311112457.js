@@ -86,14 +86,8 @@ class SignUpFormBase extends Component {
                     type="text"
                     placeholder="Email Address"
                     />
-                    <input
-                    name="username"
-                    value={username}
-                    onChange={this.onChange}
-                    type="text"
-                    placeholder="Full Name" 
-                    />
-                 <input
+            
+                /> <input
                     name="passwordOne"
                     value={passwordOne}
                     onChange={this.onChange}
