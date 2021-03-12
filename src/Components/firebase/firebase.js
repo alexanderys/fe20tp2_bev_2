@@ -4,12 +4,12 @@ import 'firebase/database';
 
 
 const config = {
-    apiKey: "AIzaSyDOpfC5F5fcsKuBc5q7uaCdwkHz5PTNGYU",
-    authDomain: "unscripted-53c76.firebaseapp.com",
-    projectId: "unscripted-53c76",
-    storageBucket: "unscripted-53c76.appspot.com",
-    messagingSenderId: "457079451421",
-    appId: "1:457079451421:web:c2fb83910c9ff7289e7bf4"
+    apiKey: "REACT_APP_FIREBASE_API_KEY",
+    authDomain: "REACT_APP_FIREBASE_AUTH_DOMAIN",
+    projectId: "REACT_APP_FIREBASE_PROJECT_ID",
+    storageBucket: "REACT_APP_FIREBASE_STORAGE_BUCKET",
+    messagingSenderId: "REACT_APP_FIREBASE_MESSAGING_SENDER_ID",
+    appId: "REACT_APP_FIREBASE_APP_ID"
 };
 
 
