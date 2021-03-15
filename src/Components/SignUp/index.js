@@ -19,6 +19,9 @@ const INITIAL_STATE = {
     isAdmin: false
 };
 
+let usersList = [];
+let usernamesList = [];
+
 class SignUpFormBase extends Component {
     constructor(props) {
         super(props);
@@ -30,6 +33,23 @@ class SignUpFormBase extends Component {
         if (isAdmin) {
             roles[ROLES.ADMIN] = ROLES.ADMIN;
         }
+
+        this.props.firebase.users().once('value', snapshot => {
+            const usersObject = snapshot.val();
+            usersList = Object.keys(usersObject).map(key => ({
+                ...usersObject[key],
+                uid: key,
+            }));
+        });
+
+        console.log(usersList);
+
+        usernamesList = usersList.map(user => {
+            return user.username;
+        })
+
+        console.log(usernamesList);
+
         this.props.firebase
             .doCreateUserWithEmailAndPassword(email, passwordOne)
             .then(authUser => {
