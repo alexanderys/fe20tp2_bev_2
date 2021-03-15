@@ -27,14 +27,9 @@ class SignUpFormBase extends Component {
         super(props);
         this.state = { ...INITIAL_STATE };
     }
-    onSubmit = event => {
-        const { username, email, passwordOne, isAdmin } = this.state;
-        const roles = {};
-        if (isAdmin) {
-            roles[ROLES.ADMIN] = ROLES.ADMIN;
-        }
 
-        this.props.firebase.users().once('value', snapshot => {
+    async componentDidMount() {
+        await this.props.firebase.users().once('value', snapshot => {
             const usersObject = snapshot.val();
             usersList = Object.keys(usersObject).map(key => ({
                 ...usersObject[key],
@@ -49,28 +44,44 @@ class SignUpFormBase extends Component {
         })
 
         console.log(usernamesList);
+    }
 
-        this.props.firebase
-            .doCreateUserWithEmailAndPassword(email, passwordOne)
-            .then(authUser => {
-                // Create a user in your Firebase realtime database
-                return this.props.firebase
-                    .user(authUser.user.uid)
-                    .set({
-                        username,
-                        email,
-                        roles
-                    });
+    onSubmit = event => {
+        const { username, email, passwordOne, isAdmin } = this.state;
+        const roles = {};
+        if (isAdmin) {
+            roles[ROLES.ADMIN] = ROLES.ADMIN;
+        }
+
+        if (!usernamesList.includes(username)) {
+            this.props.firebase
+                .doCreateUserWithEmailAndPassword(email, passwordOne)
+                .then(authUser => {
+                    // Create a user in your Firebase realtime database
+                    return this.props.firebase
+                        .user(authUser.user.uid)
+                        .set({
+                            username,
+                            email,
+                            roles
+                        });
+                })
+                .then(() => {
+                    this.setState({ ...INITIAL_STATE });
+                    this.props.history.push(ROUTES.HOME);
+                })
+                .catch(error => {
+                    this.setState({ error });
+                });
+        } else {
+            this.setState({
+                error: 'Username already taken.'
             })
-            .then(() => {
-                this.setState({ ...INITIAL_STATE });
-                this.props.history.push(ROUTES.HOME);
-            })
-            .catch(error => {
-                this.setState({ error });
-            });
+        }
+
         event.preventDefault();
     }
+
     onChange = event => {
         this.setState({ [event.target.name]: event.target.value });
     };
@@ -137,6 +148,7 @@ class SignUpFormBase extends Component {
                 </label>
                 <button disabled={isInvalid} type="submit">Sign Up</button>
                 {error && <p>{error.message}</p>}
+                {error && <p>{error}</p>}
             </form>);
     }
 }
