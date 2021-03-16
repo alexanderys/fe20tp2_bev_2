@@ -8,10 +8,13 @@ import PasswordForgetPage from '../PasswordForget';
 import HomePage from '../Home';
 import ProfilePage from '../Profile';
 import AdminPage from '../Admin';
+import Settings from '../Settings';
+import Search from '../Search';
+import Stats from '../Stats';
 
 import * as ROUTES from '../../constants/routes';
 import { withAuthentication } from '../Session';
-import Settings from '../Settings';
+
 
 const App = () => (
   <Router>
@@ -25,6 +28,8 @@ const App = () => (
       <Route path={ROUTES.PROFILE} component={ProfilePage} />
       <Route path={ROUTES.ADMIN} component={AdminPage} />
       <Route path={ROUTES.SETTINGS} component={Settings} />
+      <Route path={ROUTES.SEARCH} component={Search} />
+      <Route path={ROUTES.STATS} component={Stats} />
     </div>
   </Router>
 );

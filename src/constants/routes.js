@@ -6,3 +6,5 @@ export const PROFILE = '/profile';
 export const ADMIN = '/admin';
 export const PASSWORD_FORGET = '/pw-forget';
 export const SETTINGS = '/settings';
+export const SEARCH = '/search';
+export const STATS = '/stats';

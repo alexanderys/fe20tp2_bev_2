@@ -75,7 +75,8 @@ class SignUpFormBase extends Component {
                 });
         } else {
             this.setState({
-                error: 'Username already taken.'
+                error: 'Username already taken.',
+                /* username: '' */
             })
         }
 
