@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { withAuthorization, AuthUserContext } from '../Session';
 import { withFirebase } from '../Firebase';
+import MovieList from "../Movies/MovieList";
+
 
 
 const HomePage = () => (
@@ -8,6 +10,7 @@ const HomePage = () => (
         <h1>Home</h1>
         <p>The Home Page is accessible by every signed in user.</p>
         <Messages />
+        <MovieList />
     </div>
 );
 
