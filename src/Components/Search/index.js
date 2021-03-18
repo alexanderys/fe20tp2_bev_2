@@ -11,7 +11,9 @@ function Search() {
         setSearchTerm(e.target.value);
     }
 
-    const onSubmit = () => {
+    const onSubmit = (e) => {
+        e.preventDefault();
+        
         console.log(searchTerm);
         setSubmitted(!submitted);
     }
@@ -24,9 +26,9 @@ function Search() {
                     //In case of trouble, the tutorial wrote a map here!!
                     // setMovies(res.data.results.map((movie) => movie));
                 })
-                .then(() => {
-                    console.log(movies)
-                });
+                // .then(() => {
+                //     console.log(movies)
+                // });
         }, [submitted]), 2000)
 
 
