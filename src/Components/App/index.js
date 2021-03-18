@@ -15,7 +15,6 @@ import Stats from '../Stats';
 import * as ROUTES from '../../constants/routes';
 import { withAuthentication } from '../Session';
 
-
 const App = () => (
   <Router>
     <div>

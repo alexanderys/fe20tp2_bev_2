@@ -12,10 +12,10 @@ const ProfilePage = () => {
 
   return (
     <Switch>
-      <Route exact path='/settings'>
+      <Route path='/settings'>
         <Settings />
       </Route>
-      <Route exact path='/profile'>
+      <Route path='/profile'>
         <Link to={ROUTES.SETTINGS}>Settings</Link>
         <div>
           <h1>Profile: {email}</h1>
