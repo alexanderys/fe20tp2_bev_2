@@ -3,11 +3,11 @@
 3. Hur många svar ska vi hämta utifrån sökning?
     3.1 Antal matchningar?
     3.2 Ska vi ha förslag under tiden vi skriver?
-        
-        
+     
+
 HÄMTNINGSURL:
 https://api.themoviedb.org/3/search/multi?api_key=0b990be39bf553eaa0eaaba70e328081&language=en-EN&page=1&include_adult=false&query=
-Batman 
+Batman
 
 // useState skickas varje gång state ändras
 // state uppdateras varje gång vi skriver en bokstav (eller helt ord?)

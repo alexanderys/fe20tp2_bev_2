@@ -8,28 +8,21 @@ function Search() {
     const [submitted, setSubmitted] = useState(null);
 
     const onInputChange = (e) => {
+        e.preventDefault();
+
         setSearchTerm(e.target.value);
+
+
+        fetch(`https://api.themoviedb.org/3/search/movie?api_key=0b990be39bf553eaa0eaaba70e328081&language=en-US&page=1&include_adult=false&query=${e.target.value}`)
+            .then((res) => res.json())
+            .then((data) => {
+                if (!data.errors) {
+                    setMovies(data.results);
+                } else {
+                    setMovies([]);
+                }
+            });
     }
-
-    const onSubmit = () => {
-        console.log(searchTerm);
-        setSubmitted(!submitted);
-    }
-    setTimeout(
-        useEffect(() => {
-            axios.get(`https://api.themoviedb.org/3/search/multi?api_key=0b990be39bf553eaa0eaaba70e328081&language=en-EN&page=1&include_adult=false&query=${searchTerm}`)
-                .then((res) => {
-                    setMovies(res.data.results);
-
-                    //In case of trouble, the tutorial wrote a map here!!
-                    // setMovies(res.data.results.map((movie) => movie));
-                })
-                .then(() => {
-                    console.log(movies)
-                });
-        }, [submitted]), 2000)
-
-
 
     return (
         <div>
@@ -42,7 +35,14 @@ function Search() {
                     onChange={onInputChange}
                 />
             </label>
-            <button onClick={onSubmit}>Submit</button>
+
+            {movies.length > 0 && (
+                <ul>
+                    {movies.map((movie) => (
+                        <li>{movie.title}</li>
+                    ))}
+                </ul>
+            )}
         </div>
     )
 }
