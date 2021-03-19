@@ -1,10 +1,10 @@
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
-import SignOutButton from '../SignOut';
-import * as ROUTES from '../../constants/routes';
-import * as ROLES from '../../constants/roles';
+import SignOutButton from "../SignOut";
+import * as ROUTES from "../../constants/routes";
+import * as ROLES from "../../constants/roles";
 
-import { AuthUserContext } from '../Session';
+import { AuthUserContext } from "../Session";
 
 const Navigation = () => (
   <div>
@@ -35,6 +35,15 @@ const NavigationAuth = ({ authUser }) => (
       </li>
       <li>
         <Link to={ROUTES.PROFILE}>Profile</Link>
+      </li>
+      <li>
+        <Link to={ROUTES.WATCHED}>Watched</Link>
+      </li>
+      <li>
+        <Link to={ROUTES.WATCHLIST}>Watchlist</Link>
+      </li>
+      <li>
+        <Link to={ROUTES.ADD}>Add</Link>
       </li>
       {!!authUser.roles[ROLES.ADMIN] && (
         <li>
