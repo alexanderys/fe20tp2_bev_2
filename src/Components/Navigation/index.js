@@ -42,9 +42,9 @@ const NavigationAuth = ({ authUser }) => (
       <li>
         <Link to={ROUTES.WATCHLIST}>Watchlist</Link>
       </li>
-      <li>
+      {/* <li>
         <Link to={ROUTES.ADD}>Add</Link>
-      </li>
+      </li> */}
       {!!authUser.roles[ROLES.ADMIN] && (
         <li>
           <Link to={ROUTES.ADMIN}>Admin</Link>

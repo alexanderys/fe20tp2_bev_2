@@ -10,4 +10,4 @@ export const SEARCH = "/search";
 export const STATS = "/stats";
 export const WATCHED = "/watched";
 export const WATCHLIST = "/watchlist";
-export const ADD = "/add";
+// export const ADD = "/add";

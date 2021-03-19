@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { globalContext } from "../../context/GlobalState";
-import { MovieCard } from "./MovieCard";
+/* import { MovieCard } from "./MovieCard"; */
+import { ResultCard } from "./ResultCard";
 
 export const Watched = () => {
   const { watched } = useContext(globalContext);
@@ -19,7 +20,7 @@ export const Watched = () => {
         {watched.length > 0 ? (
           <div className="movie-grid">
             {watched.map((movie) => (
-              <MovieCard movie={movie} key={movie.id} type="watched" />
+              <ResultCard movie={movie} key={movie.id} type="watched" />
             ))}
           </div>
         ) : (

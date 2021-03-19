@@ -16,7 +16,7 @@ const initialState = {
 export const globalContext = createContext(initialState);
 
 // provider components
-const GlobalProviderBase = (props) => {
+export const GlobalProvider = (props) => {
   const [state, dispatch] = useReducer(AppReducer, initialState);
   //useReducer(specify which reducer, set argument)
   //const [test, setTest] = useState(xxx)
@@ -39,7 +39,7 @@ const GlobalProviderBase = (props) => {
 
   const addMovieToWatched = (movie) => {
     dispatch({ type: "ADD_MOVIE_TO_WATCHED", payload: movie });
-    props.firebase.currentUser().push({ watched: "laser" });
+    // props.firebase.currentUser().push({ watched: "laser" });
   };
 
   const moveToWatchlist = (movie) => {
@@ -67,4 +67,4 @@ const GlobalProviderBase = (props) => {
   );
 };
 
-export const GlobalProvider = withFirebase(GlobalProviderBase);
+// export const GlobalProvider = withFirebase(GlobalProviderBase);

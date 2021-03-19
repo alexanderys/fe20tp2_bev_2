@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { Watchlist } from "../WatchlistFolder/Watchlist";
 import { Watched } from "../WatchlistFolder/Watched";
-import { Add } from "../WatchlistFolder/Add";
+// import { Add } from "../WatchlistFolder/Add";
 import Navigation from "../Navigation";
 import SignUpPage from "../SignUp";
 import SignInPage from "../SignIn";
@@ -24,13 +24,7 @@ const App = () => (
       <div>
         <Navigation />
         <hr />
-        {/* <Route path="/watched">
-          <Watched />
-        </Route>
-        <Route path="/watchlist">
-          <Watchlist />
-        </Route> */}
-        <Route path={ROUTES.ADD} component={Add} />
+
         <Route path={ROUTES.WATCHED} component={Watched} />
         <Route path={ROUTES.WATCHLIST} component={Watchlist} />
         <Route path={ROUTES.SIGN_UP} component={SignUpPage} />
