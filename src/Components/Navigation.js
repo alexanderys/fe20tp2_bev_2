@@ -1,22 +1,41 @@
-import PrivateRoute from "./PrivateRoute";
+import * as ROUTES from "../constants/routes";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import Signup from "./Signup";
-import { AuthProvider } from "../context/AuthContext";
-import Dashboard from "./Dashboard";
-import Login from "./Login";
-import ForgotPassword from "./ForgotPassword";
-import UpdateProfile from "./UpdateProfile";
+import styled from "styled-components";
+
+const StyledUL = styled.ul`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: beige;
+
+  li {
+    list-style: none;
+    margin: 5px 10px;
+    padding: 5px;
+  }
+`;
 
 const Navigation = () => (
-  <Router>
-    <Switch>
-      <PrivateRoute exact path="/" component={Dashboard} />
-      <PrivateRoute path="/update-profile" component={UpdateProfile} />
-      <Route path="/signup" component={Signup} />
-      <Route path="/login" component={Login} />
-      <Route path="/forgot-password" component={ForgotPassword} />
-    </Switch>
-  </Router>
+  <StyledUL>
+    <li>
+      <Link to={ROUTES.SEARCH}>Search</Link>
+    </li>
+    <li>
+      <Link to={ROUTES.HOME}>Home</Link>
+    </li>
+    <li>
+      <Link to={ROUTES.STATS}>Stats</Link>
+    </li>
+    <li>
+      <Link to={ROUTES.PROFILE}>Profile</Link>
+    </li>
+    <li>
+      <Link to={ROUTES.WATCHED}>Watched</Link>
+    </li>
+    <li>
+      <Link to={ROUTES.WATCHLIST}>Watchlist</Link>
+    </li>
+  </StyledUL>
 );
 
 export default Navigation;

@@ -1,9 +1,8 @@
 import React, { useState, useEffect, useContext } from "react";
-import { withAuthorization } from "../Session";
-import { ResultCard } from "../WatchlistFolder/ResultCard";
-import { globalContext } from "../../context/GlobalState";
+import { ResultCard } from "./WatchlistFolder/ResultCard";
+import { globalContext } from "../context/GlobalState";
 import axios from "axios";
-import { MovieControls } from "../WatchlistFolder/MovieControls";
+import { MovieControls } from "./WatchlistFolder/MovieControls";
 
 const IMAGE_URL = "https://image.tmdb.org/t/p/original";
 
@@ -55,6 +54,4 @@ function Search() {
   );
 }
 
-const condition = (authUser) => !!authUser;
-
-export default withAuthorization(condition)(Search);
+export default Search;
