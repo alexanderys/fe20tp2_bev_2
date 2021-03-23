@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
-// import Moment from "react-moment";
 import { globalContext } from "../../context/GlobalState";
 import { MovieControls } from "./MovieControls";
+import MovieItem from "../MovieItem";
 
 export const ResultCard = ({ movie, type }) => {
   const {
@@ -22,11 +22,6 @@ export const ResultCard = ({ movie, type }) => {
 
   const watchedDisabled = storedMovieWatched ? true : false;
 
-  // const [haveWatched, setHaveWatched] = useState(true);
-  // function toggle() {
-  //   setHaveWatched(!haveWatched);
-  // }
-
   return (
     <div className="result-card">
       <div className="poster-wrapper">
@@ -43,21 +38,10 @@ export const ResultCard = ({ movie, type }) => {
       <div className="info">
         <div className="header">
           <h3 className="title">{movie.title}</h3>
-          <h4 className="release-date">
-            {movie.release_date}
-            {/* <Moment format="YYYY">{movie.release_date}</Moment> */}
-          </h4>
+          <h4 className="release-date">{movie.release_date}</h4>
         </div>
         <MovieControls type={type} movie={movie} />
         <div className="controls">
-          {/* <button onClick={toggle}>
-            {haveWatched ? (
-              <p>Add to wwwatched</p>
-            ) : (
-              <p>Remove from wwwatched</p>
-            )}
-          </button> */}
-
           <button
             className="btn"
             disabled={watchlistDisabled}

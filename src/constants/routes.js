@@ -1,11 +1,11 @@
 export const SIGN_UP = "/signup";
-export const SIGN_IN = "/signin";
+export const LOG_IN = "/login";
 export const HOME = "/";
 export const PROFILE = "/profile";
-export const ADMIN = "/admin";
-export const PASSWORD_FORGET = "/pw-forget";
-export const SETTINGS = "/settings";
+export const UPDATE_PROFILE = "/update-profile";
+export const FORGOT_PASSWORD = "/forgot-password";
 export const SEARCH = "/search";
 export const STATS = "/stats";
+export const SETTINGS = "/settings";
 export const WATCHED = "/watched";
 export const WATCHLIST = "/watchlist";

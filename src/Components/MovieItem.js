@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 
-const MovieItemSection = styled.section`
+const MovieItemCard = styled.section`
   max-width: 300px;
-  max-height: 550px;
+  max-height: 500px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -16,6 +16,10 @@ const MovieItemSection = styled.section`
   }
   img {
     width: 250px;
+    border: 3px solid orange;
+  }
+  img:hover {
+    border: 3px solid blue;
   }
   p {
     font-size: 0.9rem;
@@ -26,18 +30,19 @@ function MovieItem({
   id,
   title,
   overview,
-  vote_average,
-  poster_path,
+  voteAverage,
   imgComboPath,
+  releaseDate,
 }) {
   return (
-    <MovieItemSection>
+    <MovieItemCard>
       <img src={imgComboPath} alt="" />
       <h2>{title}</h2>
-      <span>{vote_average}</span>
+      <span>{voteAverage}</span>
+      <span>{releaseDate.substring(0, 4)}</span>
       <strong>Overview</strong>
       <p>{overview}</p>
-    </MovieItemSection>
+    </MovieItemCard>
   );
 }
 

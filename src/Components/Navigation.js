@@ -29,12 +29,12 @@ const Navigation = () => (
     <li>
       <Link to={ROUTES.PROFILE}>Profile</Link>
     </li>
-    <li>
+    {/* <li>
       <Link to={ROUTES.WATCHED}>Watched</Link>
     </li>
     <li>
       <Link to={ROUTES.WATCHLIST}>Watchlist</Link>
-    </li>
+    </li> */}
   </StyledUL>
 );
 

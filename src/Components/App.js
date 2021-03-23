@@ -6,10 +6,11 @@ import ForgotPassword from "./ForgotPassword";
 import UpdateProfile from "./UpdateProfile";
 import Navigation from "./Navigation";
 import MovieList from "./MovieList";
+import Settings from "./Settings";
 
 import { Watchlist } from "./WatchlistFolder/Watchlist";
 import { Watched } from "./WatchlistFolder/Watched";
-import Search from "./Search2";
+import Search from "./Search";
 import Stats from "./Stats";
 
 import * as ROUTES from "../constants/routes";
@@ -30,15 +31,19 @@ function App() {
         <Switch>
           <Route exact path="/" component={MovieList} />
           <Route path="/home" component={MovieList} />
-          <PrivateRoute path={ROUTES.PROFILE} component={Profile} />
-          <PrivateRoute path="/update-profile" component={UpdateProfile} />
           <Route path="/signup" component={Signup} />
           <Route path="/login" component={Login} />
-          <Route path="/forgot-password" component={ForgotPassword} />
-          <Route path={ROUTES.WATCHED} component={Watched} />
-          <Route path={ROUTES.WATCHLIST} component={Watchlist} />
+          <Route path={ROUTES.FORGOT_PASSWORD} component={ForgotPassword} />
           <Route path={ROUTES.SEARCH} component={Search} />
-          <Route path={ROUTES.STATS} component={Stats} />
+          <PrivateRoute path={ROUTES.PROFILE} component={Profile} />
+          <PrivateRoute path={ROUTES.SETTINGS} component={Settings} />
+          <PrivateRoute path={ROUTES.WATCHED} component={Watched} />
+          <PrivateRoute path={ROUTES.WATCHLIST} component={Watchlist} />
+          <PrivateRoute path={ROUTES.STATS} component={Stats} />
+          <PrivateRoute
+            path={ROUTES.UPDATE_PROFILE}
+            component={UpdateProfile}
+          />
           {/* <Route path={ROUTES.SETTINGS} component={Settings} /> */}
           {/* <Route path={ROUTES.HOME} component={MovieList} /> */}
           {/* <Route path={ROUTES.PROFILE} component={ProfilePage} /> */}

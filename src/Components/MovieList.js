@@ -52,16 +52,26 @@ const MovieList = () => {
     <>
       <h1>Now Playing</h1>
       <MovieListGrid>
-        {movies.map(({ id, title, overview, vote_average, poster_path }) => (
-          <MovieItem
-            title={title}
-            key={id}
-            overview={overview}
-            voteAverage={vote_average}
-            posterPath={poster_path}
-            imgComboPath={IMAGE_URL + poster_path}
-          />
-        ))}
+        {movies.map(
+          ({
+            id,
+            title,
+            overview,
+            vote_average,
+            poster_path,
+            release_date,
+          }) => (
+            <MovieItem
+              title={title}
+              key={id}
+              overview={overview}
+              voteAverage={vote_average}
+              releaseDate={release_date}
+              posterPath={poster_path}
+              imgComboPath={IMAGE_URL + poster_path}
+            />
+          )
+        )}
       </MovieListGrid>
     </>
   );

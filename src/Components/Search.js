@@ -3,6 +3,16 @@ import { ResultCard } from "./WatchlistFolder/ResultCard";
 import { globalContext } from "../context/GlobalState";
 import axios from "axios";
 import { MovieControls } from "./WatchlistFolder/MovieControls";
+import MovieItem from "./MovieItem";
+import styled from "styled-components";
+
+const MovieListGrid = styled.section`
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid purple;
+`;
 
 const IMAGE_URL = "https://image.tmdb.org/t/p/original";
 
@@ -42,13 +52,32 @@ function Search() {
       </label>
 
       {movies.length > 0 && (
-        <ul>
-          {movies.map((movie) => (
-            <li key={movie.id}>
-              <ResultCard movie={movie} />
-            </li>
-          ))}
-        </ul>
+        <>
+          {" "}
+          <h2>Showing results for "{searchTerm}"</h2>
+          <MovieListGrid>
+            {movies.map(
+              ({
+                id,
+                title,
+                overview,
+                vote_average,
+                poster_path,
+                release_date,
+              }) => (
+                <MovieItem
+                  title={title}
+                  key={id}
+                  overview={overview}
+                  voteAverage={vote_average}
+                  releaseDate={release_date}
+                  posterPath={poster_path}
+                  imgComboPath={IMAGE_URL + poster_path}
+                />
+              )
+            )}
+          </MovieListGrid>
+        </>
       )}
     </div>
   );

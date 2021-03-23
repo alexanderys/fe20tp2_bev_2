@@ -1,33 +1,56 @@
 import React, { useContext } from "react";
 import { globalContext } from "../../context/GlobalState";
-// import { MovieCard } from "./MovieCard";
-import { ResultCard } from "./ResultCard";
+import MovieItem from "../MovieItem";
+import styled from "styled-components";
+
+const MovieListGrid = styled.section`
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid blue;
+`;
 
 export const Watchlist = () => {
+  const IMAGE_URL = "https://image.tmdb.org/t/p/w1280";
   const { watchlist } = useContext(globalContext);
 
   return (
-    <div className="movie-page">
-      <div className="container">
-        <div className="header">
-          <h1 className="heading">My Watchlist</h1>
-
-          <span className="count-pill">
-            {watchlist.length} {watchlist.length === 1 ? "Movie" : "Movies"}
-          </span>
-        </div>
-
-        {watchlist.length > 0 ? (
-          <div className="movie-grid">
-            {watchlist.map((movie) => (
-              // <MovieCard movie={movie} key={movie.id} type="watchlist" />
-              <ResultCard movie={movie} key={movie.id} type="watchlist" />
-            ))}
-          </div>
-        ) : (
-          <h2 className="no-movies">No movies in your list! Add some!</h2>
-        )}
+    <div>
+      <div className="header">
+        <h1>My Watchlist</h1>
+        <h3 className="count-pill">
+          {watchlist.length} {watchlist.length === 1 ? "Movie" : "Movies"}
+        </h3>
       </div>
+
+      {watchlist.length > 0 ? (
+        <MovieListGrid>
+          {watchlist.map(
+            ({
+              id,
+              title,
+              overview,
+              vote_average,
+              poster_path,
+              release_date,
+            }) => (
+              <MovieItem
+                title={title}
+                key={id}
+                overview={overview}
+                voteAverage={vote_average}
+                posterPath={poster_path}
+                imgComboPath={IMAGE_URL + poster_path}
+                releaseDate={release_date}
+                type="watchlist"
+              />
+            )
+          )}
+        </MovieListGrid>
+      ) : (
+        <h2>No movies in your list! Add some!</h2>
+      )}
     </div>
   );
 };
