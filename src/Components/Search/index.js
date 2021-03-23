@@ -2,14 +2,12 @@ import React, { useState, useEffect } from "react";
 import { withAuthorization } from "../Session";
 import axios from "axios";
 
-import Pagination from './pagination';
-import MovieItem from './MovieItem';
-import ActorItem from './ActorItem';
-import TvItem from './TvItem';
-
+import Pagination from "./pagination";
+import MovieItem from "./MovieItem";
+import ActorItem from "./ActorItem";
+import TvItem from "./TvItem";
 
 const IMAGE_URL = "https://image.tmdb.org/t/p/original";
-
 
 function Search() {
   const [searchTerm, setSearchTerm] = useState("");
@@ -103,9 +101,10 @@ function Search() {
         />
       </label>
 
-      {movies.length > 0 && (
+      {currentMovies.length > 0 && (
+        // Göra om ul till en komponent som innehåller pagination
         <ul>
-          {movies.map((movie) => {
+          {currentMovies.map((movie) => {
             if (movie.media_type === "movie") {
               return <MovieItem movie={movie} />;
             } else if (movie.media_type === "person") {
