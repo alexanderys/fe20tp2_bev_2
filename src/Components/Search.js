@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useContext } from "react";
-import { ResultCard } from "./WatchlistFolder/ResultCard";
+import { ResultCard } from "./Watchlist/ResultCard";
 import { globalContext } from "../context/GlobalState";
 import axios from "axios";
-import { MovieControls } from "./WatchlistFolder/MovieControls";
+import { MovieControls } from "./Watchlist/MovieControls";
 import MovieItem from "./MovieItem";
 import styled from "styled-components";
 
@@ -40,6 +40,7 @@ function Search() {
 
   return (
     <div>
+      <h1>Search</h1>
       <label htmlFor="search">
         Search movies
         <input

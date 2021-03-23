@@ -1,6 +1,5 @@
 import React, { useRef, useState } from "react";
-import { Card, Form, Button, Alert } from "react-bootstrap";
-import { useAuth } from "../context/AuthContext";
+import { useAuth } from "../../context/AuthContext";
 import { Link, useHistory } from "react-router-dom";
 
 export default function UpdateProfile() {
@@ -57,46 +56,44 @@ export default function UpdateProfile() {
 
   return (
     <>
-      <Card>
-        <Card.Body>
-          <h2 className="text-center mb-4">Update Profile</h2>
-          {error && <Alert variant="danger">{error}</Alert>}
-          {message && <Alert variant="success">{message}</Alert>}
-          <Form onSubmit={handleSubmit}>
-            <Form.Group id="email">
-              <Form.Label>Email</Form.Label>
-              <Form.Control
-                type="email"
-                ref={emailRef}
-                required
-                defaultValue={currentUser.email}
-              />
-            </Form.Group>
-            <Form.Group id="password">
-              <Form.Label>Password</Form.Label>
-              <Form.Control
-                type="password"
-                ref={passwordRef}
-                placeholder="Leave blank to keep the same"
-              />
-            </Form.Group>
-            <Form.Group id="password-confirm">
-              <Form.Label>Password Confirmation</Form.Label>
-              <Form.Control
-                type="password"
-                ref={passwordConfirmRef}
-                placeholder="Leave blank to keep the same"
-              />
-            </Form.Group>
+      {" "}
+      <h1>Update Profile</h1>
+      <section>
+        {error && <div variant="danger">{error}</div>}
+        {message && <div variant="success">{message}</div>}
+        <form onSubmit={handleSubmit}>
+          <div id="email">
+            <label>Email</label>
+            <input
+              type="email"
+              ref={emailRef}
+              required
+              defaultValue={currentUser.email}
+            />
+          </div>
+          <div id="password">
+            <label>Password</label>
+            <input
+              type="password"
+              ref={passwordRef}
+              placeholder="Leave blank to keep the same"
+            />
+          </div>
+          <div id="password-confirm">
+            <label>Password Confirmation</label>
+            <input
+              type="password"
+              ref={passwordConfirmRef}
+              placeholder="Leave blank to keep the same"
+            />
+          </div>
 
-            <Button disabled={loading} type="submit" className="w-100">
-              Update
-            </Button>
-          </Form>
-        </Card.Body>
-      </Card>
-
-      <div className="w-100 text-center mt-2">
+          <button disabled={loading} type="submit">
+            Update
+          </button>
+        </form>
+      </section>
+      <div>
         <Link to="/settings">Cancel</Link>
       </div>
     </>

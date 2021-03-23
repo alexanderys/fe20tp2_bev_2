@@ -12,6 +12,16 @@ const StyledUL = styled.ul`
     list-style: none;
     margin: 5px 10px;
     padding: 5px;
+    font-size: 1.2rem;
+  }
+
+  li a {
+    text-decoration: none;
+    color: black;
+  }
+
+  li:hover a {
+    text-decoration: underline;
   }
 `;
 
