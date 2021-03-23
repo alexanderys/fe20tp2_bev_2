@@ -2,7 +2,14 @@ import React, { useState, useEffect } from "react";
 import { withAuthorization } from "../Session";
 import axios from "axios";
 
+import Pagination from './pagination';
+import MovieItem from './MovieItem';
+import ActorItem from './ActorItem';
+import TvItem from './TvItem';
+
+
 const IMAGE_URL = "https://image.tmdb.org/t/p/original";
+
 
 function Search() {
   const [searchTerm, setSearchTerm] = useState("");
@@ -14,7 +21,7 @@ function Search() {
   // Pagination State
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
-  const [moviesPerPage, setmoviesPerPage] = useState(10);
+  const [moviesPerPage, setMoviesPerPage] = useState(10);
 
   // Video uses useEffect for fetching
 
@@ -52,13 +59,13 @@ function Search() {
     setLoading(false);
   };
 
-  // Get current posts
-  const indexOfLastPost = currentPage * postsPerPage;
-  const indexOfFirstPost = indexOfLastPost - postsPerPage;
+  // Get current movies
+  const indexOfLastMovie = currentPage * moviesPerPage;
+  const indexOfFirstMovie = indexOfLastMovie - moviesPerPage;
 
   // returns posts for active sites
   // i.e. pg 3 shows movie 30-39
-  const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
+  const currentMovies = movies.slice(indexOfFirstMovie, indexOfLastMovie);
 
   // Change page
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
@@ -80,8 +87,8 @@ function Search() {
   return (
     <div>
       <Pagination
-        postsPerPage={postsPerPage}
-        totalPosts={posts.length}
+        moviesPerPage={moviesPerPage}
+        totalMovies={movies.length}
         paginate={paginate}
       />
 
@@ -100,65 +107,11 @@ function Search() {
         <ul>
           {movies.map((movie) => {
             if (movie.media_type === "movie") {
-              return (
-                <li key={movie.id}>
-                  <img
-                    style={{ width: 70 }}
-                    src={IMAGE_URL + movie.poster_path}
-                    alt={movie.title}
-                  />
-                  <h3>{movie.title}</h3>
-                  <p>
-                    {movie.release_date
-                      ? movie.release_date.substring(0, 4)
-                      : ""}
-                  </p>
-                </li>
-              );
+              return <MovieItem movie={movie} />;
             } else if (movie.media_type === "person") {
-              console.log(movie);
-              return (
-                <li key={movie.id}>
-                  <img
-                    style={{ width: 70 }}
-                    src={IMAGE_URL + movie.profile_path}
-                    alt={movie.name}
-                  />
-                  <h3>{movie.name}</h3>
-                  <p>
-                    Actor/Actress
-                    {movie.known_for[0] && !!movie.known_for[0].title ? (
-                      <span>, {movie.known_for[0].title} </span>
-                    ) : (
-                      ""
-                    )}
-                    {movie.known_for[0] && !!movie.known_for[0].release_date ? (
-                      <span>
-                        {" "}
-                        ({movie.known_for[0].release_date.substring(0, 4)}){" "}
-                      </span>
-                    ) : (
-                      ""
-                    )}
-                  </p>
-                </li>
-              );
+              return <ActorItem movie={movie} />;
             } else if (movie.media_type === "tv") {
-              return (
-                <li key={movie.id}>
-                  <img
-                    style={{ width: 70 }}
-                    src={IMAGE_URL + movie.poster_path}
-                    alt={movie.title}
-                  />
-                  <h3>{movie.name}</h3>
-                  <p>
-                    {movie.first_air_date
-                      ? movie.first_air_date.substring(0, 4)
-                      : ""}
-                  </p>
-                </li>
-              );
+              return <TvItem movie={movie} />;
             }
           })}
         </ul>
