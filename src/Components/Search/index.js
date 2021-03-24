@@ -1,9 +1,11 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import { withAuthorization } from "../Session";
-import { ResultCard } from "../WatchlistFolder/ResultCard";
-import { globalContext } from "../../context/GlobalState";
 import axios from "axios";
-import { MovieControls } from "../WatchlistFolder/MovieControls";
+
+import Pagination from "./pagination";
+import MovieItem from "./MovieItem";
+import ActorItem from "./ActorItem";
+import TvItem from "./TvItem";
 
 const IMAGE_URL = "https://image.tmdb.org/t/p/original";
 
@@ -11,13 +13,21 @@ function Search() {
   const [searchTerm, setSearchTerm] = useState("");
   const [movies, setMovies] = useState([]);
 
+  // Error State, not sure if needed...
+  const [error, setError] = useState("");
+
+  // Pagination State
+  const [loading, setLoading] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [moviesPerPage, setMoviesPerPage] = useState(10);
+
   const onInputChange = (e) => {
     e.preventDefault();
 
     setSearchTerm(e.target.value);
-
+    setLoading(true);
     fetch(
-      `https://api.themoviedb.org/3/search/movie?api_key=0b990be39bf553eaa0eaaba70e328081&language=en-US&page=1&include_adult=false&query=${e.target.value}`
+      `https://api.themoviedb.org/3/search/multi?api_key=0b990be39bf553eaa0eaaba70e328081&language=en-US&page=1&include_adult=false&query=${e.target.value}`
     )
       .then((res) => res.json())
       .then((data) => {
@@ -27,10 +37,29 @@ function Search() {
           setMovies([]);
         }
       });
+    // loading done
+    setLoading(false);
   };
+
+  // Get current movies
+  const indexOfLastMovie = currentPage * moviesPerPage;
+  const indexOfFirstMovie = indexOfLastMovie - moviesPerPage;
+
+  // returns posts for active sites
+  // i.e. pg 3 shows movie 30-39
+  const currentMovies = movies.slice(indexOfFirstMovie, indexOfLastMovie);
+
+  // Change page
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
     <div>
+      <Pagination
+        moviesPerPage={moviesPerPage}
+        totalMovies={movies.length}
+        paginate={paginate}
+      />
+
       <label htmlFor="search">
         Search movies
         <input
@@ -42,13 +71,18 @@ function Search() {
         />
       </label>
 
-      {movies.length > 0 && (
+      {currentMovies.length > 0 && (
+        // Göra om ul till en komponent som innehåller pagination
         <ul>
-          {movies.map((movie) => (
-            <li key={movie.id}>
-              <ResultCard movie={movie} />
-            </li>
-          ))}
+          {currentMovies.map((movie) => {
+            if (movie.media_type === "movie") {
+              return <MovieItem movie={movie} />;
+            } else if (movie.media_type === "person") {
+              return <ActorItem movie={movie} />;
+            } else if (movie.media_type === "tv") {
+              return <TvItem movie={movie} />;
+            }
+          })}
         </ul>
       )}
     </div>
