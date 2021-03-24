@@ -1,6 +1,5 @@
 import React, { createContext, useReducer, useEffect } from "react";
 import AppReducer from "./AppReducer";
-import { withFirebase } from "../Components/Firebase";
 
 // initial state is needed to work on a context
 const initialState = {
