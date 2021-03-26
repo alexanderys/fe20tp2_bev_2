@@ -62,8 +62,9 @@ const MovieList = () => {
             release_date,
           }) => (
             <MovieItem
-              title={title}
               key={id}
+              title={title}
+              id={id}
               overview={overview}
               voteAverage={vote_average}
               releaseDate={release_date}

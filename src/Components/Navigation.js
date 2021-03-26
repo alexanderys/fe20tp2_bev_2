@@ -1,5 +1,5 @@
 import * as ROUTES from "../constants/routes";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const StyledUL = styled.ul`
@@ -38,6 +38,9 @@ const Navigation = () => (
     </li>
     <li>
       <Link to={ROUTES.PROFILE}>Profile</Link>
+    </li>
+    <li>
+      <Link to={ROUTES.NEW_WATCHLIST}>New Watchlist</Link>
     </li>
     {/* <li>
       <Link to={ROUTES.WATCHED}>Watched</Link>

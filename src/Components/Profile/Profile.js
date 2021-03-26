@@ -3,11 +3,10 @@ import { useAuth } from "../../context/AuthContext";
 import { Link } from "react-router-dom";
 
 export default function Profile() {
-  const { currentUser, logout } = useAuth();
+  const { currentUser } = useAuth();
 
   return (
     <>
-      {" "}
       <h1>Profile</h1>
       <section>
         <strong>Profile account:</strong> {currentUser.email}

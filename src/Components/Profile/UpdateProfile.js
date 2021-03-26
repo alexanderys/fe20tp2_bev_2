@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 import { useAuth } from "../../context/AuthContext";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default function UpdateProfile() {
   const emailRef = useRef();
@@ -9,7 +9,6 @@ export default function UpdateProfile() {
   const { currentUser, updatePassword, updateEmail } = useAuth();
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
-  const history = useHistory();
   const [message, setMessage] = useState("");
 
   function handleSubmit(e) {

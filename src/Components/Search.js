@@ -1,8 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
-import { ResultCard } from "./Watchlist/ResultCard";
-import { globalContext } from "../context/GlobalState";
-import axios from "axios";
-import { MovieControls } from "./Watchlist/MovieControls";
+import React, { useState } from "react";
 import MovieItem from "./MovieItem";
 import styled from "styled-components";
 

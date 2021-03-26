@@ -1,7 +1,6 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import { globalContext } from "../../context/GlobalState";
 import { MovieControls } from "./MovieControls";
-import MovieItem from "../MovieItem";
 
 export const ResultCard = ({ movie, type }) => {
   const {
