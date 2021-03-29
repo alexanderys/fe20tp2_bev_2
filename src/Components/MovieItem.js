@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { db } from "../firebase";
+import { useAuth } from "../context/AuthContext";
 
 const MovieItemCard = styled.section`
   max-width: 300px;
@@ -26,42 +27,40 @@ const MovieItemCard = styled.section`
 `;
 
 function MovieItem({ id, title, overview, voteAverage, imgComboPath }) {
+  const { currentUser } = useAuth();
   // const [toggleState, setToggleState] = useState("Add to Watched");
   // function toggle() {
   //   setToggleState(
   //     toggleState === "Add to Watched"
   //       ? "Remove from Watched"
   //       : "Add to Watched"
-  //   );
-  // }
+  //   )}
 
   const addToHaveWatched = () => {
     // db.collection("haveWatched").add({...}) = gives a random FB-ID to the document
     //id = the MovieItem-prop. we need toString() because FB only accepts documents id's as strings
-    db.collection("haveWatched").doc(id.toString()).set({
-      haveWatched: true,
-      movieTitle: title,
-      voteAverage: voteAverage,
-    });
+    db.collection("users")
+      .doc(currentUser.uid)
+      .collection("haveWatched")
+      .doc(id.toString())
+      .set({
+        movieTitle: title,
+        voteAverage: voteAverage,
+      });
   };
 
   const removeFromHaveWatched = () => {
-    db.collection("haveWatched").doc(id.toString()).delete();
+    db.collection("users")
+      .doc(currentUser.uid)
+      .collection("haveWatched")
+      .doc(id.toString())
+      .delete();
   };
 
   return (
     <MovieItemCard>
       <img src={imgComboPath} alt="" />
       <h2>{title}</h2>
-
-      {/* <button
-        onClick={() => {
-          addToHaveWatched();
-          toggle();
-        }}
-      >
-        {toggleState}
-      </button> */}
       <button onClick={addToHaveWatched}>Add</button>
       <button onClick={removeFromHaveWatched}>Remove </button>
       <span>{voteAverage}</span>

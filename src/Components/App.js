@@ -11,7 +11,6 @@ import Navigation from "./Navigation";
 import MovieList from "./MovieList";
 import Search from "./Search";
 import Stats from "./Stats";
-import { NewWatchlist } from "./NewWatchlist";
 import * as ROUTES from "../constants/routes";
 import { AuthProvider } from "../context/AuthContext";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
@@ -32,7 +31,6 @@ function App() {
           <PrivateRoute path={ROUTES.SETTINGS} component={Settings} />
           <PrivateRoute path={ROUTES.WATCHED} component={Watched} />
           <PrivateRoute path={ROUTES.WATCHLIST} component={Watchlist} />
-          <PrivateRoute path={ROUTES.NEW_WATCHLIST} component={NewWatchlist} />
           <PrivateRoute path={ROUTES.STATS} component={Stats} />
           <PrivateRoute
             path={ROUTES.UPDATE_PROFILE}

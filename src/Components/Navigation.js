@@ -39,9 +39,6 @@ const Navigation = () => (
     <li>
       <Link to={ROUTES.PROFILE}>Profile</Link>
     </li>
-    <li>
-      <Link to={ROUTES.NEW_WATCHLIST}>New Watchlist</Link>
-    </li>
     {/* <li>
       <Link to={ROUTES.WATCHED}>Watched</Link>
     </li>

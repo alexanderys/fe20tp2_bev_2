@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect } from "react";
-import { auth } from "../firebase";
+import { auth, db } from "../firebase";
 
 const AuthContext = React.createContext();
 
@@ -12,7 +12,12 @@ export function AuthProvider({ children }) {
   const [loading, setLoading] = useState(true);
 
   function signup(email, password) {
+    //the function below is async, therefore we need .then
     return auth.createUserWithEmailAndPassword(email, password);
+    // .then((cred) => {
+    //   console.log(cred.user.uid);
+    //   return db.collection("users").doc(cred.user.uid);
+    // });
   }
 
   function login(email, password) {

@@ -1,6 +1,7 @@
 import React from "react";
 import { useAuth } from "../../context/AuthContext";
 import { Link } from "react-router-dom";
+import { db } from "../../firebase";
 
 export default function Profile() {
   const { currentUser } = useAuth();
@@ -10,6 +11,8 @@ export default function Profile() {
       <h1>Profile</h1>
       <section>
         <strong>Profile account:</strong> {currentUser.email}
+        <hr />
+        <strong>UID: </strong> {currentUser.uid}
         <hr />
         <li>
           <Link to="/watchlist">Watchlist</Link>
