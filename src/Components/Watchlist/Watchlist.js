@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { globalContext } from "../../context/GlobalState";
-import MovieItem from "../MovieItem";
+import MovieItem from "../Search/MovieItem";
 import styled from "styled-components";
 
 const MovieListGrid = styled.section`

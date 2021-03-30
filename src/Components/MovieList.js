@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import MovieItem from "./MovieItem";
+import MovieItem from "./Search/MovieItem";
 import styled from "styled-components";
 
 /**API KEY:  076af6ad004d95e72faff607aff3810e (Guns)

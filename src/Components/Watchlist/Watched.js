@@ -1,6 +1,6 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { globalContext } from "../../context/GlobalState";
-import MovieItem from "../MovieItem";
+import MovieItem from "../Search/MovieItem";
 import styled from "styled-components";
 import { db } from "../../firebase";
 import { useAuth } from "../../context/AuthContext";
@@ -17,6 +17,7 @@ export const Watched = () => {
   const IMAGE_URL = "https://image.tmdb.org/t/p/w1280";
   const { watched } = useContext(globalContext);
   const { currentUser } = useAuth();
+  const [watchedMovies, setWatchedMovies] = useState([]);
 
   // const GetNextReviews = async () => {
   //   const ref = db
@@ -34,25 +35,29 @@ export const Watched = () => {
   // };
 
   // GetNextReviews();
-
-  db.collection("users")
-    .doc(currentUser.uid)
-    .collection("haveWatched")
-    .get()
-    //this is async, so it returns a promise
-    .then((snapshot) => {
-      snapshot.docs.forEach((doc) => {
-        const listTitle = doc.data().movieTitle;
-        console.log(listTitle);
+  useEffect(() => {
+    db.collection("users")
+      .doc(currentUser.uid)
+      .collection("haveWatched")
+      .get()
+      //this is async, so it returns a promise
+      .then((snapshot) => {
+        let documents = [];
+        snapshot.docs.forEach((doc) => {
+          documents.push(doc.data().movieTitle);
+        });
+        setWatchedMovies(documents);
       });
-    });
+  }, []);
+
+  console.log(watchedMovies);
 
   return (
     <div>
       <div className="header">
         <h1>Watched Movies</h1>
         <h2>{currentUser.uid}</h2>
-        {/* <h2>{listTitle}</h2> */}
+        <h2>{watchedMovies}</h2>
 
         <h3 className="count-pill">
           {watched.length} {watched.length === 1 ? "Movie" : "Movies"}

@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import { db } from "../firebase";
-import { useAuth } from "../context/AuthContext";
+import { db } from "../../firebase";
+import { useAuth } from "../../context/AuthContext";
 
 const MovieItemCard = styled.section`
   max-width: 300px;
