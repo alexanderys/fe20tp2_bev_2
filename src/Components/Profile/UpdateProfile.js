@@ -46,6 +46,8 @@ export default function UpdateProfile() {
       //   })
       .catch(() => {
         setError("Failed to update account");
+        //Probably "Credentials are too old, you need to log in again"-error?
+        //https://firebase.google.com/docs/reference/js/firebase.User#reauthenticatewithcredential
       })
       //finally runs wheather we succeed or fail
       .finally(() => {

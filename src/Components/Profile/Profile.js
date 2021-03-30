@@ -1,7 +1,6 @@
 import React from "react";
 import { useAuth } from "../../context/AuthContext";
 import { Link } from "react-router-dom";
-import { db } from "../../firebase";
 
 export default function Profile() {
   const { currentUser } = useAuth();

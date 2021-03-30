@@ -9,7 +9,7 @@ import { Watched } from "./Watchlist/Watched";
 import PrivateRoute from "./PrivateRoute";
 import Navigation from "./Navigation";
 import MovieList from "./MovieList";
-import Search from "./Search";
+import Search from "./Search/Search";
 import Stats from "./Stats";
 import * as ROUTES from "../constants/routes";
 import { AuthProvider } from "../context/AuthContext";

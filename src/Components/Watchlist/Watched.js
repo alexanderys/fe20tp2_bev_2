@@ -2,6 +2,8 @@ import React, { useContext } from "react";
 import { globalContext } from "../../context/GlobalState";
 import MovieItem from "../MovieItem";
 import styled from "styled-components";
+import { db } from "../../firebase";
+import { useAuth } from "../../context/AuthContext";
 
 const MovieListGrid = styled.section`
   display: flex;
@@ -14,11 +16,43 @@ const MovieListGrid = styled.section`
 export const Watched = () => {
   const IMAGE_URL = "https://image.tmdb.org/t/p/w1280";
   const { watched } = useContext(globalContext);
+  const { currentUser } = useAuth();
+
+  // const GetNextReviews = async () => {
+  //   const ref = db
+  //     .collection("users")
+  //     .doc(currentUser.uid)
+  //     .collection("haveWatched");
+  //   const data = await ref.get();
+  //   console.log("this is data: " + data);
+
+  //   //data.docs = an array of all the documents
+  //   data.docs.forEach((doc) => {
+  //     const review = doc.data();
+  //     console.log("this is review: " + review);
+  //   });
+  // };
+
+  // GetNextReviews();
+
+  db.collection("users")
+    .doc(currentUser.uid)
+    .collection("haveWatched")
+    .get()
+    //this is async, so it returns a promise
+    .then((snapshot) => {
+      snapshot.docs.forEach((doc) => {
+        const listTitle = doc.data().movieTitle;
+        console.log(listTitle);
+      });
+    });
 
   return (
     <div>
       <div className="header">
         <h1>Watched Movies</h1>
+        <h2>{currentUser.uid}</h2>
+        {/* <h2>{listTitle}</h2> */}
 
         <h3 className="count-pill">
           {watched.length} {watched.length === 1 ? "Movie" : "Movies"}
