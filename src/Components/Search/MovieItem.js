@@ -38,7 +38,7 @@ function MovieItem({ id, title, overview, voteAverage, imgComboPath }) {
 
   const addToHaveWatched = () => {
     // db.collection("haveWatched").add({...}) = gives a random FB-ID to the document
-    //id = the MovieItem-prop. we need toString() because FB only accepts documents id's as strings
+    // id = the MovieItem-prop. we need toString() because FB only accepts documents id's as strings
     db.collection("users")
       .doc(currentUser.uid)
       .collection("haveWatched")
