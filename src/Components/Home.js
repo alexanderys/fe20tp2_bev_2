@@ -1,20 +1,11 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import MovieItem from "./Search/MovieItem";
-import styled from "styled-components";
-import * as CONSTS from '../constants/consts';
+import { ResultsGrid } from "./StyledComponents";
+import * as URL from '../constants/urlParts';
 
-const MovieListGrid = styled.main`
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  border: 3px solid green;
-`;
-
-const MovieList = () => {
-
-  //INFO = These consts are now declared in the file consts.js instead
+const Home = () => {
+  //INFO = These consts are now declared in the file urlParts.js instead
 
   // const BASE_URL = "https://api.themoviedb.org/3";
   // const NOW_PLAYING = "/movie/now_playing?api_key=";
@@ -25,7 +16,7 @@ const MovieList = () => {
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
-    axios.get(CONSTS.BASE_URL + CONSTS.NOW_PLAYING + CONSTS.API_KEY + CONSTS.SETTINGS).then((res) => {
+    axios.get(URL.BASE_URL + URL.NOW_PLAYING + URL.API_KEY + URL.SETTINGS).then((res) => {
       setMovies(res.data.results);
       //In case of trouble, the tutorial wrote a map here!!
       // setMovies(res.data.results.map((movie) => movie));
@@ -35,7 +26,7 @@ const MovieList = () => {
   return (
     <>
       <h1>Now Playing</h1>
-      <MovieListGrid>
+      <ResultsGrid>
         {movies.map(
           ({
             id,
@@ -53,13 +44,23 @@ const MovieList = () => {
               voteAverage={vote_average}
               releaseDate={release_date}
               posterPath={poster_path}
-              imgComboPath={CONSTS.IMAGE_URL + poster_path}
+              imgComboPath={URL.IMAGE_URL + poster_path}
+            // buttons={[
+            //   {
+            //     text: "Add to have watched",
+            //     function: () => addToHaveWatched(id),
+            //   },
+            //   {
+            //     text: "Remove From have watcher",
+            //     function: () => addToHaveWatcheasdjasodd(id),
+            //   },
+            // ]}
             />
           )
         )}
-      </MovieListGrid>
+      </ResultsGrid>
     </>
   );
 };
 
-export default MovieList;
+export default Home;

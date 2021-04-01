@@ -4,15 +4,7 @@ import Pagination from "./pagination";
 import MovieItem from "./MovieItem";
 import ActorItem from "./ActorItem";
 import TvItem from "./TvItem";
-import styled from "styled-components";
-
-const MovieListGrid = styled.section`
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  border: 2px solid purple;
-`;
+import { ResultsGrid } from "../StyledComponents";
 
 const IMAGE_URL = "https://image.tmdb.org/t/p/original";
 
@@ -81,7 +73,7 @@ function Search() {
         // Göra om ul till en komponent som innehåller pagination
         <>
           <h2>Showing results for "{searchTerm}"</h2>
-          <MovieListGrid>
+          <ResultsGrid>
             {currentMovies.map(
               ({
                 movie,
@@ -137,7 +129,7 @@ function Search() {
                 }
               }
             )}
-          </MovieListGrid>
+          </ResultsGrid>
         </>
       )}
     </div>

@@ -1,6 +1,6 @@
 export const SIGN_UP = "/signup";
 export const LOG_IN = "/login";
-export const HOME = "/";
+export const HOME = "/home";
 export const PROFILE = "/profile";
 export const UPDATE_PROFILE = "/update-profile";
 export const FORGOT_PASSWORD = "/forgot-password";

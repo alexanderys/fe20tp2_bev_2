@@ -8,7 +8,7 @@ import { Watchlist } from "./Watchlist/Watchlist";
 import { Watched } from "./Watchlist/Watched";
 import PrivateRoute from "./PrivateRoute";
 import Navigation from "./Navigation";
-import MovieList from "./MovieList";
+import Home from "./Home";
 import Search from "./Search/Search";
 import Stats from "./Stats";
 import * as ROUTES from "../constants/routes";
@@ -21,10 +21,10 @@ function App() {
       <AuthProvider>
         <Navigation />
         <Switch>
-          <Route exact path="/" component={MovieList} />
-          <Route path="/home" component={MovieList} />
-          <Route path="/signup" component={Signup} />
-          <Route path="/login" component={Login} />
+          <Route exact path="/" component={Home} />
+          <Route path={ROUTES.HOME} component={Home} />
+          <Route path={ROUTES.SIGN_UP} component={Signup} />
+          <Route path={ROUTES.LOG_IN} component={Login} />
           <Route path={ROUTES.FORGOT_PASSWORD} component={ForgotPassword} />
           <Route path={ROUTES.SEARCH} component={Search} />
           <PrivateRoute path={ROUTES.PROFILE} component={Profile} />
