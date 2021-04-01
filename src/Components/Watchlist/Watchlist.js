@@ -1,16 +1,57 @@
-import React, { useContext } from "react";
-import MovieItem from "../Search/MovieItem";
-import { ResultsGrid } from "../StyledComponents";
+import React, { useState, useEffect } from 'react';
+import { db } from "../../firebase";
+import { useAuth } from "../../context/AuthContext";
 
 export const Watchlist = () => {
-  const IMAGE_URL = "https://image.tmdb.org/t/p/w1280";
+  const { currentUser } = useAuth();
+  const [moviesInWatchlist, setMoviesInWatchlist] = useState([]);
 
-  return (
-    <div>
-      <div className="header">
-        <h1>My Watchlist</h1>
-        <h3 className="count-pill"></h3>
-      </div>
+  useEffect(() => {
+    db.collection("users")
+      .doc(currentUser.uid)
+      .collection("watchlist")
+      .get()
+      //this is async, so it returns a promise
+      .then((snapshot) => {
+        let documents = [];
+        snapshot.docs.forEach((doc) => {
+          documents.push(doc.data().movieTitle);
+        });
+        setMoviesInWatchlist(documents);
+      });
+  }, []);
+
+  console.log(moviesInWatchlist);
+
+  return (<>
+
+    <div className="header">
+      <h1>My Watchlist</h1>
+      <strong>User email: </strong> {currentUser.email}
+      <br />
+      <strong>UID: </strong>{currentUser.uid}
+      <hr /> <br />
+
+      <h3 className="count-pill">
+        {'You have ' + moviesInWatchlist.length + ' '}
+        {moviesInWatchlist.length === 1 ? "movie" : "movies"}
+        {' in your watchlist'}
+      </h3>
     </div>
-  );
+
+    <br />
+
+    {moviesInWatchlist.length > 0 ? (
+      <>
+        {/* Temporary simple display of movies 
+            There's not MovieItem here so no buttons for Removing n stuff
+        */}
+        <hr />
+        <h2>{moviesInWatchlist}</h2>
+      </>
+    ) : (
+      <h2>No movies in your watchlist! Add some!</h2>
+    )}
+
+  </>);
 };

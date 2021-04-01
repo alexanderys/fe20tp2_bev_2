@@ -41,6 +41,25 @@ function MovieItem({
       .delete();
   };
 
+  const addToWatchlist = () => {
+    db.collection('users')
+      .doc(currentUser.uid)
+      .collection('watchlist')
+      .doc(id.toString())
+      .set({
+        movieTitle: title,
+        voteAverage: voteAverage
+      });
+  }
+
+  const removeFromWatchlist = () => {
+    db.collection("users")
+      .doc(currentUser.uid)
+      .collection("watchlist")
+      .doc(id.toString())
+      .delete();
+  };
+
   return (
     <ItemCard>
       <img src={imgComboPath} alt="" />
@@ -48,6 +67,8 @@ function MovieItem({
       {/* {buttons.map((button) => (
         <button onClick={button.function}>{button.text}</button>
       ))} */}
+      <button onClick={addToWatchlist}>Add to Watchlist</button>
+      <button onClick={removeFromWatchlist}>Remove from Watchlist</button>
       <button onClick={addToHaveWatched}>Add to Have Watched</button>
       <button onClick={removeFromHaveWatched}>Remove from Have Watched</button>
       <span>{voteAverage}</span>

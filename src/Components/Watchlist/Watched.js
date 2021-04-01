@@ -1,14 +1,13 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import MovieItem from "../Search/MovieItem";
 import { db } from "../../firebase";
 import { useAuth } from "../../context/AuthContext";
 import { ResultsGrid } from "../StyledComponents";
+import * as URL from '../../constants/urlParts';
 
 export const Watched = () => {
-  const IMAGE_URL = "https://image.tmdb.org/t/p/w1280";
   const { currentUser } = useAuth();
-  const [watchedMoviesId, setWatchedMoviesId] = useState([]);
-  const [TestMovies, setTestMovies] = useState();
+  const [watchedMovies, setWatchedMovies] = useState([]);
 
   useEffect(() => {
     db.collection("users")
@@ -19,16 +18,15 @@ export const Watched = () => {
       .then((snapshot) => {
         let documents = [];
         snapshot.docs.forEach((doc) => {
-          documents.push(doc.id);
+          documents.push(doc.data().movieTitle);
         });
-        setWatchedMoviesId(documents);
+        setWatchedMovies(documents);
       });
   }, []);
 
   return (
     <div>
-      <h1>hej</h1>
-      {/* <div className="header">
+      <div className="header">
         <h1>Watched Movies</h1>
         <h3>CurrentUser uid: {currentUser.uid}</h3>
         <h2>Watched Movies: {watchedMovies}</h2>
@@ -57,14 +55,14 @@ export const Watched = () => {
                 voteAverage={vote_average}
                 releaseDate={release_date}
                 posterPath={poster_path}
-                imgComboPath={IMAGE_URL + poster_path}
+                imgComboPath={URL.IMAGE_URL + poster_path}
               />
             )
           )}
         </ResultsGrid>
       ) : (
         <h2>No movies in your list! Add some!</h2>
-      )} */}
+      )}
     </div>
   );
 };
