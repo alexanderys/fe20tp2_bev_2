@@ -1,17 +1,9 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import MovieItem from "./Search/MovieItem";
-import styled from "styled-components";
+import { ResultsGrid } from "./StyledComponents";
 
-const MovieListGrid = styled.main`
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  border: 3px solid green;
-`;
-
-const MovieList = () => {
+const Home = () => {
   const BASE_URL = "https://api.themoviedb.org/3";
   const NOW_PLAYING = "/movie/now_playing?api_key=";
   const API_KEY = "076af6ad004d95e72faff607aff3810e";
@@ -31,7 +23,7 @@ const MovieList = () => {
   return (
     <>
       <h1>Now Playing</h1>
-      <MovieListGrid>
+      <ResultsGrid>
         {movies.map(
           ({
             id,
@@ -50,12 +42,22 @@ const MovieList = () => {
               releaseDate={release_date}
               posterPath={poster_path}
               imgComboPath={IMAGE_URL + poster_path}
+              // buttons={[
+              //   {
+              //     text: "Add to have watched",
+              //     function: () => addToHaveWatched(id),
+              //   },
+              //   {
+              //     text: "Remove From have watcher",
+              //     function: () => addToHaveWatcheasdjasodd(id),
+              //   },
+              // ]}
             />
           )
         )}
-      </MovieListGrid>
+      </ResultsGrid>
     </>
   );
 };
 
-export default MovieList;
+export default Home;
