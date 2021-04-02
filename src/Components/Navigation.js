@@ -4,9 +4,10 @@ import styled from "styled-components";
 
 const StyledUL = styled.ul`
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: center;
   background-color: beige;
+  bottom: 0;
 
   li {
     list-style: none;
