@@ -8,25 +8,26 @@ export const ResultsGrid = styled.section`
 `;
 
 export const ItemCard = styled.section`
-  max-width: 110px;
+  max-width: 120px;
   max-height: 400px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
   background-color: beige;
   margin: 5px;
-  padding: 10px;
   h2 {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
   }
   img {
-    width: 100px;
+    width: 100%;
   }
   p {
     font-size: 0.9rem;
   }
   button {
-    max-width: 100px;
+    font-family: inherit;
+    background: none;
+    border: 1px solid black;
   }
 `;
 
@@ -37,7 +38,7 @@ export const MainInput = styled.input`
   border: 0;
   border-bottom: 1px black solid;
   font-size: 16px;
-  &:focus{
+  &:focus {
     outline: none;
   }
 `;
@@ -56,6 +57,4 @@ export const MainSection = styled.section`
   height: 88vh;
 `;
 
-export const MainButton = styled.button`
-  
-`;
+export const MainButton = styled.button``;

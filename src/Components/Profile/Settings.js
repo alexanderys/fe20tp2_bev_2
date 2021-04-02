@@ -8,6 +8,12 @@ export const SettingsPage = styled.section`
   flex-direction: column;
   align-items: center;
 
+  .back-icon {
+    align-self: flex-start;
+    margin-top: 30px;
+    margin-left: 30px;
+    font-size: 1.5rem;
+  }
   h1 {
     font-size: 2rem;
     text-align: center;
@@ -38,8 +44,8 @@ export const SettingsPage = styled.section`
     font-size: 1.1rem;
     background: none;
     border: 2px solid black;
-    margin-top: 50vh;
     padding: 10px 30px;
+    margin-top: 40vh;
   }
 `;
 
@@ -62,6 +68,10 @@ export default function Dashboard() {
   return (
     <>
       <SettingsPage>
+        <i
+          onClick={() => history.goBack()}
+          className="back-icon fas fa-angle-left"
+        ></i>
         <h1>Settings</h1>
         <li>
           <Link to="/update-profile">

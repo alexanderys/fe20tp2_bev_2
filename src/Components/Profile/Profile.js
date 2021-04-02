@@ -1,6 +1,6 @@
 import React from "react";
 import { useAuth } from "../../context/AuthContext";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import styled from "styled-components";
 
 export const ProfilePage = styled.section`
@@ -11,13 +11,9 @@ export const ProfilePage = styled.section`
   h1 {
     font-size: 2rem;
     text-align: center;
-    margin: 50px 0;
+    margin: 100px 0;
   }
-  .settings-icon {
-    color: black;
-    font-size: 1.5rem;
-    margin-bottom: 60px;
-  }
+
   li {
     list-style: none;
     font-size: 1.3rem;
@@ -39,23 +35,26 @@ export const ProfilePage = styled.section`
 
 export default function Profile() {
   const { currentUser } = useAuth();
+  const history = useHistory();
 
   return (
     <>
       <ProfilePage>
         <h1>Profile</h1>
-        <Link className="settings-icon" to="/settings">
-          <i className="fas fa-cog"></i>
-        </Link>
 
         <li>
+          <Link to="/settings">
+            Settings <i className="fas fa-cog"></i>
+          </Link>
+        </li>
+        <li>
           <Link to="/watchlist">
-            Watchlist <i className="fas fa-angle-down"></i>
+            Watchlist <i className="fas fa-angle-right"></i>
           </Link>
         </li>
         <li>
           <Link to="/watched">
-            Have watched <i className="fas fa-angle-down"></i>
+            Have watched <i className="fas fa-angle-right"></i>
           </Link>
         </li>
       </ProfilePage>

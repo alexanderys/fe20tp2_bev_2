@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import MovieItem from "./Search/MovieItem";
 import { ResultsGrid } from "./StyledComponents";
-import * as URL from '../constants/urlParts';
+import * as URL from "../constants/urlParts";
 
 const Home = () => {
   //INFO = These consts are now declared in the file urlParts.js instead
@@ -16,11 +16,13 @@ const Home = () => {
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
-    axios.get(URL.BASE_URL + URL.NOW_PLAYING + URL.API_KEY + URL.SETTINGS).then((res) => {
-      setMovies(res.data.results);
-      //In case of trouble, the tutorial wrote a map here!!
-      // setMovies(res.data.results.map((movie) => movie));
-    });
+    axios
+      .get(URL.BASE_URL + URL.NOW_PLAYING + URL.API_KEY + URL.SETTINGS)
+      .then((res) => {
+        setMovies(res.data.results);
+        //In case of trouble, the tutorial wrote a map here!!
+        // setMovies(res.data.results.map((movie) => movie));
+      });
   }, []);
 
   return (
@@ -45,16 +47,16 @@ const Home = () => {
               releaseDate={release_date}
               posterPath={poster_path}
               imgComboPath={URL.IMAGE_URL + poster_path}
-            // buttons={[
-            //   {
-            //     text: "Add to have watched",
-            //     function: () => addToHaveWatched(id),
-            //   },
-            //   {
-            //     text: "Remove From have watcher",
-            //     function: () => addToHaveWatcheasdjasodd(id),
-            //   },
-            // ]}
+              // buttons={[
+              //   {
+              //     text: "Add to have watched",
+              //     function: () => addToHaveWatched(id),
+              //   },
+              //   {
+              //     text: "Remove From have watcher",
+              //     function: () => addToHaveWatcheasdjasodd(id),
+              //   },
+              // ]}
             />
           )
         )}

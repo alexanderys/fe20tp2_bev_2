@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 import { useAuth } from "../../context/AuthContext";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import styled from "styled-components";
 
 export const UpdateProfilePage = styled.section`
@@ -8,6 +8,12 @@ export const UpdateProfilePage = styled.section`
   flex-direction: column;
   align-items: center;
 
+  .back-icon {
+    align-self: flex-start;
+    margin-top: 30px;
+    margin-left: 30px;
+    font-size: 1.5rem;
+  }
   h1 {
     font-size: 2rem;
     text-align: center;
@@ -43,19 +49,12 @@ export const UpdateProfilePage = styled.section`
 
   button {
     width: 80vw;
-    margin-top: 15px;
+    margin-top: 100px;
     font-family: inherit;
     font-size: 1.1rem;
     background: none;
     border: 2px solid black;
     padding: 10px 30px;
-  }
-
-  .back-to {
-    color: black;
-    font-size: 1.2rem;
-    margin-top: 150px;
-    text-decoration: none;
   }
 `;
 
@@ -67,6 +66,7 @@ export default function UpdateProfile() {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
+  const history = useHistory();
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -115,7 +115,10 @@ export default function UpdateProfile() {
   return (
     <>
       <UpdateProfilePage>
-        {" "}
+        <i
+          onClick={() => history.goBack()}
+          className="back-icon fas fa-angle-left"
+        ></i>
         <h1>Update Profile</h1>
         {error && <div variant="danger">{error}</div>}
         {message && <div variant="success">{message}</div>}
@@ -150,9 +153,6 @@ export default function UpdateProfile() {
             Update
           </button>
         </form>
-        <Link className="back-to" to="/settings">
-          <i className="fas fa-angle-left"> </i> Back to Settings
-        </Link>
       </UpdateProfilePage>
     </>
   );

@@ -26,7 +26,7 @@ function App() {
           <Route path={ROUTES.SIGN_UP} component={Signup} />
           <Route path={ROUTES.LOG_IN} component={Login} />
           <Route path={ROUTES.FORGOT_PASSWORD} component={ForgotPassword} />
-          <Route path={ROUTES.SEARCH} component={Search} />
+          <PrivateRoute path={ROUTES.SEARCH} component={Search} />
           <PrivateRoute path={ROUTES.PROFILE} component={Profile} />
           <PrivateRoute path={ROUTES.SETTINGS} component={Settings} />
           <PrivateRoute path={ROUTES.WATCHED} component={Watched} />

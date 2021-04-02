@@ -1,6 +1,23 @@
 import React, { useEffect, useState } from "react";
 import { useAuth } from "../context/AuthContext";
 import { db } from "../firebase";
+import styled from "styled-components";
+
+export const StatsPage = styled.section`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  h1 {
+    font-size: 2rem;
+    text-align: center;
+    margin: 100px 0;
+  }
+
+  span {
+    font-size: 1.2rem;
+  }
+`;
 
 function Stats() {
   const { currentUser } = useAuth();
@@ -28,17 +45,20 @@ function Stats() {
     (result, number) => result + number,
     0
   );
-  const avg = sumVoteAverage / watchedMoviesTitles.length;
+  const avg =
+    Math.round((sumVoteAverage / watchedMoviesTitles.length) * 10) / 10;
 
   return (
-    <div>
+    <StatsPage>
       <h1>Stats</h1>
-      <strong>Number of movies watched: </strong>
-      <span>{watchedMoviesTitles.length}</span>
+      <span>
+        Number of movies watched: <strong>{watchedMoviesTitles.length}</strong>
+      </span>
       <br />
-      <strong>Average rating: </strong>
-      <span>{avg}</span>
-    </div>
+      <span>
+        Average rating: <strong>{avg}</strong>
+      </span>
+    </StatsPage>
   );
 }
 
