@@ -1,12 +1,30 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import React, { useState } from "react";
 import Pagination from "./pagination";
 import MovieItem from "./MovieItem";
 import ActorItem from "./ActorItem";
 import TvItem from "./TvItem";
 import { ResultsGrid } from "../StyledComponents";
+import { IMAGE_URL } from '../../constants/urlParts';
+import styled from "styled-components";
 
-const IMAGE_URL = "https://image.tmdb.org/t/p/original";
+const StyledLabel = styled.label`
+padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #2b2b2b;
+`;
+
+const StyledInput = styled.input`
+  width: 95vw;
+  border-radius: 5px;
+  padding: 15px;
+  border: 0;
+  font-size: 16px;
+  &:focus{
+    outline: none;
+  }
+`;
 
 function Search() {
   const [searchTerm, setSearchTerm] = useState("");
@@ -50,24 +68,24 @@ function Search() {
 
   return (
     <div>
-      <h1>Search</h1>
+
+      <StyledLabel htmlFor="search">
+
+        <StyledInput
+          id="search"
+          name="search"
+          type="text"
+          placeholder="Search for movie or actor"
+          value={searchTerm}
+          onChange={onInputChange}
+        />
+      </StyledLabel>
 
       <Pagination
         moviesPerPage={moviesPerPage}
         totalMovies={movies.length}
         paginate={paginate}
       />
-
-      <label htmlFor="search">
-        Search:
-        <input
-          id="search"
-          name="search"
-          type="text"
-          value={searchTerm}
-          onChange={onInputChange}
-        />
-      </label>
 
       {currentMovies.length > 0 && (
         // Göra om ul till en komponent som innehåller pagination
