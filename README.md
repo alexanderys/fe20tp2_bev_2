@@ -8,11 +8,11 @@
 
 ## Created by
 
-Karl Gunnarsson (<https://github.com/KG416>)
-Max Rautenberg aka Route-nberg
-Patrik Jorda Fredlund
-Gun Karlsson
-Alexander Yarar Sellgren
+- Karl Gunnarsson (<https://github.com/KG416>)
+- Max Rautenberg aka Route-nberg
+- Patrik Jorda Fredlund
+- Gun Karlsson
+- Alexander Yarar Sellgren
 
 ## Tools
 

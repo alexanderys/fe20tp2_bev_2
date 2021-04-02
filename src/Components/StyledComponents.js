@@ -29,3 +29,33 @@ export const ItemCard = styled.section`
     max-width: 100px;
   }
 `;
+
+export const MainInput = styled.input`
+  width: 80vw;
+  border-radius: 0;
+  padding: 15px;
+  border: 0;
+  border-bottom: 1px black solid;
+  font-size: 16px;
+  &:focus{
+    outline: none;
+  }
+`;
+
+export const MainH2 = styled.h2`
+  text-align: center;
+`;
+
+export const MainSection = styled.section`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  //background-color: #b5b5ff;
+  //This height is stupid, change later
+  height: 88vh;
+`;
+
+export const MainButton = styled.button`
+  
+`;
