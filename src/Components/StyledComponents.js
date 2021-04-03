@@ -57,4 +57,24 @@ export const MainSection = styled.section`
   height: 88vh;
 `;
 
-export const MainButton = styled.button``;
+export const PrimaryButton = styled.button`
+    width: 80vw;
+    font-family: inherit;
+    font-size: 1.1rem;
+    color: white;
+    background: black;
+    padding: 10px 30px;
+    margin-top: 40vh;
+    cursor: pointer;
+`;
+
+export const SecondaryButton = styled.button`
+    width: 80vw;
+    font-family: inherit;
+    font-size: 1.1rem;
+    background: none;
+    border: 2px solid black;
+    padding: 10px 30px;
+    margin-top: 40vh;
+    cursor: pointer;
+`;

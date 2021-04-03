@@ -1,6 +1,7 @@
 import React, { useRef, useState } from "react";
 import { useAuth } from "../../context/AuthContext";
 import { Link, useHistory } from "react-router-dom";
+import { MainInput, MainH2, MainSection, PrimaryButton } from '../StyledComponents';
 
 export default function Signup() {
   const emailRef = useRef();
@@ -30,32 +31,31 @@ export default function Signup() {
 
   return (
     <>
-      <section>
-        <h2>Sign Up</h2>
+      <MainSection>
+        <MainH2>Sign Up</MainH2>
         {error && <div variant="danger">{error}</div>}
         <form onSubmit={handleSubmit}>
           <div id="email">
-            <label>Email</label>
-            <input type="email" ref={emailRef} required />
+
+            <MainInput placeholder="Email" type="email" ref={emailRef} required />
           </div>
           <div id="password">
-            <label>Password</label>
-            <input type="password" ref={passwordRef} required />
+
+            <MainInput placeholder="Password" type="password" ref={passwordRef} required />
           </div>
           <div id="password-confirm">
-            <label>Password Confirmation</label>
-            <input type="password" ref={passwordConfirmRef} required />
+            <MainInput placeholder="Confirm password" type="password" ref={passwordConfirmRef} required />
           </div>
 
-          <button disabled={loading} type="submit">
+          <PrimaryButton disabled={loading} type="submit">
             Sign Up
-          </button>
+          </PrimaryButton>
         </form>
-      </section>
 
-      <div>
-        Already have an account? <Link to="/login">Login</Link>
-      </div>
+        <div>
+          Already have an account? <Link to="/login">Login</Link>
+        </div>
+      </MainSection>
     </>
   );
 }

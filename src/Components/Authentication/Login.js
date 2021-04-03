@@ -2,10 +2,14 @@ import React, { useRef, useState } from "react";
 import { useAuth } from "../../context/AuthContext";
 import { Link, useHistory } from "react-router-dom";
 import styled from 'styled-components';
-import { MainInput, MainH2, MainSection, MainButton } from '../StyledComponents';
+import { MainInput, MainH2, MainSection, SecondaryButton } from '../StyledComponents';
 
 const TempBackX = styled.div`
   margin: 10px;
+`;
+
+const TempDiv = styled.div`
+  margin-top: 20px;
 `;
 
 export default function Login() {
@@ -42,24 +46,25 @@ export default function Login() {
         {error && <div variant="danger">{error}</div>}
         <form onSubmit={handleSubmit}>
           <div id="email">
-
             <MainInput type="email" placeholder="Email" ref={emailRef} required />
           </div>
-          <div id="password">
 
+          <div id="password">
             <MainInput type="password" placeholder="Password" ref={passwordRef} required />
           </div>
 
-          <MainButton disabled={loading} type="submit">
+          <TempDiv>
+            <Link to="/forgot-password">Forgot Password?</Link>
+          </TempDiv>
+
+          <SecondaryButton disabled={loading} type="submit">
             Log In
-          </MainButton>
+          </SecondaryButton>
         </form>
 
         <div>
-          <Link to="/forgot-password">Forgot Password?</Link>
+          Need an account? <Link to="/signup">Sign Up</Link>
         </div>
-
-
 
       </MainSection>
     </>
