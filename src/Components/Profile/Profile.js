@@ -42,6 +42,8 @@ export default function Profile() {
       <ProfilePage>
         <h1>Profile</h1>
 
+        <strong>Email: </strong>{currentUser.email}
+
         <li>
           <Link to="/settings">
             Settings <i className="fas fa-cog"></i>

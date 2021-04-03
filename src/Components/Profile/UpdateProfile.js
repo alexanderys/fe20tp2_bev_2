@@ -13,6 +13,7 @@ export const UpdateProfilePage = styled.section`
     margin-top: 30px;
     margin-left: 30px;
     font-size: 1.5rem;
+    cursor: pointer;
   }
   h1 {
     font-size: 2rem;

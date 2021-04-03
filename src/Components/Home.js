@@ -5,13 +5,6 @@ import { ResultsGrid } from "./StyledComponents";
 import * as URL from "../constants/urlParts";
 
 const Home = () => {
-  //INFO = These consts are now declared in the file urlParts.js instead
-
-  // const BASE_URL = "https://api.themoviedb.org/3";
-  // const NOW_PLAYING = "/movie/now_playing?api_key=";
-  // const API_KEY = "076af6ad004d95e72faff607aff3810e";
-  // const SETTINGS = "&language=en-US&page=1";
-  // const IMAGE_URL = "https://image.tmdb.org/t/p/w1280";
 
   const [movies, setMovies] = useState([]);
 
@@ -47,16 +40,16 @@ const Home = () => {
               releaseDate={release_date}
               posterPath={poster_path}
               imgComboPath={URL.IMAGE_URL + poster_path}
-              // buttons={[
-              //   {
-              //     text: "Add to have watched",
-              //     function: () => addToHaveWatched(id),
-              //   },
-              //   {
-              //     text: "Remove From have watcher",
-              //     function: () => addToHaveWatcheasdjasodd(id),
-              //   },
-              // ]}
+            // buttons={[
+            //   {
+            //     text: "Add to have watched",
+            //     function: () => addToHaveWatched(id),
+            //   },
+            //   {
+            //     text: "Remove From have watcher",
+            //     function: () => addToHaveWatcheasdjasodd(id),
+            //   },
+            // ]}
             />
           )
         )}

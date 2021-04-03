@@ -1,5 +1,14 @@
 import styled from "styled-components";
 
+/* =========
+COLOR VARIABLES 
+===========*/
+const primaryColor = 'black';
+const secondaryColor = 'white';
+
+/* =========
+ELEMENTS WITH STYLES THAT ARE USED MORE THAN ONCE
+===========*/
 export const ResultsGrid = styled.section`
   display: flex;
   flex-wrap: wrap;
@@ -36,7 +45,7 @@ export const MainInput = styled.input`
   border-radius: 0;
   padding: 15px;
   border: 0;
-  border-bottom: 1px black solid;
+  border-bottom: 1px ${primaryColor} solid;
   font-size: 16px;
   &:focus {
     outline: none;
@@ -61,8 +70,8 @@ export const PrimaryButton = styled.button`
     width: 80vw;
     font-family: inherit;
     font-size: 1.1rem;
-    color: white;
-    background: black;
+    color: ${secondaryColor};
+    background: ${primaryColor};
     padding: 10px 30px;
     margin-top: 40vh;
     cursor: pointer;
@@ -73,7 +82,7 @@ export const SecondaryButton = styled.button`
     font-family: inherit;
     font-size: 1.1rem;
     background: none;
-    border: 2px solid black;
+    border: 2px solid ${primaryColor};
     padding: 10px 30px;
     margin-top: 40vh;
     cursor: pointer;
