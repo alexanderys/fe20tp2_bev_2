@@ -19,7 +19,7 @@ const Pagination = ({ moviesPerPage, totalMovies, paginate }) => {
                 console.log(paginate(number));
                 paginate(number);
               }}
-              href=""
+              href="#"
             >
               {number}
             </a>
