@@ -1,8 +1,14 @@
 import React, { useRef, useState } from "react";
 import { useAuth } from "../../context/AuthContext";
 import { Link, useHistory } from "react-router-dom";
-import styled from 'styled-components';
-import { MainInput, MainH2, MainSection, MainButton } from '../StyledComponents';
+import styled from "styled-components";
+import {
+  MainInput,
+  MainH2,
+  MainSection,
+  MainButton,
+  MainForm,
+} from "../StyledComponents";
 
 const TempBackX = styled.div`
   margin: 10px;
@@ -32,35 +38,36 @@ export default function Login() {
 
   return (
     <>
-      <TempBackX>
-        {/* Need an account? <Link to="/signup">Sign Up</Link> */}
+      {/* <TempBackX>
         <Link to="/signup">X</Link>
-      </TempBackX>
+      </TempBackX> */}
 
       <MainSection>
         <MainH2>Log In</MainH2>
         {error && <div variant="danger">{error}</div>}
-        <form onSubmit={handleSubmit}>
+        <MainForm onSubmit={handleSubmit}>
           <div id="email">
-
-            <MainInput type="email" placeholder="Email" ref={emailRef} required />
+            <MainInput
+              type="email"
+              placeholder="Email"
+              ref={emailRef}
+              required
+            />
           </div>
           <div id="password">
-
-            <MainInput type="password" placeholder="Password" ref={passwordRef} required />
+            <MainInput
+              type="password"
+              placeholder="Password"
+              ref={passwordRef}
+              required
+            />
           </div>
-
+          <Link to="/forgot-password">Forgot Password?</Link>
           <MainButton disabled={loading} type="submit">
             Log In
           </MainButton>
-        </form>
-
-        <div>
-          <Link to="/forgot-password">Forgot Password?</Link>
-        </div>
-
-
-
+          <Link to="/signup"> Need an account? Sign Up</Link>
+        </MainForm>
       </MainSection>
     </>
   );

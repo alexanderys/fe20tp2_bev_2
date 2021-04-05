@@ -1,6 +1,13 @@
 import React, { useRef, useState } from "react";
 import { useAuth } from "../../context/AuthContext";
 import { Link, useHistory } from "react-router-dom";
+import {
+  MainInput,
+  MainH2,
+  MainSection,
+  SecondaryButton,
+  MainForm,
+} from "../StyledComponents";
 
 export default function Signup() {
   const emailRef = useRef();
@@ -30,32 +37,66 @@ export default function Signup() {
 
   return (
     <>
-      <section>
-        <h2>Sign Up</h2>
+      <MainSection>
+        <MainH2>Sign Up</MainH2>
         {error && <div variant="danger">{error}</div>}
-        <form onSubmit={handleSubmit}>
+        <MainForm onSubmit={handleSubmit}>
           <div id="email">
-            <label>Email</label>
-            <input type="email" ref={emailRef} required />
+            <MainInput
+              type="email"
+              placeholder="Email"
+              ref={emailRef}
+              required
+            />
           </div>
           <div id="password">
-            <label>Password</label>
-            <input type="password" ref={passwordRef} required />
+            <MainInput
+              type="password"
+              placeholder="Password"
+              ref={passwordRef}
+              required
+            />
           </div>
           <div id="password-confirm">
-            <label>Password Confirmation</label>
-            <input type="password" ref={passwordConfirmRef} required />
+            <MainInput
+              type="password"
+              placeholder="Repeat password"
+              ref={passwordConfirmRef}
+              required
+            />
           </div>
 
-          <button disabled={loading} type="submit">
+          <SecondaryButton disabled={loading} type="submit">
             Sign Up
-          </button>
-        </form>
-      </section>
-
-      <div>
-        Already have an account? <Link to="/login">Login</Link>
-      </div>
+          </SecondaryButton>
+          <Link to="/login"> Already have an account? Login</Link>
+        </MainForm>
+      </MainSection>
     </>
   );
+}
+
+{
+  /* <MainSection>
+  <MainH2>Log In</MainH2>
+  {error && <div variant="danger">{error}</div>}
+  <MainForm onSubmit={handleSubmit}>
+    <div id="email">
+      <MainInput type="email" placeholder="Email" ref={emailRef} required />
+    </div>
+    <div id="password">
+      <MainInput
+        type="password"
+        placeholder="Password"
+        ref={passwordRef}
+        required
+      />
+    </div>
+    <Link to="/forgot-password">Forgot Password?</Link>
+    <MainButton disabled={loading} type="submit">
+      Log In
+    </MainButton>
+    <Link to="/signup"> Need an account? Sign Up</Link>
+  </MainForm>
+</MainSection>; */
 }

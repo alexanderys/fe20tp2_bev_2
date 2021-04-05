@@ -3,7 +3,7 @@ import MovieItem from "../Search/MovieItem";
 import { db } from "../../firebase";
 import { useAuth } from "../../context/AuthContext";
 import { ResultsGrid } from "../StyledComponents";
-import * as URL from '../../constants/urlParts';
+import * as URL from "../../constants/urlParts";
 
 export const Watched = () => {
   const { currentUser } = useAuth();
@@ -20,6 +20,8 @@ export const Watched = () => {
         snapshot.docs.forEach((doc) => {
           documents.push(doc.data().movieTitle);
         });
+        //gör anrop till API för att få data
+
         setWatchedMovies(documents);
       });
   }, []);

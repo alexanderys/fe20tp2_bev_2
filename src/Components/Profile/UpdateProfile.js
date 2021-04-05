@@ -2,6 +2,7 @@ import React, { useRef, useState } from "react";
 import { useAuth } from "../../context/AuthContext";
 import { Link, useHistory } from "react-router-dom";
 import styled from "styled-components";
+import { MainButton, MainInput, MainLabel } from "../StyledComponents";
 
 export const UpdateProfilePage = styled.section`
   display: flex;
