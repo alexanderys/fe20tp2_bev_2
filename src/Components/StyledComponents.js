@@ -124,6 +124,6 @@ export const SecondaryButton = styled.button`
     background: none;
     border: 2px solid ${primaryColor};
     padding: 10px 30px;
-    margin-top: 40vh;
+    margin-top: 20vh;
     cursor: pointer;
 `;
