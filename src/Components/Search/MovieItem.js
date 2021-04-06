@@ -1,32 +1,16 @@
 import React from "react";
-import styled from "styled-components";
 import { db } from "../../firebase";
 import { useAuth } from "../../context/AuthContext";
+import { ItemCard } from "../StyledComponents";
 
-const MovieItemCard = styled.section`
-  max-width: 300px;
-  max-height: 500px;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  background-color: beige;
-  margin: 10px;
-  padding: 10px;
-  h2 {
-    font-size: 1.5rem;
-  }
-  img {
-    width: 220px;
-  }
-  p {
-    font-size: 0.9rem;
-  }
-  button {
-    max-width: 100px;
-  }
-`;
-
-function MovieItem({ id, title, overview, voteAverage, imgComboPath }) {
+function MovieItem({
+  id,
+  title,
+  overview,
+  voteAverage,
+  imgComboPath,
+  buttons,
+}) {
   const { currentUser } = useAuth();
   // const [toggleState, setToggleState] = useState("Add to Watched");
   // function toggle() {
@@ -57,17 +41,44 @@ function MovieItem({ id, title, overview, voteAverage, imgComboPath }) {
       .delete();
   };
 
+  const addToWatchlist = () => {
+    db.collection("users")
+      .doc(currentUser.uid)
+      .collection("watchlist")
+      .doc(id.toString())
+      .set({
+        movieTitle: title,
+        voteAverage: voteAverage,
+      });
+  };
+
+  const removeFromWatchlist = () => {
+    db.collection("users")
+      .doc(currentUser.uid)
+      .collection("watchlist")
+      .doc(id.toString())
+      .delete();
+  };
+
   return (
-    <MovieItemCard>
-      <img src={imgComboPath} alt="" />
+    <ItemCard>
+      <a href={`movies/${id}`}>
+        <img src={imgComboPath} alt="" />{" "}
+      </a>
+
       <h2>{title}</h2>
+      {/* {buttons.map((button) => (
+        <button onClick={button.function}>{button.text}</button>
+      ))} */}
+      <button onClick={addToWatchlist}>Add to Watchlist</button>
+      <button onClick={removeFromWatchlist}>Remove from Watchlist</button>
       <button onClick={addToHaveWatched}>Add to Have Watched</button>
       <button onClick={removeFromHaveWatched}>Remove from Have Watched</button>
       <span>{voteAverage}</span>
       {/* <span>{releaseDate.substring(0, 4)}</span> */}
       <strong>Overview</strong>
       <p>{overview}</p>
-    </MovieItemCard>
+    </ItemCard>
   );
 }
 

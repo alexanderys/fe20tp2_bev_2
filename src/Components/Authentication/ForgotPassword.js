@@ -1,6 +1,16 @@
 import React, { useRef, useState } from "react";
 import { useAuth } from "../../context/AuthContext";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
+import {
+  MainInput,
+  MainH2,
+  MainSection,
+  MainButton,
+  SecondaryButton,
+  MainLabel,
+  MainForm,
+  GoBackButton,
+} from "../StyledComponents";
 
 export default function ForgotPassword() {
   const emailRef = useRef();
@@ -8,6 +18,7 @@ export default function ForgotPassword() {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
+  const history = useHistory();
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -26,29 +37,32 @@ export default function ForgotPassword() {
 
   return (
     <>
-      <section>
-        <h2>Password Reset</h2>
+      <MainSection>
+        <GoBackButton
+          onClick={() => history.goBack()}
+          className="back-icon fas fa-angle-left"
+        ></GoBackButton>
+        <MainH2>Password Reset</MainH2>
         {error && <div variant="danger">{error}</div>}
         {message && <div variant="success">{message}</div>}
-        <form onSubmit={handleSubmit}>
+        <MainForm onSubmit={handleSubmit}>
           <div id="email">
-            <label>Email</label>
-            <input type="email" ref={emailRef} required />
+            <MainInput
+              type="email"
+              placeholder="Email"
+              ref={emailRef}
+              required
+            />
           </div>
 
-          <button disabled={loading} type="submit">
+          <MainButton disabled={loading} type="submit">
             Reset Password
-          </button>
-        </form>
+          </MainButton>
+        </MainForm>
 
-        <div>
-          <Link to="/login">Log In</Link>
-        </div>
-      </section>
-
-      <div>
-        Need an account? <Link to="/signup">Sign Up</Link>
-      </div>
+        {/* <Link to="/login">Log In</Link>
+        <Link to="/signup">Sign Up</Link> */}
+      </MainSection>
     </>
   );
 }

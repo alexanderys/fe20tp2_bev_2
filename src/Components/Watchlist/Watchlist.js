@@ -1,56 +1,57 @@
-import React, { useContext } from "react";
-import { globalContext } from "../../context/GlobalState";
-import MovieItem from "../Search/MovieItem";
-import styled from "styled-components";
-
-const MovieListGrid = styled.section`
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  border: 2px solid blue;
-`;
+import React, { useState, useEffect } from 'react';
+import { db } from "../../firebase";
+import { useAuth } from "../../context/AuthContext";
 
 export const Watchlist = () => {
-  const IMAGE_URL = "https://image.tmdb.org/t/p/w1280";
-  const { watchlist } = useContext(globalContext);
+  const { currentUser } = useAuth();
+  const [moviesInWatchlist, setMoviesInWatchlist] = useState([]);
 
-  return (
-    <div>
-      <div className="header">
-        <h1>My Watchlist</h1>
-        <h3 className="count-pill">
-          {watchlist.length} {watchlist.length === 1 ? "Movie" : "Movies"}
-        </h3>
-      </div>
+  useEffect(() => {
+    db.collection("users")
+      .doc(currentUser.uid)
+      .collection("watchlist")
+      .get()
+      //this is async, so it returns a promise
+      .then((snapshot) => {
+        let documents = [];
+        snapshot.docs.forEach((doc) => {
+          documents.push(doc.data().movieTitle);
+        });
+        setMoviesInWatchlist(documents);
+      });
+  }, []);
 
-      {watchlist.length > 0 ? (
-        <MovieListGrid>
-          {watchlist.map(
-            ({
-              id,
-              title,
-              overview,
-              vote_average,
-              poster_path,
-              release_date,
-            }) => (
-              <MovieItem
-                title={title}
-                key={id}
-                overview={overview}
-                voteAverage={vote_average}
-                posterPath={poster_path}
-                imgComboPath={IMAGE_URL + poster_path}
-                releaseDate={release_date}
-                type="watchlist"
-              />
-            )
-          )}
-        </MovieListGrid>
-      ) : (
-        <h2>No movies in your list! Add some!</h2>
-      )}
+  console.log(moviesInWatchlist);
+
+  return (<>
+
+    <div className="header">
+      <h1>My Watchlist</h1>
+      <strong>User email: </strong> {currentUser.email}
+      <br />
+      <strong>UID: </strong>{currentUser.uid}
+      <hr /> <br />
+
+      <h3 className="count-pill">
+        {'You have ' + moviesInWatchlist.length + ' '}
+        {moviesInWatchlist.length === 1 ? "movie" : "movies"}
+        {' in your watchlist'}
+      </h3>
     </div>
-  );
+
+    <br />
+
+    {moviesInWatchlist.length > 0 ? (
+      <>
+        {/* Temporary simple display of movies 
+            There's not MovieItem here so no buttons for Removing n stuff
+        */}
+        <hr />
+        <h2>{moviesInWatchlist}</h2>
+      </>
+    ) : (
+      <h2>No movies in your watchlist! Add some!</h2>
+    )}
+
+  </>);
 };

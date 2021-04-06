@@ -1,6 +1,63 @@
 import React, { useRef, useState } from "react";
 import { useAuth } from "../../context/AuthContext";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
+import styled from "styled-components";
+import { MainButton, MainInput, MainLabel } from "../StyledComponents";
+
+export const UpdateProfilePage = styled.section`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .back-icon {
+    align-self: flex-start;
+    margin-top: 30px;
+    margin-left: 30px;
+    font-size: 1.5rem;
+  }
+  h1 {
+    font-size: 2rem;
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 100px;
+  }
+
+  label {
+    font-size: 1.3rem;
+    font-weight: 600;
+  }
+
+  input {
+    width: 80vw;
+    display: block;
+    border: none;
+    border-bottom: 2px solid black;
+    padding: 10px 1px;
+    margin-bottom: 30px;
+    font-size: 1.2rem;
+    font-weight: 400;
+  }
+
+  input::placeholder {
+    font-size: 1rem;
+    font-style: italic;
+    color: #a6a6a6;
+  }
+
+  input:focus {
+    outline: none;
+  }
+
+  button {
+    width: 80vw;
+    margin-top: 100px;
+    font-family: inherit;
+    font-size: 1.1rem;
+    background: none;
+    border: 2px solid black;
+    padding: 10px 30px;
+  }
+`;
 
 export default function UpdateProfile() {
   const emailRef = useRef();
@@ -10,6 +67,7 @@ export default function UpdateProfile() {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
+  const history = useHistory();
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -57,9 +115,12 @@ export default function UpdateProfile() {
 
   return (
     <>
-      {" "}
-      <h1>Update Profile</h1>
-      <section>
+      <UpdateProfilePage>
+        <i
+          onClick={() => history.goBack()}
+          className="back-icon fas fa-angle-left"
+        ></i>
+        <h1>Update Profile</h1>
         {error && <div variant="danger">{error}</div>}
         {message && <div variant="success">{message}</div>}
         <form onSubmit={handleSubmit}>
@@ -93,10 +154,7 @@ export default function UpdateProfile() {
             Update
           </button>
         </form>
-      </section>
-      <div>
-        <Link to="/settings">Cancel</Link>
-      </div>
+      </UpdateProfilePage>
     </>
   );
 }

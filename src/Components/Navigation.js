@@ -3,10 +3,14 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const StyledUL = styled.ul`
+  padding: 10px;
+  overflow: hidden;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
   display: flex;
-  align-items: center;
   justify-content: center;
-  background-color: beige;
+  background-color: black;
 
   li {
     list-style: none;
@@ -17,7 +21,7 @@ const StyledUL = styled.ul`
 
   li a {
     text-decoration: none;
-    color: black;
+    color: white;
   }
 
   li:hover a {
@@ -39,12 +43,6 @@ const Navigation = () => (
     <li>
       <Link to={ROUTES.PROFILE}>Profile</Link>
     </li>
-    {/* <li>
-      <Link to={ROUTES.WATCHED}>Watched</Link>
-    </li>
-    <li>
-      <Link to={ROUTES.WATCHLIST}>Watchlist</Link>
-    </li> */}
   </StyledUL>
 );
 
