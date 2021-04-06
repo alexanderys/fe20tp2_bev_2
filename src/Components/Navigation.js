@@ -1,8 +1,13 @@
 import * as ROUTES from "../constants/routes";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSearch, faHome, faChartPie, faUser } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faSearch,
+  faHome,
+  faChartPie,
+  faUser,
+} from "@fortawesome/free-solid-svg-icons";
 
 const StyledUL = styled.ul`
   padding: 10px;
@@ -30,12 +35,12 @@ const StyledUL = styled.ul`
     align-items: center;
   }
 
-li p {
-  text-align: center;
-  color: white;
-  margin-top: 10px;
-  font-size: 14px;
-}
+  li p {
+    text-align: center;
+    color: white;
+    margin-top: 10px;
+    font-size: 14px;
+  }
 
   li:hover a {
     text-decoration: underline;
@@ -45,15 +50,15 @@ li p {
 const Navigation = () => (
   <StyledUL>
     <li>
-      <Link to={ROUTES.SEARCH}>
-        <FontAwesomeIcon icon={faSearch} />
-        <p>Search</p>
-      </Link>
-    </li>
-    <li>
       <Link to={ROUTES.HOME}>
         <FontAwesomeIcon icon={faHome} />
         <p>Home</p>
+      </Link>
+    </li>
+    <li>
+      <Link to={ROUTES.SEARCH}>
+        <FontAwesomeIcon icon={faSearch} />
+        <p>Search</p>
       </Link>
     </li>
     <li>
@@ -67,7 +72,6 @@ const Navigation = () => (
         <FontAwesomeIcon icon={faUser} />
         <p>Profile</p>
       </Link>
-
     </li>
   </StyledUL>
 );
