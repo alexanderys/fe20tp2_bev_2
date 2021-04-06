@@ -37,11 +37,12 @@ function Search() {
 
   const onInputChange = (e) => {
     e.preventDefault();
+    setCurrentPage(1);
 
     setSearchTerm(e.target.value);
     setLoading(true);
     fetch(
-      `https://api.themoviedb.org/3/search/multi?api_key=0b990be39bf553eaa0eaaba70e328081&language=en-US&page=1&include_adult=false&query=${e.target.value}`
+      `https://api.themoviedb.org/3/search/multi?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US&page=1&include_adult=false&query=${e.target.value}`
     )
       .then((res) => res.json())
       .then((data) => {
