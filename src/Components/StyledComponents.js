@@ -1,5 +1,14 @@
 import styled from "styled-components";
 
+/* =========
+COLOR VARIABLES 
+===========*/
+const primaryColor = 'black';
+const secondaryColor = 'white';
+
+/* =========
+ELEMENTS WITH STYLES THAT ARE USED MORE THAN ONCE
+===========*/
 export const ResultsGrid = styled.section`
   display: flex;
   flex-wrap: wrap;
@@ -35,7 +44,7 @@ export const MainInput = styled.input`
   width: 100%;
   display: block;
   border: none;
-  border-bottom: 2px solid black;
+  border-bottom: 2px ${primaryColor} solid;
   padding: 10px 1px;
   margin-bottom: 35px;
   font-size: 1.2rem;
@@ -91,21 +100,30 @@ export const MainButton = styled.button`
   padding: 10px 30px;
 `;
 
-export const SecondaryButton = styled.button`
-  width: 100%;
-  margin-top: 90px;
-  // ^ Only for the SignUp-button to align with Login-button
-  margin-bottom: 10px;
-  font-family: inherit;
-  font-size: 1.1rem;
-  background: none;
-  border: 2px solid black;
-  padding: 10px 30px;
-`;
-
 export const GoBackButton = styled.i`
   align-self: flex-start;
   margin-top: 30px;
   margin-left: 30px;
   font-size: 1.5rem;
+`;
+export const PrimaryButton = styled.button`
+    width: 80vw;
+    font-family: inherit;
+    font-size: 1.1rem;
+    color: ${secondaryColor};
+    background: ${primaryColor};
+    padding: 10px 30px;
+    margin-top: 40vh;
+    cursor: pointer;
+`;
+
+export const SecondaryButton = styled.button`
+    width: 80vw;
+    font-family: inherit;
+    font-size: 1.1rem;
+    background: none;
+    border: 2px solid ${primaryColor};
+    padding: 10px 30px;
+    margin-top: 40vh;
+    cursor: pointer;
 `;

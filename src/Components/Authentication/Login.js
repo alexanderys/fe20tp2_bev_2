@@ -1,18 +1,14 @@
 import React, { useRef, useState } from "react";
 import { useAuth } from "../../context/AuthContext";
 import { Link, useHistory } from "react-router-dom";
-import styled from "styled-components";
+//import styled from "styled-components";
 import {
   MainInput,
   MainH2,
   MainSection,
   MainButton,
-  MainForm,
+  MainForm
 } from "../StyledComponents";
-
-const TempBackX = styled.div`
-  margin: 10px;
-`;
 
 export default function Login() {
   const emailRef = useRef();
@@ -38,10 +34,6 @@ export default function Login() {
 
   return (
     <>
-      {/* <TempBackX>
-        <Link to="/signup">X</Link>
-      </TempBackX> */}
-
       <MainSection>
         <MainH2>Log In</MainH2>
         {error && <div variant="danger">{error}</div>}

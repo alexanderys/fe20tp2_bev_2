@@ -75,28 +75,3 @@ export default function Signup() {
     </>
   );
 }
-
-{
-  /* <MainSection>
-  <MainH2>Log In</MainH2>
-  {error && <div variant="danger">{error}</div>}
-  <MainForm onSubmit={handleSubmit}>
-    <div id="email">
-      <MainInput type="email" placeholder="Email" ref={emailRef} required />
-    </div>
-    <div id="password">
-      <MainInput
-        type="password"
-        placeholder="Password"
-        ref={passwordRef}
-        required
-      />
-    </div>
-    <Link to="/forgot-password">Forgot Password?</Link>
-    <MainButton disabled={loading} type="submit">
-      Log In
-    </MainButton>
-    <Link to="/signup"> Need an account? Sign Up</Link>
-  </MainForm>
-</MainSection>; */
-}
