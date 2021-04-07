@@ -2,11 +2,11 @@ import React, { useRef, useState } from "react";
 import { useAuth } from "../../context/AuthContext";
 import { Link, useHistory } from "react-router-dom";
 import {
-  MainInput,
-  MainH2,
-  MainSection,
+  PrimaryInput,
+  PrimaryH2,
+  PrimarySection,
   SecondaryButton,
-  MainForm,
+  PrimaryForm,
 } from "../StyledComponents";
 
 export default function Signup() {
@@ -37,12 +37,12 @@ export default function Signup() {
 
   return (
     <>
-      <MainSection>
-        <MainH2>Sign Up</MainH2>
+      <PrimarySection>
+        <PrimaryH2>Sign Up</PrimaryH2>
         {error && <div variant="danger">{error}</div>}
-        <MainForm onSubmit={handleSubmit}>
+        <PrimaryForm onSubmit={handleSubmit}>
           <div id="email">
-            <MainInput
+            <PrimaryInput
               type="email"
               placeholder="Email"
               ref={emailRef}
@@ -50,7 +50,7 @@ export default function Signup() {
             />
           </div>
           <div id="password">
-            <MainInput
+            <PrimaryInput
               type="password"
               placeholder="Password"
               ref={passwordRef}
@@ -58,7 +58,7 @@ export default function Signup() {
             />
           </div>
           <div id="password-confirm">
-            <MainInput
+            <PrimaryInput
               type="password"
               placeholder="Repeat password"
               ref={passwordConfirmRef}
@@ -70,8 +70,8 @@ export default function Signup() {
             Sign Up
           </SecondaryButton>
           <Link to="/login"> Already have an account? Login</Link>
-        </MainForm>
-      </MainSection>
+        </PrimaryForm>
+      </PrimarySection>
     </>
   );
 }

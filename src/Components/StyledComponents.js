@@ -1,14 +1,10 @@
 import styled from "styled-components";
 
-/* =========
-COLOR VARIABLES 
-===========*/
-const primaryColor = 'black';
-const secondaryColor = 'white';
+// ------------------------------- COLOR VARIABLES ---------------------------------
+const primaryColor = "black";
+const secondaryColor = "white";
 
-/* =========
-ELEMENTS WITH STYLES THAT ARE USED MORE THAN ONCE
-===========*/
+// -------------------- ELEMENTS WITH STYLES THAT ARE USED MORE THAN ONCE-------------------------
 export const ResultsGrid = styled.section`
   display: flex;
   flex-wrap: wrap;
@@ -18,7 +14,7 @@ export const ResultsGrid = styled.section`
 
 export const ItemCard = styled.section`
   max-width: 120px;
-  max-height: 400px;
+  max-height: 300px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -26,25 +22,37 @@ export const ItemCard = styled.section`
   margin: 5px;
   h2 {
     font-size: 1.3rem;
+    text-align: center;
+    margin-bottom: 5px;
   }
   img {
     width: 100%;
   }
-  p {
-    font-size: 0.9rem;
+  span {
+    font-size: 1rem;
+    margin-bottom: 15px;
   }
   button {
     font-family: inherit;
     background: none;
-    border: 1px solid black;
+    border: 1px solid ${primaryColor};
+    margin: 3px 0;
   }
 `;
 
-export const MainInput = styled.input`
+export const PrimaryH2 = styled.h2`
+  text-align: center;
+  font-size: 1.6rem;
+  margin-top: 150px;
+  margin-bottom: 100px;
+`;
+
+// ------------------------------- FORMS ---------------------------------
+export const PrimaryInput = styled.input`
   width: 100%;
   display: block;
   border: none;
-  border-bottom: 2px ${primaryColor} solid;
+  border-bottom: 2px solid ${primaryColor};
   padding: 10px 1px;
   margin-bottom: 35px;
   font-size: 1.2rem;
@@ -59,29 +67,24 @@ export const MainInput = styled.input`
   }
 `;
 
-export const MainLabel = styled.label`
+export const PrimaryLabel = styled.label`
   font-size: 1.3rem;
   font-weight: 600;
 `;
 
-export const MainH2 = styled.h2`
-  text-align: center;
-  font-size: 1.6rem;
-  margin-top: 150px;
-  margin-bottom: 100px;
-`;
-
-export const MainForm = styled.form`
+export const PrimaryForm = styled.form`
   width: 80vw;
 `;
 
-export const MainSection = styled.section`
+// ------------------------------- SECTIONS ---------------------------------
+export const PrimarySection = styled.section`
+  //used by Authentication-files
   display: flex;
   flex-direction: column;
   align-items: center;
   a {
     align-self: flex-start;
-    color: black;
+    color: ${primaryColor};
     font-size: 0.9rem;
     text-decoration: none;
     border-bottom: 1px solid black;
@@ -89,15 +92,60 @@ export const MainSection = styled.section`
   }
 `;
 
-export const MainButton = styled.button`
-  width: 100%;
+export const SecondarySection = styled.section`
+  //used by Profile-files + Stats
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  h1 {
+    font-size: 2rem;
+    text-align: center;
+    margin: 70px 0;
+  }
+  li {
+    list-style: none;
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin: 15px 0;
+    width: 80vw;
+    display: block;
+  }
+  li a {
+    display: flex;
+    justify-content: space-between;
+    color: ${primaryColor};
+    text-decoration: none;
+    border-bottom: 2px solid ${primaryColor};
+    padding-bottom: 5px;
+  }
+  span {
+    font-size: 1.3rem;
+  }
+`;
+
+// ------------------------------- BUTTONS ---------------------------------
+export const PrimaryButton = styled.button`
+  width: 80vw;
   margin-top: 150px;
   margin-bottom: 10px;
   font-family: inherit;
   font-size: 1.1rem;
   background: none;
-  border: 2px solid black;
+  border: 2px solid ${primaryColor};
   padding: 10px 30px;
+  cursor: pointer;
+`;
+
+export const SecondaryButton = styled.button`
+  width: 80vw;
+  margin-top: 90px;
+  margin-bottom: 10px;
+  font-family: inherit;
+  font-size: 1.1rem;
+  background: none;
+  border: 2px solid ${primaryColor};
+  padding: 10px 30px;
+  cursor: pointer;
 `;
 
 export const GoBackButton = styled.i`
@@ -106,24 +154,26 @@ export const GoBackButton = styled.i`
   margin-left: 30px;
   font-size: 1.5rem;
 `;
-export const PrimaryButton = styled.button`
-    width: 80vw;
-    font-family: inherit;
-    font-size: 1.1rem;
-    color: ${secondaryColor};
-    background: ${primaryColor};
-    padding: 10px 30px;
-    margin-top: 40vh;
-    cursor: pointer;
+
+// ------------------------------- SEARCH --------------------------------
+export const SearchLabel = styled.label`
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #2b2b2b;
 `;
 
-export const SecondaryButton = styled.button`
-    width: 80vw;
-    font-family: inherit;
-    font-size: 1.1rem;
-    background: none;
-    border: 2px solid ${primaryColor};
-    padding: 10px 30px;
-    margin-top: 20vh;
-    cursor: pointer;
+export const SearchInput = styled.input`
+  width: 95vw;
+  border-radius: 5px;
+  padding: 15px;
+  border: 0;
+  font-size: 1rem;
+  &:focus {
+    outline: none;
+  }
+  &::placeholder {
+    font-style: italic;
+  }
 `;

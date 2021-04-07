@@ -2,18 +2,17 @@ import React, { useEffect, useState } from "react";
 import { useAuth } from "../context/AuthContext";
 import { db } from "../firebase";
 import styled from "styled-components";
+import { PrimarySection, SecondarySection } from "./StyledComponents";
 
 export const StatsPage = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
-
   h1 {
     font-size: 2rem;
     text-align: center;
     margin: 100px 0;
   }
-
   span {
     font-size: 1.2rem;
   }
@@ -49,7 +48,7 @@ function Stats() {
     Math.round((sumVoteAverage / watchedMoviesTitles.length) * 10) / 10;
 
   return (
-    <StatsPage>
+    <SecondarySection>
       <h1>Stats</h1>
       <span>
         Number of movies watched: <strong>{watchedMoviesTitles.length}</strong>
@@ -58,7 +57,7 @@ function Stats() {
       <span>
         Average rating: <strong>{avg}</strong>
       </span>
-    </StatsPage>
+    </SecondarySection>
   );
 }
 

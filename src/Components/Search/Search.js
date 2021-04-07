@@ -4,27 +4,8 @@ import MovieItem from "./MovieItem";
 import ActorItem from "./ActorItem";
 import TvItem from "./TvItem";
 import { ResultsGrid } from "../StyledComponents";
-import { IMAGE_URL } from '../../constants/urlParts';
-import styled from "styled-components";
-
-const StyledLabel = styled.label`
-padding: 10px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #2b2b2b;
-`;
-
-const StyledInput = styled.input`
-  width: 95vw;
-  border-radius: 5px;
-  padding: 15px;
-  border: 0;
-  font-size: 16px;
-  &:focus{
-    outline: none;
-  }
-`;
+import { IMAGE_URL } from "../../constants/urlParts";
+import { SearchLabel, SearchInput } from "../StyledComponents";
 
 function Search() {
   const [searchTerm, setSearchTerm] = useState("");
@@ -69,18 +50,16 @@ function Search() {
 
   return (
     <div>
-
-      <StyledLabel htmlFor="search">
-
-        <StyledInput
+      <SearchLabel htmlFor="search">
+        <SearchInput
           id="search"
           name="search"
           type="text"
-          placeholder="Search for movie or actor"
+          placeholder="Search for movie, show or actor"
           value={searchTerm}
           onChange={onInputChange}
         />
-      </StyledLabel>
+      </SearchLabel>
 
       <Pagination
         moviesPerPage={moviesPerPage}

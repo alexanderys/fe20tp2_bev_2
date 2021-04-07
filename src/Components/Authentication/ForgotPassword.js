@@ -2,13 +2,11 @@ import React, { useRef, useState } from "react";
 import { useAuth } from "../../context/AuthContext";
 import { Link, useHistory } from "react-router-dom";
 import {
-  MainInput,
-  MainH2,
-  MainSection,
-  MainButton,
-  SecondaryButton,
-  MainLabel,
-  MainForm,
+  PrimaryInput,
+  PrimaryH2,
+  PrimarySection,
+  PrimaryButton,
+  PrimaryForm,
   GoBackButton,
 } from "../StyledComponents";
 
@@ -37,17 +35,17 @@ export default function ForgotPassword() {
 
   return (
     <>
-      <MainSection>
+      <PrimarySection>
         <GoBackButton
           onClick={() => history.goBack()}
-          className="back-icon fas fa-angle-left"
+          className="fas fa-angle-left"
         ></GoBackButton>
-        <MainH2>Password Reset</MainH2>
+        <PrimaryH2>Password Reset</PrimaryH2>
         {error && <div variant="danger">{error}</div>}
         {message && <div variant="success">{message}</div>}
-        <MainForm onSubmit={handleSubmit}>
+        <PrimaryForm onSubmit={handleSubmit}>
           <div id="email">
-            <MainInput
+            <PrimaryInput
               type="email"
               placeholder="Email"
               ref={emailRef}
@@ -55,14 +53,11 @@ export default function ForgotPassword() {
             />
           </div>
 
-          <MainButton disabled={loading} type="submit">
+          <PrimaryButton disabled={loading} type="submit">
             Reset Password
-          </MainButton>
-        </MainForm>
-
-        {/* <Link to="/login">Log In</Link>
-        <Link to="/signup">Sign Up</Link> */}
-      </MainSection>
+          </PrimaryButton>
+        </PrimaryForm>
+      </PrimarySection>
     </>
   );
 }

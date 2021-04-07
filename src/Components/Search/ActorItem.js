@@ -1,12 +1,12 @@
 import React from "react";
 import { ItemCard } from "../StyledComponents";
-
-const IMAGE_URL = "https://image.tmdb.org/t/p/original";
+import { IMAGE_URL } from "../../constants/urlParts";
+import FallbackImage from '../FallbackImage';
 
 const ActorItem = ({ id, title, name, profilePath, knownFor, releaseDate }) => {
   return (
     <ItemCard>
-      <img src={IMAGE_URL + profilePath} alt="" />
+      { profilePath ? <img src={IMAGE_URL + profilePath} alt="" /> : <FallbackImage type={'actor'} />}
       <h2>{name}</h2>
       <p>
         Actor/Actress

@@ -5,7 +5,6 @@ import { ResultsGrid } from "./StyledComponents";
 import * as URL from "../constants/urlParts";
 
 const Home = () => {
-
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
@@ -40,16 +39,6 @@ const Home = () => {
               releaseDate={release_date}
               posterPath={poster_path}
               imgComboPath={URL.IMAGE_URL + poster_path}
-            // buttons={[
-            //   {
-            //     text: "Add to have watched",
-            //     function: () => addToHaveWatched(id),
-            //   },
-            //   {
-            //     text: "Remove From have watcher",
-            //     function: () => addToHaveWatcheasdjasodd(id),
-            //   },
-            // ]}
             />
           )
         )}

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { db } from "../../firebase";
 import { useAuth } from "../../context/AuthContext";
 import { ItemCard } from "../StyledComponents";
+import FallbackImage from '../FallbackImage';
 
 function MovieItem({
   id,
@@ -10,6 +11,7 @@ function MovieItem({
   voteAverage,
   imgComboPath,
   buttons,
+  posterPath
 }) {
   const { currentUser } = useAuth();
   // const [toggleState, setToggleState] = useState("Add to Watched");
@@ -45,9 +47,9 @@ function MovieItem({
           } else {
             setInHaveWatched(false);
           }
-        })
+        });
     }
-  }, [])
+  }, []);
 
   useEffect(() => {
     if (currentUser) {
@@ -62,10 +64,9 @@ function MovieItem({
           } else {
             setInWatchlist(false);
           }
-        })
+        });
     }
-  }, [])
-
+  }, []);
 
   const addToHaveWatched = () => {
     // db.collection("haveWatched").add({...}) = gives a random FB-ID to the document
@@ -101,7 +102,7 @@ function MovieItem({
       .doc(id.toString())
       .set({
         movieTitle: title,
-        voteAverage: voteAverage
+        voteAverage: voteAverage,
       })
       .then(() => {
         setInWatchlist(true);
@@ -122,29 +123,35 @@ function MovieItem({
   return (
     <ItemCard>
       <a href={`movies/${id}`}>
-        <img src={imgComboPath} alt="" />{" "}
+        {posterPath ? <img src={imgComboPath} alt="" /> : <FallbackImage type={'movie'} />}
       </a>
 
       <h2>{title}</h2>
       {/* {buttons.map((button) => (
         <button onClick={button.function}>{button.text}</button>
       ))} */}
-      {inWatchlist ? (
-        (currentUser && <button onClick={removeFromWatchlist}>Remove from Watchlist</button>)
-      ) : (
-        (currentUser && <button onClick={addToWatchlist}>Add to Watchlist</button>)
-      )}
+      {inWatchlist
+        ? currentUser && (
+          <button onClick={removeFromWatchlist}>Remove from Watchlist</button>
+        )
+        : currentUser && (
+          <button onClick={addToWatchlist}>Add to Watchlist</button>
+        )}
 
-      {inHaveWatched ? (
-        (currentUser && <button onClick={removeFromHaveWatched}>Remove from Have Watched</button>)
-      ) : (
-        (currentUser && <button onClick={addToHaveWatched}>Add to Have Watched</button>)
-      )}
+      {inHaveWatched
+        ? currentUser && (
+          <button onClick={removeFromHaveWatched}>
+            Remove from Have Watched
+          </button>
+        )
+        : currentUser && (
+          <button onClick={addToHaveWatched}>Add to Have Watched</button>
+        )}
 
       <span>{voteAverage}</span>
       {/* <span>{releaseDate.substring(0, 4)}</span> */}
-      <strong>Overview</strong>
-      <p>{overview}</p>
+      {/* <strong>Overview</strong>
+      <p>{overview}</p> */}
     </ItemCard>
   );
 }
