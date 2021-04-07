@@ -14,7 +14,7 @@ function Search() {
   // Pagination State
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
-  const [moviesPerPage, setMoviesPerPage] = useState(10);
+  const [moviesPerPage, setMoviesPerPage] = useState(9);
 
   const onInputChange = (e) => {
     e.preventDefault();
@@ -68,13 +68,11 @@ function Search() {
       />
 
       {currentMovies.length > 0 && (
-        // Göra om ul till en komponent som innehåller pagination
         <>
           <h2>Showing results for "{searchTerm}"</h2>
           <ResultsGrid>
             {currentMovies.map(
               ({
-                movie,
                 id,
                 title,
                 overview,
@@ -135,22 +133,3 @@ function Search() {
 }
 
 export default Search;
-
-{
-  /* <MovieListGrid>
-            {currentMovies.map(
-              ({ id, title, overview, vote_average, poster_path, release_date,
-              }) => (
-                <MovieItem
-                  title={title}
-                  key={id}
-                  overview={overview}
-                  voteAverage={vote_average}
-                  releaseDate={release_date}
-                  posterPath={poster_path}
-                  imgComboPath={IMAGE_URL + poster_path}
-                />
-              )
-            )}
-          </MovieListGrid> */
-}
