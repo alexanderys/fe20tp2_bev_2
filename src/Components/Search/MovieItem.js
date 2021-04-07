@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { db } from "../../firebase";
 import { useAuth } from "../../context/AuthContext";
 import { ItemCard } from "../StyledComponents";
+import FallbackImage from '../FallbackImage';
 
 function MovieItem({
   id,
@@ -10,6 +11,7 @@ function MovieItem({
   voteAverage,
   imgComboPath,
   buttons,
+  posterPath
 }) {
   const { currentUser } = useAuth();
   // const [toggleState, setToggleState] = useState("Add to Watched");
@@ -121,7 +123,7 @@ function MovieItem({
   return (
     <ItemCard>
       <a href={`movies/${id}`}>
-        <img src={imgComboPath} alt="" />{" "}
+        {posterPath ? <img src={imgComboPath} alt="" /> : <FallbackImage type={'movie'} />}
       </a>
 
       <h2>{title}</h2>
@@ -130,21 +132,21 @@ function MovieItem({
       ))} */}
       {inWatchlist
         ? currentUser && (
-            <button onClick={removeFromWatchlist}>Remove from Watchlist</button>
-          )
+          <button onClick={removeFromWatchlist}>Remove from Watchlist</button>
+        )
         : currentUser && (
-            <button onClick={addToWatchlist}>Add to Watchlist</button>
-          )}
+          <button onClick={addToWatchlist}>Add to Watchlist</button>
+        )}
 
       {inHaveWatched
         ? currentUser && (
-            <button onClick={removeFromHaveWatched}>
-              Remove from Have Watched
-            </button>
-          )
+          <button onClick={removeFromHaveWatched}>
+            Remove from Have Watched
+          </button>
+        )
         : currentUser && (
-            <button onClick={addToHaveWatched}>Add to Have Watched</button>
-          )}
+          <button onClick={addToHaveWatched}>Add to Have Watched</button>
+        )}
 
       <span>{voteAverage}</span>
       {/* <span>{releaseDate.substring(0, 4)}</span> */}
