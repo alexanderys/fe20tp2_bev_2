@@ -1,10 +1,10 @@
 import React from "react";
-import { useAuth } from "../../context/AuthContext";
+
 import { Link, useHistory } from "react-router-dom";
 import { SecondarySection, GoBackButton } from "../StyledComponents";
 
 export default function Profile() {
-  const { currentUser } = useAuth();
+
   const history = useHistory();
 
   return (
@@ -31,6 +31,8 @@ export default function Profile() {
             Have watched <i className="fas fa-angle-right"></i>
           </Link>
         </li>
+
+
       </SecondarySection>
     </>
   );

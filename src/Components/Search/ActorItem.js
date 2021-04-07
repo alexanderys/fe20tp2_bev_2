@@ -3,7 +3,7 @@ import { ItemCard } from "../StyledComponents";
 import { IMAGE_URL } from "../../constants/urlParts";
 import FallbackImage from '../FallbackImage';
 
-const ActorItem = ({ id, title, name, profilePath, knownFor, releaseDate }) => {
+const ActorItem = ({ name, profilePath, knownFor }) => {
   return (
     <ItemCard>
       { profilePath ? <img src={IMAGE_URL + profilePath} alt="" /> : <FallbackImage type={'actor'} />}

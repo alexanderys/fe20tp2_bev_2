@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 import { useAuth } from "../../context/AuthContext";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import {
   SecondarySection,
   GoBackButton,
@@ -46,15 +46,14 @@ export default function UpdateProfile() {
       //when all the promises finishes and are successful, then history.push will execute
       .then(() => {
         setMessage(
-          "Profile was successfully updated. Press Cancel to return to start page."
+          "Profile was successfully updated."
         );
-        console.log("success");
       })
       //   .then(() => {
       //     history.push("/");
       //   })
       .catch(() => {
-        setError("Failed to update account");
+        setError("Failed to update account. Try logging out and in again");
         //Probably "Credentials are too old, you need to log in again"-error?
         //https://firebase.google.com/docs/reference/js/firebase.User#reauthenticatewithcredential
       })
@@ -72,10 +71,10 @@ export default function UpdateProfile() {
           className="fas fa-angle-left"
         ></GoBackButton>
         <h1>Update Profile</h1>
-        {error && <div variant="danger">{error}</div>}
-        {message && <div variant="success">{message}</div>}
+        {error && <div>{error}</div>}
+        {message && <div>{message}</div>}
         <PrimaryForm onSubmit={handleSubmit}>
-          <div id="email">
+          <div>
             <PrimaryLabel>Email</PrimaryLabel>
             <PrimaryInput
               type="email"
@@ -84,7 +83,7 @@ export default function UpdateProfile() {
               defaultValue={currentUser.email}
             />
           </div>
-          <div id="password">
+          <div>
             <PrimaryLabel>Password</PrimaryLabel>
             <PrimaryInput
               type="password"
@@ -92,7 +91,7 @@ export default function UpdateProfile() {
               placeholder="Leave blank to keep the same"
             />
           </div>
-          <div id="password-confirm">
+          <div>
             <PrimaryLabel>Password Confirmation</PrimaryLabel>
             <PrimaryInput
               type="password"

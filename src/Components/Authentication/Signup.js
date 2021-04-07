@@ -39,9 +39,9 @@ export default function Signup() {
     <>
       <PrimarySection>
         <PrimaryH2>Sign Up</PrimaryH2>
-        {error && <div variant="danger">{error}</div>}
+        {error && <div>{error}</div>}
         <PrimaryForm onSubmit={handleSubmit}>
-          <div id="email">
+          <div>
             <PrimaryInput
               type="email"
               placeholder="Email"
@@ -49,7 +49,7 @@ export default function Signup() {
               required
             />
           </div>
-          <div id="password">
+          <div>
             <PrimaryInput
               type="password"
               placeholder="Password"
@@ -57,7 +57,7 @@ export default function Signup() {
               required
             />
           </div>
-          <div id="password-confirm">
+          <div>
             <PrimaryInput
               type="password"
               placeholder="Repeat password"

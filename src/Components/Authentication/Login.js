@@ -35,9 +35,9 @@ export default function Login() {
     <>
       <PrimarySection>
         <PrimaryH2>Log In</PrimaryH2>
-        {error && <div variant="danger">{error}</div>}
+        {error && <div>{error}</div>}
         <PrimaryForm onSubmit={handleSubmit}>
-          <div id="email">
+          <div>
             <PrimaryInput
               type="email"
               placeholder="Email"
@@ -45,7 +45,7 @@ export default function Login() {
               required
             />
           </div>
-          <div id="password">
+          <div>
             <PrimaryInput
               type="password"
               placeholder="Password"

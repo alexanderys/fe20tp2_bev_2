@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 import { useAuth } from "../../context/AuthContext";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import {
   PrimaryInput,
   PrimaryH2,
@@ -17,6 +17,7 @@ export default function ForgotPassword() {
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
   const history = useHistory();
+  //useHistory is linked to "react-router-dom", and keeps track of which route/page we're currently on
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -37,12 +38,14 @@ export default function ForgotPassword() {
     <>
       <PrimarySection>
         <GoBackButton
+          /* goBack() is a built in function. It does the same thing as
+          clicking the back arrow in your browser */
           onClick={() => history.goBack()}
           className="fas fa-angle-left"
         ></GoBackButton>
         <PrimaryH2>Password Reset</PrimaryH2>
-        {error && <div variant="danger">{error}</div>}
-        {message && <div variant="success">{message}</div>}
+        {error && <div>{error}</div>}
+        {message && <div>{message}</div>}
         <PrimaryForm onSubmit={handleSubmit}>
           <div id="email">
             <PrimaryInput

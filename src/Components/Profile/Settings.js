@@ -9,7 +9,7 @@ import {
 
 export default function Dashboard() {
   const [error, setError] = useState("");
-  const { currentUser, logout } = useAuth();
+  const { logout } = useAuth();
   const history = useHistory();
 
   async function handleLogout() {
@@ -38,9 +38,11 @@ export default function Dashboard() {
             Update password or email <i className="fas fa-angle-right"></i>
           </Link>
         </li>
-        <PrimaryButton variant="link" onClick={handleLogout}>
+        {error && <div>{error}</div>}
+        <PrimaryButton onClick={handleLogout}>
           Log Out
         </PrimaryButton>
+
       </SecondarySection>
     </>
   );

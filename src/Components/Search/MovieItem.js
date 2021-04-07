@@ -7,32 +7,14 @@ import FallbackImage from '../FallbackImage';
 function MovieItem({
   id,
   title,
-  overview,
   voteAverage,
   imgComboPath,
-  buttons,
-  posterPath
+  posterPath,
+  //releaseDate
 }) {
   const { currentUser } = useAuth();
-  // const [toggleState, setToggleState] = useState("Add to Watched");
-  // function toggle() {
-  //   setToggleState(
-  //     toggleState === "Add to Watched"
-  //       ? "Remove from Watched"
-  //       : "Add to Watched"
-  //   )}
-
   const [inHaveWatched, setInHaveWatched] = useState(false);
   const [inWatchlist, setInWatchlist] = useState(false);
-
-  /*   useEffect(async () => {
-      const inHW = await db.collection("users")
-        .doc(currentUser.uid)
-        .collection("haveWatched")
-        .doc(id.toString());
-  
-      console.log(inHW);
-    }, []) */
 
   useEffect(() => {
     if (currentUser) {
@@ -69,7 +51,7 @@ function MovieItem({
   }, []);
 
   const addToHaveWatched = () => {
-    // db.collection("haveWatched").add({...}) = gives a random FB-ID to the document
+    // db.collection("haveWatched").add({...}) = gives a random Firestore-ID to the document
     // id = the MovieItem-prop. we need toString() because FB only accepts documents id's as strings
     db.collection("users")
       .doc(currentUser.uid)
@@ -127,9 +109,6 @@ function MovieItem({
       </a>
 
       <h2>{title}</h2>
-      {/* {buttons.map((button) => (
-        <button onClick={button.function}>{button.text}</button>
-      ))} */}
       {inWatchlist
         ? currentUser && (
           <button onClick={removeFromWatchlist}>Remove from Watchlist</button>
@@ -150,8 +129,6 @@ function MovieItem({
 
       <span>{voteAverage}</span>
       {/* <span>{releaseDate.substring(0, 4)}</span> */}
-      {/* <strong>Overview</strong>
-      <p>{overview}</p> */}
     </ItemCard>
   );
 }
