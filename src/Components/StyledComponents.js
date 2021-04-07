@@ -1,14 +1,10 @@
 import styled from "styled-components";
 
-/* =========
-COLOR VARIABLES 
-===========*/
+// ------------------------------- COLOR VARIABLES ---------------------------------
 const primaryColor = "black";
 const secondaryColor = "white";
 
-/* =========
-ELEMENTS WITH STYLES THAT ARE USED MORE THAN ONCE
-===========*/
+// -------------------- ELEMENTS WITH STYLES THAT ARE USED MORE THAN ONCE-------------------------
 export const ResultsGrid = styled.section`
   display: flex;
   flex-wrap: wrap;
@@ -36,7 +32,6 @@ export const ItemCard = styled.section`
     font-size: 1rem;
     margin-bottom: 15px;
   }
-
   button {
     font-family: inherit;
     background: none;
@@ -45,6 +40,14 @@ export const ItemCard = styled.section`
   }
 `;
 
+export const PrimaryH2 = styled.h2`
+  text-align: center;
+  font-size: 1.6rem;
+  margin-top: 150px;
+  margin-bottom: 100px;
+`;
+
+// ------------------------------- FORMS ---------------------------------
 export const PrimaryInput = styled.input`
   width: 100%;
   display: block;
@@ -69,18 +72,13 @@ export const PrimaryLabel = styled.label`
   font-weight: 600;
 `;
 
-export const PrimaryH2 = styled.h2`
-  text-align: center;
-  font-size: 1.6rem;
-  margin-top: 150px;
-  margin-bottom: 100px;
-`;
-
 export const PrimaryForm = styled.form`
   width: 80vw;
 `;
 
+// ------------------------------- SECTIONS ---------------------------------
 export const PrimarySection = styled.section`
+  //used by Authentication-files
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -95,16 +93,15 @@ export const PrimarySection = styled.section`
 `;
 
 export const SecondarySection = styled.section`
+  //used by Profile-files + Stats
   display: flex;
   flex-direction: column;
   align-items: center;
-
   h1 {
     font-size: 2rem;
     text-align: center;
     margin: 70px 0;
   }
-
   li {
     list-style: none;
     font-size: 1.3rem;
@@ -113,7 +110,6 @@ export const SecondarySection = styled.section`
     width: 80vw;
     display: block;
   }
-
   li a {
     display: flex;
     justify-content: space-between;
@@ -122,8 +118,12 @@ export const SecondarySection = styled.section`
     border-bottom: 2px solid ${primaryColor};
     padding-bottom: 5px;
   }
+  span {
+    font-size: 1.3rem;
+  }
 `;
 
+// ------------------------------- BUTTONS ---------------------------------
 export const PrimaryButton = styled.button`
   width: 80vw;
   margin-top: 150px;
@@ -153,4 +153,27 @@ export const GoBackButton = styled.i`
   margin-top: 30px;
   margin-left: 30px;
   font-size: 1.5rem;
+`;
+
+// ------------------------------- SEARCH --------------------------------
+export const SearchLabel = styled.label`
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #2b2b2b;
+`;
+
+export const SearchInput = styled.input`
+  width: 95vw;
+  border-radius: 5px;
+  padding: 15px;
+  border: 0;
+  font-size: 1rem;
+  &:focus {
+    outline: none;
+  }
+  &::placeholder {
+    font-style: italic;
+  }
 `;
