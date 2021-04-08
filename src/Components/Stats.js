@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useAuth } from "../context/AuthContext";
 import { db } from "../firebase";
 import { SecondarySection } from "./StyledComponents";
+import BarChart from "./Stats";
 
 function Stats() {
   const { currentUser } = useAuth();
@@ -38,6 +39,7 @@ function Stats() {
   return (
     <SecondarySection>
       <h1>Stats</h1>
+      <BarChart />
       <span>
         Number of movies watched: <strong>{watchedMoviesTitles.length}</strong>
       </span>
