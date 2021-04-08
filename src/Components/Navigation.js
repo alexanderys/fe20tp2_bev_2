@@ -48,32 +48,34 @@ const StyledUL = styled.ul`
 `;
 
 const Navigation = () => (
-  <StyledUL>
-    <li>
-      <Link to={ROUTES.HOME}>
-        <FontAwesomeIcon icon={faHome} />
-        <p>Home</p>
-      </Link>
-    </li>
-    <li>
-      <Link to={ROUTES.SEARCH}>
-        <FontAwesomeIcon icon={faSearch} />
-        <p>Search</p>
-      </Link>
-    </li>
-    <li>
-      <Link to={ROUTES.STATS}>
-        <FontAwesomeIcon icon={faChartPie} />
-        <p>Stats</p>
-      </Link>
-    </li>
-    <li>
-      <Link to={ROUTES.PROFILE}>
-        <FontAwesomeIcon icon={faUser} />
-        <p>Profile</p>
-      </Link>
-    </li>
-  </StyledUL>
+  <nav>
+    <StyledUL>
+      <li>
+        <Link to={ROUTES.HOME}>
+          <FontAwesomeIcon icon={faHome} />
+          <p>Home</p>
+        </Link>
+      </li>
+      <li>
+        <Link to={ROUTES.SEARCH}>
+          <FontAwesomeIcon icon={faSearch} />
+          <p>Search</p>
+        </Link>
+      </li>
+      <li>
+        <Link to={ROUTES.STATS}>
+          <FontAwesomeIcon icon={faChartPie} />
+          <p>Stats</p>
+        </Link>
+      </li>
+      <li>
+        <Link to={ROUTES.PROFILE}>
+          <FontAwesomeIcon icon={faUser} />
+          <p>Profile</p>
+        </Link>
+      </li>
+    </StyledUL>
+  </nav>
 );
 
 export default Navigation;

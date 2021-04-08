@@ -1,22 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useAuth } from "../context/AuthContext";
 import { db } from "../firebase";
-import styled from "styled-components";
-import { PrimarySection, SecondarySection } from "./StyledComponents";
-
-export const StatsPage = styled.section`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  h1 {
-    font-size: 2rem;
-    text-align: center;
-    margin: 100px 0;
-  }
-  span {
-    font-size: 1.2rem;
-  }
-`;
+import { SecondarySection } from "./StyledComponents";
 
 function Stats() {
   const { currentUser } = useAuth();
@@ -39,6 +24,9 @@ function Stats() {
         setWatchedMoviesVoteAvg(voteAverage);
       });
   }, []);
+
+  // Row 30 to 35 needs to run AFTER data have been fetched from fb.
+  //Solve this!!!!!!!!
 
   const sumVoteAverage = watchedMoviesVoteAvg.reduce(
     (result, number) => result + number,

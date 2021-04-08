@@ -12,8 +12,6 @@ const Home = () => {
       .get(URL.BASE_URL + URL.NOW_PLAYING + URL.API_KEY + URL.SETTINGS)
       .then((res) => {
         setMovies(res.data.results);
-        //In case of trouble, the tutorial wrote a map here!!
-        // setMovies(res.data.results.map((movie) => movie));
       });
   }, []);
 

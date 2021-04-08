@@ -21,8 +21,6 @@ export const Watchlist = () => {
       });
   }, []);
 
-  console.log(moviesInWatchlist);
-
   return (<>
 
     <div className="header">
@@ -55,3 +53,5 @@ export const Watchlist = () => {
 
   </>);
 };
+
+export default Watchlist;

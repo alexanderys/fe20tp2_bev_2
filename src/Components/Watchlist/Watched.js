@@ -41,7 +41,7 @@ export const Watched = () => {
 
       {watchedMovies.length > 0 ? (
         <ResultsGrid>
-          {watchedMovies.map(
+          {/*  {watchedMovies.map(
             ({
               id,
               title,
@@ -60,7 +60,7 @@ export const Watched = () => {
                 imgComboPath={URL.IMAGE_URL + poster_path}
               />
             )
-          )}
+          )} */}
         </ResultsGrid>
       ) : (
         <h2>No movies in your list! Add some!</h2>
@@ -68,3 +68,5 @@ export const Watched = () => {
     </div>
   );
 };
+
+export default Watched;

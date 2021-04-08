@@ -15,6 +15,7 @@ function MovieItem({
   const { currentUser } = useAuth();
   const [inHaveWatched, setInHaveWatched] = useState(false);
   const [inWatchlist, setInWatchlist] = useState(false);
+
   //the add-to-list-buttons checks these list states ^ to see if a specific movie is included
   useEffect(() => {
     if (currentUser) {
@@ -113,24 +114,24 @@ function MovieItem({
       </a>
 
       <h2>{title}</h2>
-      <span>{releaseDate.substring(0, 4)}</span>
+      {/* <span>{releaseDate.substring(0, 4)}</span> */}
       {inWatchlist
         ? currentUser && (
-            <button onClick={removeFromWatchlist}>Remove from Watchlist</button>
-          )
+          <button onClick={removeFromWatchlist}>Remove from Watchlist</button>
+        )
         : currentUser && (
-            <button onClick={addToWatchlist}>Add to Watchlist</button>
-          )}
+          <button onClick={addToWatchlist}>Add to Watchlist</button>
+        )}
 
       {inHaveWatched
         ? currentUser && (
-            <button onClick={removeFromHaveWatched}>
-              Remove from Have Watched
-            </button>
-          )
+          <button onClick={removeFromHaveWatched}>
+            Remove from Have Watched
+          </button>
+        )
         : currentUser && (
-            <button onClick={addToHaveWatched}>Add to Have Watched</button>
-          )}
+          <button onClick={addToHaveWatched}>Add to Have Watched</button>
+        )}
 
       <span>{voteAverage}</span>
     </ItemCard>
