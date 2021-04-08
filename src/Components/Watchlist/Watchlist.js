@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { db } from "../../firebase";
 import { useAuth } from "../../context/AuthContext";
+import { SecondarySection } from '../StyledComponents';
 
 export const Watchlist = () => {
   const { currentUser } = useAuth();
@@ -22,35 +23,34 @@ export const Watchlist = () => {
   }, []);
 
   return (<>
+    <SecondarySection>
+      <div>
+        <h1>My Watchlist</h1>
+        <strong>Email: </strong> {currentUser.email}
+        <br />
+        <strong>UID: </strong>{currentUser.uid}
+        <hr /> <br />
 
-    <div className="header">
-      <h1>My Watchlist</h1>
-      <strong>User email: </strong> {currentUser.email}
+        <h3 className="count-pill">
+          {'You have ' + moviesInWatchlist.length + ' '}
+          {moviesInWatchlist.length === 1 ? "movie" : "movies"}
+          {' in your watchlist'}
+        </h3>
+      </div>
+
       <br />
-      <strong>UID: </strong>{currentUser.uid}
-      <hr /> <br />
 
-      <h3 className="count-pill">
-        {'You have ' + moviesInWatchlist.length + ' '}
-        {moviesInWatchlist.length === 1 ? "movie" : "movies"}
-        {' in your watchlist'}
-      </h3>
-    </div>
-
-    <br />
-
-    {moviesInWatchlist.length > 0 ? (
-      <>
-        {/* Temporary simple display of movies 
-            There's not MovieItem here so no buttons for Removing n stuff
+      {moviesInWatchlist.length > 0 ? (
+        <>
+          {/* Temporary simple display of movies. 
+            There's no MovieItem here so no buttons for Removing n stuff either
         */}
-        <hr />
-        <h2>{moviesInWatchlist}</h2>
-      </>
-    ) : (
-      <h2>No movies in your watchlist! Add some!</h2>
-    )}
-
+          <h2>{moviesInWatchlist}</h2>
+        </>
+      ) : (
+        <h2>No movies in your watchlist! Add some!</h2>
+      )}
+    </SecondarySection>
   </>);
 };
 

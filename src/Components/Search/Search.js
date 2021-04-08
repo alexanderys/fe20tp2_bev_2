@@ -3,7 +3,7 @@ import Pagination from "./pagination";
 import MovieItem from "./MovieItem";
 import ActorItem from "./ActorItem";
 import TvItem from "./TvItem";
-import { ResultsGrid } from "../StyledComponents";
+import { PrimarySection, ResultsGrid } from "../StyledComponents";
 import { IMAGE_URL } from "../../constants/urlParts";
 import { SearchLabel, SearchInput } from "../StyledComponents";
 
@@ -49,7 +49,7 @@ function Search() {
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
-    <div>
+    <PrimarySection>
       <SearchLabel htmlFor="search">
         <SearchInput
           id="search"
@@ -128,7 +128,7 @@ function Search() {
           </ResultsGrid>
         </>
       )}
-    </div>
+    </PrimarySection>
   );
 }
 

@@ -1,12 +1,5 @@
 import styled from "styled-components";
 
-//Theme stuff v2
-//import { useTheme } from '../context/ThemeContext';
-
-// ------------------------------- COLOR VARIABLES ---------------------------------
-const primaryColor = "black";
-//const secondaryColor = "white";
-
 // -------------------- ELEMENTS WITH STYLES THAT ARE USED MORE THAN ONCE-------------------------
 export const ResultsGrid = styled.section`
   display: flex;
@@ -16,13 +9,15 @@ export const ResultsGrid = styled.section`
 `;
 
 export const ItemCard = styled.section`
+  display: flex;
+  flex-direction: column;
+  color: ${({ theme }) => theme.secondaryColor};
+  background-color: ${({ theme }) => theme.secondaryBackground};
   max-width: 120px;
   max-height: 300px;
   overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  background-color: grey;
   margin: 5px;
+  border-radius: 3px;
   h2 {
     font-size: 1.3rem;
     text-align: center;
@@ -36,9 +31,10 @@ export const ItemCard = styled.section`
     margin-bottom: 15px;
   }
   button {
+    color: ${({ theme }) => theme.secondaryColor};
     font-family: inherit;
     background: none;
-    border: 1px solid ${primaryColor};
+    border: 1px solid ${({ theme }) => theme.secondaryColor};
     margin: 3px 0;
   }
 `;
@@ -52,10 +48,12 @@ export const PrimaryH2 = styled.h2`
 
 // ------------------------------- FORMS ---------------------------------
 export const PrimaryInput = styled.input`
+  color: ${({ theme }) => theme.primaryColor};
+  background-color: ${({ theme }) => theme.primaryBackground};
   width: 100%;
   display: block;
   border: none;
-  border-bottom: 2px solid ${primaryColor};
+  border-bottom: 2px solid ${({ theme }) => theme.primaryColor};
   padding: 10px 1px;
   margin-bottom: 35px;
   font-size: 1.2rem;
@@ -66,7 +64,7 @@ export const PrimaryInput = styled.input`
   &::placeholder {
     font-size: 1.2rem;
     font-style: italic;
-    color: #a6a6a6;
+    color: ${({ theme }) => theme.secondaryColor};
   }
 `;
 
@@ -82,24 +80,28 @@ export const PrimaryForm = styled.form`
 // ------------------------------- SECTIONS ---------------------------------
 export const PrimarySection = styled.section`
   //used by Authentication-files
+  color: ${({ theme }) => theme.primaryColor};
+  background-color: ${({ theme }) => theme.primaryBackground};
   display: flex;
   flex-direction: column;
   align-items: center;
+  height: 100vh;
   a {
     align-self: flex-start;
-    color: ${primaryColor};
     font-size: 0.9rem;
     text-decoration: none;
-    border-bottom: 1px solid black;
     padding-bottom: 1px;
   }
 `;
 
 export const SecondarySection = styled.section`
   //used by Profile-files + Stats
+  color: ${({ theme }) => theme.primaryColor};
+  background-color: ${({ theme }) => theme.primaryBackground};
   display: flex;
   flex-direction: column;
   align-items: center;
+  height: 100vh;
   h1 {
     font-size: 2rem;
     text-align: center;
@@ -114,11 +116,11 @@ export const SecondarySection = styled.section`
     display: block;
   }
   li a {
+    color: ${({ theme }) => theme.primaryColor};
     display: flex;
     justify-content: space-between;
-    color: ${primaryColor};
     text-decoration: none;
-    border-bottom: 2px solid ${primaryColor};
+    border-bottom: 2px solid ${({ theme }) => theme.primaryColor};
     padding-bottom: 5px;
   }
   span {
@@ -128,25 +130,27 @@ export const SecondarySection = styled.section`
 
 // ------------------------------- BUTTONS ---------------------------------
 export const PrimaryButton = styled.button`
+  color: ${({ theme }) => theme.primaryColor};
   width: 80vw;
   margin-top: 150px;
   margin-bottom: 10px;
   font-family: inherit;
   font-size: 1.1rem;
   background: none;
-  border: 2px solid ${primaryColor};
+  border: 2px solid ${({ theme }) => theme.primaryColor};
   padding: 10px 30px;
   cursor: pointer;
 `;
 
 export const SecondaryButton = styled.button`
+  color: ${({ theme }) => theme.primaryColor};
   width: 80vw;
   margin-top: 90px;
   margin-bottom: 10px;
   font-family: inherit;
   font-size: 1.1rem;
   background: none;
-  border: 2px solid ${primaryColor};
+  border: 2px solid ${({ theme }) => theme.secondaryColor};
   padding: 10px 30px;
   cursor: pointer;
 `;
@@ -156,6 +160,7 @@ export const GoBackButton = styled.i`
   margin-top: 30px;
   margin-left: 30px;
   font-size: 1.5rem;
+  cursor: pointer;
 `;
 
 // ------------------------------- SEARCH --------------------------------
@@ -164,7 +169,7 @@ export const SearchLabel = styled.label`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #2b2b2b;
+  background-color: #343434;
 `;
 
 export const SearchInput = styled.input`

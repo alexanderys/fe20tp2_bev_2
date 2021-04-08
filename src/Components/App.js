@@ -16,11 +16,9 @@ import { AuthProvider } from "../context/AuthContext";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 //Theme stuff v1
 import { ThemeProvider } from 'styled-components';
-import { lightTheme, darkTheme, GlobalStyles } from './Themes/Themes';
+import { lightTheme, darkTheme } from './Themes/Themes';
 import { useState } from 'react';
 
-//Theme stuff v2
-//import ThemeContextProvider from '../context/ThemeContext';
 
 function App() {
 
@@ -29,20 +27,16 @@ function App() {
 
   const themeToggler = () => {
     theme === 'dark' ? setTheme('light') : setTheme('dark');
+    console.log(theme);
   }
 
   return (
     <Router>
       <AuthProvider>
         <Navigation />
-        {/* Theme stuff v1 */}
+        {/* Theme stuff */}
         <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
-          <GlobalStyles />
           <button onClick={() => themeToggler()}>Change Theme</button>
-
-
-          {/* Theme stuff v2 */}
-          {/* <ThemeContextProvider> */}
 
           <Switch>
             <Route exact path="/" component={Home} />
@@ -63,7 +57,6 @@ function App() {
           </Switch>
 
         </ThemeProvider>
-        {/* </ThemeContextProvider> */}
       </AuthProvider>
     </Router>
   );

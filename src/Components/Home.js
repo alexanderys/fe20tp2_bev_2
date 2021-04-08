@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import MovieItem from "./Search/MovieItem";
-import { ResultsGrid } from "./StyledComponents";
+import { PrimarySection, ResultsGrid } from "./StyledComponents";
 import * as URL from "../constants/urlParts";
 
 const Home = () => {
@@ -15,8 +15,8 @@ const Home = () => {
       });
   }, []);
 
-  return (
-    <>
+  return (<>
+    <PrimarySection>
       <h1>Now Playing</h1>
       <ResultsGrid>
         {movies.map(
@@ -41,8 +41,8 @@ const Home = () => {
           )
         )}
       </ResultsGrid>
-    </>
-  );
+    </PrimarySection>
+  </>);
 };
 
 export default Home;

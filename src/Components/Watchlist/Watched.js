@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import MovieItem from "../Search/MovieItem";
 import { db } from "../../firebase";
 import { useAuth } from "../../context/AuthContext";
-import { ResultsGrid } from "../StyledComponents";
+import { ResultsGrid, SecondarySection } from "../StyledComponents";
 import * as URL from "../../constants/urlParts";
 
 export const Watched = () => {
@@ -26,11 +26,14 @@ export const Watched = () => {
       });
   }, []);
 
-  return (
-    <div>
-      <div className="header">
+  return (<>
+    <SecondarySection>
+      <div>
         <h1>Watched Movies</h1>
-        <h3>CurrentUser uid: {currentUser.uid}</h3>
+        <strong>Email: </strong> {currentUser.email}
+        <br />
+        <strong>UID: </strong>{currentUser.uid}
+        <hr /> <br />
         <h2>Watched Movies: {watchedMovies}</h2>
 
         <h3 className="count-pill">
@@ -65,8 +68,8 @@ export const Watched = () => {
       ) : (
         <h2>No movies in your list! Add some!</h2>
       )}
-    </div>
-  );
+    </SecondarySection>
+  </>);
 };
 
 export default Watched;
