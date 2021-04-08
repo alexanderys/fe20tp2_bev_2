@@ -1,25 +1,25 @@
-import React, { useState } from "react";
-import { useAuth } from "../../context/AuthContext";
-import { Link, useHistory } from "react-router-dom";
+import React, { useState } from 'react';
+import { useAuth } from '../../context/AuthContext';
+import { Link, useHistory } from 'react-router-dom';
 import {
   SecondarySection,
   PrimaryButton,
   GoBackButton,
-} from "../StyledComponents";
+} from '../StyledComponents';
 
 export default function Dashboard() {
-  const [error, setError] = useState("");
+  const [error, setError] = useState('');
   const { logout } = useAuth();
   const history = useHistory();
 
   async function handleLogout() {
-    setError("");
+    setError('');
 
     try {
       await logout();
-      history.push("/");
+      history.push('/');
     } catch {
-      setError("Failed to log out");
+      setError('Failed to log out');
     }
   }
 
@@ -28,21 +28,18 @@ export default function Dashboard() {
       <SecondarySection>
         <GoBackButton
           onClick={() => history.goBack()}
-          className="fas fa-angle-left"
+          className='fas fa-angle-left'
         ></GoBackButton>
 
         <h1>Settings</h1>
 
         <li>
-          <Link to="/update-profile">
-            Update password or email <i className="fas fa-angle-right"></i>
+          <Link to='/update-profile'>
+            Update password or email <i className='fas fa-angle-right'></i>
           </Link>
         </li>
         {error && <div>{error}</div>}
-        <PrimaryButton onClick={handleLogout}>
-          Log Out
-        </PrimaryButton>
-
+        <PrimaryButton onClick={handleLogout}>Log Out</PrimaryButton>
       </SecondarySection>
     </>
   );

@@ -19,19 +19,25 @@ import { ThemeProvider } from 'styled-components';
 import { lightTheme, darkTheme } from './Darkmode/Themes';
 import { GlobalStyles } from './Darkmode/GlobalStyles';
 import React, { useState } from 'react';
+import { useDarkMode } from './Darkmode/useDarkMode';
+import Toggle from './Darkmode/Toggler';
 
 function App() {
-  const [theme, setTheme] = useState('light');
-  const themeToggler = () => {
-    theme === 'light' ? setTheme('dark') : setTheme('light');
-  };
+  // const [theme, setTheme] = useState('light');
+  // const themeToggler = () => {
+  //   theme === 'light' ? setTheme('dark') : setTheme('light');
+  // };
+
+  const [theme, themeToggler] = useDarkMode();
+
+  const themeMode = theme === 'light' ? lightTheme : darkTheme;
 
   return (
     <Router>
-      <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
+      <ThemeProvider theme={themeMode}>
         <>
           <GlobalStyles />
-          <button onClick={themeToggler}>Switch Theme</button>
+          <Toggle theme={theme} toggleTheme={themeToggler} />
           <AuthProvider>
             <Navigation />
             <Switch>
