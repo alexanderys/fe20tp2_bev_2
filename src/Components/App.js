@@ -18,6 +18,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { ThemeProvider } from 'styled-components';
 import { lightTheme, darkTheme } from './Themes/Themes';
 import { useState } from 'react';
+import { GlobalStyles } from './StyledComponents';
 
 
 function App() {
@@ -38,6 +39,7 @@ function App() {
 
         {/* Theme stuff */}
         {/* =========================================================  */}
+        <GlobalStyles theme={theme === "light" ? lightTheme : darkTheme} />
         <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
           <button onClick={() => themeToggler()}>Change Theme</button>
           {/*  ========================================================= */}

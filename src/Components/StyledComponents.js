@@ -1,4 +1,10 @@
-import styled from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
+
+export const GlobalStyles = createGlobalStyle`
+    html {
+        background-color: ${({ theme }) => theme.primaryBackground};
+    }
+`;
 
 // -------------------- ELEMENTS WITH STYLES THAT ARE USED MORE THAN ONCE-------------------------
 export const ResultsGrid = styled.section`
@@ -85,7 +91,6 @@ export const PrimarySection = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 100vh;
   a {
     align-self: flex-start;
     font-size: 0.9rem;
