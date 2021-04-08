@@ -1,5 +1,3 @@
-//import { createGlobalStyle } from "styled-components"
-
 //From darkest to brightest
 const color1 = '#222222';
 const color2 = '#343434';
@@ -19,11 +17,3 @@ export const darkTheme = {
     primaryBackground: color1,
     secondaryBackground: color2
 }
-/*
-export const GlobalStyles = createGlobalStyle`
-    //These styles apply to all elements in the app
-    body {
-        background-color: ${props => props.theme.primaryBackground};
-        color: ${props => props.theme.primaryColor};
-    }
-`; */
