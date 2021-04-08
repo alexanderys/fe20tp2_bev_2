@@ -37,10 +37,10 @@ function App() {
         <Navigation />
 
         {/* Theme stuff */}
-        /* ========================================================= */
+        {/* =========================================================  */}
         <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
           <button onClick={() => themeToggler()}>Change Theme</button>
-        /* ========================================================= */
+          {/*  ========================================================= */}
 
           <Switch>
             <Route exact path="/" component={Home} />
