@@ -1,10 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { db } from "../../firebase";
 import { useAuth } from "../../context/AuthContext";
+import { IMAGE_URL } from "../../constants/urlParts";
+import MovieItem from "../Search/MovieItem";
+import TvItem from "../Search/TvItem";
+import { ResultsGrid } from "../StyledComponents";
+import * as URL from "../../constants/urlParts";
 
 export const Watchlist = () => {
   const { currentUser } = useAuth();
-  const [moviesInWatchlist, setMoviesInWatchlist] = useState([]);
+  const [contentInWatchlist, setContentInWatchlist] = useState([]);
 
   useEffect(() => {
     db.collection("users")
@@ -15,9 +20,9 @@ export const Watchlist = () => {
       .then((snapshot) => {
         let documents = [];
         snapshot.docs.forEach((doc) => {
-          documents.push(doc.data().movieTitle);
+          documents.push(doc.data());
         });
-        setMoviesInWatchlist(documents);
+        setContentInWatchlist(documents);
       });
   }, []);
 
@@ -31,24 +36,54 @@ export const Watchlist = () => {
       <hr /> <br />
 
       <h3 className="count-pill">
-        {'You have ' + moviesInWatchlist.length + ' '}
-        {moviesInWatchlist.length === 1 ? "movie" : "movies"}
+        {'You have ' + contentInWatchlist.length + ' '}
+        {contentInWatchlist.length === 1 ? "title" : "titles"}
         {' in your watchlist'}
       </h3>
     </div>
 
     <br />
 
-    {moviesInWatchlist.length > 0 ? (
+    {contentInWatchlist.length > 0 ? (
       <>
-        {/* Temporary simple display of movies 
-            There's not MovieItem here so no buttons for Removing n stuff
-        */}
         <hr />
-        <h2>{moviesInWatchlist}</h2>
+        <ResultsGrid>
+          {contentInWatchlist.map(({
+            id,
+            movieTitle,
+            tvTitle,
+            releaseDate,
+            firstAirDate,
+            posterPath,
+            voteAverage,
+          }) => {
+            if (movieTitle) {
+              return (
+                <MovieItem
+                  id={id}
+                  title={movieTitle}
+                  releaseDate={releaseDate}
+                  posterPath={posterPath}
+                  voteAverage={voteAverage}
+                />
+              )
+            } else if (tvTitle) {
+              return (
+                <TvItem
+                  id={id}
+                  name={tvTitle}
+                  firstAirDate={firstAirDate}
+                  posterPath={posterPath}
+                  voteAverage={voteAverage}
+                />
+              )
+            }
+          }
+          )}
+        </ResultsGrid>
       </>
     ) : (
-      <h2>No movies in your watchlist! Add some!</h2>
+      <h2>No content in your watchlist! Add some!</h2>
     )}
 
   </>);

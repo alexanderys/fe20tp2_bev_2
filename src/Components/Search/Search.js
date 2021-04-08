@@ -120,6 +120,7 @@ function Search() {
                       posterPath={poster_path}
                       firstAirDate={first_air_date}
                       overview={overview}
+                      voteAverage={vote_average}
                     />
                   );
                 }

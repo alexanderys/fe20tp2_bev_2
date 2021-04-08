@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { db } from "../../firebase";
 import { useAuth } from "../../context/AuthContext";
+import { IMAGE_URL } from "../../constants/urlParts";
 import { ItemCard } from "../StyledComponents";
 import FallbackImage from "../FallbackImage";
 
@@ -59,8 +60,11 @@ function MovieItem({
       .collection("haveWatched")
       .doc(id.toString())
       .set({
+        id: id,
         movieTitle: title,
         voteAverage: voteAverage,
+        posterPath: posterPath,
+        releaseDate: releaseDate
       })
       .then(() => {
         setInHaveWatched(true);
@@ -84,8 +88,12 @@ function MovieItem({
       .collection("watchlist")
       .doc(id.toString())
       .set({
+        id: id,
         movieTitle: title,
         voteAverage: voteAverage,
+        posterPath: posterPath,
+        releaseDate: releaseDate
+
       })
       .then(() => {
         setInWatchlist(true);
@@ -107,14 +115,14 @@ function MovieItem({
     <ItemCard>
       <a href={`movies/${id}`}>
         {posterPath ? (
-          <img src={imgComboPath} alt="" />
+          <img src={IMAGE_URL + posterPath} alt="" />
         ) : (
           <FallbackImage type={"movie"} />
         )}
       </a>
 
       <h2>{title}</h2>
-      {/* <span>{releaseDate.substring(0, 4)}</span> */}
+
       {inWatchlist
         ? currentUser && (
           <button onClick={removeFromWatchlist}>Remove from Watchlist</button>
@@ -133,6 +141,7 @@ function MovieItem({
           <button onClick={addToHaveWatched}>Add to Have Watched</button>
         )}
 
+      <span>{releaseDate ? releaseDate.substring(0, 4) : ""}</span>
       <span>{voteAverage}</span>
     </ItemCard>
   );
