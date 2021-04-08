@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { useState } from 'react';
 
 // ------------------------------- COLOR VARIABLES ---------------------------------
 const primaryColor = "black";

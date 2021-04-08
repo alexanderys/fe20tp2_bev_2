@@ -14,29 +14,45 @@ import Stats from "./Stats";
 import * as ROUTES from "../constants/routes";
 import { AuthProvider } from "../context/AuthContext";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+//Theme stuff
+import styled, { ThemeProvider } from 'styled-components';
+import { lightTheme, darkTheme, GlobalStyles } from './Themes/Themes';
+import { useState } from 'react';
+
 
 function App() {
+  //Move this to a ThemeContext.js file later
+  const [theme, setTheme] = useState("dark");
+
+  const themeToggler = () => {
+    theme === 'dark' ? setTheme('light') : setTheme('dark');
+  }
+
   return (
     <Router>
       <AuthProvider>
         <Navigation />
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route path={ROUTES.HOME} component={Home} />
-          <Route path={ROUTES.SIGN_UP} component={Signup} />
-          <Route path={ROUTES.LOG_IN} component={Login} />
-          <Route path={ROUTES.FORGOT_PASSWORD} component={ForgotPassword} />
-          <PrivateRoute path={ROUTES.SEARCH} component={Search} />
-          <PrivateRoute path={ROUTES.PROFILE} component={Profile} />
-          <PrivateRoute path={ROUTES.SETTINGS} component={Settings} />
-          <PrivateRoute path={ROUTES.WATCHED} component={Watched} />
-          <PrivateRoute path={ROUTES.WATCHLIST} component={Watchlist} />
-          <PrivateRoute path={ROUTES.STATS} component={Stats} />
-          <PrivateRoute
-            path={ROUTES.UPDATE_PROFILE}
-            component={UpdateProfile}
-          />
-        </Switch>
+        <ThemeProvider theme={theme === 'dark' ? darkTheme : lightTheme}>
+          <GlobalStyles />
+          <button onClick={() => themeToggler()}>themeToggler</button>
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route path={ROUTES.HOME} component={Home} />
+            <Route path={ROUTES.SIGN_UP} component={Signup} />
+            <Route path={ROUTES.LOG_IN} component={Login} />
+            <Route path={ROUTES.FORGOT_PASSWORD} component={ForgotPassword} />
+            <PrivateRoute path={ROUTES.SEARCH} component={Search} />
+            <PrivateRoute path={ROUTES.PROFILE} component={Profile} />
+            <PrivateRoute path={ROUTES.SETTINGS} component={Settings} />
+            <PrivateRoute path={ROUTES.WATCHED} component={Watched} />
+            <PrivateRoute path={ROUTES.WATCHLIST} component={Watchlist} />
+            <PrivateRoute path={ROUTES.STATS} component={Stats} />
+            <PrivateRoute
+              path={ROUTES.UPDATE_PROFILE}
+              component={UpdateProfile}
+            />
+          </Switch>
+        </ThemeProvider>
       </AuthProvider>
     </Router>
   );

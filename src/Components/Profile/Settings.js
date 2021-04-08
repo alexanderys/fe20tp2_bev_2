@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import { useAuth } from "../../context/AuthContext";
 import { Link, useHistory } from "react-router-dom";
+
 import {
   SecondarySection,
   PrimaryButton,
   GoBackButton,
 } from "../StyledComponents";
 
-export default function Dashboard() {
+export default function Settings() {
   const [error, setError] = useState("");
   const { logout } = useAuth();
   const history = useHistory();
@@ -38,6 +39,7 @@ export default function Dashboard() {
             Update password or email <i className="fas fa-angle-right"></i>
           </Link>
         </li>
+
         {error && <div>{error}</div>}
         <PrimaryButton onClick={handleLogout}>
           Log Out
