@@ -1,9 +1,11 @@
 import styled from "styled-components";
-import { useState } from 'react';
+
+//Theme stuff v2
+//import { useTheme } from '../context/ThemeContext';
 
 // ------------------------------- COLOR VARIABLES ---------------------------------
 const primaryColor = "black";
-const secondaryColor = "white";
+//const secondaryColor = "white";
 
 // -------------------- ELEMENTS WITH STYLES THAT ARE USED MORE THAN ONCE-------------------------
 export const ResultsGrid = styled.section`
@@ -19,7 +21,7 @@ export const ItemCard = styled.section`
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  background-color: beige;
+  background-color: grey;
   margin: 5px;
   h2 {
     font-size: 1.3rem;

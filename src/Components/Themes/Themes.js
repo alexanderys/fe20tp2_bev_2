@@ -11,8 +11,7 @@ export const darkTheme = {
 }
 
 export const GlobalStyles = createGlobalStyle`
-    //These styles apply to all elements since GlobalStyles wraps
-    //Everything inside App.js
+    //These styles apply to all elements in the app
     body {
         background-color: ${props => props.theme.body};
         color: ${props => props.theme.fontColor};

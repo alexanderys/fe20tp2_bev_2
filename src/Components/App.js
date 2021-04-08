@@ -14,14 +14,17 @@ import Stats from "./Stats";
 import * as ROUTES from "../constants/routes";
 import { AuthProvider } from "../context/AuthContext";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-//Theme stuff
-import styled, { ThemeProvider } from 'styled-components';
+//Theme stuff v1
+import { ThemeProvider } from 'styled-components';
 import { lightTheme, darkTheme, GlobalStyles } from './Themes/Themes';
 import { useState } from 'react';
 
+//Theme stuff v2
+//import ThemeContextProvider from '../context/ThemeContext';
 
 function App() {
-  //Move this to a ThemeContext.js file later
+
+  //Theme stuff. Move this to a ThemeContext.js file later
   const [theme, setTheme] = useState("dark");
 
   const themeToggler = () => {
@@ -32,9 +35,15 @@ function App() {
     <Router>
       <AuthProvider>
         <Navigation />
-        <ThemeProvider theme={theme === 'dark' ? darkTheme : lightTheme}>
+        {/* Theme stuff v1 */}
+        <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
           <GlobalStyles />
-          <button onClick={() => themeToggler()}>themeToggler</button>
+          <button onClick={() => themeToggler()}>Change Theme</button>
+
+
+          {/* Theme stuff v2 */}
+          {/* <ThemeContextProvider> */}
+
           <Switch>
             <Route exact path="/" component={Home} />
             <Route path={ROUTES.HOME} component={Home} />
@@ -52,7 +61,9 @@ function App() {
               component={UpdateProfile}
             />
           </Switch>
+
         </ThemeProvider>
+        {/* </ThemeContextProvider> */}
       </AuthProvider>
     </Router>
   );
