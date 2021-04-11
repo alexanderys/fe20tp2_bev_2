@@ -14,52 +14,53 @@ import Stats from './Stats';
 import * as ROUTES from '../constants/routes';
 import { AuthProvider } from '../context/AuthContext';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-
+//Theme stuff
 import { ThemeProvider } from 'styled-components';
 import { lightTheme, darkTheme } from './Darkmode/Themes';
-import { GlobalStyles } from './Darkmode/GlobalStyles';
-import React, { useState } from 'react';
-import { useDarkMode } from './Darkmode/useDarkMode';
-import Toggle from './Darkmode/Toggler';
+import { useState } from 'react';
+import { GlobalStyles } from './StyledComponents';
 
 function App() {
-  // const [theme, setTheme] = useState('light');
-  // const themeToggler = () => {
-  //   theme === 'light' ? setTheme('dark') : setTheme('light');
-  // };
+  //Theme stuff. Might move this later to keep App.js cleaner
+  /* ========================================================= */
+  const [theme, setTheme] = useState();
 
-  const [theme, themeToggler] = useDarkMode();
-
-  const themeMode = theme === 'light' ? lightTheme : darkTheme;
+  const themeToggler = () => {
+    theme === 'dark' ? setTheme('light') : setTheme('dark');
+  };
+  /* ========================================================= */
 
   return (
     <Router>
-      <ThemeProvider theme={themeMode}>
-        <>
-          <GlobalStyles />
-          <Toggle theme={theme} toggleTheme={themeToggler} />
-          <AuthProvider>
-            <Navigation />
-            <Switch>
-              <Route exact path='/' component={Home} />
-              <Route path={ROUTES.HOME} component={Home} />
-              <Route path={ROUTES.SIGN_UP} component={Signup} />
-              <Route path={ROUTES.LOG_IN} component={Login} />
-              <Route path={ROUTES.FORGOT_PASSWORD} component={ForgotPassword} />
-              <PrivateRoute path={ROUTES.SEARCH} component={Search} />
-              <PrivateRoute path={ROUTES.PROFILE} component={Profile} />
-              <PrivateRoute path={ROUTES.SETTINGS} component={Settings} />
-              <PrivateRoute path={ROUTES.WATCHED} component={Watched} />
-              <PrivateRoute path={ROUTES.WATCHLIST} component={Watchlist} />
-              <PrivateRoute path={ROUTES.STATS} component={Stats} />
-              <PrivateRoute
-                path={ROUTES.UPDATE_PROFILE}
-                component={UpdateProfile}
-              />
-            </Switch>
-          </AuthProvider>
-        </>
-      </ThemeProvider>
+      <AuthProvider>
+        <Navigation />
+
+        {/* Theme stuff */}
+        {/* =========================================================  */}
+        <GlobalStyles theme={theme === 'light' ? lightTheme : darkTheme} />
+        <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
+          {/* <button onClick={() => themeToggler()}>Change Theme</button> */}
+          {/*  ========================================================= */}
+
+          <Switch>
+            <Route exact path='/' component={Home} />
+            <Route path={ROUTES.HOME} component={Home} />
+            <Route path={ROUTES.SIGN_UP} component={Signup} />
+            <Route path={ROUTES.LOG_IN} component={Login} />
+            <Route path={ROUTES.FORGOT_PASSWORD} component={ForgotPassword} />
+            <PrivateRoute path={ROUTES.SEARCH} component={Search} />
+            <PrivateRoute path={ROUTES.PROFILE} component={Profile} />
+            <PrivateRoute path={ROUTES.SETTINGS} component={Settings} />
+            <PrivateRoute path={ROUTES.WATCHED} component={Watched} />
+            <PrivateRoute path={ROUTES.WATCHLIST} component={Watchlist} />
+            <PrivateRoute path={ROUTES.STATS} component={Stats} />
+            <PrivateRoute
+              path={ROUTES.UPDATE_PROFILE}
+              component={UpdateProfile}
+            />
+          </Switch>
+        </ThemeProvider>
+      </AuthProvider>
     </Router>
   );
 }

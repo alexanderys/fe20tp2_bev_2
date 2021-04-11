@@ -1,5 +1,5 @@
-import React, { useContext, useState, useEffect } from "react";
-import { auth } from "../firebase";
+import React, { useContext, useState, useEffect } from 'react';
+import { auth, db } from '../firebase';
 
 const AuthContext = React.createContext();
 
@@ -8,10 +8,23 @@ export function useAuth() {
 }
 
 export function AuthProvider({ children }) {
+  const [theme, setTheme] = useState('dark');
+
   const [currentUser, setCurrentUser] = useState();
   const [loading, setLoading] = useState(true);
 
   function signup(email, password) {
+    // db.currentUser
+    //   .doc('theme')
+    //   .set({
+    //     theme: 'dark',
+    //   })
+    //   .then(() => {
+    //     console.log('Theme Added!');
+    //   })
+    //   .catch((error) => {
+    //     console.error('Error updating Theme: ', error);
+    //   });
     return auth.createUserWithEmailAndPassword(email, password);
   }
 
@@ -34,6 +47,21 @@ export function AuthProvider({ children }) {
   function updatePassword(password) {
     return currentUser.updatePassword(password);
   }
+  function updateTheme(theme) {
+    console.log('Hi from updateTheme');
+    // Add a new document in collection "cities"
+    db.collection('users')
+      .doc('theme')
+      .set({
+        theme: 'dark',
+      })
+      .then(() => {
+        console.log('Theme Added!');
+      })
+      .catch((error) => {
+        console.error('Error updating Theme: ', error);
+      });
+  }
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
@@ -48,12 +76,14 @@ export function AuthProvider({ children }) {
 
   const value = {
     currentUser,
+    theme,
     login,
     signup,
     logout,
     resetPassword,
     updateEmail,
     updatePassword,
+    updateTheme,
   };
 
   return (

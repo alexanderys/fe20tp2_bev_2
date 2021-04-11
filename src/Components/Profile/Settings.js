@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useAuth } from '../../context/AuthContext';
 import { Link, useHistory } from 'react-router-dom';
+import { db, auth } from '../../firebase';
 import {
   SecondarySection,
   PrimaryButton,
@@ -9,7 +10,7 @@ import {
 
 export default function Dashboard() {
   const [error, setError] = useState('');
-  const { logout } = useAuth();
+  const { logout, updateTheme } = useAuth();
   const history = useHistory();
 
   async function handleLogout() {
@@ -37,6 +38,12 @@ export default function Dashboard() {
           <Link to='/update-profile'>
             Update password or email <i className='fas fa-angle-right'></i>
           </Link>
+        </li>
+
+        <li>
+          <p>Uppdate Your theme</p>
+          <button onClick={() => updateTheme()}>Dark</button>
+          <button onClick={() => console.log('testLight')}>Light</button>
         </li>
         {error && <div>{error}</div>}
         <PrimaryButton onClick={handleLogout}>Log Out</PrimaryButton>

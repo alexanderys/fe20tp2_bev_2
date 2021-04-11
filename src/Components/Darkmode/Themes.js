@@ -1,12 +1,19 @@
+//From darkest to brightest
+const color1 = '#222222';
+const color2 = '#343434';
+const color3 = '#e6e6e6';
+const color4 = 'white';
+
 export const lightTheme = {
-  body: '#FFF',
-  text: '#363537',
-  toggleBorder: '#FFF',
-  background: '#363537',
+  primaryColor: color1,
+  secondaryColor: color2,
+  primaryBackground: color4,
+  secondaryBackground: color3,
 };
+
 export const darkTheme = {
-  body: '#363537',
-  text: '#FAFAFA',
-  toggleBorder: '#6B8096',
-  background: '#999',
+  primaryColor: color4,
+  secondaryColor: color3,
+  primaryBackground: color1,
+  secondaryBackground: color2,
 };
