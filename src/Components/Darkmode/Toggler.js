@@ -11,11 +11,11 @@ const Button = styled.button`
   font-size: 0.8rem;
   padding: 0.6rem;
 `;
-const Toggle = ({ theme, toggleTheme }) => {
+const Toggler = ({ theme, toggleTheme }) => {
   return <Button onClick={toggleTheme}>Switch Theme</Button>;
 };
-Toggle.propTypes = {
+Toggler.propTypes = {
   theme: string.isRequired,
   toggleTheme: func.isRequired,
 };
-export default Toggle;
+export default Toggler;

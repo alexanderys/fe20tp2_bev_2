@@ -2,15 +2,20 @@ import React, { useState } from 'react';
 import { useAuth } from '../../context/AuthContext';
 import { Link, useHistory } from 'react-router-dom';
 import { db, auth } from '../../firebase';
+import { lightTheme, darkTheme } from '../Darkmode/Themes';
 import {
   SecondarySection,
   PrimaryButton,
   GoBackButton,
 } from '../StyledComponents';
+import { useDarkMode } from '../Darkmode/useDarkMode';
+import Toggler from '../Darkmode/Toggler';
 
 export default function Dashboard() {
+  const [theme, themeToggler] = useDarkMode();
+  const themeMode = theme === 'light' ? lightTheme : darkTheme;
   const [error, setError] = useState('');
-  const { logout, updateTheme } = useAuth();
+  const { logout, readTheme, updateTheme } = useAuth();
   const history = useHistory();
 
   async function handleLogout() {
@@ -42,9 +47,18 @@ export default function Dashboard() {
 
         <li>
           <p>Uppdate Your theme</p>
-          <button onClick={() => updateTheme()}>Dark</button>
-          <button onClick={() => console.log('testLight')}>Light</button>
+          {/* <UseDarkMode /> */}
+          <Toggler theme={theme} toggleTheme={themeToggler} />
+          {/* <button
+            onClick={(e) => {
+              console.log('btn clicked');
+              readTheme().then((data) => (data = !'dark' ? 'dark' : 'light'));
+            }}
+          >
+            Toggle Theme
+          </button> */}
         </li>
+        <button onClick={console.log(useDarkMode())}>test</button>
         {error && <div>{error}</div>}
         <PrimaryButton onClick={handleLogout}>Log Out</PrimaryButton>
       </SecondarySection>

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
+import { useAuth } from '../../context/AuthContext';
 export const useDarkMode = () => {
-  const [theme, setTheme] = useState('light');
-
+  const { theme, setTheme } = useAuth();
   const setMode = (mode) => {
     window.localStorage.setItem('theme', mode);
 

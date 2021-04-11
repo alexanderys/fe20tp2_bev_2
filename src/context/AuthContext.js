@@ -50,19 +50,33 @@ export function AuthProvider({ children }) {
   function updatePassword(password) {
     return currentUser.updatePassword(password);
   }
-  function updateTheme(theme) {
-    console.log('Hi from updateTheme', auth.currentUser.uid);
-    // Add a new document in collection "cities"
-    // db.collection(`users`)
+  async function readTheme() {
+    var docRef = db.collection('users').doc(auth.currentUser.uid);
+
+    let themeData = await docRef
+      .get()
+      .then((doc) => {
+        if (doc.exists) {
+          return doc.data().theme;
+        } else {
+          // doc.data() will be undefined in this case
+          console.log('No such document!');
+        }
+      })
+      .catch((error) => {
+        console.log('Error getting document:', error);
+      });
+
+    return themeData;
+  }
+  function updateTheme(curTheme) {
+    console.log(curTheme);
+    // Set the "capital" field of the city 'DC'
+    // db.collection('users')
     //   .doc(auth.currentUser.uid)
-    //   .set({
-    //     theme: 'dark',
-    //   })
-    //   .then(() => {
-    //     console.log('Theme Added!');
-    //   })
-    //   .catch((error) => {
-    //     console.error('Error updating Theme: ', error);
+    //   .update({
+    //     // theme: readTheme().then((data) => data) != 'dark' ? 'dark' : 'light',
+    //     theme: `${curTheme !== 'dark' ? 'dark' : 'light'}`,
     //   });
   }
 
@@ -86,7 +100,9 @@ export function AuthProvider({ children }) {
     resetPassword,
     updateEmail,
     updatePassword,
+    readTheme,
     updateTheme,
+    setTheme,
   };
 
   return (
