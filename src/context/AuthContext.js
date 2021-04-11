@@ -13,19 +13,22 @@ export function AuthProvider({ children }) {
   const [currentUser, setCurrentUser] = useState();
   const [loading, setLoading] = useState(true);
 
-  function signup(email, password) {
-    // db.currentUser
-    //   .doc('theme')
-    //   .set({
-    //     theme: 'dark',
-    //   })
-    //   .then(() => {
-    //     console.log('Theme Added!');
-    //   })
-    //   .catch((error) => {
-    //     console.error('Error updating Theme: ', error);
-    //   });
-    return auth.createUserWithEmailAndPassword(email, password);
+  async function signup(email, password) {
+    const res = await auth.createUserWithEmailAndPassword(email, password);
+
+    db.collection(`users`)
+      .doc(res.user.uid)
+      .set({
+        theme: 'dark',
+      })
+      .then(() => {
+        console.log('Theme Added!');
+      })
+      .catch((error) => {
+        console.error('Error updating Theme: ', error);
+      });
+    // console.log(test().user.uid);
+    return res;
   }
 
   function login(email, password) {
@@ -48,19 +51,19 @@ export function AuthProvider({ children }) {
     return currentUser.updatePassword(password);
   }
   function updateTheme(theme) {
-    console.log('Hi from updateTheme');
+    console.log('Hi from updateTheme', auth.currentUser.uid);
     // Add a new document in collection "cities"
-    db.collection(auth.currentUser.uid)
-      .doc('theme')
-      .set({
-        theme: 'dark',
-      })
-      .then(() => {
-        console.log('Theme Added!');
-      })
-      .catch((error) => {
-        console.error('Error updating Theme: ', error);
-      });
+    // db.collection(`users`)
+    //   .doc(auth.currentUser.uid)
+    //   .set({
+    //     theme: 'dark',
+    //   })
+    //   .then(() => {
+    //     console.log('Theme Added!');
+    //   })
+    //   .catch((error) => {
+    //     console.error('Error updating Theme: ', error);
+    //   });
   }
 
   useEffect(() => {
