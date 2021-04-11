@@ -4,6 +4,7 @@ import { Link, useHistory } from 'react-router-dom';
 import { db, auth } from '../../firebase';
 import { lightTheme, darkTheme } from '../Darkmode/Themes';
 import {
+  ThemeProvider,
   SecondarySection,
   PrimaryButton,
   GoBackButton,
@@ -48,17 +49,28 @@ export default function Dashboard() {
         <li>
           <p>Uppdate Your theme</p>
           {/* <UseDarkMode /> */}
-          <Toggler theme={theme} toggleTheme={themeToggler} />
+          <Toggler theme={themeMode} toggleTheme={themeToggler} />
+          <button
+            onClick={(e) => {
+              console.log('btn clicked');
+              updateTheme(readTheme().then((data) => data));
+            }}
+          >
+            Toggle Theme
+          </button>
           {/* <button
             onClick={(e) => {
               console.log('btn clicked');
-              readTheme().then((data) => (data = !'dark' ? 'dark' : 'light'));
+              readTheme().then(
+                (data) =>
+                  (data = !'dark' ? console.log('dark') : console.log('light'))
+              );
             }}
           >
             Toggle Theme
           </button> */}
         </li>
-        <button onClick={console.log(useDarkMode())}>test</button>
+
         {error && <div>{error}</div>}
         <PrimaryButton onClick={handleLogout}>Log Out</PrimaryButton>
       </SecondarySection>

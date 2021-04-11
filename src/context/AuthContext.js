@@ -69,15 +69,15 @@ export function AuthProvider({ children }) {
 
     return themeData;
   }
-  function updateTheme(curTheme) {
-    console.log(curTheme);
-    // Set the "capital" field of the city 'DC'
-    // db.collection('users')
-    //   .doc(auth.currentUser.uid)
-    //   .update({
-    //     // theme: readTheme().then((data) => data) != 'dark' ? 'dark' : 'light',
-    //     theme: `${curTheme !== 'dark' ? 'dark' : 'light'}`,
-    //   });
+  async function updateTheme(curTheme) {
+    console.log(await curTheme);
+    //Set the "capital" field of the city 'DC'
+    db.collection('users')
+      .doc(auth.currentUser.uid)
+      .update({
+        // theme: readTheme().then((data) => data) != 'dark' ? 'dark' : 'light',
+        theme: `${(await curTheme) !== 'dark' ? 'dark' : 'light'}`,
+      });
   }
 
   useEffect(() => {

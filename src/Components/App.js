@@ -17,7 +17,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 //Theme stuff
 import { ThemeProvider } from 'styled-components';
 import { lightTheme, darkTheme } from './Darkmode/Themes';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { GlobalStyles } from './StyledComponents';
 
 function App() {
@@ -25,10 +25,12 @@ function App() {
   /* ========================================================= */
   const [theme, setTheme] = useState();
 
+  /* ========================================================= */
   const themeToggler = () => {
     theme === 'dark' ? setTheme('light') : setTheme('dark');
   };
-  /* ========================================================= */
+
+  // useEffect(() => {}, []);
 
   return (
     <Router>
