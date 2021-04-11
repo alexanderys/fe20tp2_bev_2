@@ -50,7 +50,7 @@ export function AuthProvider({ children }) {
   function updateTheme(theme) {
     console.log('Hi from updateTheme');
     // Add a new document in collection "cities"
-    db.collection('users')
+    db.collection(auth.currentUser.uid)
       .doc('theme')
       .set({
         theme: 'dark',
