@@ -4,7 +4,6 @@ import MovieItem from "./MovieItem";
 import ActorItem from "./ActorItem";
 import TvItem from "./TvItem";
 import { ResultsGrid } from "../StyledComponents";
-import { IMAGE_URL } from "../../constants/urlParts";
 import { SearchLabel, SearchInput } from "../StyledComponents";
 
 function Search() {
@@ -95,7 +94,6 @@ function Search() {
                       voteAverage={vote_average}
                       releaseDate={release_date}
                       posterPath={poster_path}
-                      imgComboPath={IMAGE_URL + poster_path}
                     />
                   );
                 } else if (media_type === "person") {

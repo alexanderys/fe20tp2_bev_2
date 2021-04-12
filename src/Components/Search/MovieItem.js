@@ -5,14 +5,7 @@ import { IMAGE_URL } from "../../constants/urlParts";
 import { ItemCard } from "../StyledComponents";
 import FallbackImage from "../FallbackImage";
 
-function MovieItem({
-  id,
-  title,
-  voteAverage,
-  imgComboPath,
-  posterPath,
-  releaseDate,
-}) {
+function MovieItem({ id, title, voteAverage, posterPath, releaseDate }) {
   const { currentUser } = useAuth();
   const [inHaveWatched, setInHaveWatched] = useState(false);
   const [inWatchlist, setInWatchlist] = useState(false);
@@ -32,11 +25,6 @@ function MovieItem({
             setInHaveWatched(false);
           }
         });
-    }
-  }, []);
-  //useEffect checks if a movie exists in a watchlist, and then sets the list-state to true or false
-  useEffect(() => {
-    if (currentUser) {
       db.collection("users")
         .doc(currentUser.uid)
         .collection("watchlist")
@@ -60,11 +48,11 @@ function MovieItem({
       .collection("haveWatched")
       .doc(id.toString())
       .set({
-        id: id,
+        id,
         movieTitle: title,
-        voteAverage: voteAverage,
-        posterPath: posterPath,
-        releaseDate: releaseDate
+        voteAverage,
+        posterPath,
+        releaseDate,
       })
       .then(() => {
         setInHaveWatched(true);
@@ -88,12 +76,11 @@ function MovieItem({
       .collection("watchlist")
       .doc(id.toString())
       .set({
-        id: id,
+        id,
         movieTitle: title,
-        voteAverage: voteAverage,
-        posterPath: posterPath,
-        releaseDate: releaseDate
-
+        voteAverage,
+        posterPath,
+        releaseDate,
       })
       .then(() => {
         setInWatchlist(true);
@@ -125,21 +112,21 @@ function MovieItem({
 
       {inWatchlist
         ? currentUser && (
-          <button onClick={removeFromWatchlist}>Remove from Watchlist</button>
-        )
+            <button onClick={removeFromWatchlist}>Remove from Watchlist</button>
+          )
         : currentUser && (
-          <button onClick={addToWatchlist}>Add to Watchlist</button>
-        )}
+            <button onClick={addToWatchlist}>Add to Watchlist</button>
+          )}
 
       {inHaveWatched
         ? currentUser && (
-          <button onClick={removeFromHaveWatched}>
-            Remove from Have Watched
-          </button>
-        )
+            <button onClick={removeFromHaveWatched}>
+              Remove from Have Watched
+            </button>
+          )
         : currentUser && (
-          <button onClick={addToHaveWatched}>Add to Have Watched</button>
-        )}
+            <button onClick={addToHaveWatched}>Add to Have Watched</button>
+          )}
 
       <span>{releaseDate ? releaseDate.substring(0, 4) : ""}</span>
       <span>{voteAverage}</span>

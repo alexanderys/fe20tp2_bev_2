@@ -36,7 +36,6 @@ const Home = () => {
               voteAverage={vote_average}
               releaseDate={release_date}
               posterPath={poster_path}
-              imgComboPath={URL.IMAGE_URL + poster_path}
             />
           )
         )}
