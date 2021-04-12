@@ -12,25 +12,30 @@ import Home from './Home';
 import Search from './Search/Search';
 import Stats from './Stats';
 import * as ROUTES from '../constants/routes';
-import { AuthProvider } from '../context/AuthContext';
+import { AuthProvider, useAuth } from '../context/AuthContext';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 //Theme stuff
 import { ThemeProvider } from 'styled-components';
 import { lightTheme, darkTheme } from './Darkmode/Themes';
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { GlobalStyles } from './StyledComponents';
+import { db, auth } from '../firebase';
 
 function App() {
+  const [theme, setTheme] = useState('dark');
+  // const { readTheme } = useAuth();
   //Theme stuff. Might move this later to keep App.js cleaner
   /* ========================================================= */
-  const [theme, setTheme] = useState();
 
   /* ========================================================= */
-  const themeToggler = () => {
-    theme === 'dark' ? setTheme('light') : setTheme('dark');
-  };
+  // const themeToggler = () => {
+  //   theme === 'dark' ? setTheme('light') : setTheme('dark');
+  // };
 
-  // useEffect(() => {}, []);
+  useEffect(async () => {
+    // console.log('testAppUseEffect', AuthProvider());
+    // setTheme(AuthProvider.theme);
+  }, [theme]);
 
   return (
     <Router>
@@ -52,7 +57,11 @@ function App() {
             <Route path={ROUTES.FORGOT_PASSWORD} component={ForgotPassword} />
             <PrivateRoute path={ROUTES.SEARCH} component={Search} />
             <PrivateRoute path={ROUTES.PROFILE} component={Profile} />
-            <PrivateRoute path={ROUTES.SETTINGS} component={Settings} />
+            <PrivateRoute
+              path={ROUTES.SETTINGS}
+              component={Settings}
+              test={setTheme}
+            />
             <PrivateRoute path={ROUTES.WATCHED} component={Watched} />
             <PrivateRoute path={ROUTES.WATCHLIST} component={Watchlist} />
             <PrivateRoute path={ROUTES.STATS} component={Stats} />

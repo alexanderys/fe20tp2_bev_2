@@ -78,6 +78,7 @@ export function AuthProvider({ children }) {
         // theme: readTheme().then((data) => data) != 'dark' ? 'dark' : 'light',
         theme: `${(await curTheme) !== 'dark' ? 'dark' : 'light'}`,
       });
+    setTheme(await curTheme);
   }
 
   useEffect(() => {
