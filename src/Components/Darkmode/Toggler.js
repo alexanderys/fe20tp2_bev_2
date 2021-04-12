@@ -1,6 +1,7 @@
 import React from 'react';
 import { func, string } from 'prop-types';
 import styled from 'styled-components';
+import { useDarkMode } from '../Darkmode/useDarkMode';
 
 const Button = styled.button`
   background: ${({ theme }) => theme.background};

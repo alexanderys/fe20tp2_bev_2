@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
 import { useAuth } from '../../context/AuthContext';
 import { Link, useHistory } from 'react-router-dom';
-import { db, auth } from '../../firebase';
 import { lightTheme, darkTheme } from '../Darkmode/Themes';
 import {
-  ThemeProvider,
   SecondarySection,
   PrimaryButton,
   GoBackButton,
@@ -20,8 +18,8 @@ export default function Dashboard({ test }) {
   const history = useHistory();
 
   function updateMyTheme() {
-    test(readTheme().then((data) => data));
-    // updateTheme(readTheme().then((data) => data));
+    console.log('themeMode', themeMode);
+    updateTheme(readTheme().then((data) => data));
   }
 
   async function handleLogout() {
@@ -54,13 +52,7 @@ export default function Dashboard({ test }) {
         <li>
           <p>Uppdate Your theme</p>
           {/* <UseDarkMode /> */}
-          <Toggler
-            theme={`${theme}`}
-            toggleTheme={(e) => {
-              console.log('btn clicked');
-              updateTheme(readTheme().then((data) => data));
-            }}
-          />
+          <Toggler theme={`${theme}`} toggleTheme={updateMyTheme} />
         </li>
 
         {error && <div>{error}</div>}

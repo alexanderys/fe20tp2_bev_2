@@ -3,11 +3,8 @@ import { useAuth } from '../../context/AuthContext';
 import { db, auth } from '../../firebase';
 export const useDarkMode = () => {
   const { theme, setTheme } = useAuth();
-  // const setMode = (mode) => {
-  //   window.localStorage.setItem('theme', mode);
 
-  //   setTheme(mode);
-  // };
+  //PROBLEM: Cant get theme value
 
   const themeToggler = () => {
     theme === 'dark' ? setTheme('light') : setTheme('dark');
@@ -15,8 +12,10 @@ export const useDarkMode = () => {
 
   useEffect(() => {
     const localTheme = window.localStorage.getItem('theme');
-    localTheme && setTheme();
+    localTheme && setTheme(localTheme);
+    console.log('from UseEffect!', localTheme);
   }, []);
+  // this useffect
 
   useEffect(() => {
     // db.collection('users')

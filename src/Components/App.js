@@ -22,20 +22,18 @@ import { GlobalStyles } from './StyledComponents';
 import { db, auth } from '../firebase';
 
 function App() {
-  const [theme, setTheme] = useState('dark');
-  // const { readTheme } = useAuth();
   //Theme stuff. Might move this later to keep App.js cleaner
   /* ========================================================= */
+  const [theme, setTheme] = useState('dark');
 
-  /* ========================================================= */
   // const themeToggler = () => {
   //   theme === 'dark' ? setTheme('light') : setTheme('dark');
   // };
+  //old button (working)
 
-  useEffect(async () => {
-    // console.log('testAppUseEffect', AuthProvider());
-    // setTheme(AuthProvider.theme);
-  }, [theme]);
+  // TODO: Change app state from setting component
+  // test: take value from Authprovider state and forward it to App (maybe work?)
+  /* ========================================================= */
 
   return (
     <Router>
@@ -57,11 +55,7 @@ function App() {
             <Route path={ROUTES.FORGOT_PASSWORD} component={ForgotPassword} />
             <PrivateRoute path={ROUTES.SEARCH} component={Search} />
             <PrivateRoute path={ROUTES.PROFILE} component={Profile} />
-            <PrivateRoute
-              path={ROUTES.SETTINGS}
-              component={Settings}
-              test={setTheme}
-            />
+            <PrivateRoute path={ROUTES.SETTINGS} component={Settings} />
             <PrivateRoute path={ROUTES.WATCHED} component={Watched} />
             <PrivateRoute path={ROUTES.WATCHLIST} component={Watchlist} />
             <PrivateRoute path={ROUTES.STATS} component={Stats} />
