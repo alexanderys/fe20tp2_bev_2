@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import { db } from "../../firebase";
 import { useAuth } from "../../context/AuthContext";
-import { IMAGE_URL } from "../../constants/urlParts";
 import MovieItem from "../Search/MovieItem";
 import TvItem from "../Search/TvItem";
 import { ResultsGrid } from "../StyledComponents";
@@ -26,67 +25,68 @@ export const Watchlist = () => {
       });
   }, []);
 
-  return (<>
+  return (
+    <>
+      <div>
+        <h1>My Watchlist</h1>
+        <strong>User email: </strong> {currentUser.email}
+        <br />
+        <strong>UID: </strong>
+        {currentUser.uid}
+        <hr /> <br />
+        <h3>
+          {"You have " + contentInWatchlist.length + " "}
+          {contentInWatchlist.length === 1 ? "title" : "titles"}
+          {" in your watchlist"}
+        </h3>
+      </div>
 
-    <div>
-      <h1>My Watchlist</h1>
-      <strong>User email: </strong> {currentUser.email}
       <br />
-      <strong>UID: </strong>{currentUser.uid}
-      <hr /> <br />
 
-      <h3>
-        {'You have ' + contentInWatchlist.length + ' '}
-        {contentInWatchlist.length === 1 ? "title" : "titles"}
-        {' in your watchlist'}
-      </h3>
-    </div>
-
-    <br />
-
-    {contentInWatchlist.length > 0 ? (
-      <>
-        <hr />
-        <ResultsGrid>
-          {contentInWatchlist.map(({
-            id,
-            movieTitle,
-            tvTitle,
-            releaseDate,
-            firstAirDate,
-            posterPath,
-            voteAverage,
-          }) => {
-            if (movieTitle) {
-              return (
-                <MovieItem
-                  id={id}
-                  title={movieTitle}
-                  releaseDate={releaseDate}
-                  posterPath={posterPath}
-                  voteAverage={voteAverage}
-                />
-              )
-            } else if (tvTitle) {
-              return (
-                <TvItem
-                  id={id}
-                  name={tvTitle}
-                  firstAirDate={firstAirDate}
-                  posterPath={posterPath}
-                  voteAverage={voteAverage}
-                />
-              )
-            }
-          }
-          )}
-        </ResultsGrid>
-      </>
-    ) : (
-      <h2>No content in your watchlist! Add some!</h2>
-    )}
-
-  </>);
+      {contentInWatchlist.length > 0 ? (
+        <>
+          <hr />
+          <ResultsGrid>
+            {contentInWatchlist.map(
+              ({
+                id,
+                movieTitle,
+                tvTitle,
+                releaseDate,
+                firstAirDate,
+                posterPath,
+                voteAverage,
+              }) => {
+                if (movieTitle) {
+                  return (
+                    <MovieItem
+                      id={id}
+                      title={movieTitle}
+                      releaseDate={releaseDate}
+                      posterPath={posterPath}
+                      voteAverage={voteAverage}
+                    />
+                  );
+                } else if (tvTitle) {
+                  return (
+                    <TvItem
+                      id={id}
+                      name={tvTitle}
+                      firstAirDate={firstAirDate}
+                      posterPath={posterPath}
+                      voteAverage={voteAverage}
+                    />
+                  );
+                }
+              }
+            )}
+          </ResultsGrid>
+        </>
+      ) : (
+        <h2>No content in your watchlist! Add some!</h2>
+      )}
+    </>
+  );
 };
 
 export default Watchlist;

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useAuth } from "../context/AuthContext";
 import { db } from "../firebase";
 import { SecondarySection } from "./StyledComponents";
-import BarChart from "./Stats";
+import BarChart from "./Stats/BarChart";
 
 function Stats() {
   const { currentUser } = useAuth();
@@ -27,7 +27,7 @@ function Stats() {
   }, []);
 
   // Row 30 to 35 needs to run AFTER data have been fetched from fb.
-  //Solve this!!!!!!!!
+  // Solve this!!!!!!!!
 
   const sumVoteAverage = watchedMoviesVoteAvg.reduce(
     (result, number) => result + number,
@@ -37,17 +37,24 @@ function Stats() {
     Math.round((sumVoteAverage / watchedMoviesTitles.length) * 10) / 10;
 
   return (
-    <SecondarySection>
+    <section>
       <h1>Stats</h1>
       <BarChart />
-      <span>
-        Number of movies watched: <strong>{watchedMoviesTitles.length}</strong>
-      </span>
-      <br />
-      <span>
-        Average rating: <strong>{avg}</strong>
-      </span>
-    </SecondarySection>
+      {avg ? (
+        <div>
+          <span>
+            Number of movies watched:
+            <strong>{watchedMoviesTitles.length}</strong>
+          </span>
+          <br />
+          <span>
+            Average rating: <strong>{avg}</strong>
+          </span>
+        </div>
+      ) : (
+        <h2>use the app, boy/girl/non-binary!</h2>
+      )}
+    </section>
   );
 }
 

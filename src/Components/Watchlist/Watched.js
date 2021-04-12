@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { db } from "../../firebase";
 import { useAuth } from "../../context/AuthContext";
-import { IMAGE_URL } from "../../constants/urlParts";
 import MovieItem from "../Search/MovieItem";
 import TvItem from "../Search/TvItem";
 import { ResultsGrid } from "../StyledComponents";
@@ -34,9 +33,9 @@ export const Watched = () => {
         <h1>Watched Titles</h1>
         <strong>User email: </strong> {currentUser.email}
         <br />
-        <strong>UID: </strong>{currentUser.uid}
+        <strong>UID: </strong>
+        {currentUser.uid}
         <hr /> <br />
-
         <h3>
           {watchedContent.length}{" "}
           {watchedContent.length === 1 ? "title" : "titles"}
@@ -47,45 +46,45 @@ export const Watched = () => {
         <>
           <hr />
           <ResultsGrid>
-            {watchedContent.map(({
-              id,
-              movieTitle,
-              tvTitle,
-              releaseDate,
-              firstAirDate,
-              posterPath,
-              voteAverage,
-            }) => {
-              if (movieTitle) {
-                return (
-                  <MovieItem
-                    id={id}
-                    title={movieTitle}
-                    releaseDate={releaseDate}
-                    posterPath={posterPath}
-                    voteAverage={voteAverage}
-                  />
-                )
-              } else if (tvTitle) {
-                return (
-                  <TvItem
-                    id={id}
-                    name={tvTitle}
-                    firstAirDate={firstAirDate}
-                    posterPath={posterPath}
-                    voteAverage={voteAverage}
-                  />
-                )
+            {watchedContent.map(
+              ({
+                id,
+                movieTitle,
+                tvTitle,
+                releaseDate,
+                firstAirDate,
+                posterPath,
+                voteAverage,
+              }) => {
+                if (movieTitle) {
+                  return (
+                    <MovieItem
+                      id={id}
+                      title={movieTitle}
+                      releaseDate={releaseDate}
+                      posterPath={posterPath}
+                      voteAverage={voteAverage}
+                    />
+                  );
+                } else if (tvTitle) {
+                  return (
+                    <TvItem
+                      id={id}
+                      name={tvTitle}
+                      firstAirDate={firstAirDate}
+                      posterPath={posterPath}
+                      voteAverage={voteAverage}
+                    />
+                  );
+                }
               }
-            }
             )}
           </ResultsGrid>
         </>
       ) : (
         <h2>No content in your list! Add some!</h2>
-      )
-      }
-    </div >
+      )}
+    </div>
   );
 };
 
