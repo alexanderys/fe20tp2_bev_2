@@ -11,7 +11,7 @@ export const useDarkMode = () => {
   };
 
   useEffect(async () => {
-    const docRef = await db.collection('users').doc(auth.currentUser.uid);
+    const docRef = db.collection('users').doc(auth.currentUser.uid);
 
     const themeData = await docRef
       .get()
