@@ -7,8 +7,8 @@ export function useAuth() {
   return useContext(AuthContext);
 }
 
-export function AuthProvider({ children, onChange }) {
-  const [theme, setTheme] = useState('dark');
+export function AuthProvider({ children, onChange, currentTheme }) {
+  const [theme, setTheme] = useState(currentTheme);
 
   const [currentUser, setCurrentUser] = useState();
   const [loading, setLoading] = useState(true);
@@ -72,22 +72,30 @@ export function AuthProvider({ children, onChange }) {
   }
 
   // Function for updating the theme-state in App-component
-  function changeTheme(newTheme) {
+  async function changeTheme(newTheme) {
     onChange(newTheme);
+    localStorage.setItem('theme', await newTheme);
   }
 
   // This function serch for the current user in firestore and update the theme-value Ex. 'dark' | 'light'
-  //fix: error handler
+  // works ok, needs modification. gets stuck when switch to fast.
 
   async function updateTheme(curTheme) {
-    console.log(await curTheme);
-    db.collection('users')
-      .doc(auth.currentUser.uid)
-      .update({
-        theme: `${(await curTheme) !== 'dark' ? 'dark' : 'light'}`,
-      });
-    onChange(await curTheme);
+    try {
+      db.collection('users')
+        .doc(auth.currentUser.uid)
+        .update({
+          theme: `${(await curTheme) !== 'dark' ? 'dark' : 'light'}`,
+        });
+      changeTheme(await readTheme().then((data) => data));
+      localStorage.setItem('theme', await readTheme().then((data) => data));
+    } catch (error) {
+      console.log('SomeError accured: ', error);
+    }
   }
+  useEffect(async () => {
+    changeTheme(await localStorage.getItem('theme'));
+  }, [updateTheme]);
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
@@ -114,6 +122,7 @@ export function AuthProvider({ children, onChange }) {
     theme,
     setTheme,
     changeTheme,
+    currentTheme,
   };
 
   return (

@@ -26,26 +26,27 @@ function App() {
   //Theme stuff
   /* ========================================================= */
   const [theme, setTheme] = useState('dark');
-
   //  Create a function that changes the theme-state in App-component
   //  so you can pass it forward to a child component.
   function handleChange(newTheme) {
-    //
     setTheme(newTheme);
+  }
+  //checks value for theme in local storage, to asisst the glitch, But its not working as it should, yet.
+  if (theme !== localStorage.getItem('theme')) {
+    setTheme(localStorage.getItem('theme'));
   }
 
   /* ========================================================= */
-
   return (
     <Router>
       {/* passing props to the AuthProvider*/}
-      <AuthProvider value={theme} onChange={handleChange}>
+      <AuthProvider value={theme} onChange={handleChange} currentTheme={theme}>
         <Navigation />
 
         {/* Theme stuff */}
         {/* =========================================================  */}
-        <GlobalStyles theme={theme === 'light' ? lightTheme : darkTheme} />
         <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
+          <GlobalStyles theme={theme === 'light' ? lightTheme : darkTheme} />
           {/*  ========================================================= */}
 
           <Switch>

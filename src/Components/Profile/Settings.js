@@ -10,7 +10,7 @@ import {
 import { useDarkMode } from '../Darkmode/useDarkMode';
 import Toggler from '../Darkmode/Toggler';
 
-export default function Dashboard({ test }) {
+export default function Dashboard() {
   const [theme, themeToggler] = useDarkMode();
   const [error, setError] = useState('');
   const { logout, readTheme, updateTheme } = useAuth();
