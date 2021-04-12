@@ -54,7 +54,13 @@ export default function Dashboard({ test }) {
         <li>
           <p>Uppdate Your theme</p>
           {/* <UseDarkMode /> */}
-          <Toggler theme={`${theme}`} toggleTheme={themeToggler} />
+          <Toggler
+            theme={`${theme}`}
+            toggleTheme={(e) => {
+              console.log('btn clicked');
+              updateTheme(readTheme().then((data) => data));
+            }}
+          />
           <button
             onClick={(e) => {
               console.log('btn clicked');
