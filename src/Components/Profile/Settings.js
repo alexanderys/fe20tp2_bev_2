@@ -12,13 +12,11 @@ import Toggler from '../Darkmode/Toggler';
 
 export default function Dashboard({ test }) {
   const [theme, themeToggler] = useDarkMode();
-  const themeMode = theme === 'light' ? lightTheme : darkTheme;
   const [error, setError] = useState('');
   const { logout, readTheme, updateTheme } = useAuth();
   const history = useHistory();
 
   function updateMyTheme() {
-    console.log('themeMode', themeMode);
     updateTheme(readTheme().then((data) => data));
   }
 
@@ -50,7 +48,7 @@ export default function Dashboard({ test }) {
         </li>
 
         <li>
-          <p>Uppdate Your theme</p>
+          <p>Uppdate Your theme.</p>
           {/* <UseDarkMode /> */}
           <Toggler theme={`${themeToggler}`} toggleTheme={updateMyTheme} />
         </li>

@@ -27,6 +27,7 @@ export function AuthProvider({ children, onChange }) {
       .catch((error) => {
         console.error('Error updating Theme: ', error);
       });
+    // console.log(test().user.uid);
     return res;
   }
 
@@ -50,28 +51,34 @@ export function AuthProvider({ children, onChange }) {
     return currentUser.updatePassword(password);
   }
 
-  // This function serch for theme value inside firestore and return it back
+  // This function serch for theme-value inside firestore user collection that has the matching user id, and return it back
   async function readTheme() {
-    var docRef = db.collection('users').doc(auth.currentUser.uid);
+    const docRef = db.collection('users').doc(auth.currentUser.uid);
 
-    let themeData = await docRef
+    const themeData = await docRef
       .get()
       .then((doc) => {
         if (doc.exists) {
-          onChange(doc.data().theme);
           return doc.data().theme;
         } else {
-          console.log('No such document!');
+          console.log('No such data!');
         }
       })
       .catch((error) => {
-        console.log('Error getting document:', error);
+        console.log('Error getting data:', error);
       });
 
     return themeData;
   }
 
-  // This function serch for the current user in firestore and update the theme status Ex. 'dark' | 'light'
+  // Function for updating the theme-state in App-component
+  function changeTheme(newTheme) {
+    onChange(newTheme);
+  }
+
+  // This function serch for the current user in firestore and update the theme-value Ex. 'dark' | 'light'
+  //fix: error handler
+
   async function updateTheme(curTheme) {
     console.log(await curTheme);
     db.collection('users')
@@ -88,6 +95,7 @@ export function AuthProvider({ children, onChange }) {
       setLoading(false);
       //as soon as we have a user, setLoading changes to false
     });
+
     return unsubscribe;
     //unsubscribe will unsubscribe us from the onAuthState-listener when it's unmounted
   }, []);
@@ -105,6 +113,7 @@ export function AuthProvider({ children, onChange }) {
     updateTheme,
     theme,
     setTheme,
+    changeTheme,
   };
 
   return (
