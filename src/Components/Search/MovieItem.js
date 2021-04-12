@@ -12,6 +12,7 @@ function MovieItem({
   imgComboPath,
   posterPath,
   releaseDate,
+  genreIds,
 }) {
   const { currentUser } = useAuth();
   const [inHaveWatched, setInHaveWatched] = useState(false);
@@ -64,7 +65,8 @@ function MovieItem({
         movieTitle: title,
         voteAverage: voteAverage,
         posterPath: posterPath,
-        releaseDate: releaseDate
+        releaseDate: releaseDate,
+        genreIds: genreIds,
       })
       .then(() => {
         setInHaveWatched(true);
@@ -92,8 +94,8 @@ function MovieItem({
         movieTitle: title,
         voteAverage: voteAverage,
         posterPath: posterPath,
-        releaseDate: releaseDate
-
+        releaseDate: releaseDate,
+        genreIds: genreIds,
       })
       .then(() => {
         setInWatchlist(true);

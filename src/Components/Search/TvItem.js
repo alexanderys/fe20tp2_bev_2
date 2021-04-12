@@ -11,7 +11,8 @@ function TvItem({
   posterPath,
   firstAirDate,
   voteAverage,
-  overview
+  overview,
+  genreIds
 }) {
   const { currentUser } = useAuth();
   const [inHaveWatched, setInHaveWatched] = useState(false);
@@ -64,8 +65,8 @@ function TvItem({
         tvTitle: name,
         voteAverage: voteAverage,
         posterPath: posterPath,
-        firstAirDate: firstAirDate
-
+        firstAirDate: firstAirDate,
+        genreIds: genreIds,
       })
       .then(() => {
         setInHaveWatched(true);
@@ -93,8 +94,8 @@ function TvItem({
         tvTitle: name,
         voteAverage: voteAverage,
         posterPath: posterPath,
-        firstAirDate: firstAirDate
-
+        firstAirDate: firstAirDate,
+        genreIds: genreIds,
       })
       .then(() => {
         setInWatchlist(true);

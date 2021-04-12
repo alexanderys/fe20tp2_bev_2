@@ -84,6 +84,7 @@ function Search() {
                 media_type,
                 first_air_date,
                 known_for,
+                genre_ids,
               }) => {
                 if (media_type === "movie") {
                   return (
@@ -96,6 +97,7 @@ function Search() {
                       releaseDate={release_date}
                       posterPath={poster_path}
                       imgComboPath={IMAGE_URL + poster_path}
+                      genreIds={genre_ids}
                     />
                   );
                 } else if (media_type === "person") {
@@ -121,6 +123,7 @@ function Search() {
                       firstAirDate={first_air_date}
                       overview={overview}
                       voteAverage={vote_average}
+                      genreIds={genre_ids}
                     />
                   );
                 }
