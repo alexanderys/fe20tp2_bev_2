@@ -22,7 +22,6 @@ export const Watched = () => {
           documents.push(doc.data());
         });
         //gör anrop till API för att få data
-
         setWatchedContent(documents);
       });
   }, []);

@@ -123,6 +123,20 @@ export const SecondarySection = styled.section`
   }
 `;
 
+export const StatsSection = styled.section`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  h1 {
+    font-size: 2rem;
+    margin: 70px 0;
+  }
+  div {
+    width: 90vw;
+    margin: 0 0 100px 0;
+  }
+`;
 // ------------------------------- BUTTONS ---------------------------------
 export const PrimaryButton = styled.button`
   width: 80vw;

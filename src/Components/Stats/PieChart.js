@@ -1,11 +1,14 @@
 import React from "react";
-import { Bar } from "react-chartjs-2";
+import { Pie, defaults } from "react-chartjs-2";
 
-const BarChart = () => {
+defaults.global.tooltips.enabled = true;
+defaults.global.legend.position = "bottom";
+
+export const PieChart = () => {
   return (
-    <Bar
+    <Pie
       data={{
-        labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+        labels: ["Comedy", "Action", "Sci-fi", "Family", "Horror", "Drama"],
         datasets: [
           {
             label: "# of Votes",
@@ -18,40 +21,27 @@ const BarChart = () => {
               "rgba(153, 102, 255, 0.2)",
               "rgba(255, 159, 64, 0.2)",
             ],
-            borderColor: [
-              "rgba(255, 99, 132, 1)",
-              "rgba(54, 162, 235, 1)",
-              "rgba(255, 206, 86, 1)",
-              "rgba(75, 192, 192, 1)",
-              "rgba(153, 102, 255, 1)",
-              "rgba(255, 159, 64, 1)",
-            ],
             borderWidth: 1,
-          },
-          {
-            label: "Quantity",
-            data: [3, 14, 6, 17, 9, 11],
-            backgroundColor: "beige",
-            borderColor: "red",
           },
         ],
       }}
+      //   height={300}
+      //   width={300}
       options={{
         responsive: true,
-        title: { text: "Bar title", display: true },
+        // maintainAspectRatio: false,
+        title: { text: "Pie title", display: true },
         scales: {
           yAxes: [
             {
-              ticks: {
-                autoSkip: true,
-                maxTicksLimit: 10,
-                beginAtZero: true,
-              },
+              ticks: { display: false },
+              gridLines: { display: false },
             },
           ],
           xAxes: [
             {
               gridLines: { display: false },
+              ticks: { display: false },
             },
           ],
         },
@@ -59,6 +49,7 @@ const BarChart = () => {
           labels: {
             fontSize: 10,
             fontColor: "pink",
+            padding: 3,
           },
         },
       }}
@@ -66,4 +57,4 @@ const BarChart = () => {
   );
 };
 
-export default BarChart;
+export default PieChart;
