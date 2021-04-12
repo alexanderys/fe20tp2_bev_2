@@ -30,14 +30,14 @@ export const Watched = () => {
 
   return (
     <div>
-      <div className="header">
+      <div>
         <h1>Watched Titles</h1>
         <strong>User email: </strong> {currentUser.email}
         <br />
         <strong>UID: </strong>{currentUser.uid}
         <hr /> <br />
 
-        <h3 className="count-pill">
+        <h3>
           {watchedContent.length}{" "}
           {watchedContent.length === 1 ? "title" : "titles"}
         </h3>

@@ -28,14 +28,14 @@ export const Watchlist = () => {
 
   return (<>
 
-    <div className="header">
+    <div>
       <h1>My Watchlist</h1>
       <strong>User email: </strong> {currentUser.email}
       <br />
       <strong>UID: </strong>{currentUser.uid}
       <hr /> <br />
 
-      <h3 className="count-pill">
+      <h3>
         {'You have ' + contentInWatchlist.length + ' '}
         {contentInWatchlist.length === 1 ? "title" : "titles"}
         {' in your watchlist'}
