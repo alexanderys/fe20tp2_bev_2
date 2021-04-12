@@ -20,31 +20,32 @@ import { lightTheme, darkTheme } from './Darkmode/Themes';
 import React, { useState, useEffect } from 'react';
 import { GlobalStyles } from './StyledComponents';
 import { db, auth } from '../firebase';
+import { useDarkMode } from './Darkmode/useDarkMode';
 
 function App() {
-  //Theme stuff. Might move this later to keep App.js cleaner
+  //Theme stuff
   /* ========================================================= */
   const [theme, setTheme] = useState('dark');
 
-  // const themeToggler = () => {
-  //   theme === 'dark' ? setTheme('light') : setTheme('dark');
-  // };
-  //old button (working)
+  //  Create a function that changes the theme-state in App-component
+  //  so you can pass it forward to a child component.
+  function handleChange(newTheme) {
+    //
+    setTheme(newTheme);
+  }
 
-  // TODO: Change app state from setting component
-  // test: take value from Authprovider state and forward it to App (maybe work?)
   /* ========================================================= */
 
   return (
     <Router>
-      <AuthProvider>
+      {/* passing props to the AuthProvider*/}
+      <AuthProvider value={theme} onChange={handleChange}>
         <Navigation />
 
         {/* Theme stuff */}
         {/* =========================================================  */}
         <GlobalStyles theme={theme === 'light' ? lightTheme : darkTheme} />
         <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
-          {/* <button onClick={() => themeToggler()}>Change Theme</button> */}
           {/*  ========================================================= */}
 
           <Switch>

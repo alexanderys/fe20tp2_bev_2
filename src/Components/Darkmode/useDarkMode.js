@@ -2,7 +2,9 @@ import { useEffect, useState } from 'react';
 import { useAuth } from '../../context/AuthContext';
 import { db, auth } from '../../firebase';
 export const useDarkMode = () => {
-  const { theme, setTheme } = useAuth();
+  // const [theme, setTheme] = useAuth();
+  // const [theme, setTheme] = useState('dark');
+  const [theme, setTheme] = useState('dark');
 
   //PROBLEM: Cant get theme value
 

@@ -1,13 +1,13 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext, useState, useEffect, createContext } from 'react';
 import { auth, db } from '../firebase';
 
-const AuthContext = React.createContext();
+const AuthContext = createContext();
 
 export function useAuth() {
   return useContext(AuthContext);
 }
 
-export function AuthProvider({ children }) {
+export function AuthProvider({ children, onChange }) {
   const [theme, setTheme] = useState('dark');
 
   const [currentUser, setCurrentUser] = useState();
@@ -27,7 +27,6 @@ export function AuthProvider({ children }) {
       .catch((error) => {
         console.error('Error updating Theme: ', error);
       });
-    // console.log(test().user.uid);
     return res;
   }
 
@@ -50,6 +49,8 @@ export function AuthProvider({ children }) {
   function updatePassword(password) {
     return currentUser.updatePassword(password);
   }
+
+  // This function serch for theme value inside firestore and return it back
   async function readTheme() {
     var docRef = db.collection('users').doc(auth.currentUser.uid);
 
@@ -57,9 +58,9 @@ export function AuthProvider({ children }) {
       .get()
       .then((doc) => {
         if (doc.exists) {
+          onChange(doc.data().theme);
           return doc.data().theme;
         } else {
-          // doc.data() will be undefined in this case
           console.log('No such document!');
         }
       })
@@ -69,16 +70,16 @@ export function AuthProvider({ children }) {
 
     return themeData;
   }
+
+  // This function serch for the current user in firestore and update the theme status Ex. 'dark' | 'light'
   async function updateTheme(curTheme) {
     console.log(await curTheme);
-    //Set the "capital" field of the city 'DC'
     db.collection('users')
       .doc(auth.currentUser.uid)
       .update({
-        // theme: readTheme().then((data) => data) != 'dark' ? 'dark' : 'light',
         theme: `${(await curTheme) !== 'dark' ? 'dark' : 'light'}`,
       });
-    setTheme(await curTheme);
+    onChange(await curTheme);
   }
 
   useEffect(() => {
@@ -94,7 +95,6 @@ export function AuthProvider({ children }) {
 
   const value = {
     currentUser,
-    theme,
     login,
     signup,
     logout,
@@ -103,6 +103,7 @@ export function AuthProvider({ children }) {
     updatePassword,
     readTheme,
     updateTheme,
+    theme,
     setTheme,
   };
 

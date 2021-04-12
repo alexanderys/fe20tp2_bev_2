@@ -52,7 +52,7 @@ export default function Dashboard({ test }) {
         <li>
           <p>Uppdate Your theme</p>
           {/* <UseDarkMode /> */}
-          <Toggler theme={`${theme}`} toggleTheme={updateMyTheme} />
+          <Toggler theme={`${themeToggler}`} toggleTheme={updateMyTheme} />
         </li>
 
         {error && <div>{error}</div>}
