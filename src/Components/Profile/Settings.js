@@ -61,25 +61,6 @@ export default function Dashboard({ test }) {
               updateTheme(readTheme().then((data) => data));
             }}
           />
-          <button
-            onClick={(e) => {
-              console.log('btn clicked');
-              updateTheme(readTheme().then((data) => data));
-            }}
-          >
-            Toggle Theme
-          </button>
-          {/* <button
-            onClick={(e) => {
-              console.log('btn clicked');
-              readTheme().then(
-                (data) =>
-                  (data = !'dark' ? console.log('dark') : console.log('light'))
-              );
-            }}
-          >
-            Toggle Theme
-          </button> */}
         </li>
 
         {error && <div>{error}</div>}
