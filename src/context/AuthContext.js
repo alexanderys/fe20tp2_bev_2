@@ -50,7 +50,9 @@ export function AuthProvider({ children, onChange, currentTheme }) {
     return currentUser.updatePassword(password);
   }
 
-  // This function serch for theme-value inside firestore user collection that has the matching user id, and return it back
+  //------------------------Theme Stuff-------------------------------//
+
+  // This function search for theme-value inside firestore user collection that has the matching user id, and return it back
   async function readTheme() {
     const docRef = db.collection('users').doc(auth.currentUser.uid);
 
@@ -96,6 +98,8 @@ export function AuthProvider({ children, onChange, currentTheme }) {
   useEffect(async () => {
     changeTheme(await localStorage.getItem('theme'));
   }, [updateTheme]);
+
+  //----------------------------------------------------------//
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
