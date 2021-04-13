@@ -30,17 +30,17 @@ export const Watchlist = () => {
       <div>
         <Heading>
           <h1>My Watchlist</h1>
+          <strong>User email: </strong> {currentUser.email}
+          <br />
+          <strong>UID: </strong>
+          {currentUser.uid}
+          <hr /> <br />
+          <h3>
+            {'You have ' + contentInWatchlist.length + ' '}
+            {contentInWatchlist.length === 1 ? 'title' : 'titles'}
+            {' in your watchlist'}
+          </h3>
         </Heading>
-        <strong>User email: </strong> {currentUser.email}
-        <br />
-        <strong>UID: </strong>
-        {currentUser.uid}
-        <hr /> <br />
-        <h3>
-          {'You have ' + contentInWatchlist.length + ' '}
-          {contentInWatchlist.length === 1 ? 'title' : 'titles'}
-          {' in your watchlist'}
-        </h3>
       </div>
 
       <br />

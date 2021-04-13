@@ -31,16 +31,16 @@ export const Watched = () => {
       <div>
         <Heading>
           <h1>Watched Titles</h1>
+          <strong>User email: </strong> {currentUser.email}
+          <br />
+          <strong>UID: </strong>
+          {currentUser.uid}
+          <hr /> <br />
+          <h3>
+            {watchedContent.length}{' '}
+            {watchedContent.length === 1 ? 'title' : 'titles'}
+          </h3>
         </Heading>
-        <strong>User email: </strong> {currentUser.email}
-        <br />
-        <strong>UID: </strong>
-        {currentUser.uid}
-        <hr /> <br />
-        <h3>
-          {watchedContent.length}{' '}
-          {watchedContent.length === 1 ? 'title' : 'titles'}
-        </h3>
       </div>
 
       {watchedContent.length > 0 ? (
