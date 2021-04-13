@@ -52,6 +52,12 @@ export const PrimaryH2 = styled.h2`
   margin-bottom: 100px;
 `;
 
+// ------------------------------- HOME ---------------------------------
+export const Heading = styled.h1`
+  color: ${({ theme }) => theme.primaryColor};
+  font-size: 0.9rem;
+`;
+
 // ------------------------------- FORMS ---------------------------------
 export const PrimaryInput = styled.input`
   color: ${({ theme }) => theme.primaryColor};
@@ -139,6 +145,7 @@ export const StatsSection = styled.section`
   align-items: center;
   text-align: center;
   h1 {
+    color: ${({ theme }) => theme.primaryColor};
     font-size: 2rem;
     margin: 70px 0;
   }

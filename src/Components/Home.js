@@ -1,8 +1,8 @@
-import { useState, useEffect } from "react";
-import axios from "axios";
-import MovieItem from "./Search/MovieItem";
-import { ResultsGrid } from "./StyledComponents";
-import * as URL from "../constants/urlParts";
+import { useState, useEffect } from 'react';
+import axios from 'axios';
+import MovieItem from './Search/MovieItem';
+import { ResultsGrid, Heading } from './StyledComponents';
+import * as URL from '../constants/urlParts';
 
 const Home = () => {
   const [movies, setMovies] = useState([]);
@@ -17,7 +17,10 @@ const Home = () => {
 
   return (
     <>
-      <h1>Now Playing</h1>
+      <Heading>
+        <h1>Now Playing</h1>
+      </Heading>
+
       <ResultsGrid>
         {movies.map(
           ({

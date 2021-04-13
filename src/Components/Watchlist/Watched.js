@@ -1,19 +1,19 @@
-import React, { useEffect, useState } from "react";
-import { db } from "../../firebase";
-import { useAuth } from "../../context/AuthContext";
-import MovieItem from "../Search/MovieItem";
-import TvItem from "../Search/TvItem";
-import { ResultsGrid } from "../StyledComponents";
-import * as URL from "../../constants/urlParts";
+import React, { useEffect, useState } from 'react';
+import { db } from '../../firebase';
+import { useAuth } from '../../context/AuthContext';
+import MovieItem from '../Search/MovieItem';
+import TvItem from '../Search/TvItem';
+import { ResultsGrid, Heading } from '../StyledComponents';
+import * as URL from '../../constants/urlParts';
 
 export const Watched = () => {
   const { currentUser } = useAuth();
   const [watchedContent, setWatchedContent] = useState([]);
 
   useEffect(() => {
-    db.collection("users")
+    db.collection('users')
       .doc(currentUser.uid)
-      .collection("haveWatched")
+      .collection('haveWatched')
       .get()
       //this is async, so it returns a promise
       .then((snapshot) => {
@@ -29,15 +29,17 @@ export const Watched = () => {
   return (
     <div>
       <div>
-        <h1>Watched Titles</h1>
+        <Heading>
+          <h1>Watched Titles</h1>
+        </Heading>
         <strong>User email: </strong> {currentUser.email}
         <br />
         <strong>UID: </strong>
         {currentUser.uid}
         <hr /> <br />
         <h3>
-          {watchedContent.length}{" "}
-          {watchedContent.length === 1 ? "title" : "titles"}
+          {watchedContent.length}{' '}
+          {watchedContent.length === 1 ? 'title' : 'titles'}
         </h3>
       </div>
 
