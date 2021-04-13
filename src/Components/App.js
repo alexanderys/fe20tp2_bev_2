@@ -11,6 +11,7 @@ import Navigation from "./Navigation";
 import Home from "./Home";
 import Search from "./Search/Search";
 import Stats from "./Stats";
+import MovieDetailsPage from "./MovieDetailsPage";
 import * as ROUTES from "../constants/routes";
 import { AuthProvider } from "../context/AuthContext";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
@@ -36,6 +37,8 @@ function App() {
             path={ROUTES.UPDATE_PROFILE}
             component={UpdateProfile}
           />
+          <PrivateRoute path={`${ROUTES.MOVIE}/:id`} component={MovieDetailsPage} />
+          <PrivateRoute path={`${ROUTES.TV}/:id`} component={MovieDetailsPage} />
         </Switch>
       </AuthProvider>
     </Router>

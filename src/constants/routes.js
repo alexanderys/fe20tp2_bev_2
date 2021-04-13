@@ -9,3 +9,5 @@ export const STATS = "/stats";
 export const SETTINGS = "/settings";
 export const WATCHED = "/watched";
 export const WATCHLIST = "/watchlist";
+export const MOVIE = "/movie";
+export const TV = "/tv";
