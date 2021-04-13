@@ -11,7 +11,9 @@ import Navigation from "./Navigation";
 import Home from "./Home";
 import Search from "./Search/Search";
 import Stats from "./Stats";
-import MovieDetailsPage from "./MovieDetailsPage";
+import MovieDetails from "./Details/MovieDetails";
+import TvDetails from "./Details/TvDetails";
+import ActorDetails from "./Details/ActorDetails";
 import * as ROUTES from "../constants/routes";
 import { AuthProvider } from "../context/AuthContext";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
@@ -37,8 +39,9 @@ function App() {
             path={ROUTES.UPDATE_PROFILE}
             component={UpdateProfile}
           />
-          <PrivateRoute path={`${ROUTES.MOVIE}/:id`} component={MovieDetailsPage} />
-          <PrivateRoute path={`${ROUTES.TV}/:id`} component={MovieDetailsPage} />
+          <PrivateRoute path={`${ROUTES.MOVIE}/:id`} component={MovieDetails} />
+          <PrivateRoute path={`${ROUTES.TV}/:id`} component={TvDetails} />
+          <PrivateRoute path={`${ROUTES.ACTOR}/:id`} component={ActorDetails} />
         </Switch>
       </AuthProvider>
     </Router>

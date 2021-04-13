@@ -40,6 +40,42 @@ export const ItemCard = styled.section`
   }
 `;
 
+export const DetailsCard = styled.section`
+  max-width: 100%;
+  max-height: ;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 5px;
+  h2 {
+    font-size: 1.3rem;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  img {
+    width: 50%;
+    margin: 10px
+  }
+  ul {
+    list-style-type: none;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 10px;
+    
+    li {
+      display: inline;
+    }
+  }
+  span {
+    font-size: 1rem;
+    margin-bottom: 10px;
+  }
+  p {
+    text-align: center;
+    padding: 10px
+  }
+`;
+
 export const PrimaryH2 = styled.h2`
   text-align: center;
   font-size: 1.6rem;
