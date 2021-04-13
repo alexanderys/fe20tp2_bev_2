@@ -4,11 +4,28 @@ import { useAuth } from "../../context/AuthContext";
 import { IMAGE_URL } from "../../constants/urlParts";
 import { ItemCard } from "../StyledComponents";
 import FallbackImage from "../FallbackImage";
+import { genresList } from "../Genres";
 
-function MovieItem({ id, title, voteAverage, posterPath, releaseDate }) {
+function MovieItem({
+  id,
+  title,
+  voteAverage,
+  posterPath,
+  releaseDate,
+  genreIds,
+}) {
   const { currentUser } = useAuth();
   const [inHaveWatched, setInHaveWatched] = useState(false);
   const [inWatchlist, setInWatchlist] = useState(false);
+  const timestamp = new Date().toISOString();
+
+  const genreNames = genreIds?.map((genreId) => {
+    //? kollar om genreIds finns/laddar - om inte så sätter den genreNames till null
+    return genresList.find(
+      (genreIdAndNameObj) => genreIdAndNameObj.id === genreId
+    ).name;
+  });
+  // console.log(genreNames);
 
   //the add-to-list-buttons checks these list states ^ to see if a specific movie is included
   useEffect(() => {
@@ -53,6 +70,8 @@ function MovieItem({ id, title, voteAverage, posterPath, releaseDate }) {
         voteAverage,
         posterPath,
         releaseDate,
+        createdAt: timestamp,
+        genreNames,
       })
       .then(() => {
         setInHaveWatched(true);
@@ -81,6 +100,7 @@ function MovieItem({ id, title, voteAverage, posterPath, releaseDate }) {
         voteAverage,
         posterPath,
         releaseDate,
+        createdAt: timestamp,
       })
       .then(() => {
         setInWatchlist(true);
@@ -108,7 +128,7 @@ function MovieItem({ id, title, voteAverage, posterPath, releaseDate }) {
         )}
       </a>
 
-      <h2>{title}</h2>
+      <h3>{title}</h3>
 
       {inWatchlist
         ? currentUser && (

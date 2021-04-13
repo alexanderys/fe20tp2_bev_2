@@ -1,4 +1,4 @@
-import styled, { createGlobalStyle } from 'styled-components';
+import styled, { createGlobalStyle } from "styled-components";
 
 export const GlobalStyles = createGlobalStyle`
     html {
@@ -20,12 +20,12 @@ export const ItemCard = styled.section`
   color: ${({ theme }) => theme.secondaryColor};
   background-color: ${({ theme }) => theme.secondaryBackground};
   max-width: 120px;
-  max-height: 300px;
+  height: 300px;
   overflow: hidden;
   margin: 5px;
   border-radius: 3px;
-  h2 {
-    font-size: 1.3rem;
+  h3 {
+    font-size: 1.1rem;
     text-align: center;
     margin-bottom: 5px;
   }
@@ -36,6 +36,7 @@ export const ItemCard = styled.section`
     font-size: 1rem;
     margin-bottom: 15px;
   }
+
   button {
     color: ${({ theme }) => theme.secondaryColor};
     font-family: inherit;
@@ -183,6 +184,15 @@ export const GoBackButton = styled.i`
 `;
 
 // ------------------------------- SEARCH --------------------------------
+
+export const SearchSection = styled.section`
+  height: 90vh;
+  h2 {
+    margin: 10px 0 0 20px;
+    font-size: 1.3rem;
+  }
+`;
+
 export const SearchLabel = styled.label`
   padding: 10px;
   display: flex;
@@ -202,5 +212,26 @@ export const SearchInput = styled.input`
   }
   &::placeholder {
     font-style: italic;
+  }
+`;
+
+// ------------------------------- PAGINATION --------------------------------
+
+export const PaginationNumbers = styled.ul`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  list-style: none;
+
+  li {
+    margin: 10px 5px;
+    font-size: 1.1rem;
+  }
+  li a {
+    text-decoration: none;
+    color: black;
+  }
+  li a:focus {
+    text-decoration: underline;
   }
 `;

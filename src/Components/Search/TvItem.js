@@ -105,7 +105,7 @@ function TvItem({ id, name, posterPath, firstAirDate, voteAverage, overview }) {
       ) : (
         <FallbackImage type={"tv"} />
       )}
-      <h2>{name}</h2>
+      <h3>{name}</h3>
 
       {inWatchlist
         ? currentUser && (

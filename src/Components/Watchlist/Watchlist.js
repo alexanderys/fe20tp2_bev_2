@@ -4,7 +4,6 @@ import { useAuth } from "../../context/AuthContext";
 import MovieItem from "../Search/MovieItem";
 import TvItem from "../Search/TvItem";
 import { ResultsGrid } from "../StyledComponents";
-import * as URL from "../../constants/urlParts";
 
 export const Watchlist = () => {
   const { currentUser } = useAuth();

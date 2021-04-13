@@ -1,3 +1,5 @@
+import { PaginationNumbers } from "../StyledComponents";
+
 const Pagination = ({ moviesPerPage, totalMovies, paginate }) => {
   const pageNumbers = [];
 
@@ -10,20 +12,20 @@ const Pagination = ({ moviesPerPage, totalMovies, paginate }) => {
 
   return (
     <nav>
-      <ul>
+      <PaginationNumbers>
         {pageNumbers.map((number) => (
           <li key={number}>
             <a
               onClick={() => {
                 paginate(number);
               }}
-              href="#"
+              href="#{number}"
             >
               {number}
             </a>
           </li>
         ))}
-      </ul>
+      </PaginationNumbers>
     </nav>
   );
 };

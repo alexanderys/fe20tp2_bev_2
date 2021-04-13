@@ -22,20 +22,13 @@ function Stats() {
       .collection("haveWatched")
       .get()
       .then((snapshot) => {
-        let movies = [];
-        let voteAverage = [];
         snapshot.docs.forEach((doc) => {
-          movies.push(doc.data());
-          voteAverage.push(doc.data().voteAverage);
+          watchedMovies.push(doc.data());
+          watchedMoviesVoteAvg.push(doc.data().voteAverage);
         });
-        setWatchedMovies(movies);
-        setWatchedMoviesVoteAvg(voteAverage);
         setIsLoading(false);
       });
   }, []);
-
-  // Row 30 to 35 needs to run AFTER data have been fetched from fb.
-  // Solve this!!!!!!!!
 
   const sumVoteAverage = watchedMoviesVoteAvg.reduce(
     (result, number) => result + number,
@@ -113,26 +106,17 @@ function Stats() {
             {/* <LineChart /> */}
           </>
         )}
-      </section>
 
-      {avg ? (
         <div>
           <span>
             Number of movies watched:
             <strong>{watchedMovies.length}</strong>
           </span>
-          <br />
-          <span>
+          {/* <span>
             Average rating: <strong>{avg}</strong>
-          </span>
+          </span> */}
         </div>
-      ) : (
-        <p>Add some movies that you've seen!</p>
-      )}
-      <br />
-      <br />
-      <br />
-      <br />
+      </section>
       <br />
       <br />
       <br />

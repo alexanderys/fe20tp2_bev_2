@@ -4,7 +4,6 @@ import { useAuth } from "../../context/AuthContext";
 import MovieItem from "../Search/MovieItem";
 import TvItem from "../Search/TvItem";
 import { ResultsGrid } from "../StyledComponents";
-import * as URL from "../../constants/urlParts";
 
 export const Watched = () => {
   const { currentUser } = useAuth();
@@ -14,6 +13,7 @@ export const Watched = () => {
     db.collection("users")
       .doc(currentUser.uid)
       .collection("haveWatched")
+      // .orderBy("createdAt")
       .get()
       //this is async, so it returns a promise
       .then((snapshot) => {
@@ -54,21 +54,25 @@ export const Watched = () => {
                 firstAirDate,
                 posterPath,
                 voteAverage,
+                // genre_ids,
               }) => {
                 if (movieTitle) {
                   return (
                     <MovieItem
                       id={id}
+                      key={id}
                       title={movieTitle}
                       releaseDate={releaseDate}
                       posterPath={posterPath}
                       voteAverage={voteAverage}
+                      // genreIds={genre_ids}
                     />
                   );
                 } else if (tvTitle) {
                   return (
                     <TvItem
                       id={id}
+                      key={id}
                       name={tvTitle}
                       firstAirDate={firstAirDate}
                       posterPath={posterPath}
@@ -76,6 +80,7 @@ export const Watched = () => {
                     />
                   );
                 }
+                return <></>;
               }
             )}
           </ResultsGrid>

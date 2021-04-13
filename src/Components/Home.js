@@ -27,6 +27,7 @@ const Home = () => {
             vote_average,
             poster_path,
             release_date,
+            genre_ids,
           }) => (
             <MovieItem
               key={id}
@@ -36,6 +37,7 @@ const Home = () => {
               voteAverage={vote_average}
               releaseDate={release_date}
               posterPath={poster_path}
+              genreIds={genre_ids}
             />
           )
         )}
