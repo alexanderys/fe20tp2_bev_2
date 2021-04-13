@@ -4,16 +4,9 @@ import { useAuth } from "../../context/AuthContext";
 import { IMAGE_URL } from "../../constants/urlParts";
 import { ItemCard } from "../StyledComponents";
 import FallbackImage from "../FallbackImage";
+import { Link } from "react-router-dom";
 
-function MovieItem({
-  id,
-  title,
-  voteAverage,
-  imgComboPath,
-  posterPath,
-  releaseDate,
-  genreIds,
-}) {
+function MovieItem({ id, title, voteAverage, posterPath, releaseDate }) {
   const { currentUser } = useAuth();
   const [inHaveWatched, setInHaveWatched] = useState(false);
   const [inWatchlist, setInWatchlist] = useState(false);
@@ -33,11 +26,6 @@ function MovieItem({
             setInHaveWatched(false);
           }
         });
-    }
-  }, []);
-  //useEffect checks if a movie exists in a watchlist, and then sets the list-state to true or false
-  useEffect(() => {
-    if (currentUser) {
       db.collection("users")
         .doc(currentUser.uid)
         .collection("watchlist")
@@ -61,12 +49,11 @@ function MovieItem({
       .collection("haveWatched")
       .doc(id.toString())
       .set({
-        id: id,
+        id,
         movieTitle: title,
-        voteAverage: voteAverage,
-        posterPath: posterPath,
-        releaseDate: releaseDate,
-        genreIds: genreIds,
+        voteAverage,
+        posterPath,
+        releaseDate,
       })
       .then(() => {
         setInHaveWatched(true);
@@ -90,12 +77,11 @@ function MovieItem({
       .collection("watchlist")
       .doc(id.toString())
       .set({
-        id: id,
+        id,
         movieTitle: title,
-        voteAverage: voteAverage,
-        posterPath: posterPath,
-        releaseDate: releaseDate,
-        genreIds: genreIds,
+        voteAverage,
+        posterPath,
+        releaseDate,
       })
       .then(() => {
         setInWatchlist(true);
@@ -115,13 +101,13 @@ function MovieItem({
 
   return (
     <ItemCard>
-      <a href={`movies/${id}`}>
+      <Link to={`movie/${id}`}>
         {posterPath ? (
           <img src={IMAGE_URL + posterPath} alt="" />
         ) : (
           <FallbackImage type={"movie"} />
         )}
-      </a>
+      </Link>
 
       <h2>{title}</h2>
 

@@ -4,16 +4,9 @@ import { useAuth } from "../../context/AuthContext";
 import { ItemCard } from "../StyledComponents";
 import { IMAGE_URL } from "../../constants/urlParts";
 import FallbackImage from "../FallbackImage";
+import { Link } from "react-router-dom";
 
-function TvItem({
-  id,
-  name,
-  posterPath,
-  firstAirDate,
-  voteAverage,
-  overview,
-  genreIds
-}) {
+function TvItem({ id, name, posterPath, firstAirDate, voteAverage, overview }) {
   const { currentUser } = useAuth();
   const [inHaveWatched, setInHaveWatched] = useState(false);
   const [inWatchlist, setInWatchlist] = useState(false);
@@ -33,11 +26,6 @@ function TvItem({
             setInHaveWatched(false);
           }
         });
-    }
-  }, []);
-  //useEffect checks if a movie exists in a watchlist, and then sets the list-state to true or false
-  useEffect(() => {
-    if (currentUser) {
       db.collection("users")
         .doc(currentUser.uid)
         .collection("watchlist")
@@ -61,12 +49,11 @@ function TvItem({
       .collection("haveWatched")
       .doc(id.toString())
       .set({
-        id: id,
+        id,
         tvTitle: name,
-        voteAverage: voteAverage,
-        posterPath: posterPath,
-        firstAirDate: firstAirDate,
-        genreIds: genreIds,
+        voteAverage,
+        posterPath,
+        firstAirDate,
       })
       .then(() => {
         setInHaveWatched(true);
@@ -90,12 +77,11 @@ function TvItem({
       .collection("watchlist")
       .doc(id.toString())
       .set({
-        id: id,
+        id,
         tvTitle: name,
-        voteAverage: voteAverage,
-        posterPath: posterPath,
-        firstAirDate: firstAirDate,
-        genreIds: genreIds,
+        voteAverage,
+        posterPath,
+        firstAirDate,
       })
       .then(() => {
         setInWatchlist(true);
@@ -113,15 +99,16 @@ function TvItem({
       });
   };
 
-
   return (
     <ItemCard>
-      {posterPath ? (
-        <img src={IMAGE_URL + posterPath} alt="" />
-      ) : (
-        <FallbackImage type={"tv"} />
-      )}
-      <h2>{name}</h2>
+      <Link to={`tv/${id}`}>
+        {posterPath ? (
+          <img src={IMAGE_URL + posterPath} alt="" />
+        ) : (
+          <FallbackImage type={"tv"} />
+        )}
+        <h2>{name}</h2>
+      </Link>
 
       {inWatchlist
         ? currentUser && (
@@ -142,29 +129,9 @@ function TvItem({
         )}
 
       <span>{firstAirDate ? firstAirDate.substring(0, 4) : ""}</span>
-      {/* <span>{overview}</span> */}
       <span>{voteAverage}</span>
     </ItemCard>
   );
 }
 
-export default TvItem
-
-
-/* const TvItem = ({ posterPath, firstAirDate, name, overview }) => {
-  return (
-    <ItemCard>
-      {posterPath ? (
-        <img src={IMAGE_URL + posterPath} alt="" />
-      ) : (
-        <FallbackImage type={"tv"} />
-      )}
-      <h2>{name}</h2>
-      <span>{firstAirDate ? firstAirDate.substring(0, 4) : ""}</span>
-      <span>{overview}</span>
-      <span>{voteAverage}</span>
-    </ItemCard>
-  );
-};
-
-export default TvItem; */
+export default TvItem;
