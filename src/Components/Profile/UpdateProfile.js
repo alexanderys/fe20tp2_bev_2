@@ -1,6 +1,6 @@
-import React, { useRef, useState } from "react";
-import { useAuth } from "../../context/AuthContext";
-import { useHistory } from "react-router-dom";
+import React, { useRef, useState } from 'react';
+import { useAuth } from '../../context/AuthContext';
+import { useHistory } from 'react-router-dom';
 import {
   SecondarySection,
   GoBackButton,
@@ -8,28 +8,29 @@ import {
   PrimaryLabel,
   SecondaryButton,
   PrimaryForm,
-} from "../StyledComponents";
+  ThemeProvider,
+} from '../StyledComponents';
 
 export default function UpdateProfile() {
   const emailRef = useRef();
   const passwordRef = useRef();
   const passwordConfirmRef = useRef();
   const { currentUser, updatePassword, updateEmail } = useAuth();
-  const [error, setError] = useState("");
+  const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
-  const [message, setMessage] = useState("");
+  const [message, setMessage] = useState('');
   const history = useHistory();
 
   function handleSubmit(e) {
     e.preventDefault();
-    setMessage("");
+    setMessage('');
     if (passwordRef.current.value !== passwordConfirmRef.current.value) {
-      return setError("Passwords do not match");
+      return setError('Passwords do not match');
     }
 
     const promises = [];
     setLoading(true);
-    setError("");
+    setError('');
 
     if (emailRef.current.value !== currentUser.email) {
       //if we've changed the email, we want to add that promise to the array
@@ -45,15 +46,13 @@ export default function UpdateProfile() {
       //we pass in the array of promises,
       //when all the promises finishes and are successful, then history.push will execute
       .then(() => {
-        setMessage(
-          "Profile was successfully updated."
-        );
+        setMessage('Profile was successfully updated.');
       })
       //   .then(() => {
       //     history.push("/");
       //   })
       .catch(() => {
-        setError("Failed to update account. Try logging out and in again");
+        setError('Failed to update account. Try logging out and in again');
         //Probably "Credentials are too old, you need to log in again"-error?
         //https://firebase.google.com/docs/reference/js/firebase.User#reauthenticatewithcredential
       })
@@ -68,7 +67,7 @@ export default function UpdateProfile() {
       <SecondarySection>
         <GoBackButton
           onClick={() => history.goBack()}
-          className="fas fa-angle-left"
+          className='fas fa-angle-left'
         ></GoBackButton>
         <h1>Update Profile</h1>
         {error && <div>{error}</div>}
@@ -77,7 +76,7 @@ export default function UpdateProfile() {
           <div>
             <PrimaryLabel>Email</PrimaryLabel>
             <PrimaryInput
-              type="email"
+              type='email'
               ref={emailRef}
               required
               defaultValue={currentUser.email}
@@ -86,21 +85,21 @@ export default function UpdateProfile() {
           <div>
             <PrimaryLabel>Password</PrimaryLabel>
             <PrimaryInput
-              type="password"
+              type='password'
               ref={passwordRef}
-              placeholder="Leave blank to keep the same"
+              placeholder='Leave blank to keep the same'
             />
           </div>
           <div>
             <PrimaryLabel>Password Confirmation</PrimaryLabel>
             <PrimaryInput
-              type="password"
+              type='password'
               ref={passwordConfirmRef}
-              placeholder="Leave blank to keep the same"
+              placeholder='Leave blank to keep the same'
             />
           </div>
 
-          <SecondaryButton disabled={loading} type="submit">
+          <SecondaryButton disabled={loading} type='submit'>
             Update
           </SecondaryButton>
         </PrimaryForm>
