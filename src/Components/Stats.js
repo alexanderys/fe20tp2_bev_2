@@ -54,8 +54,11 @@ function Stats() {
       datasets: [
         {
           data: [avgNumber, avgBack],
-          backgroundColor: ["rgba(255, 139, 132, 0.5)"],
-          borderWidth: 4,
+          backgroundColor: [
+            "rgba(255, 159, 152, 0.9)",
+            "rgba(222, 210, 210, 0.5)",
+          ],
+          borderWidth: 0,
         },
       ],
     });
@@ -70,7 +73,7 @@ function Stats() {
   return (
     <StatsSection>
       <h1>Stats</h1>
-      <div>
+      <section>
         {isLoading ? (
           <p>Loading...</p>
         ) : (
@@ -102,12 +105,15 @@ function Stats() {
                 },
               }}
             />
+            <br />
             <BarChart />
-            <LineChart />
+            <br />
             <PieChart />
+            <br />
+            {/* <LineChart /> */}
           </>
         )}
-      </div>
+      </section>
 
       {avg ? (
         <div>
@@ -121,8 +127,14 @@ function Stats() {
           </span>
         </div>
       ) : (
-        <p>use the app, boy/girl/non-binary!</p>
+        <p>Add some movies that you've seen!</p>
       )}
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
       <br />
     </StatsSection>
   );

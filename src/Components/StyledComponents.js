@@ -132,9 +132,9 @@ export const StatsSection = styled.section`
     font-size: 2rem;
     margin: 70px 0;
   }
-  div {
+  section {
     width: 90vw;
-    margin: 0 0 100px 0;
+    margin: 0 0 60px 0;
   }
 `;
 // ------------------------------- BUTTONS ---------------------------------
