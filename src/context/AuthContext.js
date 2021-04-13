@@ -27,7 +27,6 @@ export function AuthProvider({ children, onChange, currentTheme }) {
       .catch((error) => {
         console.error('Error updating Theme: ', error);
       });
-    // console.log(test().user.uid);
     return res;
   }
 
@@ -78,6 +77,7 @@ export function AuthProvider({ children, onChange, currentTheme }) {
   }
 
   // This function serch for the current user in firestore and update the theme-value Ex. 'dark' | 'light'
+  //FIX BUG
   // works ok, needs modification. gets stuck when switch to fast.
 
   async function updateTheme(curTheme) {
