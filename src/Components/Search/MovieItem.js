@@ -18,7 +18,15 @@ function MovieItem({
   const { currentUser } = useAuth();
   const [inHaveWatched, setInHaveWatched] = useState(false);
   const [inWatchlist, setInWatchlist] = useState(false);
-  const timestamp = new Date().toISOString();
+
+  // const timestamp = Date.now() // --> 13652183452134
+  // 1 week in ms 604800000
+
+  // ta bort vad en vecka motsvarar i millisekunder
+  // 1 week in ms 604800000
+  // [ X ] spara timestamp i firebase
+  // timestamp - vecka --> ska visas 
+  // formatera timestamp för UI 
 
   const genreNames = genreIds?.map((genreId) => {
     //? kollar om genreIds finns/laddar - om inte så sätter den genreNames till null
@@ -71,7 +79,7 @@ function MovieItem({
         voteAverage,
         posterPath,
         releaseDate,
-        createdAt: timestamp,
+        createdAt: Date.now(),
         genreNames,
       })
       .then(() => {
@@ -101,7 +109,7 @@ function MovieItem({
         voteAverage,
         posterPath,
         releaseDate,
-        createdAt: timestamp,
+        createdAt: Date.now(),
       })
       .then(() => {
         setInWatchlist(true);
@@ -133,21 +141,21 @@ function MovieItem({
 
       {inWatchlist
         ? currentUser && (
-            <button onClick={removeFromWatchlist}>Remove from Watchlist</button>
-          )
+          <button onClick={removeFromWatchlist}>Remove from Watchlist</button>
+        )
         : currentUser && (
-            <button onClick={addToWatchlist}>Add to Watchlist</button>
-          )}
+          <button onClick={addToWatchlist}>Add to Watchlist</button>
+        )}
 
       {inHaveWatched
         ? currentUser && (
-            <button onClick={removeFromHaveWatched}>
-              Remove from Have Watched
-            </button>
-          )
+          <button onClick={removeFromHaveWatched}>
+            Remove from Have Watched
+          </button>
+        )
         : currentUser && (
-            <button onClick={addToHaveWatched}>Add to Have Watched</button>
-          )}
+          <button onClick={addToHaveWatched}>Add to Have Watched</button>
+        )}
 
       <span>{releaseDate ? releaseDate.substring(0, 4) : ""}</span>
       <span>{voteAverage}</span>

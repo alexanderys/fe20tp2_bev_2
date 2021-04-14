@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 import axios from 'axios';
 import { IMAGE_URL } from "../../constants/urlParts";
 import FallbackImage from "../FallbackImage";
 import { GoBackButton, DetailsCard } from "../StyledComponents";
-import { useHistory } from "react-router-dom";
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';

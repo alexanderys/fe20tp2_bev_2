@@ -7,6 +7,8 @@ import LineChart from "./Stats/LineChart";
 import PieChart from "./Stats/PieChart";
 import { Doughnut } from "react-chartjs-2";
 
+// @ TODO i enskild komponent: Nytt timetamp, ta bort 1 vecka å se vad som ryms inom intervall
+
 function Stats() {
   const { currentUser } = useAuth();
   const [watchedMovies, setWatchedMovies] = useState([]);
