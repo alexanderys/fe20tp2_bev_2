@@ -4,6 +4,7 @@ import { useAuth } from "../../context/AuthContext";
 import { ItemCard } from "../StyledComponents";
 import { IMAGE_URL } from "../../constants/urlParts";
 import FallbackImage from "../FallbackImage";
+import { Link } from "react-router-dom";
 
 function TvItem({ id, name, posterPath, firstAirDate, voteAverage, overview }) {
   const { currentUser } = useAuth();
@@ -100,30 +101,32 @@ function TvItem({ id, name, posterPath, firstAirDate, voteAverage, overview }) {
 
   return (
     <ItemCard>
-      {posterPath ? (
-        <img src={IMAGE_URL + posterPath} alt="" />
-      ) : (
-        <FallbackImage type={"tv"} />
-      )}
-      <h2>{name}</h2>
+      <Link to={`tv/${id}`}>
+        {posterPath ? (
+          <img src={IMAGE_URL + posterPath} alt="" />
+        ) : (
+          <FallbackImage type={"tv"} />
+        )}
+        <h2>{name}</h2>
+      </Link>
 
       {inWatchlist
         ? currentUser && (
-            <button onClick={removeFromWatchlist}>Remove from Watchlist</button>
-          )
+          <button onClick={removeFromWatchlist}>Remove from Watchlist</button>
+        )
         : currentUser && (
-            <button onClick={addToWatchlist}>Add to Watchlist</button>
-          )}
+          <button onClick={addToWatchlist}>Add to Watchlist</button>
+        )}
 
       {inHaveWatched
         ? currentUser && (
-            <button onClick={removeFromHaveWatched}>
-              Remove from Have Watched
-            </button>
-          )
+          <button onClick={removeFromHaveWatched}>
+            Remove from Have Watched
+          </button>
+        )
         : currentUser && (
-            <button onClick={addToHaveWatched}>Add to Have Watched</button>
-          )}
+          <button onClick={addToHaveWatched}>Add to Have Watched</button>
+        )}
 
       <span>{firstAirDate ? firstAirDate.substring(0, 4) : ""}</span>
       <span>{voteAverage}</span>

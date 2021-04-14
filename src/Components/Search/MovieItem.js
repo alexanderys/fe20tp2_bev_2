@@ -4,6 +4,7 @@ import { useAuth } from "../../context/AuthContext";
 import { IMAGE_URL } from "../../constants/urlParts";
 import { ItemCard } from "../StyledComponents";
 import FallbackImage from "../FallbackImage";
+import { Link } from "react-router-dom";
 
 function MovieItem({ id, title, voteAverage, posterPath, releaseDate }) {
   const { currentUser } = useAuth();
@@ -100,33 +101,33 @@ function MovieItem({ id, title, voteAverage, posterPath, releaseDate }) {
 
   return (
     <ItemCard>
-      <a href={`movies/${id}`}>
+      <Link to={`movie/${id}`}>
         {posterPath ? (
           <img src={IMAGE_URL + posterPath} alt="" />
         ) : (
           <FallbackImage type={"movie"} />
         )}
-      </a>
+      </Link>
 
       <h2>{title}</h2>
 
       {inWatchlist
         ? currentUser && (
-            <button onClick={removeFromWatchlist}>Remove from Watchlist</button>
-          )
+          <button onClick={removeFromWatchlist}>Remove from Watchlist</button>
+        )
         : currentUser && (
-            <button onClick={addToWatchlist}>Add to Watchlist</button>
-          )}
+          <button onClick={addToWatchlist}>Add to Watchlist</button>
+        )}
 
       {inHaveWatched
         ? currentUser && (
-            <button onClick={removeFromHaveWatched}>
-              Remove from Have Watched
-            </button>
-          )
+          <button onClick={removeFromHaveWatched}>
+            Remove from Have Watched
+          </button>
+        )
         : currentUser && (
-            <button onClick={addToHaveWatched}>Add to Have Watched</button>
-          )}
+          <button onClick={addToHaveWatched}>Add to Have Watched</button>
+        )}
 
       <span>{releaseDate ? releaseDate.substring(0, 4) : ""}</span>
       <span>{voteAverage}</span>
