@@ -59,14 +59,13 @@ export const DetailsCard = styled.section`
   }
   img {
     width: 50%;
-    margin: 10px
   }
   ul {
     list-style-type: none;
     width: 100%;
     text-align: center;
     margin-bottom: 10px;
-    
+
     li {
       display: inline;
     }
@@ -77,7 +76,6 @@ export const DetailsCard = styled.section`
   }
   p {
     text-align: center;
-    padding: 10px
   }
 `;
 
