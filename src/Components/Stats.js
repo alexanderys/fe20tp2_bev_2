@@ -14,20 +14,34 @@ function Stats() {
   const [watchedMovies, setWatchedMovies] = useState([]);
   const [watchedMoviesVoteAvg, setWatchedMoviesVoteAvg] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [lastWeek, setLastWeek] = useState([]);
+
+  // 604800000 - 1 week in ms
 
   useEffect(() => {
+    setLastWeek([]);
+    const limit = Date.now() - 300000;
+    // Limit is  now 5 min
+    console.log("limit: " + limit);
     db.collection("users")
       .doc(currentUser.uid)
       .collection("haveWatched")
       .get()
       .then((snapshot) => {
         snapshot.docs.forEach((doc) => {
+          if (doc.data().createdAt > limit) {
+            lastWeek.push(doc.data().createdAt);
+          }
           watchedMovies.push(doc.data());
           watchedMoviesVoteAvg.push(doc.data().voteAverage);
         });
         setIsLoading(false);
+        console.log('You have seen ' + lastWeek.length + " nr of movies in the last 5 min");
       });
   }, []);
+
+  // dagens datum minus en vecka --> gränsen
+  // om filmens timestamp är större än den, så behåller vi filmen
 
   const sumVoteAverage = watchedMoviesVoteAvg.reduce(
     (result, number) => result + number,
@@ -36,6 +50,14 @@ function Stats() {
   const avg = Math.round((sumVoteAverage / watchedMovies.length) * 10) / 10;
 
   const [voteAverageData, setVoteAverageData] = useState({});
+
+  /*   const nrOfMovies = lastWeek.map((movieTimestamp) => {
+      
+  
+      if (movieTimestamp > limit) {
+        console.log('inside if' + movieTimestamp)
+      }
+    }) */
 
   const chart = () => {
     let avgNumber = [avg];
