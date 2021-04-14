@@ -3,7 +3,7 @@ import { db } from '../../firebase';
 import { useAuth } from '../../context/AuthContext';
 import MovieItem from '../Search/MovieItem';
 import TvItem from '../Search/TvItem';
-import { ResultsGrid, Heading } from '../StyledComponents';
+import { PrimarySection, ResultsGrid /* Heading */ } from '../StyledComponents';
 import * as URL from '../../constants/urlParts';
 
 export const Watched = () => {
@@ -29,7 +29,7 @@ export const Watched = () => {
   return (
     <div>
       <div>
-        <Heading>
+        <PrimarySection>
           <h1>Watched Titles</h1>
           <strong>User email: </strong> {currentUser.email}
           <br />
@@ -40,7 +40,7 @@ export const Watched = () => {
             {watchedContent.length}{' '}
             {watchedContent.length === 1 ? 'title' : 'titles'}
           </h3>
-        </Heading>
+        </PrimarySection>
       </div>
 
       {watchedContent.length > 0 ? (

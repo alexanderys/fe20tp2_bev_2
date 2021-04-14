@@ -3,7 +3,7 @@ import { db } from '../../firebase';
 import { useAuth } from '../../context/AuthContext';
 import MovieItem from '../Search/MovieItem';
 import TvItem from '../Search/TvItem';
-import { ResultsGrid, Heading } from '../StyledComponents';
+import { PrimarySection, ResultsGrid } from '../StyledComponents';
 import * as URL from '../../constants/urlParts';
 
 export const Watchlist = () => {
@@ -28,7 +28,7 @@ export const Watchlist = () => {
   return (
     <>
       <div>
-        <Heading>
+        <PrimarySection>
           <h1>My Watchlist</h1>
           <strong>User email: </strong> {currentUser.email}
           <br />
@@ -40,7 +40,7 @@ export const Watchlist = () => {
             {contentInWatchlist.length === 1 ? 'title' : 'titles'}
             {' in your watchlist'}
           </h3>
-        </Heading>
+        </PrimarySection>
       </div>
 
       <br />
