@@ -83,6 +83,7 @@ function Search() {
                 media_type,
                 first_air_date,
                 known_for,
+                genre_ids,
               }) => {
                 if (media_type === "movie") {
                   return (
@@ -119,6 +120,7 @@ function Search() {
                       firstAirDate={first_air_date}
                       overview={overview}
                       voteAverage={vote_average}
+                      genreIds={genre_ids}
                     />
                   );
                 }

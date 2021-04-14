@@ -14,6 +14,9 @@ import Stats from './Stats';
 import * as ROUTES from '../constants/routes';
 import { AuthProvider, useAuth } from '../context/AuthContext';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import MovieDetails from "./Details/MovieDetails";
+import TvDetails from "./Details/TvDetails";
+import ActorDetails from "./Details/ActorDetails";
 //Theme stuff
 import { ThemeProvider } from 'styled-components';
 import { lightTheme, darkTheme } from './Darkmode/Themes';
@@ -65,10 +68,13 @@ function App() {
               path={ROUTES.UPDATE_PROFILE}
               component={UpdateProfile}
             />
+            <PrivateRoute path={`${ROUTES.MOVIE}/:id`} component={MovieDetails} />
+            <PrivateRoute path={`${ROUTES.TV}/:id`} component={TvDetails} />
+            <PrivateRoute path={`${ROUTES.ACTOR}/:id`} component={ActorDetails} />
           </Switch>
         </ThemeProvider>
       </AuthProvider>
-    </Router>
+    </Router >
   );
 }
 
