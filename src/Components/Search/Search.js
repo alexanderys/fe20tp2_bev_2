@@ -120,6 +120,7 @@ function Search() {
                       firstAirDate={first_air_date}
                       overview={overview}
                       voteAverage={vote_average}
+                      genreIds={genre_ids}
                     />
                   );
                 }

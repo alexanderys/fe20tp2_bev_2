@@ -2,15 +2,19 @@ import React from "react";
 import { ItemCard } from "../StyledComponents";
 import { IMAGE_URL } from "../../constants/urlParts";
 import FallbackImage from "../FallbackImage";
+import { Link } from "react-router-dom";
 
-const ActorItem = ({ name, profilePath, knownFor }) => {
+const ActorItem = ({ id, name, profilePath, knownFor }) => {
   return (
     <ItemCard>
-      {profilePath ? (
-        <img src={IMAGE_URL + profilePath} alt="" />
-      ) : (
-        <FallbackImage type={"actor"} />
-      )}
+      <Link to={`actor/${id}`}>
+        {profilePath ? (
+          <img src={IMAGE_URL + profilePath} alt="" />
+        ) : (
+          <FallbackImage type={"actor"} />
+        )}
+      </Link>
+
       <h3>{name}</h3>
       <p>
         <strong>Actor/Actress</strong>

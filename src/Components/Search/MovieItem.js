@@ -5,6 +5,7 @@ import { IMAGE_URL } from "../../constants/urlParts";
 import { ItemCard } from "../StyledComponents";
 import FallbackImage from "../FallbackImage";
 import { genresList } from "../Genres";
+import { Link } from "react-router-dom";
 
 function MovieItem({
   id,
@@ -120,13 +121,13 @@ function MovieItem({
 
   return (
     <ItemCard>
-      <a href={`movies/${id}`}>
+      <Link to={`movie/${id}`}>
         {posterPath ? (
           <img src={IMAGE_URL + posterPath} alt="" />
         ) : (
           <FallbackImage type={"movie"} />
         )}
-      </a>
+      </Link>
 
       <h3>{title}</h3>
 
