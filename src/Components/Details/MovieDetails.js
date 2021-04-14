@@ -47,9 +47,9 @@ function MovieDetails(props) {
 
         {genres && (
           <ul>
-            {genres.map((genre) => {
+            {genres.map((genre, index) => {
               console.log('hello')
-              return <li>{genre.name}, </li>
+              return <li key={index}>{genre.name}, </li>
             })}
           </ul>
         )}
