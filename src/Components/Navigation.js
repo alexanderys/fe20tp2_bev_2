@@ -1,13 +1,13 @@
-import * as ROUTES from "../constants/routes";
-import { Link } from "react-router-dom";
-import styled from "styled-components";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import * as ROUTES from '../constants/routes';
+import { Link } from 'react-router-dom';
+import styled from 'styled-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faSearch,
   faHome,
   faChartPie,
   faUser,
-} from "@fortawesome/free-solid-svg-icons";
+} from '@fortawesome/free-solid-svg-icons';
 
 const StyledUL = styled.ul`
   padding: 10px;

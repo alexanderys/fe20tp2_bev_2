@@ -4,6 +4,17 @@ export const GlobalStyles = createGlobalStyle`
     html {
         background-color: ${({ theme }) => theme.primaryBackground};
     }
+    
+
+  * {  
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+} 
+
+    body {
+  font-family: 'Lato';
+} 
 `;
 
 // -------------------- ELEMENTS WITH STYLES THAT ARE USED MORE THAN ONCE-------------------------
@@ -182,6 +193,7 @@ export const StatsSection = styled.section`
     margin: 0 0 60px 0;
   }
 `;
+
 // ------------------------------- BUTTONS ---------------------------------
 export const PrimaryButton = styled.button`
   color: ${({ theme }) => theme.primaryColor};
