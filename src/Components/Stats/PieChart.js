@@ -1,8 +1,5 @@
 import React from "react";
-import { Pie, defaults } from "react-chartjs-2";
-
-defaults.global.tooltips.enabled = true;
-defaults.global.legend.position = "bottom";
+import { Pie } from "react-chartjs-2";
 
 export const PieChart = () => {
   return (
@@ -54,6 +51,7 @@ export const PieChart = () => {
           ],
         },
         legend: {
+          position: "bottom",
           labels: {
             fontSize: 14,
             weight: "bold",
@@ -62,6 +60,9 @@ export const PieChart = () => {
             boxWidth: 40,
           },
         },
+        // tooltips: {
+        //   enabled: false,
+        // },
       }}
     />
   );

@@ -5,10 +5,7 @@ import { StatsSection } from "./StyledComponents";
 import BarChart from "./Stats/BarChart";
 import LineChart from "./Stats/LineChart";
 import PieChart from "./Stats/PieChart";
-import { Doughnut, defaults } from "react-chartjs-2";
-
-defaults.global.tooltips.enabled = true;
-defaults.global.legend.position = "bottom";
+import { Doughnut } from "react-chartjs-2";
 
 function Stats() {
   const { currentUser } = useAuth();
@@ -91,10 +88,14 @@ function Stats() {
                   ],
                 },
                 legend: {
+                  position: "bottom",
                   labels: {
                     fontSize: 22,
                     boxWidth: 0,
                   },
+                },
+                tooltips: {
+                  enabled: false,
                 },
               }}
             />

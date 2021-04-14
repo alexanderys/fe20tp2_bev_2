@@ -21,7 +21,6 @@ const BarChart = () => {
         ],
         datasets: [
           {
-            label: "Movies watched per month",
             data: [12, 19, 3, 9, 2, 3, 5, 11, 6, 14, 4, 17],
             backgroundColor: [
               "rgba(255, 99, 132, 0.2)",
@@ -81,10 +80,7 @@ const BarChart = () => {
           ],
         },
         legend: {
-          labels: {
-            fontSize: 10,
-            fontColor: "pink",
-          },
+          display: false,
         },
       }}
     />
