@@ -5,9 +5,9 @@ Defining the 2 contexts we need.
 =================================
 */
 //The actual theme
-const ThemeContext = createContext();
-//Roggling the theme
-const ThemeUpdateContext = createContext();
+const ThemeContextWDS = createContext();
+//Toggling the theme
+const ThemeUpdateContextWDS = createContext();
 
 /* ==============================
 Making our own custom hooks to make it easy to access 
@@ -15,25 +15,26 @@ the theme + theme toggler anywhere in the app
 =================================
 */
 export const useTheme = () => {
-    return useContext(ThemeContext);
+    return useContext(ThemeContextWDS);
 }
 
 export const useThemeUpdate = () => {
-    return useContext(ThemeUpdateContext);
+    return useContext(ThemeUpdateContextWDS);
 }
 
-export default function ThemeContextProvider({ children }) {
+export default function ThemeContextProviderWDS({ children }) {
     const [theme, setTheme] = useState('dark');
 
     const themeToggler = () => {
         theme === 'dark' ? setTheme('light') : setTheme('dark');
+        console.log(theme);
     }
 
     return (
-        <ThemeContext.Provider value={theme}>
-            <ThemeUpdateContext.Provider value={themeToggler}>
+        <ThemeContextWDS.Provider value={theme}>
+            <ThemeUpdateContextWDS.Provider value={themeToggler}>
                 {children}
-            </ThemeUpdateContext.Provider>
-        </ThemeContext.Provider>
+            </ThemeUpdateContextWDS.Provider>
+        </ThemeContextWDS.Provider>
     )
 }

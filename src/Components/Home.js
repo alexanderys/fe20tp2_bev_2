@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import MovieItem from "./Search/MovieItem";
-import { PrimarySection, ResultsGrid } from "./StyledComponents";
+import styled, { PrimarySection, ResultsGrid } from "./StyledComponents";
 import * as URL from "../constants/urlParts";
 
 const Home = () => {

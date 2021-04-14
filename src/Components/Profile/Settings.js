@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useAuth } from "../../context/AuthContext";
 import { Link, useHistory } from "react-router-dom";
+import { useThemeUpdate } from '../../context/ThemeContext';
 
 import {
   SecondarySection,
@@ -24,6 +25,9 @@ export default function Settings() {
     }
   }
 
+  /* Importing the theme toggle function from ThemeContext.js */
+  const toggleTheme = useThemeUpdate();
+
   return (
     <>
       <SecondarySection>
@@ -40,15 +44,7 @@ export default function Settings() {
           </Link>
         </li>
 
-        {/* ============
-        Theme stuff START
-        ===============*/}
-
-        <button>themeToggler placeholder</button>
-
-        {/* ============
-        Theme stuff END
-        ===============*/}
+        <button onClick={toggleTheme}>Change Theme</button>
 
         {error && <div>{error}</div>}
         <PrimaryButton onClick={handleLogout}>
