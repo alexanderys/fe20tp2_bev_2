@@ -109,8 +109,7 @@ function Stats() {
 
         <div>
           <span>
-            Number of movies watched:
-            <strong>{watchedMovies.length}</strong>
+            Number of movies watched: <strong> {watchedMovies.length}</strong>
           </span>
           {/* <span>
             Average rating: <strong>{avg}</strong>
