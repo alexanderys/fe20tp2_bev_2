@@ -1,10 +1,11 @@
-import styled/* , { createGlobalStyle } */ from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
 
-/* export const GlobalStyles = createGlobalStyle`
+export const GlobalStyles = createGlobalStyle`
+//To target the background of Search
     html {
         background-color: ${({ theme }) => theme.primaryBackground};
     }
-`; */
+`;
 
 // -------------------- ELEMENTS WITH STYLES THAT ARE USED MORE THAN ONCE-------------------------
 export const ResultsGrid = styled.section`
