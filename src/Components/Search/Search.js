@@ -3,7 +3,7 @@ import Pagination from "./pagination";
 import MovieItem from "./MovieItem";
 import ActorItem from "./ActorItem";
 import TvItem from "./TvItem";
-import { PrimarySection, ResultsGrid } from "../StyledComponents";
+import { PrimarySection, ResultsGrid, PrimaryH2 } from "../StyledComponents";
 import { IMAGE_URL } from "../../constants/urlParts";
 import { SearchLabel, SearchInput } from "../StyledComponents";
 
@@ -69,7 +69,7 @@ function Search() {
 
       {currentMovies.length > 0 && (
         <>
-          <h2>Showing results for "{searchTerm}"</h2>
+          <h1>Showing results for "{searchTerm}"</h1>
           <ResultsGrid>
             {currentMovies.map(
               ({
