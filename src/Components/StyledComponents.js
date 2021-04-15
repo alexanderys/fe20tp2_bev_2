@@ -10,10 +10,12 @@ export const GlobalStyles = createGlobalStyle`
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+
 } 
 
     body {
   font-family: 'Lato';
+
 } 
 `;
 
@@ -23,6 +25,9 @@ export const ResultsGrid = styled.section`
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
+  border: 5px solid red;
+  //new
+  margin-bottom: 90px;
 `;
 
 export const ItemCard = styled.section`
@@ -152,7 +157,9 @@ export const SecondarySection = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 80vh;
+  /* height: 80vh; */
+  //new
+
   h1 {
     font-size: 2rem;
     text-align: center;
@@ -199,9 +206,7 @@ export const StatsSection = styled.section`
 export const PrimaryButton = styled.button`
   color: ${({ theme }) => theme.primaryColor};
   width: 80vw;
-  flex-direction: row-reverse;
-  /* margin-top: 150px; */
-  /* margin-bottom: 10px; */
+  margin-top: 100px;
   font-family: inherit;
   font-size: 1.1rem;
   background: none;
