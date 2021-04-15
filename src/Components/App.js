@@ -10,7 +10,7 @@ import PrivateRoute from './PrivateRoute';
 import Navigation from './Navigation';
 import Home from './Home';
 import Search from './Search/Search';
-import Stats from './Stats';
+import Stats from "./Stats/Stats";
 import * as ROUTES from '../constants/routes';
 import { AuthProvider, useAuth } from '../context/AuthContext';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';

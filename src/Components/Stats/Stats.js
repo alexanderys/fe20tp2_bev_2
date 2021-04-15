@@ -1,11 +1,14 @@
+// UPPSAMLINGSSIDA DÄR VARJE INDIVIDUELL COMP RENDERAS UT
+
 import React, { useEffect, useState } from "react";
-import { useAuth } from "../context/AuthContext";
-import { db } from "../firebase";
-import { StatsSection } from "./StyledComponents";
-import BarChart from "./Stats/BarChart";
-import LineChart from "./Stats/LineChart";
-import PieChart from "./Stats/PieChart";
-import { Doughnut } from "react-chartjs-2";
+import { useAuth } from "../../context/AuthContext"
+import { db } from "../../firebase";
+import { StatsSection } from "../StyledComponents";
+import AvgRatingChart from "./AvgRatingChart"
+import BarChart from "./BarChart";
+// import LineChart from "./LineChart";
+import PieChart from "./PieChart";
+import { Doughnut } from "react-chartjs-2"; // @TODO egen comp
 
 // @ TODO i enskild komponent: Nytt timetamp, ta bort 1 vecka å se vad som ryms inom intervall
 
@@ -30,7 +33,7 @@ function Stats() {
       .then((snapshot) => {
         snapshot.docs.forEach((doc) => {
           if (doc.data().createdAt > limit) {
-            lastWeek.push(doc.data().createdAt);
+            lastWeek.push(doc.data());
           }
           watchedMovies.push(doc.data());
           watchedMoviesVoteAvg.push(doc.data().voteAverage);
@@ -59,6 +62,7 @@ function Stats() {
       }
     }) */
 
+  
   const chart = () => {
     let avgNumber = [avg];
     let avgBack = [10 - avg];
@@ -92,43 +96,12 @@ function Stats() {
           <p>Loading...</p>
         ) : (
           <>
-            <Doughnut
-              data={voteAverageData}
-              options={{
-                responsive: true,
-                title: { text: "Average Rating", display: true, fontSize: 20 },
-                scales: {
-                  yAxes: [
-                    {
-                      ticks: { display: false },
-                      gridLines: { display: false },
-                    },
-                  ],
-                  xAxes: [
-                    {
-                      gridLines: { display: false },
-                      ticks: { display: false },
-                    },
-                  ],
-                },
-                legend: {
-                  position: "bottom",
-                  labels: {
-                    fontSize: 22,
-                    boxWidth: 0,
-                  },
-                },
-                tooltips: {
-                  enabled: false,
-                },
-              }}
-            />
+            <AvgRatingChart />
             <br />
             <BarChart />
             <br />
             <PieChart />
             <br />
-            {/* <LineChart /> */}
           </>
         )}
 
@@ -136,9 +109,6 @@ function Stats() {
           <span>
             Number of movies watched: <strong> {watchedMovies.length}</strong>
           </span>
-          {/* <span>
-            Average rating: <strong>{avg}</strong>
-          </span> */}
         </div>
       </section>
       <br />
