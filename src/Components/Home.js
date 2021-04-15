@@ -43,30 +43,6 @@ const Home = () => {
           )}
         </ResultsGrid>
       </PrimarySection>
-      <h1>Now Playing</h1>
-      <ResultsGrid>
-        {movies.map(
-          ({
-            id,
-            title,
-            overview,
-            vote_average,
-            poster_path,
-            release_date,
-            genre_ids,
-          }) => (
-            <MovieItem
-              key={id}
-              title={title}
-              id={id}
-              overview={overview}
-              voteAverage={vote_average}
-              releaseDate={release_date}
-              posterPath={poster_path}
-            />
-          )
-        )}
-      </ResultsGrid>
     </>
   );
 };
