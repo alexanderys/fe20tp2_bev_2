@@ -5,6 +5,8 @@ import { IMAGE_URL } from "../../constants/urlParts";
 import { ItemCard } from "../StyledComponents";
 import FallbackImage from "../FallbackImage";
 import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlus, faCheck } from '@fortawesome/free-solid-svg-icons'
 
 function MovieItem({ id, title, voteAverage, posterPath, releaseDate }) {
   const { currentUser } = useAuth();
@@ -113,20 +115,26 @@ function MovieItem({ id, title, voteAverage, posterPath, releaseDate }) {
 
       {inWatchlist
         ? currentUser && (
-          <button onClick={removeFromWatchlist}>Remove from Watchlist</button>
+          <button onClick={removeFromWatchlist}>
+            <FontAwesomeIcon icon={faCheck} /> Watchlist
+          </button>
         )
         : currentUser && (
-          <button onClick={addToWatchlist}>Add to Watchlist</button>
+          <button onClick={addToWatchlist}>
+            <FontAwesomeIcon icon={faPlus} /> Watchlist
+          </button>
         )}
 
       {inHaveWatched
         ? currentUser && (
           <button onClick={removeFromHaveWatched}>
-            Remove from Have Watched
+            <FontAwesomeIcon icon={faCheck} /> Watched
           </button>
         )
         : currentUser && (
-          <button onClick={addToHaveWatched}>Add to Have Watched</button>
+          <button onClick={addToHaveWatched}>
+            <FontAwesomeIcon icon={faPlus} /> Watched
+          </button>
         )}
 
       <span>{releaseDate ? releaseDate.substring(0, 4) : ""}</span>

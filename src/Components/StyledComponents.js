@@ -4,17 +4,11 @@ export const GlobalStyles = createGlobalStyle`
     html {
         background-color: ${({ theme }) => theme.primaryBackground};
     }
-    
-
+  
   * {  
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-
-} 
-
-    body {
-  font-family: 'Lato';
 
 } 
 `;
@@ -58,6 +52,7 @@ export const ItemCard = styled.section`
     background: none;
     border: 1px solid ${({ theme }) => theme.secondaryColor};
     margin: 3px 0;
+    cursor: pointer;
   }
 `;
 
