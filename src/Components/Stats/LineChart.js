@@ -15,7 +15,6 @@ const LineChart = () => {
           empSal.push(parseInt(dataObj.employee_salary));
           empAge.push(parseInt(dataObj.employee_age));
         }
-
         setChartData({
           labels: empAge,
           datasets: [

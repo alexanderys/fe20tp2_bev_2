@@ -4,7 +4,7 @@ import { useAuth } from "../../context/AuthContext";
 import { IMAGE_URL } from "../../constants/urlParts";
 import { ItemCard } from "../StyledComponents";
 import FallbackImage from "../FallbackImage";
-import { genresList } from "../Genres";
+import { genresList } from "../Stats/Genres";
 import { Link } from "react-router-dom";
 
 function MovieItem({
@@ -18,15 +18,7 @@ function MovieItem({
   const { currentUser } = useAuth();
   const [inHaveWatched, setInHaveWatched] = useState(false);
   const [inWatchlist, setInWatchlist] = useState(false);
-
-  // const timestamp = Date.now() // --> 13652183452134
-  // 1 week in ms 604800000
-
-  // ta bort vad en vecka motsvarar i millisekunder
-  // 1 week in ms 604800000
-  // [ X ] spara timestamp i firebase
-  // timestamp - vecka --> ska visas 
-  // formatera timestamp för UI 
+  //the add-to-list-buttons checks these list states ^ to see if a specific movie is included
 
   const genreNames = genreIds?.map((genreId) => {
     //? kollar om genreIds finns/laddar - om inte så sätter den genreNames till null
@@ -34,9 +26,7 @@ function MovieItem({
       (genreIdAndNameObj) => genreIdAndNameObj.id === genreId
     ).name;
   });
-  // console.log(genreNames);
-
-  //the add-to-list-buttons checks these list states ^ to see if a specific movie is included
+ 
   useEffect(() => {
     if (currentUser) {
       db.collection("users")
@@ -81,6 +71,7 @@ function MovieItem({
         releaseDate,
         createdAt: Date.now(),
         genreNames,
+        addedDate: new Date().toISOString(),
       })
       .then(() => {
         setInHaveWatched(true);
