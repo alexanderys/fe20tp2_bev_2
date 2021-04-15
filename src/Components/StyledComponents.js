@@ -9,7 +9,6 @@ export const GlobalStyles = createGlobalStyle`
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-
 } 
 `;
 
@@ -57,8 +56,8 @@ export const ItemCard = styled.section`
 `;
 
 export const DetailsCard = styled.section`
+  color: ${({ theme }) => theme.primaryColor};
   max-width: 100%;
-  max-height: ;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -95,6 +94,18 @@ export const PrimaryH2 = styled.h2`
   font-size: 1.6rem;
   margin-top: 150px;
   margin-bottom: 100px;
+`;
+
+export const PrimaryH3 = styled.h3`
+  color: ${({ theme }) => theme.primaryColor};
+  text-align: center;
+  font-size: 1rem;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  & a {
+    font-size: 1.5rem;
+    color: ${({ theme }) => theme.thirdColor};
+  }
 `;
 
 // ------------------------------- FORMS ---------------------------------
@@ -137,6 +148,7 @@ export const PrimarySection = styled.section`
   flex-direction: column;
   align-items: center;
   a {
+    color: ${({ theme }) => theme.primaryColor};
     align-self: flex-start;
     font-size: 0.9rem;
     text-decoration: none;
@@ -178,6 +190,11 @@ export const SecondarySection = styled.section`
   }
   span {
     font-size: 1.3rem;
+  }
+  input {
+    &::placeholder{
+      color: ${({ theme }) => theme.thirdColor};
+    }
   }
 `;
 
@@ -224,6 +241,7 @@ export const SecondaryButton = styled.button`
 `;
 
 export const GoBackButton = styled.i`
+  color: ${({ theme }) => theme.primaryColor};
   align-self: flex-start;
   margin-top: 30px;
   margin-left: 30px;

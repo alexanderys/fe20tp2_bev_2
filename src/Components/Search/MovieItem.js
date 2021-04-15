@@ -128,12 +128,12 @@ function MovieItem({ id, title, voteAverage, posterPath, releaseDate }) {
       {inHaveWatched
         ? currentUser && (
           <button onClick={removeFromHaveWatched}>
-            <FontAwesomeIcon icon={faCheck} /> Watched
+            <FontAwesomeIcon icon={faCheck} /> Seen
           </button>
         )
         : currentUser && (
           <button onClick={addToHaveWatched}>
-            <FontAwesomeIcon icon={faPlus} /> Watched
+            <FontAwesomeIcon icon={faPlus} /> Seen
           </button>
         )}
 
