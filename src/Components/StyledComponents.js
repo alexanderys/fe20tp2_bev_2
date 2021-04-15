@@ -148,10 +148,11 @@ export const SecondarySection = styled.section`
   //used by Profile-files + Stats
   color: ${({ theme }) => theme.primaryColor};
   background-color: ${({ theme }) => theme.primaryBackground};
+  border: 5px solid red;
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 100vh;
+  height: 80vh;
   h1 {
     font-size: 2rem;
     text-align: center;
@@ -198,8 +199,9 @@ export const StatsSection = styled.section`
 export const PrimaryButton = styled.button`
   color: ${({ theme }) => theme.primaryColor};
   width: 80vw;
-  margin-top: 150px;
-  margin-bottom: 10px;
+  flex-direction: row-reverse;
+  /* margin-top: 150px; */
+  /* margin-bottom: 10px; */
   font-family: inherit;
   font-size: 1.1rem;
   background: none;
