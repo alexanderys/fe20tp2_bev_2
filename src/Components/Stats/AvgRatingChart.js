@@ -61,7 +61,7 @@ const AvgRatingChart = () => {
       data={voteAverageData}
       options={{
         responsive: true,
-        title: { text: "Average Rating", display: true, fontSize: 20 },
+        title: { text: "Average Rating", display: true, fontSize: 20, fontColor: "rgba(0, 0, 0, 1)" },
         scales: {
           yAxes: [
             {

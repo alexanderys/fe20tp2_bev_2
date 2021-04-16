@@ -48,7 +48,7 @@ export const ItemCard = styled.section`
 
 export const DetailsCard = styled.section`
   max-width: 100%;
-  max-height: ;
+  /* max-height: ; */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -271,3 +271,39 @@ export const PaginationNumbers = styled.ul`
     text-decoration: underline;
   }
 `;
+
+
+// ------------------------------- STATS --------------------------------
+export const CircleStats = styled.div`
+width: 80px;
+height: 80px;
+margin: 15px 0;
+padding: 30px;
+border-radius: 50%;
+font-size: 2rem;
+background-color: rgba(255, 206, 86, 0.8);
+`
+
+export const SquareStats = styled.div`
+width: 60px;
+height: 60px;
+margin: 15px 0;
+padding: 30px;
+font-size: 2rem;
+background-color: rgba(54, 162, 235, 0.2);
+`
+
+export const StatsContainer = styled.div`
+border: 2px solid green;
+display: flex;
+justify-content: space-between;
+align-items: space-between;
+div {
+  border: 2px solid red;
+ 
+}
+span {
+  border: 2px solid yellow;
+}
+
+`

@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from "react";
 import { useAuth } from "../../context/AuthContext";
 import { db } from "../../firebase";
-import { StatsSection } from "../StyledComponents";
+import { StatsSection, CircleStats, SquareStats, StatsContainer } from "../StyledComponents";
 import AvgRatingChart from "./AvgRatingChart";
 import BarChart from "./BarChart";
 // import LineChart from "./LineChart";
@@ -50,20 +50,51 @@ function Stats() {
           <p>Loading...</p>
         ) : (
           <>
-            <AvgRatingChart />
+          <div>
+{/*             <div style={{display: "flex"}}>
+              <div style={{width: "50%"}}> */}
+                <AvgRatingChart />
+{/*               </div>
             <br />
+              <div style={{width: "50%"}}> */}
+                <PieChart />
+{/*               </div>
+            </div> */}
+            <br />
+            </div>
             <BarChart />
             <br />
-            <PieChart />
-            <br />
+            
+            <div className="stats-container">
+             <h3>
+              Movies seen this week
+            </h3>
+            <SquareStats> <p> {lastWeek.length} </p> </SquareStats>
+            <h3>
+            Total movies watched
+            </h3>
+             <CircleStats> <p>{watchedMovies.length}</p> </CircleStats>
+           </div>
+           
+           <StatsContainer>
+             <div>
+               <SquareStats> {lastWeek.length} </SquareStats>
+               <span>
+              Movies seen this week
+            </span>
+             </div>
+            <div>
+              <CircleStats> {watchedMovies.length} </CircleStats>
+             <span>
+            Total movies watched
+            </span>
+            </div>
+           </StatsContainer>
+
           </>
         )}
 
-        <div>
-          <span>
-            Number of movies watched: <strong> {watchedMovies.length}</strong>
-          </span>
-        </div>
+        
       </section>
       <br />
       <br />

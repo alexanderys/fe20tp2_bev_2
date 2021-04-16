@@ -139,6 +139,7 @@ const BarChart = () => {
                 text: "Your year in movies",
                 display: true,
                 fontSize: 20,
+                fontColor: "rgba(0, 0, 0, 1)",
               },
               scales: {
                 yAxes: [
