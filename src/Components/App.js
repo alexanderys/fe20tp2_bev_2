@@ -24,7 +24,7 @@ import React, { useState, useEffect } from 'react';
 import { GlobalStyles } from './StyledComponents';
 
 // Global font
-import GlobalFonts from '../style/fonts/fonts';
+// import GlobalFonts from '../style/fonts/fonts';
 import { db, auth } from '../firebase';
 import { useDarkMode } from './Darkmode/useDarkMode';
 
@@ -52,7 +52,7 @@ function App() {
         {/* Theme stuff */}
         {/* =========================================================  */}
         <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
-          <GlobalFonts />
+          {/* <GlobalFonts /> */}
           <GlobalStyles theme={theme === 'light' ? lightTheme : darkTheme} />
           {/*  ========================================================= */}
 
