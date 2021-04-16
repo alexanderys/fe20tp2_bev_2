@@ -12,6 +12,6 @@ export default createGlobalStyle`
     @font-face {
         font-family: 'OverlockSC';
         src: local('OverlockSC'), local('OverlockSC-Regular'),
-        url(${OverlockSC}) format('ttf')
+        url(${OverlockSC}) format('truetype')
     }
 `;
