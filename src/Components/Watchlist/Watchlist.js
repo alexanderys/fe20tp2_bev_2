@@ -68,6 +68,7 @@ export const Watchlist = () => {
                   return (
                     <MovieItem
                       id={id}
+                      key={id}
                       title={movieTitle}
                       releaseDate={releaseDate}
                       posterPath={posterPath}
@@ -78,6 +79,7 @@ export const Watchlist = () => {
                   return (
                     <TvItem
                       id={id}
+                      key={id}
                       name={tvTitle}
                       firstAirDate={firstAirDate}
                       posterPath={posterPath}

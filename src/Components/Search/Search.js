@@ -78,6 +78,7 @@ function Search() {
                 media_type,
                 first_air_date,
                 known_for,
+                genre_ids
               }) => {
                 if (media_type === "movie") {
                   return (

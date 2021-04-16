@@ -4,11 +4,6 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-<<<<<<< HEAD
-}
-
-body {
-  font-family: "Lato";
 }
 
 .stats-container {
@@ -17,9 +12,6 @@ body {
   flex-direction: row;
   justify-content: space-evenly;
   align-items: center;
-=======
-  font-family: 'Lato';
->>>>>>> dev
 }
 
 .stats-container > * {
