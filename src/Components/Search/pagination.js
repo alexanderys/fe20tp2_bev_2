@@ -10,23 +10,44 @@ const Pagination = ({ moviesPerPage, totalMovies, paginate }) => {
     //vi pushar in totala antalet sidor (i) i arrayen page numbers
   }
 
+  const StyledPaginationNav = styled.nav`
+    *{
+    color: ${({ theme }) => theme.primaryColor};
+    }
+  ul{
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+    width: 40vw;
+    flex-direction: row;
+  }
+  a{
+    /* border: 1px red solid; */
+    background-color: ${({ theme }) => theme.secondaryBackground};
+    border-radius: 3px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin: 10px;
+  }
+`;
+
   return (
-    <nav>
-      <PaginationNumbers>
+    <StyledPaginationNav>
+      <ul>
         {pageNumbers.map((number) => (
-          <li key={number}>
-            <a
-              onClick={() => {
-                paginate(number);
-              }}
-              href={`#${number}`}
-            >
+          <a
+            onClick={() => {
+              paginate(number);
+            }}
+            href="#"
+          >
+            <li key={number}>
               {number}
-            </a>
-          </li>
+            </li>
+          </a>
         ))}
-      </PaginationNumbers>
-    </nav>
+      </ul>
+    </StyledPaginationNav>
   );
 };
 

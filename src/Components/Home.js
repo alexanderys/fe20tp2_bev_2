@@ -1,8 +1,8 @@
-import { useState, useEffect } from "react";
-import axios from "axios";
-import MovieItem from "./Search/MovieItem";
-import { ResultsGrid } from "./StyledComponents";
-import * as URL from "../constants/urlParts";
+import { useState, useEffect } from 'react';
+import axios from 'axios';
+import MovieItem from './Search/MovieItem';
+import { PrimarySection, ResultsGrid } from './StyledComponents';
+import * as URL from '../constants/urlParts';
 
 const Home = () => {
   const [movies, setMovies] = useState([]);
@@ -17,31 +17,32 @@ const Home = () => {
 
   return (
     <>
-      <h1>Now Playing</h1>
-      <ResultsGrid>
-        {movies.map(
-          ({
-            id,
-            title,
-            overview,
-            vote_average,
-            poster_path,
-            release_date,
-            genre_ids,
-          }) => (
-            <MovieItem
-              key={id}
-              title={title}
-              id={id}
-              overview={overview}
-              voteAverage={vote_average}
-              releaseDate={release_date}
-              posterPath={poster_path}
-              genreIds={genre_ids}
-            />
-          )
-        )}
-      </ResultsGrid>
+      <PrimarySection>
+        <h1>Now Playing</h1>
+
+        <ResultsGrid>
+          {movies.map(
+            ({
+              id,
+              title,
+              overview,
+              vote_average,
+              poster_path,
+              release_date,
+            }) => (
+              <MovieItem
+                key={id}
+                title={title}
+                id={id}
+                overview={overview}
+                voteAverage={vote_average}
+                releaseDate={release_date}
+                posterPath={poster_path}
+              />
+            )
+          )}
+        </ResultsGrid>
+      </PrimarySection>
     </>
   );
 };

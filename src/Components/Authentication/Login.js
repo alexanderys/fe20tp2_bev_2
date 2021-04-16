@@ -1,6 +1,7 @@
 import React, { useRef, useState } from "react";
 import { useAuth } from "../../context/AuthContext";
 import { Link, useHistory } from "react-router-dom";
+import styled from 'styled-components';
 import {
   PrimaryInput,
   PrimaryH2,
@@ -8,6 +9,15 @@ import {
   PrimaryButton,
   PrimaryForm,
 } from "../StyledComponents";
+
+const ClickableLink = styled.a`
+  a {
+    font-weight: bold;
+    &:hover{
+      text-decoration: underline;
+    }
+  }
+`;
 
 export default function Login() {
   const emailRef = useRef();
@@ -53,11 +63,16 @@ export default function Login() {
               required
             />
           </div>
-          <Link to="/forgot-password">Forgot Password?</Link>
+          <ClickableLink >
+            <Link to="/forgot-password">Forgot Password?</Link>
+          </ClickableLink>
           <PrimaryButton disabled={loading} type="submit">
             Log In
           </PrimaryButton>
-          <Link to="/signup"> Need an account? Sign Up</Link>
+          Need an account?
+          <ClickableLink>
+            <Link to="/signup">  Sign Up</Link>
+          </ClickableLink>
         </PrimaryForm>
       </PrimarySection>
     </>

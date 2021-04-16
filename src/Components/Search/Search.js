@@ -3,8 +3,9 @@ import Pagination from "./pagination";
 import MovieItem from "./MovieItem";
 import ActorItem from "./ActorItem";
 import TvItem from "./TvItem";
-import { ResultsGrid } from "../StyledComponents";
-import { SearchSection, SearchLabel, SearchInput } from "../StyledComponents";
+import { PrimarySection, ResultsGrid, PrimaryH2 } from "../StyledComponents";
+import { IMAGE_URL } from "../../constants/urlParts";
+import { SearchLabel, SearchInput } from "../StyledComponents";
 
 function Search() {
   const [searchTerm, setSearchTerm] = useState("");
@@ -48,7 +49,7 @@ function Search() {
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
-    <SearchSection>
+    <PrimarySection>
       <SearchLabel htmlFor="search">
         <SearchInput
           id="search"
@@ -62,12 +63,7 @@ function Search() {
 
       {currentMovies.length > 0 && (
         <>
-          <h2>Showing results for "{searchTerm}"</h2>
-          <Pagination
-            moviesPerPage={moviesPerPage}
-            totalMovies={movies.length}
-            paginate={paginate}
-          />
+          <h1>Showing results for "{searchTerm}"</h1>
           <ResultsGrid>
             {currentMovies.map(
               ({
@@ -82,7 +78,6 @@ function Search() {
                 media_type,
                 first_air_date,
                 known_for,
-                genre_ids,
               }) => {
                 if (media_type === "movie") {
                   return (
@@ -119,8 +114,6 @@ function Search() {
                       posterPath={poster_path}
                       firstAirDate={first_air_date}
                       overview={overview}
-                      voteAverage={vote_average}
-                      genreIds={genre_ids}
                     />
                   );
                 }
@@ -129,7 +122,7 @@ function Search() {
           </ResultsGrid>
         </>
       )}
-    </SearchSection>
+    </PrimarySection>
   );
 }
 

@@ -4,6 +4,16 @@ export const GlobalStyles = createGlobalStyle`
     html {
         background-color: ${({ theme }) => theme.primaryBackground};
     }
+  
+  * {  
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+} 
+
+    body {
+  font-family: 'Lato', serif;
+} 
 `;
 
 // -------------------- ELEMENTS WITH STYLES THAT ARE USED MORE THAN ONCE-------------------------
@@ -12,6 +22,9 @@ export const ResultsGrid = styled.section`
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
+  border: 5px solid red;
+  //new
+  margin-bottom: 90px;
 `;
 
 export const ItemCard = styled.section`
@@ -43,12 +56,13 @@ export const ItemCard = styled.section`
     background: none;
     border: 1px solid ${({ theme }) => theme.secondaryColor};
     margin: 3px 0;
+    cursor: pointer;
   }
 `;
 
 export const DetailsCard = styled.section`
+  color: ${({ theme }) => theme.primaryColor};
   max-width: 100%;
-  /* max-height: ; */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -60,14 +74,13 @@ export const DetailsCard = styled.section`
   }
   img {
     width: 50%;
-    margin: 10px
   }
   ul {
     list-style-type: none;
     width: 100%;
     text-align: center;
     margin-bottom: 10px;
-    
+
     li {
       display: inline;
     }
@@ -78,7 +91,6 @@ export const DetailsCard = styled.section`
   }
   p {
     text-align: center;
-    padding: 10px
   }
 `;
 
@@ -87,6 +99,18 @@ export const PrimaryH2 = styled.h2`
   font-size: 1.6rem;
   margin-top: 150px;
   margin-bottom: 100px;
+`;
+
+export const PrimaryH3 = styled.h3`
+  color: ${({ theme }) => theme.primaryColor};
+  text-align: center;
+  font-size: 1rem;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  & a {
+    font-size: 1.5rem;
+    color: ${({ theme }) => theme.thirdColor};
+  }
 `;
 
 // ------------------------------- FORMS ---------------------------------
@@ -129,6 +153,7 @@ export const PrimarySection = styled.section`
   flex-direction: column;
   align-items: center;
   a {
+    color: ${({ theme }) => theme.primaryColor};
     align-self: flex-start;
     font-size: 0.9rem;
     text-decoration: none;
@@ -140,10 +165,13 @@ export const SecondarySection = styled.section`
   //used by Profile-files + Stats
   color: ${({ theme }) => theme.primaryColor};
   background-color: ${({ theme }) => theme.primaryBackground};
+  border: 5px solid red;
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 100vh;
+  /* height: 80vh; */
+  //new
+
   h1 {
     font-size: 2rem;
     text-align: center;
@@ -168,6 +196,11 @@ export const SecondarySection = styled.section`
   span {
     font-size: 1.3rem;
   }
+  input {
+    &::placeholder{
+      color: ${({ theme }) => theme.thirdColor};
+    }
+  }
 `;
 
 export const StatsSection = styled.section`
@@ -176,6 +209,7 @@ export const StatsSection = styled.section`
   align-items: center;
   text-align: center;
   h1 {
+    color: ${({ theme }) => theme.primaryColor};
     font-size: 2rem;
     margin: 70px 0;
   }
@@ -184,12 +218,12 @@ export const StatsSection = styled.section`
     margin: 0 0 60px 0;
   }
 `;
+
 // ------------------------------- BUTTONS ---------------------------------
 export const PrimaryButton = styled.button`
   color: ${({ theme }) => theme.primaryColor};
   width: 80vw;
-  margin-top: 150px;
-  margin-bottom: 10px;
+  margin-top: 100px;
   font-family: inherit;
   font-size: 1.1rem;
   background: none;
@@ -212,6 +246,7 @@ export const SecondaryButton = styled.button`
 `;
 
 export const GoBackButton = styled.i`
+  color: ${({ theme }) => theme.primaryColor};
   align-self: flex-start;
   margin-top: 30px;
   margin-left: 30px;

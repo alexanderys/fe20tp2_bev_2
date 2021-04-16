@@ -1,18 +1,21 @@
-import React, { useState, useEffect } from "react";
-import { db } from "../../firebase";
-import { useAuth } from "../../context/AuthContext";
-import MovieItem from "../Search/MovieItem";
-import TvItem from "../Search/TvItem";
-import { ResultsGrid } from "../StyledComponents";
+import React, { useState, useEffect } from 'react';
+import { Link, useHistory } from 'react-router-dom';
+import { db } from '../../firebase';
+import { useAuth } from '../../context/AuthContext';
+import MovieItem from '../Search/MovieItem';
+import TvItem from '../Search/TvItem';
+import { GoBackButton, PrimarySection, ResultsGrid, PrimaryH3 } from '../StyledComponents';
+import * as URL from '../../constants/urlParts';
 
 export const Watchlist = () => {
   const { currentUser } = useAuth();
   const [contentInWatchlist, setContentInWatchlist] = useState([]);
+  const history = useHistory();
 
   useEffect(() => {
-    db.collection("users")
+    db.collection('users')
       .doc(currentUser.uid)
-      .collection("watchlist")
+      .collection('watchlist')
       .get()
       //this is async, so it returns a promise
       .then((snapshot) => {
@@ -27,17 +30,22 @@ export const Watchlist = () => {
   return (
     <>
       <div>
-        <h1>My Watchlist</h1>
-        <strong>User email: </strong> {currentUser.email}
-        <br />
-        <strong>UID: </strong>
-        {currentUser.uid}
-        <hr /> <br />
-        <h3>
-          {"You have " + contentInWatchlist.length + " "}
-          {contentInWatchlist.length === 1 ? "title" : "titles"}
-          {" in your watchlist"}
-        </h3>
+        <PrimarySection>
+
+          <GoBackButton
+            onClick={() => history.goBack()}
+            className="fas fa-angle-left"
+          ></GoBackButton>
+
+          <h1>My Watchlist</h1>
+
+          <PrimaryH3>
+            {'You have ' + contentInWatchlist.length + ' '}
+            {contentInWatchlist.length === 1 ? 'title' : 'titles'}
+            {' in your watchlist'}
+          </PrimaryH3>
+
+        </PrimarySection>
       </div>
 
       <br />
@@ -82,7 +90,9 @@ export const Watchlist = () => {
           </ResultsGrid>
         </>
       ) : (
-        <h2>No content in your watchlist! Add some!</h2>
+        <PrimaryH3>No content in your list! Search for movies
+          <Link to='/search'>{' '}here{' '}</Link>
+        </PrimaryH3>
       )}
     </>
   );
