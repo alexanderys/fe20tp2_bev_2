@@ -50,51 +50,51 @@ function Stats() {
           <p>Loading...</p>
         ) : (
           <>
-          <div>
-{/*             <div style={{display: "flex"}}>
+            <div>
+              {/*             <div style={{display: "flex"}}>
               <div style={{width: "50%"}}> */}
-                <AvgRatingChart />
-{/*               </div>
+              <AvgRatingChart />
+              {/*               </div>
             <br />
               <div style={{width: "50%"}}> */}
-                <PieChart />
-{/*               </div>
+              <PieChart />
+              {/*               </div>
             </div> */}
-            <br />
+              <br />
             </div>
             <BarChart />
             <br />
-            
+
             <div className="stats-container">
-             <h3>
-              Movies seen this week
+              <h3>
+                Movies seen this week
             </h3>
-            <SquareStats> <p> {lastWeek.length} </p> </SquareStats>
-            <h3>
-            Total movies watched
+              <SquareStats> <p> {lastWeek.length} </p> </SquareStats>
+              <h3>
+                Total movies watched
             </h3>
-             <CircleStats> <p>{watchedMovies.length}</p> </CircleStats>
-           </div>
-           
-           <StatsContainer>
-             <div>
-               <SquareStats> {lastWeek.length} </SquareStats>
-               <span>
-              Movies seen this week
-            </span>
-             </div>
-            <div>
-              <CircleStats> {watchedMovies.length} </CircleStats>
-             <span>
-            Total movies watched
-            </span>
+              <CircleStats> <p>{watchedMovies.length}</p> </CircleStats>
             </div>
-           </StatsContainer>
+
+            <StatsContainer>
+              <div>
+                <SquareStats> {lastWeek.length} </SquareStats>
+                <span>
+                  Movies seen this week
+            </span>
+              </div>
+              <div>
+                <CircleStats> {watchedMovies.length} </CircleStats>
+                <span>
+                  Total movies watched
+            </span>
+              </div>
+            </StatsContainer>
 
           </>
         )}
 
-        
+
       </section>
       <br />
       <br />

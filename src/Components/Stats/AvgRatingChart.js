@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useAuth } from "../../context/AuthContext";
 import { db } from "../../firebase";
-import { StatsSection } from "../StyledComponents";
+import { StatsSection, PrimarySection } from "../StyledComponents";
+import styled from "styled-components";
 import { Doughnut } from "react-chartjs-2";
 
 const AvgRatingChart = () => {
@@ -57,37 +58,44 @@ const AvgRatingChart = () => {
   }, [isLoading]);
 
   return (
-    <Doughnut
-      data={voteAverageData}
-      options={{
-        responsive: true,
-        title: { text: "Average Rating", display: true, fontSize: 20, fontColor: "rgba(0, 0, 0, 1)" },
-        scales: {
-          yAxes: [
-            {
-              ticks: { display: false },
-              gridLines: { display: false },
-            },
-          ],
-          xAxes: [
-            {
-              gridLines: { display: false },
-              ticks: { display: false },
-            },
-          ],
-        },
-        legend: {
-          position: "bottom",
-          labels: {
-            fontSize: 22,
-            boxWidth: 0,
+    <PrimarySection>
+      <Doughnut
+        data={voteAverageData}
+        options={{
+          responsive: true,
+          title: {
+            text: "Average Rating",
+            display: true,
+            fontSize: 20,
+            fontColor: ({ theme }) => theme.primaryColor,
           },
-        },
-        tooltips: {
-          enabled: false,
-        },
-      }}
-    />
+          scales: {
+            yAxes: [
+              {
+                ticks: { display: false },
+                gridLines: { display: false },
+              },
+            ],
+            xAxes: [
+              {
+                gridLines: { display: false },
+                ticks: { display: false },
+              },
+            ],
+          },
+          legend: {
+            position: "bottom",
+            labels: {
+              fontSize: 22,
+              boxWidth: 0,
+            },
+          },
+          tooltips: {
+            enabled: false,
+          },
+        }}
+      />
+    </PrimarySection>
   );
 };
 

@@ -64,6 +64,11 @@ function Search() {
       {currentMovies.length > 0 && (
         <>
           <h1>Showing results for "{searchTerm}"</h1>
+          <Pagination
+            moviesPerPage={moviesPerPage}
+            totalMovies={movies.length}
+            paginate={paginate}
+          />
           <ResultsGrid>
             {currentMovies.map(
               ({

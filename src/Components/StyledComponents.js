@@ -11,9 +11,16 @@ export const GlobalStyles = createGlobalStyle`
   padding: 0;
 } 
 
-    body {
+ body {
   font-family: 'Lato', serif;
+  /* border: 5px solid blue; */
 } 
+
+@media (min-width: 500px) {
+  /* body {
+  border: 5px solid green;
+}  */
+
 `;
 
 // -------------------- ELEMENTS WITH STYLES THAT ARE USED MORE THAN ONCE-------------------------
@@ -23,7 +30,6 @@ export const ResultsGrid = styled.section`
   align-items: center;
   justify-content: center;
   border: 5px solid red;
-  //new
   margin-bottom: 90px;
 `;
 
@@ -146,6 +152,9 @@ export const PrimaryForm = styled.form`
 
 // ------------------------------- SECTIONS ---------------------------------
 export const PrimarySection = styled.section`
+  h3 {
+    color: ${({ theme }) => theme.primaryColor};
+  }
   //used by Authentication-files
   color: ${({ theme }) => theme.primaryColor};
   background-color: ${({ theme }) => theme.primaryBackground};
@@ -197,7 +206,7 @@ export const SecondarySection = styled.section`
     font-size: 1.3rem;
   }
   input {
-    &::placeholder{
+    &::placeholder {
       color: ${({ theme }) => theme.thirdColor};
     }
   }
@@ -217,9 +226,29 @@ export const StatsSection = styled.section`
     width: 90vw;
     margin: 0 0 60px 0;
   }
+
+  span {
+    color: ${({ theme }) => theme.primaryColor};
+  }
+  p {
+    color: ${({ theme }) => theme.primaryColor};
+  }
 `;
 
 // ------------------------------- BUTTONS ---------------------------------
+export const ButtonContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  button:nth-of-type(1) {
+    margin-top: 10px;
+  }
+
+  button + button {
+    margin-top: 30px;
+  }
+`;
+
 export const PrimaryButton = styled.button`
   color: ${({ theme }) => theme.primaryColor};
   width: 80vw;
@@ -234,7 +263,7 @@ export const PrimaryButton = styled.button`
 
 export const SecondaryButton = styled.button`
   color: ${({ theme }) => theme.primaryColor};
-  width: 80vw;
+  // width: 80vw;
   margin-top: 90px;
   margin-bottom: 10px;
   font-family: inherit;
@@ -307,38 +336,35 @@ export const PaginationNumbers = styled.ul`
   }
 `;
 
-
 // ------------------------------- STATS --------------------------------
 export const CircleStats = styled.div`
-width: 80px;
-height: 80px;
-margin: 15px 0;
-padding: 30px;
-border-radius: 50%;
-font-size: 2rem;
-background-color: rgba(255, 206, 86, 0.8);
-`
+  width: 80px;
+  height: 80px;
+  margin: 15px 0;
+  padding: 30px;
+  border-radius: 50%;
+  font-size: 2rem;
+  background-color: rgba(255, 206, 86, 0.8);
+`;
 
 export const SquareStats = styled.div`
-width: 60px;
-height: 60px;
-margin: 15px 0;
-padding: 30px;
-font-size: 2rem;
-background-color: rgba(54, 162, 235, 0.2);
-`
+  width: 60px;
+  height: 60px;
+  margin: 15px 0;
+  padding: 30px;
+  font-size: 2rem;
+  background-color: rgba(54, 162, 235, 0.2);
+`;
 
 export const StatsContainer = styled.div`
-border: 2px solid green;
-display: flex;
-justify-content: space-between;
-align-items: space-between;
-div {
-  border: 2px solid red;
- 
-}
-span {
-  border: 2px solid yellow;
-}
-
-`
+  border: 2px solid green;
+  display: flex;
+  justify-content: space-between;
+  align-items: space-between;
+  div {
+    border: 2px solid red;
+  }
+  span {
+    border: 2px solid yellow;
+  }
+`;

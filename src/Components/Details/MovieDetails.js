@@ -40,14 +40,18 @@ function MovieDetails(props) {
         )}
         <h2>{title} ({release_date ? release_date.substring(0, 4) : ""})</h2>
         <span>
-          <FontAwesomeIcon icon={faStar} size="1x" color="grey" />
+          <FontAwesomeIcon icon={faStar} size="1px" color="grey" />
           {vote_average}
         </span>
+
+        <button>
+          <FontAwesomeIcon icon={faStar} size="5px" color="yellow" />
+          Rate This
+          </button>
 
         {genres && (
           <ul>
             {genres.map((genre, index) => {
-              console.log('hello')
               return <li key={index}>{genre.name}, </li>
             })}
           </ul>

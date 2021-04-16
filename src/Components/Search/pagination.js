@@ -1,4 +1,25 @@
-import { PaginationNumbers } from "../StyledComponents";
+import styled from "styled-components";
+
+const StyledPaginationNav = styled.nav`
+  * {
+    color: ${({ theme }) => theme.primaryColor};
+  }
+  ul {
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+    width: 40vw;
+    flex-direction: row;
+  }
+  a {
+    /* border: 1px red solid; */
+    background-color: ${({ theme }) => theme.secondaryBackground};
+    border-radius: 3px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin: 10px;
+  }
+`;
 
 const Pagination = ({ moviesPerPage, totalMovies, paginate }) => {
   const pageNumbers = [];
@@ -10,26 +31,7 @@ const Pagination = ({ moviesPerPage, totalMovies, paginate }) => {
     //vi pushar in totala antalet sidor (i) i arrayen page numbers
   }
 
-  const StyledPaginationNav = styled.nav`
-    *{
-    color: ${({ theme }) => theme.primaryColor};
-    }
-  ul{
-    list-style: none;
-    display: flex;
-    justify-content: space-around;
-    width: 40vw;
-    flex-direction: row;
-  }
-  a{
-    /* border: 1px red solid; */
-    background-color: ${({ theme }) => theme.secondaryBackground};
-    border-radius: 3px;
-    padding-left: 20px;
-    padding-right: 20px;
-    margin: 10px;
-  }
-`;
+  console.log(pageNumbers);
 
   return (
     <StyledPaginationNav>
@@ -41,9 +43,7 @@ const Pagination = ({ moviesPerPage, totalMovies, paginate }) => {
             }}
             href="#"
           >
-            <li key={number}>
-              {number}
-            </li>
+            <li key={number}>{number}</li>
           </a>
         ))}
       </ul>

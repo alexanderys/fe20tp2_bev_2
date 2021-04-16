@@ -6,6 +6,7 @@ import {
   SecondarySection,
   PrimaryButton,
   GoBackButton,
+  ButtonContainer
 } from '../StyledComponents';
 import { useDarkMode } from '../Darkmode/useDarkMode';
 import Toggler from '../Darkmode/Toggler';
@@ -48,14 +49,22 @@ export default function Dashboard() {
         </li>
 
         <li>
-          <p>Uppdate Your theme.</p>
+          {/* @TODO: conditional text rendering 
+              according to theme,
+              i.e.  darktheme: switch to light, 
+                    lighteme: switch to dark
+          */}
+          <p>Update your theme</p>
 
           {/* <UseDarkMode /> */}
           <Toggler theme={`${themeToggler}`} toggleTheme={updateMyTheme} />
         </li>
 
         {error && <div>{error}</div>}
-        <PrimaryButton onClick={handleLogout}>Log Out</PrimaryButton>
+        <ButtonContainer>
+          <PrimaryButton onClick={() => alert("vi vill inte prata med dig!")}>Contact Admins</PrimaryButton>
+          <PrimaryButton onClick={handleLogout}>Log Out</PrimaryButton>
+        </ButtonContainer>
       </SecondarySection>
     </>
   );
