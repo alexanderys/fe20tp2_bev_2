@@ -1,3 +1,4 @@
+
 import styled, { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyles = createGlobalStyle`
@@ -13,7 +14,7 @@ export const GlobalStyles = createGlobalStyle`
 } 
 
     body {
-  font-family: 'Lato';
+  font-family: 'Lato', serif;
 } 
 `;
 
