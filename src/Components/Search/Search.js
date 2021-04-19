@@ -83,21 +83,10 @@ function Search() {
                 media_type,
                 first_air_date,
                 known_for,
-                genre_ids
+                genre_ids,
               }) => {
                 if (media_type === "movie") {
-                  return (
-                    <MovieItem
-                      title={title}
-                      key={id}
-                      id={id}
-                      overview={overview}
-                      voteAverage={vote_average}
-                      releaseDate={release_date}
-                      posterPath={poster_path}
-                      genreIds={genre_ids}
-                    />
-                  );
+                  return <MovieItem key={id} {...currentMovies} />;
                 } else if (media_type === "person") {
                   return (
                     <ActorItem

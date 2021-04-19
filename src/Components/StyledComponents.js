@@ -23,14 +23,39 @@ export const GlobalStyles = createGlobalStyle`
 
 `;
 
+export const SignUpLinks = styled.div`
+  a {
+    margin-left: 1rem;
+  }
+  border: 3px solid yellow;
+`;
+
 // -------------------- ELEMENTS WITH STYLES THAT ARE USED MORE THAN ONCE-------------------------
 export const ResultsGrid = styled.section`
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-gap: 1rem;
+  
+  /* fulhax för att få marginal till navbar */
+  section:last-of-type {
+    margin-bottom: 100px;
+    border: 3px solid purple;
+  }
+
+  @media(max-width: 768px) {
+        grid-template-columns: repeat(4, 1fr); 
+    }
+
+    @media(max-width: 500px) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+
+  /* flex-wrap: wrap;
   align-items: center;
   justify-content: center;
   border: 5px solid red;
-  margin-bottom: 90px;
+  margin-bottom: 90px; */
 `;
 
 export const ItemCard = styled.section`
