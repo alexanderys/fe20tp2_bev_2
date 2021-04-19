@@ -1,4 +1,4 @@
-import styled, { createGlobalStyle } from "styled-components";
+import styled, { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyles = createGlobalStyle`
     html {
@@ -35,20 +35,19 @@ export const ResultsGrid = styled.section`
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   grid-gap: 1.5rem;
-  
+
   /* fulhax för att få marginal till navbar */
   section:last-of-type {
     margin-bottom: 100px;
   }
 
-  @media(max-width: 768px) {
-        grid-template-columns: repeat(4, 1fr); 
-    }
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
 
-    @media(max-width: 500px) {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
+  @media (max-width: 500px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
 
   /* flex-wrap: wrap;
   align-items: center;
@@ -67,10 +66,10 @@ export const ItemCard = styled.section`
   overflow: hidden;
   margin: 5px;
   border-radius: 3px;
- 
+
   h3 {
-    overflow: hidden; 
-    min-height: 45px; 
+    overflow: hidden;
+    min-height: 45px;
     font-size: 1.1rem;
     text-align: center;
     margin-bottom: 5px;
@@ -216,7 +215,6 @@ export const SecondarySection = styled.section`
   //used by Profile-files + Stats
   color: ${({ theme }) => theme.primaryColor};
   background-color: ${({ theme }) => theme.primaryBackground};
-  border: 5px solid red;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -369,7 +367,7 @@ export const SearchButton = styled.button`
   border: 0;
   border-radius: 5px;
   cursor: pointer;
-`
+`;
 
 // ------------------------------- PAGINATION --------------------------------
 
@@ -415,7 +413,7 @@ export const SquareStats = styled.div`
 export const StatsContainer = styled.div`
   color: white;
   background-color: #222222;
-  
+
   border: 2px solid green;
   display: flex;
   justify-content: space-between;
