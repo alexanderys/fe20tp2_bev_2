@@ -1,5 +1,5 @@
-import React, { useContext, useState, useEffect, createContext } from 'react';
-import { auth, db } from '../firebase';
+import React, { useContext, useState, useEffect, createContext } from "react";
+import { auth, db } from "../firebase";
 
 const AuthContext = createContext();
 
@@ -19,13 +19,13 @@ export function AuthProvider({ children, onChange, currentTheme }) {
     db.collection(`users`)
       .doc(res.user.uid)
       .set({
-        theme: 'dark',
+        theme: "dark",
       })
       .then(() => {
-        console.log('Theme Added!');
+        console.log("Theme Added!");
       })
       .catch((error) => {
-        console.error('Error updating Theme: ', error);
+        console.error("Error updating Theme: ", error);
       });
     return res;
   }
@@ -54,7 +54,7 @@ export function AuthProvider({ children, onChange, currentTheme }) {
 
   // This function search for theme-value inside firestore user collection that has the matching user id, and return it back
   async function readTheme() {
-    const docRef = db.collection('users').doc(auth.currentUser.uid);
+    const docRef = db.collection("users").doc(auth.currentUser.uid);
 
     const themeData = await docRef
       .get()
@@ -62,11 +62,11 @@ export function AuthProvider({ children, onChange, currentTheme }) {
         if (doc.exists) {
           return doc.data().theme;
         } else {
-          console.log('No such data!');
+          console.log("No such data!");
         }
       })
       .catch((error) => {
-        console.log('Error getting data:', error);
+        console.log("Error getting data:", error);
       });
 
     return themeData;
@@ -75,7 +75,7 @@ export function AuthProvider({ children, onChange, currentTheme }) {
   // Function for updating the theme-state in App-component
   async function changeTheme(newTheme) {
     onChange(newTheme);
-    localStorage.setItem('theme', await newTheme);
+    localStorage.setItem("theme", await newTheme);
   }
 
   // This function serch for the current user in firestore and update the theme-value Ex. 'dark' | 'light'
@@ -84,19 +84,19 @@ export function AuthProvider({ children, onChange, currentTheme }) {
 
   async function updateTheme(curTheme) {
     try {
-      db.collection('users')
+      db.collection("users")
         .doc(auth.currentUser.uid)
         .update({
-          theme: `${(await curTheme) !== 'dark' ? 'dark' : 'light'}`,
+          theme: `${(await curTheme) !== "dark" ? "dark" : "light"}`,
         });
       changeTheme(await readTheme().then((data) => data));
-      localStorage.setItem('theme', await readTheme().then((data) => data));
+      localStorage.setItem("theme", await readTheme().then((data) => data));
     } catch (error) {
-      console.log('SomeError accured: ', error);
+      console.log("SomeError accured: ", error);
     }
   }
   useEffect(async () => {
-    changeTheme(await localStorage.getItem('theme'));
+    changeTheme(await localStorage.getItem("theme"));
   }, [updateTheme]);
 
   //----------------------------------------------------------//

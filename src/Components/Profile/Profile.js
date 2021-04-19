@@ -1,19 +1,12 @@
 import React from "react";
 
-import { Link, useHistory } from "react-router-dom";
-import { SecondarySection, /* GoBackButton */ } from "../StyledComponents";
+import { Link } from "react-router-dom";
+import { SecondarySection } from "../StyledComponents";
 
 export default function Profile() {
-
-  const history = useHistory();
-
   return (
     <>
       <SecondarySection>
-        {/*  <GoBackButton
-          onClick={() => history.goBack()}
-          className="fas fa-angle-left"
-        ></GoBackButton> */}
         <h1>Profile</h1>
 
         <li>
@@ -28,11 +21,9 @@ export default function Profile() {
         </li>
         <li>
           <Link to="/watched">
-            Have watched <i className="fas fa-angle-right"></i>
+            Have Watched <i className="fas fa-angle-right"></i>
           </Link>
         </li>
-
-
       </SecondarySection>
     </>
   );

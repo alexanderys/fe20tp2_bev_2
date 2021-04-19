@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { useParams, useHistory } from 'react-router-dom';
-import axios from 'axios';
+import { useParams, useHistory } from "react-router-dom";
+import axios from "axios";
 import { IMAGE_URL } from "../../constants/urlParts";
 import FallbackImage from "../FallbackImage";
 import { GoBackButton, DetailsCard } from "../StyledComponents";
 
-function ActorDetails(props) {
+function ActorDetails() {
   const [details, setDetails] = useState({});
   const history = useHistory();
 
@@ -27,18 +27,18 @@ function ActorDetails(props) {
     <>
       <GoBackButton
         onClick={() => history.goBack()}
-        className='fas fa-angle-left'
+        className="fas fa-angle-left"
       ></GoBackButton>
 
       <DetailsCard>
         {profile_path ? (
-          <img src={IMAGE_URL + profile_path} alt='' />
+          <img src={IMAGE_URL + profile_path} alt="" />
         ) : (
-          <FallbackImage type={'actor'} />
+          <FallbackImage type={"actor"} />
         )}
         <h2>{name}</h2>
         <span>Born: {birthday}</span>
-        <span>{deathday ? 'Died: ' + deathday : ''}</span>
+        <span>{deathday ? "Died: " + deathday : ""}</span>
 
         <p>{biography}</p>
       </DetailsCard>

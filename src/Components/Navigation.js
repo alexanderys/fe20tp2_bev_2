@@ -22,7 +22,6 @@ const StyledNav = styled.nav`
     justify-content: space-around;
     background-color: black;
   }
-
   li {
     list-style: none;
     margin: 5px 10px;

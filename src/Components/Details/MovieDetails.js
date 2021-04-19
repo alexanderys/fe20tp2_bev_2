@@ -8,7 +8,7 @@ import { GoBackButton, DetailsCard } from "../StyledComponents";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 
-function MovieDetails(props) {
+function MovieDetails() {
   const [details, setDetails] = useState({});
   const history = useHistory();
 

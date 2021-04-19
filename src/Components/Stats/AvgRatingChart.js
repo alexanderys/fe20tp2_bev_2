@@ -40,10 +40,7 @@ const AvgRatingChart = () => {
       datasets: [
         {
           data: [avgNumber, avgBack],
-          backgroundColor: [
-            "rgba(255, 186, 181, 0.9)",
-            "rgb(84, 84, 84)",
-          ],
+          backgroundColor: ["rgba(255, 186, 181, 0.9)", "rgb(84, 84, 84)"],
           borderWidth: 0,
         },
       ],

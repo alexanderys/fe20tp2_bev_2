@@ -3,11 +3,9 @@ import Pagination from "./pagination";
 import MovieItem from "./MovieItem";
 import ActorItem from "./ActorItem";
 import TvItem from "./TvItem";
-import { IMAGE_URL } from "../../constants/urlParts";
 import {
   PrimarySection,
   ResultsGrid,
-  PrimaryH2,
   SearchForm,
   SearchLabel,
   SearchInput,
@@ -85,8 +83,7 @@ function Search() {
       )}
       {currentMovies.length > 0 && (
         <>
-          {/*           <h1>Showing results for "{displayTerm}"</h1>
-           */}{" "}
+          {" "}
           <Pagination
             moviesPerPage={moviesPerPage}
             totalMovies={movies.length}

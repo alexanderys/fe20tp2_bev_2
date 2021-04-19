@@ -30,12 +30,14 @@ export const PieChart = () => {
           },
         ],
       }}
-      //   height={300}
-      //   width={300}
       options={{
         responsive: true,
-        // maintainAspectRatio: false,
-        title: { text: "Your genres", display: true, fontSize: 20, fontColor: "white" },
+        title: {
+          text: "Your genres",
+          display: true,
+          fontSize: 20,
+          fontColor: "white",
+        },
         scales: {
           yAxes: [
             {
@@ -60,9 +62,6 @@ export const PieChart = () => {
             boxWidth: 40,
           },
         },
-        // tooltips: {
-        //   enabled: false,
-        // },
       }}
     />
   );

@@ -3,7 +3,14 @@
 import React, { useEffect, useState } from "react";
 import { useAuth } from "../../context/AuthContext";
 import { db } from "../../firebase";
-import { StatsSection, CircleStats, NumberStats, StatsContainer, CircleContainer, SquareContainer } from "../StyledComponents";
+import {
+  StatsSection,
+  CircleStats,
+  NumberStats,
+  StatsContainer,
+  CircleContainer,
+  SquareContainer,
+} from "../StyledComponents";
 import AvgRatingChart from "./AvgRatingChart";
 import BarChart from "./BarChart";
 // import LineChart from "./LineChart";
@@ -40,46 +47,45 @@ function Stats() {
   }, []);
 
   return (
-    <StatsSection>
-      <h1>Stats</h1>
-      <section>
-        {isLoading ? (
-          <p>Loading...</p>
-        ) : (
-          <>
-            <div>
-              {/*             <div style={{display: "flex"}}>
-              <div style={{width: "50%"}}> */}
-              <AvgRatingChart />
-              {/*               </div>
-            <br />
-              <div style={{width: "50%"}}> */}
-              <PieChart />
-              {/*               </div>
-            </div> */}
+    <>
+      <StatsSection>
+        <h1>Stats</h1>
+        <section>
+          {isLoading ? (
+            <p>Loading...</p>
+          ) : (
+            <>
+              <div>
+                <AvgRatingChart />
+                <PieChart />
+                <br />
+              </div>
+              <BarChart />
               <br />
-            </div>
-            <BarChart />
-            <br />
 
-            <StatsContainer>
-              <SquareContainer>
-                <h3>Movies seen this week</h3>
-                <NumberStats>{lastWeek.length}</NumberStats>
-              </SquareContainer>
+              <StatsContainer>
+                <SquareContainer>
+                  <h3>Movies seen this week</h3>
+                  <NumberStats>{lastWeek.length}</NumberStats>
+                </SquareContainer>
 
-              <CircleContainer>
-                <h3>Total movies watched</h3>
-                <CircleStats> <p>{watchedMovies.length}</p> </CircleStats>
-              </CircleContainer>
-            </StatsContainer>
-          </>
-        )}
-      </section>
-      <br />
-      <br />
-      <br />
-    </StatsSection >
+                <CircleContainer>
+                  <h3>Total movies watched</h3>
+                  <CircleStats>
+                    {" "}
+                    <p>{watchedMovies.length}</p>{" "}
+                  </CircleStats>
+                </CircleContainer>
+              </StatsContainer>
+            </>
+          )}
+        </section>
+        <br />
+        <br />
+        <br />
+      </StatsSection>
+      )
+    </>
   );
 }
 

@@ -5,15 +5,14 @@ import { ItemCard } from "../StyledComponents";
 import { IMAGE_URL } from "../../constants/urlParts";
 import FallbackImage from "../FallbackImage";
 import { Link } from "react-router-dom";
-import { faPlus, faCheck, faStar } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlus, faCheck, faStar } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function TvItem({
   id,
   name,
   posterPath,
   firstAirDate,
-  // voteAverage,
   overview,
   title,
   releaseDate,
@@ -25,9 +24,9 @@ function TvItem({
   //the add-to-list-buttons checks these list states ^ to see if a specific movie is included
   useEffect(() => {
     if (currentUser) {
-      db.collection('users')
+      db.collection("users")
         .doc(currentUser.uid)
-        .collection('haveWatched')
+        .collection("haveWatched")
         .doc(id.toString())
         .get()
         .then((snapshot) => {
@@ -37,9 +36,9 @@ function TvItem({
             setInHaveWatched(false);
           }
         });
-      db.collection('users')
+      db.collection("users")
         .doc(currentUser.uid)
-        .collection('watchlist')
+        .collection("watchlist")
         .doc(id.toString())
         .get()
         .then((snapshot) => {
@@ -55,14 +54,13 @@ function TvItem({
   const addToHaveWatched = () => {
     // db.collection("haveWatched").add({...}) = gives a random Firestore-ID to the document
     // id = the MovieItem-prop. we need toString() because FB only accepts documents id's as strings
-    db.collection('users')
+    db.collection("users")
       .doc(currentUser.uid)
-      .collection('haveWatched')
+      .collection("haveWatched")
       .doc(id.toString())
       .set({
         id,
         tvTitle: name,
-        // voteAverage,
         posterPath,
         firstAirDate,
       })
@@ -72,9 +70,9 @@ function TvItem({
   };
 
   const removeFromHaveWatched = () => {
-    db.collection('users')
+    db.collection("users")
       .doc(currentUser.uid)
-      .collection('haveWatched')
+      .collection("haveWatched")
       .doc(id.toString())
       .delete()
       .then(() => {
@@ -83,9 +81,9 @@ function TvItem({
   };
 
   const addToWatchlist = () => {
-    db.collection('users')
+    db.collection("users")
       .doc(currentUser.uid)
-      .collection('watchlist')
+      .collection("watchlist")
       .doc(id.toString())
       .set({
         id,
@@ -100,9 +98,9 @@ function TvItem({
   };
 
   const removeFromWatchlist = () => {
-    db.collection('users')
+    db.collection("users")
       .doc(currentUser.uid)
-      .collection('watchlist')
+      .collection("watchlist")
       .doc(id.toString())
       .delete()
       .then(() => {
@@ -112,20 +110,19 @@ function TvItem({
 
   return (
     <ItemCard>
-      <Link to={`movie/${id}`}>
+      <Link to={`tv/${id}`}>
         {posterPath ? (
-          <img src={IMAGE_URL + posterPath} alt='' />
+          <img src={IMAGE_URL + posterPath} alt="" />
         ) : (
-          <FallbackImage type={'movie'} />
+          <FallbackImage type={"tv"} />
         )}
       </Link>
-        <h3>{name}</h3>
+      <h3>{name}</h3>
 
-      <span>{firstAirDate ? firstAirDate.substring(0, 4) : ""}
-      <FontAwesomeIcon icon={faStar} size="1x" color="" />
+      <span>
+        {firstAirDate ? firstAirDate.substring(0, 4) : ""}
+        <FontAwesomeIcon icon={faStar} size="1x" color="" />
       </span>
-
-
 
       {inWatchlist
         ? currentUser && (

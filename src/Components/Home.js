@@ -1,8 +1,8 @@
-import { useState, useEffect } from 'react';
-import axios from 'axios';
-import MovieItem from './Search/MovieItem';
-import { PrimarySection, ResultsGrid } from './StyledComponents';
-import * as URL from '../constants/urlParts';
+import { useState, useEffect } from "react";
+import axios from "axios";
+import MovieItem from "./Search/MovieItem";
+import { PrimarySection, ResultsGrid } from "./StyledComponents";
+import * as URL from "../constants/urlParts";
 
 const Home = () => {
   const [movies, setMovies] = useState([]);

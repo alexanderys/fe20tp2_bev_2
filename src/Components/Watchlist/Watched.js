@@ -1,11 +1,15 @@
-import React, { useEffect, useState } from 'react';
-import { Link, useHistory } from 'react-router-dom';
-import { db } from '../../firebase';
-import { useAuth } from '../../context/AuthContext';
-import MovieItem from '../Search/MovieItem';
-import TvItem from '../Search/TvItem';
-import { GoBackButton, PrimarySection, ResultsGrid, PrimaryH3 } from '../StyledComponents';
-import * as URL from '../../constants/urlParts';
+import React, { useEffect, useState } from "react";
+import { Link, useHistory } from "react-router-dom";
+import { db } from "../../firebase";
+import { useAuth } from "../../context/AuthContext";
+import MovieItem from "../Search/MovieItem";
+import TvItem from "../Search/TvItem";
+import {
+  GoBackButton,
+  PrimarySection,
+  ResultsGrid,
+  PrimaryH3,
+} from "../StyledComponents";
 
 export const Watched = () => {
   const { currentUser } = useAuth();
@@ -13,10 +17,9 @@ export const Watched = () => {
   const history = useHistory();
 
   useEffect(() => {
-    db.collection('users')
+    db.collection("users")
       .doc(currentUser.uid)
       .collection("haveWatched")
-      // .orderBy("createdAt")
       .get()
       //this is async, so it returns a promise
       .then((snapshot) => {
@@ -24,7 +27,6 @@ export const Watched = () => {
         snapshot.docs.forEach((doc) => {
           documents.push(doc.data());
         });
-        //gör anrop till API för att få data
         setWatchedContent(documents);
       });
   }, []);
@@ -33,7 +35,6 @@ export const Watched = () => {
     <div>
       <div>
         <PrimarySection>
-
           <GoBackButton
             onClick={() => history.goBack()}
             className="fas fa-angle-left"
@@ -41,14 +42,15 @@ export const Watched = () => {
 
           <h1>Have Watched</h1>
 
-          {watchedContent.length > 0 ?
-            <PrimaryH3> You have {' '}
-              {watchedContent.length}{' '}
-              {watchedContent.length === 1 ? 'title' : 'titles'}
-              {' '} in your watched titles
-          </PrimaryH3>
-            : ' '}
-
+          {watchedContent.length > 0 ? (
+            <PrimaryH3>
+              {" "}
+              {watchedContent.length}{" "}
+              {watchedContent.length === 1 ? "title" : "titles"}
+            </PrimaryH3>
+          ) : (
+            " "
+          )}
         </PrimarySection>
       </div>
 
@@ -97,8 +99,9 @@ export const Watched = () => {
           </ResultsGrid>
         </>
       ) : (
-        <PrimaryH3>No content in your list! Search for movies
-          <Link to='/search'>{' '}here{' '}</Link>
+        <PrimaryH3>
+          No content in your list! Search for movies
+          <Link to="/search"> here </Link>
         </PrimaryH3>
       )}
     </div>

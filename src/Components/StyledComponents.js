@@ -1,4 +1,4 @@
-import styled, { createGlobalStyle } from 'styled-components';
+import styled, { createGlobalStyle } from "styled-components";
 
 export const GlobalStyles = createGlobalStyle`
     html {
@@ -17,13 +17,14 @@ export const GlobalStyles = createGlobalStyle`
 } 
 @media (min-width: 700px) {
     body {
-     margin-top: 100px;
+     margin-top: 85px;
     }
   }
 
 `;
 
 // -------------------- ELEMENTS WITH STYLES THAT ARE USED MORE THAN ONCE-------------------------
+
 export const ResultsGrid = styled.section`
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -343,7 +344,7 @@ export const GoBackButton = styled.i`
 // ------------------------------- SEARCH --------------------------------
 
 export const SearchForm = styled.form`
-  background-color: #343434;
+  background-color: #222222;
   width: 100vw;
   display: flex;
 `;
@@ -354,7 +355,7 @@ export const SearchLabel = styled.label`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #343434;
+  background-color: #222222;
 `;
 
 export const SearchInput = styled.input`
@@ -407,11 +408,10 @@ export const PaginationNumbers = styled.ul`
 export const StatsContainer = styled.div`
   color: white;
   background-color: #222222;
-  
+
   border: 2px solid rgba(0, 0, 0, 0);
   display: flex;
-  justify-content: space-between;
-  align-items: space-between;
+  justify-content: space-around;
 `;
 
 export const SquareContainer = styled.div`

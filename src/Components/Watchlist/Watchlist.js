@@ -1,11 +1,15 @@
-import React, { useState, useEffect } from 'react';
-import { Link, useHistory } from 'react-router-dom';
-import { db } from '../../firebase';
-import { useAuth } from '../../context/AuthContext';
-import MovieItem from '../Search/MovieItem';
-import TvItem from '../Search/TvItem';
-import { GoBackButton, PrimarySection, ResultsGrid, PrimaryH3 } from '../StyledComponents';
-import * as URL from '../../constants/urlParts';
+import React, { useState, useEffect } from "react";
+import { Link, useHistory } from "react-router-dom";
+import { db } from "../../firebase";
+import { useAuth } from "../../context/AuthContext";
+import MovieItem from "../Search/MovieItem";
+import TvItem from "../Search/TvItem";
+import {
+  GoBackButton,
+  PrimarySection,
+  ResultsGrid,
+  PrimaryH3,
+} from "../StyledComponents";
 
 export const Watchlist = () => {
   const { currentUser } = useAuth();
@@ -13,9 +17,9 @@ export const Watchlist = () => {
   const history = useHistory();
 
   useEffect(() => {
-    db.collection('users')
+    db.collection("users")
       .doc(currentUser.uid)
-      .collection('watchlist')
+      .collection("watchlist")
       .get()
       //this is async, so it returns a promise
       .then((snapshot) => {
@@ -31,7 +35,6 @@ export const Watchlist = () => {
     <>
       <div>
         <PrimarySection>
-
           <GoBackButton
             onClick={() => history.goBack()}
             className="fas fa-angle-left"
@@ -40,11 +43,9 @@ export const Watchlist = () => {
           <h1>My Watchlist</h1>
 
           <PrimaryH3>
-            {'You have ' + contentInWatchlist.length + ' '}
-            {contentInWatchlist.length === 1 ? 'title' : 'titles'}
-            {' in your watchlist'}
+            {contentInWatchlist.length + " "}
+            {contentInWatchlist.length === 1 ? "title" : "titles"}
           </PrimaryH3>
-
         </PrimarySection>
       </div>
 
@@ -92,8 +93,9 @@ export const Watchlist = () => {
           </ResultsGrid>
         </>
       ) : (
-        <PrimaryH3>No content in your list! Search for movies
-          <Link to='/search'>{' '}here{' '}</Link>
+        <PrimaryH3>
+          No content in your list! Search for movies
+          <Link to="/search"> here </Link>
         </PrimaryH3>
       )}
     </>
