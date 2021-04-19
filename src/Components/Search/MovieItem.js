@@ -7,7 +7,7 @@ import FallbackImage from "../FallbackImage";
 import { genresList } from "../Stats/Genres";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlus, faCheck } from '@fortawesome/free-solid-svg-icons'
+import { faPlus, faCheck, faStar } from '@fortawesome/free-solid-svg-icons'
 
 function MovieItem({
   id,
@@ -28,7 +28,7 @@ function MovieItem({
       (genreIdAndNameObj) => genreIdAndNameObj.id === genreId
     ).name;
   });
- 
+
   useEffect(() => {
     if (currentUser) {
       db.collection("users")
@@ -132,6 +132,9 @@ function MovieItem({
 
       <h3>{title}</h3>
 
+      <span>{releaseDate ? releaseDate.substring(0, 4) : ""}   <FontAwesomeIcon icon={faStar} size="1x" color="" />
+        {voteAverage}</span>
+
       {inWatchlist
         ? currentUser && (
           <button onClick={removeFromWatchlist}>
@@ -156,8 +159,7 @@ function MovieItem({
           </button>
         )}
 
-      <span>{releaseDate ? releaseDate.substring(0, 4) : ""}</span>
-      <span>{voteAverage}</span>
+
     </ItemCard>
   );
 }

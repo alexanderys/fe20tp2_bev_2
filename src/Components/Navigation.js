@@ -1,6 +1,7 @@
 import * as ROUTES from "../constants/routes";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { useAuth } from "../context/AuthContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faSearch,
@@ -57,35 +58,46 @@ const StyledNav = styled.nav`
   }
 `;
 
-const Navigation = () => (
-  <StyledNav>
-    <ul>
-      <li>
-        <Link to={ROUTES.HOME}>
-          <FontAwesomeIcon icon={faHome} />
-          <p>Home</p>
-        </Link>
-      </li>
-      <li>
-        <Link to={ROUTES.SEARCH}>
-          <FontAwesomeIcon icon={faSearch} />
-          <p>Search</p>
-        </Link>
-      </li>
-      <li>
-        <Link to={ROUTES.STATS}>
-          <FontAwesomeIcon icon={faChartPie} />
-          <p>Stats</p>
-        </Link>
-      </li>
-      <li>
-        <Link to={ROUTES.PROFILE}>
-          <FontAwesomeIcon icon={faUser} />
-          <p>Profile</p>
-        </Link>
-      </li>
-    </ul>
-  </StyledNav>
-);
+const Navigation = () => {
+  const { currentUser } = useAuth();
+
+  return (
+    <StyledNav>
+      <ul>
+        <li>
+          <Link to={ROUTES.HOME}>
+            <FontAwesomeIcon icon={faHome} />
+            <p>Home</p>
+          </Link>
+        </li>
+        <li>
+          <Link to={ROUTES.SEARCH}>
+            <FontAwesomeIcon icon={faSearch} />
+            <p>Search</p>
+          </Link>
+        </li>
+        <li>
+          <Link to={ROUTES.STATS}>
+            <FontAwesomeIcon icon={faChartPie} />
+            <p>Stats</p>
+          </Link>
+        </li>
+        <li>
+          {currentUser ? (
+            <Link to={ROUTES.PROFILE}>
+              <FontAwesomeIcon icon={faUser} />
+              <p>Profile</p>
+            </Link>
+          ) : (
+            <Link to={ROUTES.LOG_IN}>
+              <FontAwesomeIcon icon={faUser} />
+              <p>Log In</p>
+            </Link>
+          )}
+        </li>
+      </ul>
+    </StyledNav>
+  );
+};
 
 export default Navigation;

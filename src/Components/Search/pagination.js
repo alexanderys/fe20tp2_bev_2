@@ -37,13 +37,13 @@ const Pagination = ({ moviesPerPage, totalMovies, paginate }) => {
     <StyledPaginationNav>
       <ul>
         {pageNumbers.map((number) => (
-          <a
+          <a key={number}
             onClick={() => {
               paginate(number);
             }}
             href="#"
           >
-            <li key={number}>{number}</li>
+            <li>{number}</li>
           </a>
         ))}
       </ul>

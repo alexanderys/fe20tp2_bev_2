@@ -23,13 +23,36 @@ export const GlobalStyles = createGlobalStyle`
 
 `;
 
+export const SignUpLinks = styled.div`
+  a {
+    margin-left: 1rem;
+  }
+  border: 3px solid yellow;
+`;
+
 // -------------------- ELEMENTS WITH STYLES THAT ARE USED MORE THAN ONCE-------------------------
 export const ResultsGrid = styled.section`
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-gap: 1.5rem;
+
+  /* fulhax för att få marginal till navbar */
+  section:last-of-type {
+    margin-bottom: 100px;
+  }
+
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  @media (max-width: 500px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  margin-bottom: 90px;
+  margin-bottom: 90px;*/
 `;
 
 export const ItemCard = styled.section`
@@ -42,17 +65,35 @@ export const ItemCard = styled.section`
   overflow: hidden;
   margin: 5px;
   border-radius: 3px;
+
   h3 {
+    overflow: hidden;
+    min-height: 45px;
     font-size: 1.1rem;
     text-align: center;
     margin-bottom: 5px;
+    max-width: 95%;
+    margin: 0 auto;
   }
+
   img {
     width: 100%;
+    height: 180px;
   }
+
   span {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    font-family: inherit;
     font-size: 1rem;
-    margin-bottom: 15px;
+    margin-bottom: 4px;
+
+    svg {
+      transform: translateX(50%);
+      height: 75%;
+    }
   }
 
   button {
@@ -225,8 +266,10 @@ export const StatsSection = styled.section`
   flex-direction: column;
   align-items: center;
   text-align: center;
+  background-color: #222222;
   h1 {
-    color: ${({ theme }) => theme.primaryColor};
+    /* color: ${({ theme }) => theme.primaryColor}; */
+    color: white;
     font-size: 2rem;
     margin: 70px 0;
   }
@@ -236,10 +279,12 @@ export const StatsSection = styled.section`
   }
 
   span {
-    color: ${({ theme }) => theme.primaryColor};
+    /* color: ${({ theme }) => theme.primaryColor}; */
+    color: white;
   }
   p {
-    color: ${({ theme }) => theme.primaryColor};
+    /* color: ${({ theme }) => theme.primaryColor}; */
+    color: white;
   }
 `;
 
@@ -293,15 +338,14 @@ export const GoBackButton = styled.i`
 
 // ------------------------------- SEARCH --------------------------------
 
-export const SearchSection = styled.section`
-  height: 90vh;
-  h2 {
-    margin: 10px 0 0 20px;
-    font-size: 1.3rem;
-  }
+export const SearchForm = styled.form`
+  background-color: #343434;
+  width: 100vw;
+  display: flex;
 `;
 
 export const SearchLabel = styled.label`
+  width: 90%; /* new */
   padding: 10px;
   display: flex;
   justify-content: center;
@@ -310,7 +354,8 @@ export const SearchLabel = styled.label`
 `;
 
 export const SearchInput = styled.input`
-  width: 95vw;
+  /* width: 95vw; */
+  width: 95%; /* new */
   border-radius: 5px;
   padding: 15px;
   border: 0;
@@ -321,6 +366,16 @@ export const SearchInput = styled.input`
   &::placeholder {
     font-style: italic;
   }
+`;
+
+export const SearchButton = styled.button`
+  width: 5%;
+  min-width: fit-content;
+  margin: 10px;
+  padding: 10px;
+  border: 0;
+  border-radius: 5px;
+  cursor: pointer;
 `;
 
 // ------------------------------- PAGINATION --------------------------------
@@ -365,6 +420,9 @@ export const SquareStats = styled.div`
 `;
 
 export const StatsContainer = styled.div`
+  color: white;
+  background-color: #222222;
+
   border: 2px solid green;
   display: flex;
   justify-content: space-between;

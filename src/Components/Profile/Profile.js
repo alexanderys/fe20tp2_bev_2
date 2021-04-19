@@ -1,7 +1,7 @@
 import React from "react";
 
 import { Link, useHistory } from "react-router-dom";
-import { SecondarySection, GoBackButton } from "../StyledComponents";
+import { SecondarySection, /* GoBackButton */ } from "../StyledComponents";
 
 export default function Profile() {
 
@@ -10,10 +10,10 @@ export default function Profile() {
   return (
     <>
       <SecondarySection>
-        <GoBackButton
+        {/*  <GoBackButton
           onClick={() => history.goBack()}
           className="fas fa-angle-left"
-        ></GoBackButton>
+        ></GoBackButton> */}
         <h1>Profile</h1>
 
         <li>
