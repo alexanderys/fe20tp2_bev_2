@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from "react";
-import { db } from "../../firebase";
-import { useAuth } from "../../context/AuthContext";
-import { ItemCard } from "../StyledComponents";
-import { IMAGE_URL } from "../../constants/urlParts";
-import FallbackImage from "../FallbackImage";
-import { Link } from "react-router-dom";
-import { faPlus, faCheck, faStar } from '@fortawesome/free-solid-svg-icons'
+import React, { useState, useEffect } from 'react';
+import { db } from '../../firebase';
+import { useAuth } from '../../context/AuthContext';
+import { ItemCard } from '../StyledComponents';
+import { IMAGE_URL } from '../../constants/urlParts';
+import FallbackImage from '../FallbackImage';
+import { Link } from 'react-router-dom';
+import { faPlus, faCheck, faStar } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 function TvItem({
@@ -112,20 +112,19 @@ function TvItem({
 
   return (
     <ItemCard>
-      <Link to={`movie/${id}`}>
+      <Link to={`tv/${id}`}>
         {posterPath ? (
           <img src={IMAGE_URL + posterPath} alt='' />
         ) : (
           <FallbackImage type={'movie'} />
         )}
       </Link>
-        <h3>{name}</h3>
+      <h3>{name}</h3>
 
-      <span>{firstAirDate ? firstAirDate.substring(0, 4) : ""}
-      <FontAwesomeIcon icon={faStar} size="1x" color="" />
+      <span>
+        {firstAirDate ? firstAirDate.substring(0, 4) : ''}
+        <FontAwesomeIcon icon={faStar} size='1x' color='' />
       </span>
-
-
 
       {inWatchlist
         ? currentUser && (

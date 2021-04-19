@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from "react";
-import { useParams, useHistory } from "react-router-dom";
-import axios from "axios";
-import { IMAGE_URL } from "../../constants/urlParts";
-import FallbackImage from "../FallbackImage";
-import { GoBackButton, DetailsCard } from "../StyledComponents";
+import React, { useState, useEffect } from 'react';
+import { useParams, useHistory } from 'react-router-dom';
+import axios from 'axios';
+import { IMAGE_URL } from '../../constants/urlParts';
+import FallbackImage from '../FallbackImage';
+import { GoBackButton, DetailsCard } from '../StyledComponents';
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faStar } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faStar } from '@fortawesome/free-solid-svg-icons';
 
 function MovieDetails(props) {
   const [details, setDetails] = useState({});
@@ -37,34 +37,33 @@ function MovieDetails(props) {
     <>
       <GoBackButton
         onClick={() => history.goBack()}
-        className="fas fa-angle-left"
+        className='fas fa-angle-left'
       ></GoBackButton>
 
       <DetailsCard>
         {poster_path ? (
-          <img src={IMAGE_URL + poster_path} alt="" />
+          <img src={IMAGE_URL + poster_path} alt='' />
         ) : (
-          <FallbackImage type={"movie"} />
+          <FallbackImage type={'movie'} />
         )}
 
         <h1>{title}</h1>
         {genres && (
           <ul>
-            {release_date ? release_date.substring(0, 4) : ""}{" "}
+            {release_date ? release_date.substring(0, 4) : ''}{' '}
             {genres.map((genre, index) => {
-              return <li key={index}>{genre.name}, </li>;
+              return <li key={index}>{genre.name} | </li>;
             })}
           </ul>
         )}
         <h2>
-          <FontAwesomeIcon icon={faStar} size="1x" color="grey" />{" "}
+          <FontAwesomeIcon icon={faStar} size='1x' color='orange' />{' '}
           {vote_average}
         </h2>
 
         <button>
-          <FontAwesomeIcon icon={faStar} size="1x" color="grey" /> Rate this
+          <FontAwesomeIcon icon={faStar} size='1x' color='grey' /> Rate this
         </button>
-
         <p>{overview}</p>
       </DetailsCard>
     </>

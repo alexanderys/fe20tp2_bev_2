@@ -129,6 +129,16 @@ export const DetailsCard = styled.section`
       display: inline;
     }
   }
+
+  h2 {
+    font-size: 1.5rem;
+    margin: 10px;
+  }
+
+  .avrate {
+    font-size: 0.7rem;
+  }
+
   span {
     font-size: 1rem;
     margin-bottom: 10px;
@@ -136,9 +146,10 @@ export const DetailsCard = styled.section`
   p {
     width: 70vw;
     text-align: center;
-    font-size: 1.1rem;
+    font-size: 1rem;
     padding: 10px 0;
-    font-weight: 500;
+    font-weight: 100;
+    line-height: 22px;
   }
   button {
     padding: 10px;
@@ -146,6 +157,8 @@ export const DetailsCard = styled.section`
     background: none;
     color: ${({ theme }) => theme.primaryColor};
     border: 1px solid ${({ theme }) => theme.primaryColor};
+    border-radius: 15px;
+    padding: 5px 15px 5px 15px;
   }
 `;
 
@@ -407,7 +420,7 @@ export const PaginationNumbers = styled.ul`
 export const StatsContainer = styled.div`
   color: white;
   background-color: #222222;
-  
+
   border: 2px solid rgba(0, 0, 0, 0);
   display: flex;
   justify-content: space-between;
