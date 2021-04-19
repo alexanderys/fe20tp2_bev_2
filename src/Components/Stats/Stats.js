@@ -3,7 +3,12 @@
 import React, { useEffect, useState } from "react";
 import { useAuth } from "../../context/AuthContext";
 import { db } from "../../firebase";
-import { StatsSection, CircleStats, SquareStats, StatsContainer } from "../StyledComponents";
+import {
+  StatsSection,
+  CircleStats,
+  SquareStats,
+  StatsContainer,
+} from "../StyledComponents";
 import AvgRatingChart from "./AvgRatingChart";
 import BarChart from "./BarChart";
 // import LineChart from "./LineChart";
@@ -36,9 +41,6 @@ function Stats() {
           watchedMoviesVoteAvg.push(doc.data().voteAverage);
         });
         setIsLoading(false);
-        console.log(
-          "You have seen " + lastWeek.length + " nr of movies in the last 5 min"
-        );
       });
   }, []);
 
@@ -67,35 +69,30 @@ function Stats() {
 
             {/* <div className="stats-container"> */}
             <StatsContainer>
-              <h3>
-                Movies seen this week
-            </h3>
-              <SquareStats> <p> {lastWeek.length} </p> </SquareStats>
-              <h3>
-                Total movies watched
-            </h3>
-              <CircleStats> <p>{watchedMovies.length}</p> </CircleStats>
+              <h3>Movies seen this week</h3>
+              <SquareStats>
+                {" "}
+                <p> {lastWeek.length} </p>{" "}
+              </SquareStats>
+              <h3>Total movies watched</h3>
+              <CircleStats>
+                {" "}
+                <p>{watchedMovies.length}</p>{" "}
+              </CircleStats>
             </StatsContainer>
 
             <StatsContainer>
               <div>
                 <SquareStats> {lastWeek.length} </SquareStats>
-                <span>
-                  Movies seen this week
-            </span>
+                <span>Movies seen this week</span>
               </div>
               <div>
                 <CircleStats> {watchedMovies.length} </CircleStats>
-                <span>
-                  Total movies watched
-            </span>
+                <span>Total movies watched</span>
               </div>
             </StatsContainer>
-
           </>
         )}
-
-
       </section>
       <br />
       <br />

@@ -23,18 +23,11 @@ export const GlobalStyles = createGlobalStyle`
 
 `;
 
-export const SignUpLinks = styled.div`
-  a {
-    margin-left: 1rem;
-  }
-  border: 3px solid yellow;
-`;
-
 // -------------------- ELEMENTS WITH STYLES THAT ARE USED MORE THAN ONCE-------------------------
 export const ResultsGrid = styled.section`
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  grid-gap: 1.5rem;
+  grid-gap: 0.5rem;
 
   /* fulhax för att få marginal till navbar */
   section:last-of-type {
@@ -113,18 +106,17 @@ export const DetailsCard = styled.section`
   align-items: center;
   color: ${({ theme }) => theme.primaryColor};
   h1 {
-    font-size: 2rem;
+    font-size: 1.8rem;
     text-align: center;
     margin: 10px 0;
   }
   img {
-    width: 70%;
+    width: 60%;
   }
   ul {
     list-style-type: none;
     width: 100%;
     text-align: center;
-    margin: 10px 0;
 
     li {
       display: inline;
@@ -202,10 +194,14 @@ export const PrimaryForm = styled.form`
 
 // ------------------------------- SECTIONS ---------------------------------
 export const PrimarySection = styled.section`
+  //used by Authentication-files
+  h1 {
+    margin: 20px 0;
+  }
   h3 {
     color: ${({ theme }) => theme.primaryColor};
   }
-  //used by Authentication-files
+
   color: ${({ theme }) => theme.primaryColor};
   background-color: ${({ theme }) => theme.primaryBackground};
   display: flex;
@@ -298,14 +294,15 @@ export const ButtonContainer = styled.div`
   }
 
   button + button {
-    margin-top: 30px;
+    margin-top: 5px;
   }
 `;
 
 export const PrimaryButton = styled.button`
   color: ${({ theme }) => theme.primaryColor};
   width: 80vw;
-  margin-top: 100px;
+  margin-top: 130px;
+  margin-bottom: 10px;
   font-family: inherit;
   font-size: 1.1rem;
   background: none;
@@ -317,7 +314,7 @@ export const PrimaryButton = styled.button`
 export const SecondaryButton = styled.button`
   color: ${({ theme }) => theme.primaryColor};
   width: 100%;
-  margin-top: 90px;
+  margin-top: 70px;
   margin-bottom: 10px;
   font-family: inherit;
   font-size: 1.1rem;

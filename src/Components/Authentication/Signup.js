@@ -7,7 +7,6 @@ import {
   PrimarySection,
   SecondaryButton,
   PrimaryForm,
-  SignUpLinks,
 } from "../StyledComponents";
 
 export default function Signup() {
@@ -67,13 +66,10 @@ export default function Signup() {
             />
           </div>
 
-          {/* Some sort of container */}
-          <SignUpLinks>
-            <SecondaryButton disabled={loading} type="submit">
-              Sign Up
-            </SecondaryButton>
-            <Link to="/login"> Already have an account? Login</Link>
-          </SignUpLinks>
+          <SecondaryButton disabled={loading} type="submit">
+            Sign Up
+          </SecondaryButton>
+          <Link to="/login"> Already have an account? Login</Link>
         </PrimaryForm>
       </PrimarySection>
     </>

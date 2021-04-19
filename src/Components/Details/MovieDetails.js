@@ -46,6 +46,8 @@ function MovieDetails(props) {
         ) : (
           <FallbackImage type={"movie"} />
         )}
+
+        <h1>{title}</h1>
         {genres && (
           <ul>
             {release_date ? release_date.substring(0, 4) : ""}{" "}
@@ -54,7 +56,6 @@ function MovieDetails(props) {
             })}
           </ul>
         )}
-        <h1>{title}</h1>
         <h2>
           <FontAwesomeIcon icon={faStar} size="1x" color="grey" />{" "}
           {vote_average}

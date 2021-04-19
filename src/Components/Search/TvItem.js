@@ -51,7 +51,6 @@ function TvItem({ id, name, posterPath, firstAirDate, voteAverage, overview }) {
       .set({
         id,
         tvTitle: name,
-        voteAverage,
         posterPath,
         firstAirDate,
       })
@@ -79,7 +78,6 @@ function TvItem({ id, name, posterPath, firstAirDate, voteAverage, overview }) {
       .set({
         id,
         tvTitle: name,
-        voteAverage,
         posterPath,
         firstAirDate,
       })
@@ -129,7 +127,6 @@ function TvItem({ id, name, posterPath, firstAirDate, voteAverage, overview }) {
           )}
 
       <span>{firstAirDate ? firstAirDate.substring(0, 4) : ""}</span>
-      <span>{voteAverage}</span>
     </ItemCard>
   );
 }
