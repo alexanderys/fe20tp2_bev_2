@@ -42,11 +42,15 @@ function TvDetails(props) {
                     {vote_average}
                 </span>
 
+                <button>
+                    <FontAwesomeIcon icon={faStar} size="1x" color="yellow" />
+                    Rate This
+                </button>
+
                 {genres && (
                     <ul>
-                        {genres.map((genre) => {
-                            console.log('hello')
-                            return <li>{genre.name}, </li>
+                        {genres.map((genre, index) => {
+                            return <li key={index}>{genre.name}, </li>
                         })}
                     </ul>
                 )}
