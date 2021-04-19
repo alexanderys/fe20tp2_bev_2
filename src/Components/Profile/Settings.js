@@ -1,19 +1,19 @@
-import React, { useState } from 'react';
-import { useAuth } from '../../context/AuthContext';
-import { Link, useHistory } from 'react-router-dom';
-import { lightTheme, darkTheme } from '../Darkmode/Themes';
+import React, { useState } from "react";
+import { useAuth } from "../../context/AuthContext";
+import { Link, useHistory } from "react-router-dom";
+import { lightTheme, darkTheme } from "../Darkmode/Themes";
 import {
   SecondarySection,
   PrimaryButton,
   GoBackButton,
-  ButtonContainer
-} from '../StyledComponents';
-import { useDarkMode } from '../Darkmode/useDarkMode';
-import Toggler from '../Darkmode/Toggler';
+  ButtonContainer,
+} from "../StyledComponents";
+import { useDarkMode } from "../Darkmode/useDarkMode";
+import Toggler from "../Darkmode/Toggler";
 
 export default function Dashboard() {
   const [theme, themeToggler] = useDarkMode();
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
   const { logout, readTheme, updateTheme } = useAuth();
   const history = useHistory();
 
@@ -22,13 +22,13 @@ export default function Dashboard() {
   }
 
   async function handleLogout() {
-    setError('');
+    setError("");
 
     try {
       await logout();
-      history.push('/');
+      history.push("/");
     } catch {
-      setError('Failed to log out');
+      setError("Failed to log out");
     }
   }
 
@@ -37,14 +37,14 @@ export default function Dashboard() {
       <SecondarySection>
         <GoBackButton
           onClick={() => history.goBack()}
-          className='fas fa-angle-left'
+          className="fas fa-angle-left"
         ></GoBackButton>
 
         <h1>Settings</h1>
 
         <li>
-          <Link to='/update-profile'>
-            Update password or email <i className='fas fa-angle-right'></i>
+          <Link to="/update-profile">
+            Update password or email <i className="fas fa-angle-right"></i>
           </Link>
         </li>
 
@@ -54,7 +54,7 @@ export default function Dashboard() {
               i.e.  darktheme: switch to light, 
                     lighteme: switch to dark
           */}
-          <p>Update your theme</p>
+          <p>Dark mode</p>
 
           {/* <UseDarkMode /> */}
           <Toggler theme={`${themeToggler}`} toggleTheme={updateMyTheme} />
@@ -62,7 +62,9 @@ export default function Dashboard() {
 
         {error && <div>{error}</div>}
         <ButtonContainer>
-          <PrimaryButton onClick={() => alert("vi vill inte prata med dig!")}>Contact Admins</PrimaryButton>
+          <PrimaryButton onClick={() => alert("Vi vill inte prata med dig!")}>
+            Contact Admins
+          </PrimaryButton>
           <PrimaryButton onClick={handleLogout}>Log Out</PrimaryButton>
         </ButtonContainer>
       </SecondarySection>

@@ -1,24 +1,27 @@
-import * as ROUTES from '../constants/routes';
-import { Link } from 'react-router-dom';
+import * as ROUTES from "../constants/routes";
+import { Link } from "react-router-dom";
+import styled from "styled-components";
 import { useAuth } from "../context/AuthContext";
-import styled from 'styled-components';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faSearch,
   faHome,
   faChartPie,
   faUser,
-} from '@fortawesome/free-solid-svg-icons';
+} from "@fortawesome/free-solid-svg-icons";
 
-const StyledUL = styled.ul`
-  padding: 10px;
-  overflow: hidden;
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  display: flex;
-  justify-content: space-around;
-  background-color: black;
+const StyledNav = styled.nav`
+  ul {
+    z-index: 10;
+    padding: 10px;
+    overflow: hidden;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    background-color: black;
+  }
 
   li {
     list-style: none;
@@ -46,14 +49,21 @@ const StyledUL = styled.ul`
   li:hover a {
     text-decoration: underline;
   }
+
+  @media (min-width: 700px) {
+    ul {
+      top: 0;
+      bottom: auto;
+    }
+  }
 `;
 
 const Navigation = () => {
   const { currentUser } = useAuth();
 
   return (
-    <nav>
-      <StyledUL>
+    <StyledNav>
+      <ul>
         <li>
           <Link to={ROUTES.HOME}>
             <FontAwesomeIcon icon={faHome} />
@@ -73,21 +83,21 @@ const Navigation = () => {
           </Link>
         </li>
         <li>
-          {currentUser ?
+          {currentUser ? (
             <Link to={ROUTES.PROFILE}>
               <FontAwesomeIcon icon={faUser} />
               <p>Profile</p>
-            </Link> :
+            </Link>
+          ) : (
             <Link to={ROUTES.LOG_IN}>
               <FontAwesomeIcon icon={faUser} />
               <p>Log In</p>
             </Link>
-          }
-
+          )}
         </li>
-      </StyledUL>
-    </nav>
-  )
+      </ul>
+    </StyledNav>
+  );
 };
 
 export default Navigation;

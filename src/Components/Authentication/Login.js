@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 import { useAuth } from "../../context/AuthContext";
 import { Link, useHistory } from "react-router-dom";
-import styled from 'styled-components';
+import styled from "styled-components";
 import {
   PrimaryInput,
   PrimaryH2,
@@ -13,7 +13,8 @@ import {
 const ClickableLink = styled.a`
   a {
     font-weight: bold;
-    &:hover{
+
+    &:hover {
       text-decoration: underline;
     }
   }
@@ -63,15 +64,17 @@ export default function Login() {
               required
             />
           </div>
-          <ClickableLink >
+          <ClickableLink>
             <Link to="/forgot-password">Forgot Password?</Link>
           </ClickableLink>
           <PrimaryButton disabled={loading} type="submit">
             Log In
           </PrimaryButton>
-          Need an account?
+
           <ClickableLink>
-            <Link to="/signup">  Sign Up</Link>
+            {" "}
+            Need an account?
+            <Link to="/signup"> Sign Up</Link>
           </ClickableLink>
         </PrimaryForm>
       </PrimarySection>

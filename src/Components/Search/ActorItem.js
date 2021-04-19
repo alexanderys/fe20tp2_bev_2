@@ -16,7 +16,7 @@ const ActorItem = ({ id, name, profilePath, knownFor }) => {
       </Link>
 
       <h3>{name}</h3>
-      <p>
+      <article style={{ margin: "0 auto"}}>
         <strong>Actor/Actress</strong>
         {knownFor[0] && !!knownFor[0].title ? (
           <span>, {knownFor[0].title} </span>
@@ -28,7 +28,7 @@ const ActorItem = ({ id, name, profilePath, knownFor }) => {
         ) : (
           ""
         )}
-      </p>
+      </article>
     </ItemCard>
   );
 };

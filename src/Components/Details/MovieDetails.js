@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { useParams, useHistory } from 'react-router-dom';
-import axios from 'axios';
+import { useParams, useHistory } from "react-router-dom";
+import axios from "axios";
 import { IMAGE_URL } from "../../constants/urlParts";
 import FallbackImage from "../FallbackImage";
 import { GoBackButton, DetailsCard } from "../StyledComponents";
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faStar } from '@fortawesome/free-solid-svg-icons';
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faStar } from "@fortawesome/free-solid-svg-icons";
 
 function MovieDetails(props) {
   const [details, setDetails] = useState({});
@@ -17,13 +16,22 @@ function MovieDetails(props) {
 
   useEffect(() => {
     axios
-      .get(`https://api.themoviedb.org/3/movie/${id}?api_key=f98f97b2689a1d60f3c3e51a6f703ad7`)
+      .get(
+        `https://api.themoviedb.org/3/movie/${id}?api_key=f98f97b2689a1d60f3c3e51a6f703ad7`
+      )
       .then((res) => {
         setDetails(res.data);
       });
   }, []);
 
-  const { genres, overview, poster_path, release_date, title, vote_average } = details;
+  const {
+    genres,
+    overview,
+    poster_path,
+    release_date,
+    title,
+    vote_average,
+  } = details;
 
   return (
     <>
@@ -38,24 +46,24 @@ function MovieDetails(props) {
         ) : (
           <FallbackImage type={"movie"} />
         )}
-        <h2>{title} ({release_date ? release_date.substring(0, 4) : ""})</h2>
-        <span>
-          <FontAwesomeIcon icon={faStar} size="1px" color="grey" />
-          {vote_average}
-        </span>
 
-        <button>
-          <FontAwesomeIcon icon={faStar} size="5px" color="yellow" />
-          Rate This
-          </button>
-
+        <h1>{title}</h1>
         {genres && (
           <ul>
+            {release_date ? release_date.substring(0, 4) : ""}{" "}
             {genres.map((genre, index) => {
-              return <li key={index}>{genre.name}, </li>
+              return <li key={index}>{genre.name}, </li>;
             })}
           </ul>
         )}
+        <h2>
+          <FontAwesomeIcon icon={faStar} size="1x" color="grey" />{" "}
+          {vote_average}
+        </h2>
+
+        <button>
+          <FontAwesomeIcon icon={faStar} size="1x" color="grey" /> Rate this
+        </button>
 
         <p>{overview}</p>
       </DetailsCard>

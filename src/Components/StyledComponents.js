@@ -15,26 +15,23 @@ export const GlobalStyles = createGlobalStyle`
   font-family: 'Lato', serif;
   /* border: 5px solid blue; */
 } 
-
-/* @media (min-width: 500px) {
-  body {
-  border: 5px solid green;
-}  */
-
-`;
-
-export const SignUpLinks = styled.div`
-  a {
-    margin-left: 1rem;
+@media (min-width: 700px) {
+    body {
+     margin-top: 100px;
+    }
   }
-  border: 3px solid yellow;
+
 `;
 
 // -------------------- ELEMENTS WITH STYLES THAT ARE USED MORE THAN ONCE-------------------------
 export const ResultsGrid = styled.section`
   display: grid;
   grid-template-columns: repeat(5, 1fr);
+<<<<<<< HEAD
   grid-gap: 1.5rem;
+=======
+  grid-gap: 0.5rem;
+>>>>>>> 6b5f5a7df513a57c7a3f5e43ba91a0be99633601
 
   /* fulhax för att få marginal till navbar */
   section:last-of-type {
@@ -52,8 +49,7 @@ export const ResultsGrid = styled.section`
   /* flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  border: 5px solid red;
-  margin-bottom: 90px; */
+  margin-bottom: 90px;*/
 `;
 
 export const ItemCard = styled.section`
@@ -67,6 +63,10 @@ export const ItemCard = styled.section`
   margin: 5px;
   border-radius: 3px;
 
+<<<<<<< HEAD
+=======
+  h2,
+>>>>>>> 6b5f5a7df513a57c7a3f5e43ba91a0be99633601
   h3 {
     overflow: hidden;
     min-height: 45px;
@@ -90,10 +90,15 @@ export const ItemCard = styled.section`
     font-family: inherit;
     font-size: 1rem;
     margin-bottom: 4px;
+    margin: 2px 6px;
 
     svg {
-      transform: translateX(50%);
+      transform: translateX(40%);
       height: 75%;
+    }
+
+    article {
+      margin: 0 auto;
     }
   }
 
@@ -102,31 +107,30 @@ export const ItemCard = styled.section`
     font-family: inherit;
     background: none;
     border: 1px solid ${({ theme }) => theme.secondaryColor};
-    margin: 3px 0;
+    margin: 3px auto;
     cursor: pointer;
+    width: 80%;
   }
 `;
 
 export const DetailsCard = styled.section`
   color: ${({ theme }) => theme.primaryColor};
-  max-width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 5px;
-  h2 {
-    font-size: 1.3rem;
+  color: ${({ theme }) => theme.primaryColor};
+  h1 {
+    font-size: 1.8rem;
     text-align: center;
-    margin-bottom: 10px;
+    margin: 10px 0;
   }
   img {
-    width: 50%;
+    width: 60%;
   }
   ul {
     list-style-type: none;
     width: 100%;
     text-align: center;
-    margin-bottom: 10px;
 
     li {
       display: inline;
@@ -137,7 +141,18 @@ export const DetailsCard = styled.section`
     margin-bottom: 10px;
   }
   p {
+    width: 70vw;
     text-align: center;
+    font-size: 1.1rem;
+    padding: 10px 0;
+    font-weight: 500;
+  }
+  button {
+    padding: 10px;
+    font-size: 1rem;
+    background: none;
+    color: ${({ theme }) => theme.primaryColor};
+    border: 1px solid ${({ theme }) => theme.primaryColor};
   }
 `;
 
@@ -193,10 +208,14 @@ export const PrimaryForm = styled.form`
 
 // ------------------------------- SECTIONS ---------------------------------
 export const PrimarySection = styled.section`
+  //used by Authentication-files
+  h1 {
+    margin: 20px 0;
+  }
   h3 {
     color: ${({ theme }) => theme.primaryColor};
   }
-  //used by Authentication-files
+
   color: ${({ theme }) => theme.primaryColor};
   background-color: ${({ theme }) => theme.primaryBackground};
   display: flex;
@@ -289,14 +308,15 @@ export const ButtonContainer = styled.div`
   }
 
   button + button {
-    margin-top: 30px;
+    margin-top: 5px;
   }
 `;
 
 export const PrimaryButton = styled.button`
   color: ${({ theme }) => theme.primaryColor};
   width: 80vw;
-  margin-top: 100px;
+  margin-top: 130px;
+  margin-bottom: 10px;
   font-family: inherit;
   font-size: 1.1rem;
   background: none;
@@ -307,8 +327,8 @@ export const PrimaryButton = styled.button`
 
 export const SecondaryButton = styled.button`
   color: ${({ theme }) => theme.primaryColor};
-  // width: 80vw;
-  margin-top: 90px;
+  width: 100%;
+  margin-top: 70px;
   margin-bottom: 10px;
   font-family: inherit;
   font-size: 1.1rem;
