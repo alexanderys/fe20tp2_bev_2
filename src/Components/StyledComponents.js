@@ -27,11 +27,7 @@ export const GlobalStyles = createGlobalStyle`
 export const ResultsGrid = styled.section`
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-<<<<<<< HEAD
-  grid-gap: 1.5rem;
-=======
   grid-gap: 0.5rem;
->>>>>>> 6b5f5a7df513a57c7a3f5e43ba91a0be99633601
 
   /* fulhax för att få marginal till navbar */
   section:last-of-type {
@@ -63,10 +59,7 @@ export const ItemCard = styled.section`
   margin: 5px;
   border-radius: 3px;
 
-<<<<<<< HEAD
-=======
   h2,
->>>>>>> 6b5f5a7df513a57c7a3f5e43ba91a0be99633601
   h3 {
     overflow: hidden;
     min-height: 45px;
