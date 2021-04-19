@@ -15,6 +15,12 @@ export const GlobalStyles = createGlobalStyle`
   font-family: 'Lato', serif;
   /* border: 5px solid blue; */
 } 
+@media (min-width: 700px) {
+    body {
+     margin-top: 100px;
+    }
+  }
+
 `;
 
 // -------------------- ELEMENTS WITH STYLES THAT ARE USED MORE THAN ONCE-------------------------

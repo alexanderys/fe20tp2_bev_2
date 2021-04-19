@@ -11,11 +11,12 @@ import {
 
 const StyledNav = styled.nav`
   ul {
+    z-index: 10;
     padding: 10px;
     overflow: hidden;
-    position: fixed; 
-    bottom: 0; 
-    width: 100%; 
+    position: fixed;
+    bottom: 0;
+    width: 100%;
     display: flex;
     justify-content: space-around;
     background-color: black;
@@ -50,9 +51,10 @@ const StyledNav = styled.nav`
 
   @media (min-width: 700px) {
     ul {
-    top: 0;
-    bottom: auto;
-  } 
+      top: 0;
+      bottom: auto;
+    }
+  }
 `;
 
 const Navigation = () => (
