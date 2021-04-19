@@ -5,6 +5,8 @@ import { ItemCard } from "../StyledComponents";
 import { IMAGE_URL } from "../../constants/urlParts";
 import FallbackImage from "../FallbackImage";
 import { Link } from "react-router-dom";
+import { faPlus, faCheck, faStar } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 function TvItem({ id, name, posterPath, firstAirDate, voteAverage, overview }) {
   const { currentUser } = useAuth();
@@ -105,26 +107,37 @@ function TvItem({ id, name, posterPath, firstAirDate, voteAverage, overview }) {
         ) : (
           <FallbackImage type={"tv"} />
         )}
-        <h2>{name}</h2>
       </Link>
+        <h3>{name}</h3>
+
+      <span>{firstAirDate ? firstAirDate.substring(0, 4) : ""}
+      <FontAwesomeIcon icon={faStar} size="1x" color="" />
+      {voteAverage}</span>
 
       {inWatchlist
         ? currentUser && (
-            <button onClick={removeFromWatchlist}>Remove from Watchlist</button>
-          )
+          <button onClick={removeFromWatchlist}>
+            <FontAwesomeIcon icon={faCheck} /> Watchlist
+          </button>
+        )
         : currentUser && (
-            <button onClick={addToWatchlist}>Add to Watchlist</button>
-          )}
+          <button onClick={addToWatchlist}>
+            <FontAwesomeIcon icon={faPlus} /> Watchlist
+          </button>
+        )}
 
       {inHaveWatched
         ? currentUser && (
-            <button onClick={removeFromHaveWatched}>
-              Remove from Have Watched
-            </button>
-          )
+          <button onClick={removeFromHaveWatched}>
+            <FontAwesomeIcon icon={faCheck} /> Seen
+          </button>
+        )
         : currentUser && (
-            <button onClick={addToHaveWatched}>Add to Have Watched</button>
-          )}
+          <button onClick={addToHaveWatched}>
+            <FontAwesomeIcon icon={faPlus} /> Seen
+          </button>
+        )}
+
 
       <span>{firstAirDate ? firstAirDate.substring(0, 4) : ""}</span>
     </ItemCard>
