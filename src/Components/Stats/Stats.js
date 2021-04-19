@@ -3,12 +3,7 @@
 import React, { useEffect, useState } from "react";
 import { useAuth } from "../../context/AuthContext";
 import { db } from "../../firebase";
-import {
-  StatsSection,
-  CircleStats,
-  SquareStats,
-  StatsContainer,
-} from "../StyledComponents";
+import { StatsSection, CircleStats, NumberStats, StatsContainer, CircleContainer, SquareContainer } from "../StyledComponents";
 import AvgRatingChart from "./AvgRatingChart";
 import BarChart from "./BarChart";
 // import LineChart from "./LineChart";
@@ -24,7 +19,7 @@ function Stats() {
   // 604800000 - 1 week in ms
 
   useEffect(() => {
-    setLastWeek([]);
+    /* setLastWeek([]); */
     const limit = Date.now() - 300000;
     // Limit is  now 5 min
     console.log("limit: " + limit);
@@ -67,29 +62,16 @@ function Stats() {
             <BarChart />
             <br />
 
-            {/* <div className="stats-container"> */}
             <StatsContainer>
-              <h3>Movies seen this week</h3>
-              <SquareStats>
-                {" "}
-                <p> {lastWeek.length} </p>{" "}
-              </SquareStats>
-              <h3>Total movies watched</h3>
-              <CircleStats>
-                {" "}
-                <p>{watchedMovies.length}</p>{" "}
-              </CircleStats>
-            </StatsContainer>
+              <SquareContainer>
+                <h3>Movies seen this week</h3>
+                <NumberStats>{lastWeek.length}</NumberStats>
+              </SquareContainer>
 
-            <StatsContainer>
-              <div>
-                <SquareStats> {lastWeek.length} </SquareStats>
-                <span>Movies seen this week</span>
-              </div>
-              <div>
-                <CircleStats> {watchedMovies.length} </CircleStats>
-                <span>Total movies watched</span>
-              </div>
+              <CircleContainer>
+                <h3>Total movies watched</h3>
+                <CircleStats> <p>{watchedMovies.length}</p> </CircleStats>
+              </CircleContainer>
             </StatsContainer>
           </>
         )}
@@ -97,7 +79,7 @@ function Stats() {
       <br />
       <br />
       <br />
-    </StatsSection>
+    </StatsSection >
   );
 }
 

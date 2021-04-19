@@ -404,37 +404,54 @@ export const PaginationNumbers = styled.ul`
 `;
 
 // ------------------------------- STATS --------------------------------
+export const StatsContainer = styled.div`
+  color: white;
+  background-color: #222222;
+  
+  border: 2px solid rgba(0, 0, 0, 0);
+  display: flex;
+  justify-content: space-between;
+  align-items: space-between;
+`;
+
+export const SquareContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const CircleContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+
 export const CircleStats = styled.div`
-  width: 80px;
-  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 70px;
+  height: 70px;
   margin: 15px 0;
   padding: 30px;
   border-radius: 50%;
   font-size: 2rem;
-  background-color: rgba(255, 206, 86, 0.8);
+  background-color: rgb(103, 73, 0);
+  border: 1px solid yellow;
 `;
 
-export const SquareStats = styled.div`
+export const NumberStats = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 60px;
   height: 60px;
-  margin: 15px 0;
+  margin: 20px 0;
   padding: 30px;
   font-size: 2rem;
-  background-color: rgba(54, 162, 235, 0.2);
-`;
-
-export const StatsContainer = styled.div`
-  color: white;
-  background-color: #222222;
-
-  border: 2px solid green;
-  display: flex;
-  justify-content: space-between;
-  align-items: space-between;
-  div {
-    border: 2px solid red;
-  }
-  span {
-    border: 2px solid yellow;
-  }
+  border-radius: 5px;
+  background-color: rgb(0, 65, 108);
+  border: 1px solid #5275ff;
 `;
