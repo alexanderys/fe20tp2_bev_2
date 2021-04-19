@@ -34,12 +34,11 @@ export const SignUpLinks = styled.div`
 export const ResultsGrid = styled.section`
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  grid-gap: 1rem;
+  grid-gap: 1.5rem;
   
   /* fulhax för att få marginal till navbar */
   section:last-of-type {
     margin-bottom: 100px;
-    border: 3px solid purple;
   }
 
   @media(max-width: 768px) {
@@ -68,17 +67,35 @@ export const ItemCard = styled.section`
   overflow: hidden;
   margin: 5px;
   border-radius: 3px;
+ 
   h3 {
+    overflow: hidden; 
+    min-height: 45px; 
     font-size: 1.1rem;
     text-align: center;
     margin-bottom: 5px;
+    max-width: 95%;
+    margin: 0 auto;
   }
+
   img {
     width: 100%;
+    height: 180px;
   }
+
   span {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    font-family: inherit;
     font-size: 1rem;
-    margin-bottom: 15px;
+    margin-bottom: 4px;
+
+    svg {
+      transform: translateX(50%);
+      height: 75%;
+    }
   }
 
   button {
