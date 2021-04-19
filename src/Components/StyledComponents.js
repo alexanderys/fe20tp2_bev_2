@@ -16,8 +16,8 @@ export const GlobalStyles = createGlobalStyle`
   /* border: 5px solid blue; */
 } 
 
-@media (min-width: 500px) {
-  /* body {
+/*@media (min-width: 500px) {
+ body {
   border: 5px solid green;
 }  */
 
@@ -327,15 +327,14 @@ export const GoBackButton = styled.i`
 
 // ------------------------------- SEARCH --------------------------------
 
-export const SearchSection = styled.section`
-  height: 90vh;
-  h2 {
-    margin: 10px 0 0 20px;
-    font-size: 1.3rem;
-  }
+export const SearchForm = styled.form`
+  background-color: #343434;
+  width: 100vw;
+  display: flex;
 `;
 
 export const SearchLabel = styled.label`
+  width: 90%; /* new */
   padding: 10px;
   display: flex;
   justify-content: center;
@@ -344,7 +343,8 @@ export const SearchLabel = styled.label`
 `;
 
 export const SearchInput = styled.input`
-  width: 95vw;
+  /* width: 95vw; */
+  width: 95%; /* new */
   border-radius: 5px;
   padding: 15px;
   border: 0;
@@ -356,6 +356,16 @@ export const SearchInput = styled.input`
     font-style: italic;
   }
 `;
+
+export const SearchButton = styled.button`
+  width: 5%;
+  min-width: fit-content;
+  margin: 10px;
+  padding: 10px;
+  border: 0;
+  border-radius: 5px;
+  cursor: pointer;
+`
 
 // ------------------------------- PAGINATION --------------------------------
 

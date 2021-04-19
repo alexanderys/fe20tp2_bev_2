@@ -3,12 +3,22 @@ import Pagination from "./pagination";
 import MovieItem from "./MovieItem";
 import ActorItem from "./ActorItem";
 import TvItem from "./TvItem";
-import { PrimarySection, ResultsGrid, PrimaryH2 } from "../StyledComponents";
 import { IMAGE_URL } from "../../constants/urlParts";
-import { SearchLabel, SearchInput } from "../StyledComponents";
+import {
+  PrimarySection,
+  ResultsGrid,
+  PrimaryH2,
+  SearchForm,
+  SearchLabel,
+  SearchInput,
+  SearchButton
+} from "../StyledComponents";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
 function Search() {
   const [searchTerm, setSearchTerm] = useState("");
+  const [displayTerm, setDisplayTerm] = useState("");
   const [movies, setMovies] = useState([]);
 
   // Pagination State
@@ -16,21 +26,22 @@ function Search() {
   const [currentPage, setCurrentPage] = useState(1);
   const [moviesPerPage, setMoviesPerPage] = useState(9);
 
-  const onInputChange = (e) => {
+  const onSubmit = (e) => {
     e.preventDefault();
     setCurrentPage(1);
+    setDisplayTerm(searchTerm);
 
-    setSearchTerm(e.target.value);
     setLoading(true);
     fetch(
-      `https://api.themoviedb.org/3/search/multi?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US&page=1&include_adult=false&query=${e.target.value}`
-    )
+      `https://api.themoviedb.org/3/search/multi?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US&page=1&include_adult=false&query=${searchTerm}`)
       .then((res) => res.json())
       .then((data) => {
         if (!data.errors) {
           setMovies(data.results);
+          setSearchTerm("");
         } else {
           setMovies([]);
+          setSearchTerm("");
         }
       });
     // loading done
@@ -50,21 +61,28 @@ function Search() {
 
   return (
     <PrimarySection>
-      <SearchLabel htmlFor="search">
-        <SearchInput
-          id="search"
-          name="search"
-          type="text"
-          placeholder="Search for movie, show or actor"
-          value={searchTerm}
-          onChange={onInputChange}
-        />
-      </SearchLabel>
+      <SearchForm onSubmit={onSubmit}>
+        <SearchLabel htmlFor="search">
+          <SearchInput
+            id="search"
+            name="search"
+            type="text"
+            placeholder="Search for movie, show or actor"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
+        </SearchLabel>
+        <SearchButton type="submit">
+          <FontAwesomeIcon icon={faSearch} size="2x" color="#343434" />
+        </SearchButton>
+      </SearchForm>
 
+
+      {displayTerm && (<h1 style={{margin: "15px 0"}} >Showing results for "{displayTerm}"</h1>)}
       {currentMovies.length > 0 && (
         <>
-          <h1>Showing results for "{searchTerm}"</h1>
-          <Pagination
+{/*           <h1>Showing results for "{displayTerm}"</h1>
+ */}          <Pagination
             moviesPerPage={moviesPerPage}
             totalMovies={movies.length}
             paginate={paginate}
