@@ -16,8 +16,8 @@ export const GlobalStyles = createGlobalStyle`
   /* border: 5px solid blue; */
 } 
 
-@media (min-width: 500px) {
-  /* body {
+/* @media (min-width: 500px) {
+  body {
   border: 5px solid green;
 }  */
 
@@ -217,8 +217,10 @@ export const StatsSection = styled.section`
   flex-direction: column;
   align-items: center;
   text-align: center;
+  background-color: #222222;
   h1 {
-    color: ${({ theme }) => theme.primaryColor};
+    /* color: ${({ theme }) => theme.primaryColor}; */
+    color: white;
     font-size: 2rem;
     margin: 70px 0;
   }
@@ -228,10 +230,12 @@ export const StatsSection = styled.section`
   }
 
   span {
-    color: ${({ theme }) => theme.primaryColor};
+    /* color: ${({ theme }) => theme.primaryColor}; */
+    color: white;
   }
   p {
-    color: ${({ theme }) => theme.primaryColor};
+    /* color: ${({ theme }) => theme.primaryColor}; */
+    color: white;
   }
 `;
 
@@ -357,6 +361,9 @@ export const SquareStats = styled.div`
 `;
 
 export const StatsContainer = styled.div`
+  color: white;
+  background-color: #222222;
+  
   border: 2px solid green;
   display: flex;
   justify-content: space-between;

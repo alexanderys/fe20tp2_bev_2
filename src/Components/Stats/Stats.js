@@ -65,7 +65,8 @@ function Stats() {
             <BarChart />
             <br />
 
-            <div className="stats-container">
+            {/* <div className="stats-container"> */}
+            <StatsContainer>
               <h3>
                 Movies seen this week
             </h3>
@@ -74,7 +75,7 @@ function Stats() {
                 Total movies watched
             </h3>
               <CircleStats> <p>{watchedMovies.length}</p> </CircleStats>
-            </div>
+            </StatsContainer>
 
             <StatsContainer>
               <div>

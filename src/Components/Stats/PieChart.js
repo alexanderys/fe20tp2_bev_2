@@ -35,7 +35,7 @@ export const PieChart = () => {
       options={{
         responsive: true,
         // maintainAspectRatio: false,
-        title: { text: "Your genres", display: true, fontSize: 20, fontColor: "rgba(0, 0, 0, 1)" },
+        title: { text: "Your genres", display: true, fontSize: 20, fontColor: "white" },
         scales: {
           yAxes: [
             {
@@ -55,7 +55,7 @@ export const PieChart = () => {
           labels: {
             fontSize: 14,
             weight: "bold",
-            fontColor: "black",
+            fontColor: "white",
             padding: 5,
             boxWidth: 40,
           },

@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useAuth } from "../../context/AuthContext";
 import { db } from "../../firebase";
-import { StatsSection, PrimarySection } from "../StyledComponents";
-import styled from "styled-components";
 import { Doughnut } from "react-chartjs-2";
+import { withTheme } from "styled-components";
 
 const AvgRatingChart = () => {
   const { currentUser } = useAuth();
@@ -42,8 +41,8 @@ const AvgRatingChart = () => {
         {
           data: [avgNumber, avgBack],
           backgroundColor: [
-            "rgba(255, 159, 152, 0.9)",
-            "rgba(222, 210, 210, 0.5)",
+            "rgba(255, 186, 181, 0.9)",
+            "rgb(84, 84, 84)",
           ],
           borderWidth: 0,
         },
@@ -58,44 +57,42 @@ const AvgRatingChart = () => {
   }, [isLoading]);
 
   return (
-    <PrimarySection>
-      <Doughnut
-        data={voteAverageData}
-        options={{
-          responsive: true,
-          title: {
-            text: "Average Rating",
-            display: true,
-            fontSize: 20,
-            fontColor: ({ theme }) => theme.primaryColor,
-          },
-          scales: {
-            yAxes: [
-              {
-                ticks: { display: false },
-                gridLines: { display: false },
-              },
-            ],
-            xAxes: [
-              {
-                gridLines: { display: false },
-                ticks: { display: false },
-              },
-            ],
-          },
-          legend: {
-            position: "bottom",
-            labels: {
-              fontSize: 22,
-              boxWidth: 0,
+    <Doughnut
+      data={voteAverageData}
+      options={{
+        responsive: true,
+        title: {
+          text: "Average Rating",
+          display: true,
+          fontSize: 20,
+          fontColor: "white",
+        },
+        scales: {
+          yAxes: [
+            {
+              ticks: { display: false },
+              gridLines: { display: false },
             },
+          ],
+          xAxes: [
+            {
+              gridLines: { display: false },
+              ticks: { display: false },
+            },
+          ],
+        },
+        legend: {
+          position: "bottom",
+          labels: {
+            fontSize: 22,
+            boxWidth: 0,
           },
-          tooltips: {
-            enabled: false,
-          },
-        }}
-      />
-    </PrimarySection>
+        },
+        tooltips: {
+          enabled: false,
+        },
+      }}
+    />
   );
 };
 
