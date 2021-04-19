@@ -1,23 +1,25 @@
-import * as ROUTES from '../constants/routes';
-import { Link } from 'react-router-dom';
-import styled from 'styled-components';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import * as ROUTES from "../constants/routes";
+import { Link } from "react-router-dom";
+import styled from "styled-components";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faSearch,
   faHome,
   faChartPie,
   faUser,
-} from '@fortawesome/free-solid-svg-icons';
+} from "@fortawesome/free-solid-svg-icons";
 
-const StyledUL = styled.ul`
-  padding: 10px;
-  overflow: hidden;
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  display: flex;
-  justify-content: space-around;
-  background-color: black;
+const StyledNav = styled.nav`
+  ul {
+    padding: 10px;
+    overflow: hidden;
+    position: fixed; 
+    bottom: 0; 
+    width: 100%; 
+    display: flex;
+    justify-content: space-around;
+    background-color: black;
+  }
 
   li {
     list-style: none;
@@ -45,11 +47,17 @@ const StyledUL = styled.ul`
   li:hover a {
     text-decoration: underline;
   }
+
+  @media (min-width: 700px) {
+    ul {
+    top: 0;
+    bottom: auto;
+  } 
 `;
 
 const Navigation = () => (
-  <nav>
-    <StyledUL>
+  <StyledNav>
+    <ul>
       <li>
         <Link to={ROUTES.HOME}>
           <FontAwesomeIcon icon={faHome} />
@@ -74,8 +82,8 @@ const Navigation = () => (
           <p>Profile</p>
         </Link>
       </li>
-    </StyledUL>
-  </nav>
+    </ul>
+  </StyledNav>
 );
 
 export default Navigation;

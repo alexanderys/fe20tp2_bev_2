@@ -15,12 +15,6 @@ export const GlobalStyles = createGlobalStyle`
   font-family: 'Lato', serif;
   /* border: 5px solid blue; */
 } 
-
-@media (min-width: 500px) {
-  /* body {
-  border: 5px solid green;
-}  */
-
 `;
 
 // -------------------- ELEMENTS WITH STYLES THAT ARE USED MORE THAN ONCE-------------------------
@@ -29,7 +23,6 @@ export const ResultsGrid = styled.section`
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  border: 5px solid red;
   margin-bottom: 90px;
 `;
 
@@ -68,24 +61,23 @@ export const ItemCard = styled.section`
 
 export const DetailsCard = styled.section`
   color: ${({ theme }) => theme.primaryColor};
-  max-width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 5px;
-  h2 {
-    font-size: 1.3rem;
+  color: ${({ theme }) => theme.primaryColor};
+  h1 {
+    font-size: 2rem;
     text-align: center;
-    margin-bottom: 10px;
+    margin: 10px 0;
   }
   img {
-    width: 50%;
+    width: 70%;
   }
   ul {
     list-style-type: none;
     width: 100%;
     text-align: center;
-    margin-bottom: 10px;
+    margin: 10px 0;
 
     li {
       display: inline;
@@ -96,7 +88,18 @@ export const DetailsCard = styled.section`
     margin-bottom: 10px;
   }
   p {
+    width: 70vw;
     text-align: center;
+    font-size: 1.1rem;
+    padding: 10px 0;
+    font-weight: 500;
+  }
+  button {
+    padding: 10px;
+    font-size: 1rem;
+    background: none;
+    color: ${({ theme }) => theme.primaryColor};
+    border: 1px solid ${({ theme }) => theme.primaryColor};
   }
 `;
 
@@ -174,7 +177,6 @@ export const SecondarySection = styled.section`
   //used by Profile-files + Stats
   color: ${({ theme }) => theme.primaryColor};
   background-color: ${({ theme }) => theme.primaryBackground};
-  border: 5px solid red;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -263,7 +265,7 @@ export const PrimaryButton = styled.button`
 
 export const SecondaryButton = styled.button`
   color: ${({ theme }) => theme.primaryColor};
-  // width: 80vw;
+  width: 100%;
   margin-top: 90px;
   margin-bottom: 10px;
   font-family: inherit;
