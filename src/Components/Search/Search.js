@@ -104,7 +104,16 @@ function Search() {
                 genre_ids,
               }) => {
                 if (media_type === "movie") {
-                  return <MovieItem key={id} {...currentMovies} />;
+                  return <MovieItem
+                    title={title}
+                    key={id}
+                    id={id}
+                    overview={overview}
+                    voteAverage={vote_average}
+                    releaseDate={release_date}
+                    posterPath={poster_path}
+                    genreIds={genre_ids}
+                  />;
                 } else if (media_type === "person") {
                   return (
                     <ActorItem

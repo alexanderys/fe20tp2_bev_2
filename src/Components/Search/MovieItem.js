@@ -28,7 +28,7 @@ function MovieItem({
       (genreIdAndNameObj) => genreIdAndNameObj.id === genreId
     ).name;
   });
- 
+
   useEffect(() => {
     if (currentUser) {
       db.collection("users")
@@ -133,7 +133,7 @@ function MovieItem({
       <h3>{title}</h3>
 
       <span>{releaseDate ? releaseDate.substring(0, 4) : ""}   <FontAwesomeIcon icon={faStar} size="1x" color="" />
-      {voteAverage}</span>
+        {voteAverage}</span>
 
       {inWatchlist
         ? currentUser && (
