@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { useAuth } from "../../context/AuthContext";
 import { Link, useHistory } from "react-router-dom";
-import { useThemeUpdate } from '../../context/ThemeContext';
+import { useTheme, useThemeUpdate } from '../../context/ThemeContext';
+import { db } from "../../firebase";
 
 import {
   SecondarySection,
@@ -11,7 +12,7 @@ import {
 
 export default function Settings() {
   const [error, setError] = useState("");
-  const { logout } = useAuth();
+  const { logout, currentUser } = useAuth();
   const history = useHistory();
 
   async function handleLogout() {
@@ -27,6 +28,8 @@ export default function Settings() {
 
   /* Importing the theme toggle function from ThemeContext.js */
   const toggleTheme = useThemeUpdate();
+  /* Importing the theme state from ThemeContext.js */
+  const theme = useTheme();
 
   return (
     <>
@@ -44,7 +47,28 @@ export default function Settings() {
           </Link>
         </li>
 
-        <button onClick={toggleTheme}>Change Theme</button>
+        {/* 
+INFO!!!!!!!!!!!
+
+ATM I'm just setting the theme state to the db, not changing the theme state
+on click. Wasn't able to figure out how to do both things when clicking the 
+Change Theme button.
+*/}
+
+        <button onClick={
+          () => {
+            db.collection("users")
+              .doc(currentUser.uid)
+              .collection("karl-theme")
+              .doc(/* id.toString() */)
+              .set({
+                karlTheme: theme
+              });
+          }
+
+        }>Change Theme</button>
+
+        <div>{theme}</div>
 
         {error && <div>{error}</div>}
         <PrimaryButton onClick={handleLogout}>
