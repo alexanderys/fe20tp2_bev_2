@@ -19,8 +19,8 @@ function Stats() {
   // 604800000 - 1 week in ms
 
   useEffect(() => {
-    setLastWeek([]);
-    const limit = Date.now() - 300000;
+    //setLastWeek([]);
+    const limit = Date.now() - 3000;
     // Limit is  now 5 min
     console.log("limit: " + limit);
     db.collection("users")

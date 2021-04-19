@@ -65,7 +65,7 @@ export const Watched = () => {
                 firstAirDate,
                 posterPath,
                 voteAverage,
-                // genre_ids,
+                genre_ids,
               }) => {
                 if (movieTitle) {
                   return (
@@ -76,7 +76,7 @@ export const Watched = () => {
                       releaseDate={releaseDate}
                       posterPath={posterPath}
                       voteAverage={voteAverage}
-                      // genreIds={genre_ids}
+                      genreIds={genre_ids}
                     />
                   );
                 } else if (tvTitle) {
