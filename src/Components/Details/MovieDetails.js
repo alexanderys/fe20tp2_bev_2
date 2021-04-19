@@ -50,7 +50,7 @@ function MovieDetails(props) {
         <h1>{title}</h1>
         {genres && (
           <ul>
-            {release_date ? release_date.substring(0, 4) : ''}{' '}
+            {release_date ? release_date.substring(0, 4) : ''} | {''}
             {genres.map((genre, index) => {
               return <li key={index}>{genre.name} | </li>;
             })}

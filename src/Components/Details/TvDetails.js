@@ -39,26 +39,27 @@ function TvDetails(props) {
         onClick={() => history.goBack()}
         className='fas fa-angle-left'
       ></GoBackButton>
+
       <DetailsCard>
         {poster_path ? (
           <img src={IMAGE_URL + poster_path} alt='' />
         ) : (
           <FallbackImage type={'tv'} />
         )}
-        <h2>
-          {name} ({first_air_date ? first_air_date.substring(0, 4) : ''})
-        </h2>
+        <h1> {name} </h1>
+
         {genres && (
           <ul>
+            {first_air_date ? first_air_date.substring(0, 4) : ''} | {''}
             {genres.map((genre, index) => {
-              return <li key={index}>{genre.name}, </li>;
+              return <li key={index}>{genre.name} </li>;
             })}
           </ul>
         )}
-        <span>
+        <h2>
           <FontAwesomeIcon icon={faStar} size='1x' color='orange' />
           {''} {vote_average}
-        </span>
+        </h2>
 
         <button>
           <FontAwesomeIcon icon={faStar} size='1x' color='grey' />
