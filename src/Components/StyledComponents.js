@@ -68,6 +68,7 @@ export const ItemCard = styled.section`
   margin: 5px;
   border-radius: 3px;
  
+  h2,
   h3 {
     overflow: hidden; 
     min-height: 45px; 
@@ -91,10 +92,15 @@ export const ItemCard = styled.section`
     font-family: inherit;
     font-size: 1rem;
     margin-bottom: 4px;
+    margin: 2px 6px;
 
     svg {
-      transform: translateX(50%);
+      transform: translateX(40%);
       height: 75%;
+    }
+
+    article {
+      margin: 0 auto;
     }
   }
 
@@ -103,8 +109,9 @@ export const ItemCard = styled.section`
     font-family: inherit;
     background: none;
     border: 1px solid ${({ theme }) => theme.secondaryColor};
-    margin: 3px 0;
+    margin: 3px auto;
     cursor: pointer;
+    width: 80%;
   }
 `;
 
