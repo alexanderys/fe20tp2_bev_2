@@ -27,8 +27,6 @@ const Pagination = ({ moviesPerPage, totalMovies, paginate }) => {
     pageNumbers.push(i);
   }
 
-  console.log(pageNumbers);
-
   return (
     <StyledPaginationNav>
       <ul>

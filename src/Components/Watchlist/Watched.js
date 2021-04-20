@@ -32,31 +32,26 @@ export const Watched = () => {
   }, []);
 
   return (
-    <div>
-      <div>
-        <PrimarySection>
-          <GoBackButton
-            onClick={() => history.goBack()}
-            className="fas fa-angle-left"
-          ></GoBackButton>
+    <PrimarySection>
+      <GoBackButton
+        onClick={() => history.goBack()}
+        className="fas fa-angle-left"
+      ></GoBackButton>
 
-          <h1>Have Watched</h1>
+      <h1>Have Watched</h1>
 
-          {watchedContent.length > 0 ? (
-            <PrimaryH3>
-              {" "}
-              {watchedContent.length}{" "}
-              {watchedContent.length === 1 ? "title" : "titles"}
-            </PrimaryH3>
-          ) : (
-            " "
-          )}
-        </PrimarySection>
-      </div>
+      {watchedContent.length > 0 ? (
+        <PrimaryH3>
+          {" "}
+          {watchedContent.length}{" "}
+          {watchedContent.length === 1 ? "title" : "titles"}
+        </PrimaryH3>
+      ) : (
+        " "
+      )}
 
       {watchedContent.length > 0 ? (
         <>
-          <hr />
           <ResultsGrid>
             {watchedContent.map(
               ({
@@ -104,7 +99,7 @@ export const Watched = () => {
           <Link to="/search"> here </Link>
         </PrimaryH3>
       )}
-    </div>
+    </PrimarySection>
   );
 };
 

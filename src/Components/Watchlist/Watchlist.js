@@ -32,8 +32,6 @@ export const Watchlist = () => {
   }, []);
 
   return (
-    <>
-      <div>
         <PrimarySection>
           <GoBackButton
             onClick={() => history.goBack()}
@@ -46,14 +44,13 @@ export const Watchlist = () => {
             {contentInWatchlist.length + " "}
             {contentInWatchlist.length === 1 ? "title" : "titles"}
           </PrimaryH3>
-        </PrimarySection>
-      </div>
+        
+      
 
       <br />
 
       {contentInWatchlist.length > 0 ? (
         <>
-          <hr />
           <ResultsGrid>
             {contentInWatchlist.map(
               ({
@@ -98,7 +95,7 @@ export const Watchlist = () => {
           <Link to="/search"> here </Link>
         </PrimaryH3>
       )}
-    </>
+    </PrimarySection>
   );
 };
 

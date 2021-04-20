@@ -13,7 +13,6 @@ export const GlobalStyles = createGlobalStyle`
 
  body {
   font-family: 'Lato', serif;
-  /* border: 5px solid blue; */
 } 
 @media (min-width: 700px) {
     body {
@@ -43,10 +42,6 @@ export const ResultsGrid = styled.section`
     grid-template-columns: repeat(2, 1fr);
   }
 
-  /* flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 90px;*/
 `;
 
 export const ItemCard = styled.section`
@@ -151,6 +146,7 @@ export const DetailsCard = styled.section`
     padding: 10px 0;
     font-weight: 100;
     line-height: 22px;
+    margin-bottom: 100px;
   }
   button {
     padding: 10px;
@@ -174,7 +170,6 @@ export const PrimaryH3 = styled.h3`
   color: ${({ theme }) => theme.primaryColor};
   text-align: center;
   font-size: 1rem;
-  margin-top: 40px;
   margin-bottom: 40px;
   & a {
     font-size: 1.5rem;
@@ -244,8 +239,7 @@ export const SecondarySection = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* height: 80vh; */
-  //new
+
 
   h1 {
     font-size: 2rem;
@@ -372,8 +366,7 @@ export const SearchLabel = styled.label`
 `;
 
 export const SearchInput = styled.input`
-  /* width: 95vw; */
-  width: 95%; /* new */
+  width: 95%; 
   border-radius: 5px;
   padding: 15px;
   border: 0;
@@ -394,6 +387,9 @@ export const SearchButton = styled.button`
   border: 0;
   border-radius: 5px;
   cursor: pointer;
+  &:focus {
+    outline: none;
+  }
 `;
 
 // ------------------------------- PAGINATION --------------------------------

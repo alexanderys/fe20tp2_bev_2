@@ -52,7 +52,7 @@ function TvDetails(props) {
           <ul>
             {first_air_date ? first_air_date.substring(0, 4) : ''} | {''}
             {genres.map((genre, index) => {
-              return <li key={index}>{genre.name} </li>;
+              return <li key={index}>{genre.name} | </li>;
             })}
           </ul>
         )}

@@ -49,14 +49,6 @@ export default function Dashboard() {
         </li>
 
         <li>
-          {/* @TODO: conditional text rendering 
-              according to theme,
-              i.e.  darktheme: switch to light, 
-                    lighteme: switch to dark
-          */}
-          <p>Theme</p>
-
-          {/* <UseDarkMode /> */}
           <Toggler theme={`${themeToggler}`} toggleTheme={updateMyTheme} />
         </li>
 

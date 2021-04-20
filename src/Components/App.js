@@ -21,10 +21,7 @@ import ActorDetails from "./Details/ActorDetails";
 import { ThemeProvider } from "styled-components";
 import { lightTheme, darkTheme } from "./Darkmode/Themes";
 import React, { useState } from "react";
-import { Container, GlobalStyles } from "./StyledComponents";
-
-// Global font
-// import GlobalFonts from '../style/fonts/fonts';
+import { GlobalStyles } from "./StyledComponents";
 
 function App() {
   //Theme stuff

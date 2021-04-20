@@ -1,5 +1,6 @@
 //From darkest to brightest
 const color1 = '#222222';
+// const color1 = '#0e1129';
 const color2 = '#343434';
 const color3 = '#636363'
 const color4 = '#9b9b9b'

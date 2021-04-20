@@ -13,7 +13,6 @@ import {
 } from "../StyledComponents";
 import AvgRatingChart from "./AvgRatingChart";
 import BarChart from "./BarChart";
-// import LineChart from "./LineChart";
 import PieChart from "./PieChart";
 
 function Stats() {
@@ -27,9 +26,8 @@ function Stats() {
 
   useEffect(() => {
     /* setLastWeek([]); */
-    const limit = Date.now() - 300000;
-    // Limit is  now 5 min
-    console.log("limit: " + limit);
+    const limit = Date.now() - 900000;
+    // Limit is  now 15 min
     db.collection("users")
       .doc(currentUser.uid)
       .collection("haveWatched")
@@ -55,15 +53,7 @@ function Stats() {
             <p>Loading...</p>
           ) : (
             <>
-              <div>
-                <AvgRatingChart />
-                <PieChart />
-                <br />
-              </div>
-              <BarChart />
-              <br />
-
-              <StatsContainer>
+<StatsContainer>
                 <SquareContainer>
                   <h3>Movies seen this week</h3>
                   <NumberStats>{lastWeek.length}</NumberStats>
@@ -77,6 +67,16 @@ function Stats() {
                   </CircleStats>
                 </CircleContainer>
               </StatsContainer>
+       
+
+              <BarChart />
+              <br />
+                <PieChart  />
+                 <br />
+                <AvgRatingChart />
+        
+             
+
             </>
           )}
         </section>

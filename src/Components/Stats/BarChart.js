@@ -136,7 +136,7 @@ const BarChart = () => {
             options={{
               responsive: true,
               title: {
-                text: "Your year in movies",
+                text: "Movies seen this year",
                 display: true,
                 fontSize: 20,
                 fontColor: "white",

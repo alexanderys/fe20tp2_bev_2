@@ -79,9 +79,6 @@ export function AuthProvider({ children, onChange, currentTheme }) {
   }
 
   // This function serch for the current user in firestore and update the theme-value Ex. 'dark' | 'light'
-  //FIX BUG
-  // works ok, needs modification. gets stuck when switch to fast.
-
   async function updateTheme(curTheme) {
     try {
       db.collection("users")
@@ -92,7 +89,7 @@ export function AuthProvider({ children, onChange, currentTheme }) {
       changeTheme(await readTheme().then((data) => data));
       localStorage.setItem("theme", await readTheme().then((data) => data));
     } catch (error) {
-      console.log("SomeError accured: ", error);
+      console.log("Some error accured: ", error);
     }
   }
   useEffect(async () => {

@@ -83,6 +83,7 @@ const AvgRatingChart = () => {
           labels: {
             fontSize: 22,
             boxWidth: 0,
+            fontColor: "white",
           },
         },
         tooltips: {
