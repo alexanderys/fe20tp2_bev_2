@@ -417,10 +417,14 @@ export const PaginationNumbers = styled.ul`
 export const StatsContainer = styled.div`
   color: white;
   background-color: #222222;
-
   border: 2px solid rgba(0, 0, 0, 0);
   display: flex;
   justify-content: space-around;
+  h3 {
+    font-weight: 800;
+    font-size: 1.3rem;
+  }
+
 `;
 
 export const SquareContainer = styled.div`

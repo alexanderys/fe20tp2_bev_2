@@ -42,7 +42,7 @@ export const Watchlist = () => {
 
           <PrimaryH3>
             {contentInWatchlist.length + " "}
-            {contentInWatchlist.length === 1 ? "title" : "titles"}
+            {contentInWatchlist.length === 1 ? "movie" : "movies"}
           </PrimaryH3>
         
       
@@ -61,6 +61,7 @@ export const Watchlist = () => {
                 firstAirDate,
                 posterPath,
                 voteAverage,
+                genre_ids,
               }) => {
                 if (movieTitle) {
                   return (
@@ -71,6 +72,7 @@ export const Watchlist = () => {
                       releaseDate={releaseDate}
                       posterPath={posterPath}
                       voteAverage={voteAverage}
+                      genreIds={genre_ids}
                     />
                   );
                 } else if (tvTitle) {

@@ -59,7 +59,7 @@ const AvgRatingChart = () => {
       options={{
         responsive: true,
         title: {
-          text: "Average Rating",
+          text: "Average rating of seen movies",
           display: true,
           fontSize: 20,
           fontColor: "white",

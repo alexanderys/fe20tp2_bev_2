@@ -44,7 +44,7 @@ export const Watched = () => {
         <PrimaryH3>
           {" "}
           {watchedContent.length}{" "}
-          {watchedContent.length === 1 ? "title" : "titles"}
+          {watchedContent.length === 1 ? "movie" : "movies"}
         </PrimaryH3>
       ) : (
         " "

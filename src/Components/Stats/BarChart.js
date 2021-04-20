@@ -148,11 +148,15 @@ const BarChart = () => {
                       autoSkip: true,
                       maxTicksLimit: 10,
                       beginAtZero: true,
+                      fontColor: "white",
                     },
                   },
                 ],
                 xAxes: [
                   {
+                    ticks: {
+                      fontColor: "white",
+                    },
                     gridLines: { display: false },
                   },
                 ],

@@ -53,7 +53,7 @@ function Stats() {
             <p>Loading...</p>
           ) : (
             <>
-<StatsContainer>
+            <StatsContainer>
                 <SquareContainer>
                   <h3>Movies seen this week</h3>
                   <NumberStats>{lastWeek.length}</NumberStats>
@@ -68,7 +68,6 @@ function Stats() {
                 </CircleContainer>
               </StatsContainer>
        
-
               <BarChart />
               <br />
                 <PieChart  />
