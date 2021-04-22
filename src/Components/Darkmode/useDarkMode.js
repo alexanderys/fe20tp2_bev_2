@@ -12,18 +12,6 @@ export const useDarkMode = () => {
   useEffect(async () => {
     const docRef = db.collection("users").doc(auth.currentUser.uid);
 
-    const themeData = await docRef
-      .get()
-      .then(async (doc) => {
-        if (doc.exists) {
-          changeTheme(await doc.data().theme);
-        } else {
-          console.log("No such data!");
-        }
-      })
-      .catch((error) => {
-        console.log("Error getting data:", error);
-      });
   }, []);
   return [theme, themeToggler];
 };
