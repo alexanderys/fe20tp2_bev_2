@@ -49,7 +49,7 @@ const StyledNav = styled.nav`
     text-decoration: underline;
   }
 
-  @media (min-width: 700px) {
+  @media (min-width: 500px) {
     ul {
       top: 0;
       bottom: auto;

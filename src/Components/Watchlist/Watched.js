@@ -29,7 +29,7 @@ export const Watched = () => {
         });
         setWatchedContent(documents);
       });
-  }, []);
+  }, [watchedContent]);
 
   return (
     <PrimarySection>

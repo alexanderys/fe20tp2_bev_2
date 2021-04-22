@@ -1,4 +1,5 @@
 import styled, { createGlobalStyle } from "styled-components";
+import Lato from '../style/fonts/Lato-Regular.ttf';
 
 export const GlobalStyles = createGlobalStyle`
     html {
@@ -11,10 +12,16 @@ export const GlobalStyles = createGlobalStyle`
   padding: 0;
 } 
 
- body {
-  font-family: 'Lato', serif;
+ @font-face {
+  font-family: 'Lato';
+  src: url(${Lato}) format('truetype');
 } 
-@media (min-width: 700px) {
+
+body {
+  font-family: 'Lato';
+}
+
+@media (min-width: 500px) {
     body {
      margin-top: 85px;
     }
@@ -29,7 +36,7 @@ export const ResultsGrid = styled.section`
   grid-template-columns: repeat(5, 1fr);
   grid-gap: 0.5rem;
 
-  /* fulhax för att få marginal till navbar */
+  /* So content won't disappear behind navbar */
   section:last-of-type {
     margin-bottom: 100px;
   }
@@ -240,7 +247,6 @@ export const SecondarySection = styled.section`
   flex-direction: column;
   align-items: center;
 
-
   h1 {
     font-size: 2rem;
     text-align: center;
@@ -270,6 +276,8 @@ export const SecondarySection = styled.section`
       color: ${({ theme }) => theme.thirdColor};
     }
   }
+
+  
 `;
 
 export const StatsSection = styled.section`

@@ -72,7 +72,7 @@ function MovieItem({
         posterPath,
         releaseDate,
         createdAt: Date.now(),
-        genreNames,
+        /* genreNames, */
         addedDate: new Date().toISOString(),
       })
       .then(() => {
@@ -129,7 +129,7 @@ function MovieItem({
           <FallbackImage type={"movie"} />
         )}
       </Link>
-          
+
       <h3>{title}</h3>
 
       <span>{releaseDate ? releaseDate.substring(0, 4) : ""}   <FontAwesomeIcon icon={faStar} size="1x" color="" />

@@ -29,23 +29,23 @@ export const Watchlist = () => {
         });
         setContentInWatchlist(documents);
       });
-  }, []);
+  }, [contentInWatchlist]);
 
   return (
-        <PrimarySection>
-          <GoBackButton
-            onClick={() => history.goBack()}
-            className="fas fa-angle-left"
-          ></GoBackButton>
+    <PrimarySection>
+      <GoBackButton
+        onClick={() => history.goBack()}
+        className="fas fa-angle-left"
+      ></GoBackButton>
 
-          <h1>My Watchlist</h1>
+      <h1>My Watchlist</h1>
 
-          <PrimaryH3>
-            {contentInWatchlist.length + " "}
-            {contentInWatchlist.length === 1 ? "movie" : "movies"}
-          </PrimaryH3>
-        
-      
+      <PrimaryH3>
+        {contentInWatchlist.length + " "}
+        {contentInWatchlist.length === 1 ? "movie" : "movies"}
+      </PrimaryH3>
+
+
 
       <br />
 
