@@ -1,6 +1,6 @@
 # Unscripted
 
-![screenshot of the app](/src/img/unscripted-screenshot.png)
+![screenshot of the app](/src/img/unscripted-screenshot2.png)
 
 Unscripted is a movie app where you can find information about movies and tv-series, save movies to watchlist and get individual statistics based on the movies that you’ve seen. Are you generally watching movies with an average rating of 3.2? Think that you watch more action than rom-coms? How many movies did you actually binge last summer after your breakup? It’s all here in our [beta version of the app](https://unscripted-app.surge.sh/).
 
