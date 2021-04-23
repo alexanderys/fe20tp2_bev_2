@@ -27,3 +27,4 @@ Unscripted is a movie app where you can find information about movies and tv-ser
 - Styled Components
 - Chart.js
 - Axios
+- [Scrumboard](https://www.notion.so/bc67ddc5d7484ed68eaea2949f57d6a0?v=c7fb59537e9e40ed96dd81189254ef67)
