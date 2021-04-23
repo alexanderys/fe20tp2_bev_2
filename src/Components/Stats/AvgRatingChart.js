@@ -54,43 +54,49 @@ const AvgRatingChart = () => {
   }, [isLoading]);
 
   return (
-    <Doughnut
-      data={voteAverageData}
-      options={{
-        responsive: true,
-        title: {
-          text: "Average rating of seen movies",
-          display: true,
-          fontSize: 20,
-          fontColor: "white",
-        },
-        scales: {
-          yAxes: [
-            {
-              ticks: { display: false },
-              gridLines: { display: false },
+    <>
+      {true ? (
+        ""
+      ) : (
+        <Doughnut
+          data={voteAverageData}
+          options={{
+            responsive: true,
+            title: {
+              text: "Average rating of seen movies",
+              display: true,
+              fontSize: 20,
+              fontColor: "white",
             },
-          ],
-          xAxes: [
-            {
-              gridLines: { display: false },
-              ticks: { display: false },
+            scales: {
+              yAxes: [
+                {
+                  ticks: { display: false },
+                  gridLines: { display: false },
+                },
+              ],
+              xAxes: [
+                {
+                  gridLines: { display: false },
+                  ticks: { display: false },
+                },
+              ],
             },
-          ],
-        },
-        legend: {
-          position: "bottom",
-          labels: {
-            fontSize: 22,
-            boxWidth: 0,
-            fontColor: "white",
-          },
-        },
-        tooltips: {
-          enabled: false,
-        },
-      }}
-    />
+            legend: {
+              position: "bottom",
+              labels: {
+                fontSize: 22,
+                boxWidth: 0,
+                fontColor: "white",
+              },
+            },
+            tooltips: {
+              enabled: false,
+            },
+          }}
+        />
+      )}
+    </>
   );
 };
 
