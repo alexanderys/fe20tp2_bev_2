@@ -10,7 +10,7 @@ import {
   PrimaryForm,
 } from "../StyledComponents";
 
-const ClickableLink = styled.a`
+const ClickableLink = styled.span`
   a {
     font-weight: bold;
 
@@ -35,11 +35,11 @@ export default function Login() {
       setError("");
       setLoading(true);
       await login(emailRef.current.value, passwordRef.current.value);
+       setLoading(false);
       history.push("/");
     } catch {
       setError("Failed to log in");
     }
-    setLoading(false);
   }
 
   return (
